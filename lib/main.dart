@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             onError: Colors.white,
             brightness: Brightness.light,
             primary: Colors.green,
-            secondary: Colors.orange,
+            secondary: Colors.lightGreen[300]!,
             error: Colors.red),
         useMaterial3: true,
       ),
@@ -73,89 +73,114 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          surfaceTintColor: Colors.transparent,
+          backgroundColor: theme.scaffoldBackgroundColor,
           title: Text(
             'Scry',
           ),
         ),
-        body: Visibility(
-          visible: loaded,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  onChanged: (value) async {
-                    var response =
-                        await CardRepository().searchNamed(name: value);
-                    if (response != null) {
-                      setState(() {
-                        loaded = true;
-                        cards = response;
-                      });
-                    }
-                  },
-                  controller: searchController,
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(left: 8),
-                      fillColor: theme.cardColor,
-                      filled: true,
-                      hintText: "Search Card Name",
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: theme.primaryColor),
-                          borderRadius: BorderRadius.circular(15)),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(15))),
-                ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: (value) async {
+                  var response =
+                      await CardRepository().searchNamed(name: value);
+                  if (response != null) {
+                    setState(() {
+                      loaded = true;
+                      cards = response;
+                    });
+                  }
+                },
+                controller: searchController,
+                decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 8),
+                    fillColor: theme.cardColor,
+                    filled: true,
+                    label: Text("Search Card Name"),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: theme.primaryColor),
+                        borderRadius: BorderRadius.circular(15)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(15))),
               ),
-              Container(
-                color: Colors.grey[400],
-                constraints: BoxConstraints(maxHeight: 1),
-              ),
-              Visibility(
-                visible: loaded,
-                child: Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: cards!.length,
-                    itemBuilder: (context, index) {
-                      final card = cards![index];
-                      final imageSmall = card.imageUris?.small ?? '';
-                      final imageNormal = card.imageUris?.normal ?? '';
+            ),
+            Container(
+              color: Colors.grey[400],
+              constraints: BoxConstraints(maxHeight: 1),
+            ),
+            Visibility(
+              visible: loaded,
+              child: Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: cards!.length,
+                  itemBuilder: (context, index) {
+                    final card = cards![index];
+                    final imageSmall = card.imageUris?.small ?? '';
+                    final imageNormal = card.imageUris?.normal ?? '';
 
-                      return Card(
-                        child: ListTile(
-                          onTap: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return Dialog(
-                                    child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(14),
-                                        child: Image.network(imageNormal)),
-                                  );
-                                });
-                          },
-                          shape: RoundedRectangleBorder(),
-                          leading: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: imageSmall == ''
-                                ? Icon(Icons.photo)
-                                : Image.network(
-                                    imageSmall,
+                    return Card(
+                      child: ListTile(
+                        onTap: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
+                                  backgroundColor: Colors.transparent,
+                                  elevation: 0,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          IconButton.filled(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: Icon(Icons.close))
+                                        ],
+                                      ),
+                                      ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                          child: Image.network(imageNormal)),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: FilledButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Select')),
+                                      )
+                                    ],
                                   ),
-                          ),
-                          title: Text(card.name ?? ''),
-                          trailing: Icon(Icons.chevron_right_rounded),
+                                );
+                              });
+                        },
+                        shape: RoundedRectangleBorder(),
+                        leading: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: imageSmall == ''
+                              ? Icon(Icons.photo)
+                              : Image.network(
+                                  imageSmall,
+                                ),
                         ),
-                      );
-                    },
-                  ),
+                        title: Text(card.name ?? ''),
+                        trailing: Icon(Icons.chevron_right_rounded),
+                      ),
+                    );
+                  },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         )
         // This trailing comma makes auto-formatting nicer for build methods.
         );
