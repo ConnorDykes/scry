@@ -22,17 +22,21 @@ class CardRepository {
           var uri = Uri.parse(url);
           var response = await client.get(uri);
           if (response.statusCode == 200) {
-            final body = json.decode(response.body);
+            var body = json.decode(response.body);
             List data = body['data'];
             List<CardModel> page =
-                List<CardModel>.from(body.map((x) => CardModel.fromJson(x)));
+                List<CardModel>.from(data.map((x) => CardModel.fromJson(x)));
             cards.addAll(page);
+
             if (body['has_more'] == true) {
               debugPrint(cards.length.toString());
               getPage(url: body['next_page']);
             } else {
               return cards;
             }
+          }
+          if (response.statusCode == 404) {
+            return [];
           }
         }
 
@@ -49,9 +53,11 @@ class CardRepository {
       }
       if (response.statusCode == 404) {
         debugPrint(response.body);
+        return [];
       }
     } catch (e) {
       debugPrint(e.toString());
+      return [];
     }
   }
 }
