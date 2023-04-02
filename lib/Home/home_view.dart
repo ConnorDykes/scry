@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
+import 'package:scry/Trade/trade_view.dart';
 
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final view = {
-      0: Text('Trade'),
-      1: Text('Play'),
-      2: Text('Profile'),
+      0: TradeView(),
+      1: Text('Messages'),
+      2: Text('Play'),
+      3: Text('Profile')
     };
 
     return BlocBuilder<HomeBloc, HomeState>(
@@ -27,12 +29,15 @@ class HomeView extends StatelessWidget {
                 label: 'Trade',
               ),
               NavigationDestination(
+                icon: Icon(Icons.message_rounded),
+                label: 'Messages',
+              ),
+              NavigationDestination(
                 icon: Icon(Icons.group),
                 label: 'Play',
               ),
               NavigationDestination(
-                selectedIcon: Icon(Icons.person),
-                icon: Icon(Icons.bookmark_border),
+                icon: Icon(Icons.person),
                 label: 'Profile',
               ),
             ],

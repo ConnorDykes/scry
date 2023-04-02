@@ -68,66 +68,129 @@ class CardModel {
     this.purchaseUris,
   });
 
-  String? object;
-  String? id;
-  String? oracleId;
-  List<int>? multiverseIds;
-  int? tcgplayerId;
-  int? cardmarketId;
-  String? name;
-  String? lang;
-  DateTime? releasedAt;
-  String? uri;
-  String? scryfallUri;
-  String? layout;
-  bool? highresImage;
-  String? imageStatus;
-  ImageUris? imageUris;
-  String? manaCost;
-  double? cmc;
-  String? typeLine;
-  String? oracleText;
-  String? power;
-  String? toughness;
-  List<String>? colors;
-  List<String>? colorIdentity;
-  List<dynamic>? keywords;
-  Legalities? legalities;
-  List<String>? games;
-  bool? reserved;
-  bool? foil;
-  bool? nonfoil;
-  List<String>? finishes;
-  bool? oversized;
-  bool? promo;
-  bool? reprint;
-  bool? variation;
-  String? setId;
-  String? cardModelSet;
-  String? setName;
-  String? setType;
-  String? setUri;
-  String? setSearchUri;
-  String? scryfallSetUri;
-  String? rulingsUri;
-  String? printsSearchUri;
-  String? collectorNumber;
-  bool? digital;
-  String? rarity;
-  String? cardBackId;
-  String? artist;
-  List<String>? artistIds;
-  String? illustrationId;
-  String? borderColor;
-  String? frame;
-  bool? fullArt;
-  bool? textless;
-  bool? booster;
-  bool? storySpotlight;
-  int? edhrecRank;
-  Prices? prices;
-  RelatedUris? relatedUris;
-  PurchaseUris? purchaseUris;
+  const CardModel.empty({
+    this.object,
+    this.id,
+    this.oracleId,
+    this.multiverseIds,
+    this.tcgplayerId,
+    this.cardmarketId,
+    this.name,
+    this.lang,
+    this.releasedAt,
+    this.uri,
+    this.scryfallUri,
+    this.layout,
+    this.highresImage,
+    this.imageStatus,
+    this.imageUris,
+    this.manaCost,
+    this.cmc,
+    this.typeLine,
+    this.oracleText,
+    this.power,
+    this.toughness,
+    this.colors,
+    this.colorIdentity,
+    this.keywords,
+    this.legalities,
+    this.games,
+    this.reserved,
+    this.foil,
+    this.nonfoil,
+    this.finishes,
+    this.oversized,
+    this.promo,
+    this.reprint,
+    this.variation,
+    this.setId,
+    this.cardModelSet,
+    this.setName,
+    this.setType,
+    this.setUri,
+    this.setSearchUri,
+    this.scryfallSetUri,
+    this.rulingsUri,
+    this.printsSearchUri,
+    this.collectorNumber,
+    this.digital,
+    this.rarity,
+    this.cardBackId,
+    this.artist,
+    this.artistIds,
+    this.illustrationId,
+    this.borderColor,
+    this.frame,
+    this.fullArt,
+    this.textless,
+    this.booster,
+    this.storySpotlight,
+    this.edhrecRank,
+    this.prices,
+    this.relatedUris,
+    this.purchaseUris,
+  });
+
+  final String? object;
+  final String? id;
+  final String? oracleId;
+  final List<int>? multiverseIds;
+  final int? tcgplayerId;
+  final int? cardmarketId;
+  final String? name;
+  final String? lang;
+  final DateTime? releasedAt;
+  final String? uri;
+  final String? scryfallUri;
+  final String? layout;
+  final bool? highresImage;
+  final String? imageStatus;
+  final ImageUris? imageUris;
+  final String? manaCost;
+  final double? cmc;
+  final String? typeLine;
+  final String? oracleText;
+  final String? power;
+  final String? toughness;
+  final List<String>? colors;
+  final List<String>? colorIdentity;
+  final List<dynamic>? keywords;
+  final Legalities? legalities;
+  final List<String>? games;
+  final bool? reserved;
+  final bool? foil;
+  final bool? nonfoil;
+  final List<String>? finishes;
+  final bool? oversized;
+  final bool? promo;
+  final bool? reprint;
+  final bool? variation;
+  final String? setId;
+  final String? cardModelSet;
+  final String? setName;
+  final String? setType;
+  final String? setUri;
+  final String? setSearchUri;
+  final String? scryfallSetUri;
+  final String? rulingsUri;
+  final String? printsSearchUri;
+  final String? collectorNumber;
+  final bool? digital;
+  final String? rarity;
+  final String? cardBackId;
+  final String? artist;
+  final List<String>? artistIds;
+  final String? illustrationId;
+  final String? borderColor;
+  final String? frame;
+  final bool? fullArt;
+  final bool? textless;
+  final bool? booster;
+  final bool? storySpotlight;
+  final int? edhrecRank;
+  final Prices? prices;
+  final RelatedUris? relatedUris;
+  final PurchaseUris? purchaseUris;
 
   CardModel copyWith({
     String? object,

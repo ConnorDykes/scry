@@ -17,38 +17,39 @@ class CardRepository {
         debugPrint('got Cards');
         List<CardModel> cards = [];
 
-        getPage({required String url}) async {
-          debugPrint('getting more pages');
-          var uri = Uri.parse(url);
-          var response = await client.get(uri);
-          if (response.statusCode == 200) {
-            var body = json.decode(response.body);
-            List data = body['data'];
-            List<CardModel> page =
-                List<CardModel>.from(data.map((x) => CardModel.fromJson(x)));
-            cards.addAll(page);
+        // getPage({required String url}) async {
+        //   debugPrint('getting more pages');
+        //   var uri = Uri.parse(url);
+        //   var response = await client.get(uri);
+        //   if (response.statusCode == 200) {
+        //     var body = json.decode(response.body);
+        //     List data = body['data'];
+        //     List<CardModel> page =
+        //         List<CardModel>.from(data.map((x) => CardModel.fromJson(x)));
+        //     cards.addAll(page);
 
-            if (body['has_more'] == true) {
-              debugPrint(cards.length.toString());
-              getPage(url: body['next_page']);
-            } else {
-              return cards;
-            }
-          }
-          if (response.statusCode == 404) {
-            return [];
-          }
-        }
+        //     if (body['has_more'] == true) {
+        //       debugPrint(cards.length.toString());
+        //       getPage(url: body['next_page']);
+        //     } else {
+        //       return cards;
+        //     }
+        //   }
+        //   if (response.statusCode == 404) {
+        //     return [];
+        //   }
+        // }
 
         final body = json.decode(response.body);
         List data = body['data'];
         List<CardModel> page =
             List<CardModel>.from(data.map((x) => CardModel.fromJson(x)));
         cards.addAll(page);
-        if (body['has_more'] == true) {
-          debugPrint('has more pages');
-          getPage(url: body['next_page']);
-        }
+        // if (body['has_more'] == true) {
+        //   debugPrint('has more pages');
+        //   getPage(url: body['next_page']);
+        // }
+        debugPrint(cards.first.toString());
         return cards;
       }
       if (response.statusCode == 404) {
