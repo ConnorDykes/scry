@@ -12,11 +12,12 @@ part 'create_trade_bloc.freezed.dart';
 class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
   final cardRepo = CardRepository();
   final searchController = TextEditingController();
-  CreateTradeBloc() : super(CreateTradeState()) {
+  CreateTradeBloc() : super(const CreateTradeState()) {
     on<_Search>((event, emit) async {
       emit(state.copyWith(
         cardLoadStatus: LoadStatus.loading,
       ));
+
       var response = await cardRepo.searchNamed(name: event.query);
       if (response != null) {
         emit(state.copyWith(
