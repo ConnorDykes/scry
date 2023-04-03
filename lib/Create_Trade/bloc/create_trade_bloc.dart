@@ -49,6 +49,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
     });
 
     on<_CreateTrade>((event, emit) async {
+      //* add firebase upload here
       emit(state.copyWith(
         buttonState: ButtonState.loading,
       ));
