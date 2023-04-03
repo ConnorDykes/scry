@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Card_Repo/card_repository.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
@@ -45,6 +46,18 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
         selectedCard: const CardModel.empty(),
       ));
       debugPrint(state.selectedCard.toString());
+    });
+
+    on<_CreateTrade>((event, emit) async {
+      emit(state.copyWith(
+        buttonState: ButtonState.loading,
+      ));
+
+      await Future.delayed(const Duration(seconds: 2), () {
+        emit(state.copyWith(
+          buttonState: ButtonState.success,
+        ));
+      });
     });
   }
 }

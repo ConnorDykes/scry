@@ -137,9 +137,9 @@ class CreateTradeView extends StatelessWidget {
                               color: Colors.green.shade400)
                         },
                         onPressed: () {
-                          ///* repo function
+                          bloc.add(const CreateTradeEvent.createTrade());
                         },
-                        state: ButtonState.idle)
+                        state: state.buttonState)
                   }
                 }
               ],
@@ -192,6 +192,7 @@ class DetailsTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8),
       child: TextField(
+        textCapitalization: TextCapitalization.sentences,
         maxLines: null,
         minLines: 3,
         decoration: InputDecoration(
