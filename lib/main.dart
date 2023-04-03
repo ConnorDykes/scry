@@ -1,15 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scry/Card_Repo/card_repository.dart';
 import 'package:scry/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Create_Trade/create_trade_view.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
 import 'package:scry/Home/home_view.dart';
-import 'package:scry/card_model.dart';
+import 'package:scry/Sign_In/sign_in_view.dart';
+import 'package:scry/firebase_options.dart';
 
-void main() {
+import 'Sign_Up/sign_up_view.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -33,6 +42,8 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/CreateTrade': (context) => CreateTradeView(),
+          '/SignIn': (context) => SignInView(),
+          '/SignUp': (context) => SignUpView(),
         },
         theme: ThemeData(
           dividerColor: Colors.grey[400],

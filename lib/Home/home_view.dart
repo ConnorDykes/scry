@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
+import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Trade/trade_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -10,7 +11,7 @@ class HomeView extends StatelessWidget {
       0: TradeView(),
       1: Text('Messages'),
       2: Text('Play'),
-      3: Text('Profile')
+      3: SignInView()
     };
 
     return BlocBuilder<HomeBloc, HomeState>(
