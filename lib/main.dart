@@ -4,11 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Create_Trade/create_trade_view.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
 import 'package:scry/Home/home_view.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
+import 'package:scry/Sign_Up/bloc/sign_up_bloc.dart';
 import 'package:scry/firebase_options.dart';
 
 import 'Sign_Up/sign_up_view.dart';
@@ -35,6 +37,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CreateTradeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SignUpBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AppBlocBloc(),
         ),
       ],
       child: MaterialApp(
