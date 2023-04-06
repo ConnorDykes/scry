@@ -12,6 +12,7 @@ class SignUpState with _$SignUpState {
     @Default('') String confirmPassword,
     @Default('') String firstName,
     @Default('') String lastName,
+    @Default(UserModel.empty) UserModel user,
   }) = _SignUpState;
 
   get isEmailValid => email != '';

@@ -6,30 +6,32 @@ part 'user_model.g.dart';
 /// the user class that we use to represent our user, as well as all other
 /// user types that can be viewed.
 @freezed
-class User with _$User {
+class UserModel with _$UserModel {
   /// our user constructor
-  const factory User({
+  const factory UserModel({
     @Default('') String id,
     @Default('') String email,
+    @Default('') String password,
     @Default('') String displayName,
     @Default('') String firstName,
     @Default('') String lastName,
     @Default('') String profilePicture,
   }) = _User;
 
-  const User._();
+  const UserModel._();
 
   /// our user type getter
-  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+  factory UserModel.fromJson(Map<String, Object?> json) =>
+      _$UserModelFromJson(json);
 
   /// Empty user which represents an unauthenticated user.
-  static const empty = User();
+  static const empty = UserModel();
 
   /// Convenience getter to determine whether the current user is empty.
-  bool get isEmpty => this == User.empty;
+  bool get isEmpty => this == UserModel.empty;
 
   /// Convenience getter to determine whether the current user is not empty.
-  bool get isNotEmpty => this != User.empty;
+  bool get isNotEmpty => this != UserModel.empty;
 
   ///
   String get fullName => '$firstName $lastName';

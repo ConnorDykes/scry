@@ -16,37 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppBlocEvent {
+  UserModel get user => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(UserModel user) updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(UserModel user)? updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(UserModel user)? updateUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateUser value) updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AppBlocEventCopyWith<AppBlocEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +60,10 @@ abstract class $AppBlocEventCopyWith<$Res> {
   factory $AppBlocEventCopyWith(
           AppBlocEvent value, $Res Function(AppBlocEvent) then) =
       _$AppBlocEventCopyWithImpl<$Res, AppBlocEvent>;
+  @useResult
+  $Res call({UserModel user});
+
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -66,66 +75,119 @@ class _$AppBlocEventCopyWithImpl<$Res, $Val extends AppBlocEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_value.copyWith(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$_UpdateUserCopyWith<$Res>
+    implements $AppBlocEventCopyWith<$Res> {
+  factory _$$_UpdateUserCopyWith(
+          _$_UpdateUser value, $Res Function(_$_UpdateUser) then) =
+      __$$_UpdateUserCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({UserModel user});
+
+  @override
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$AppBlocEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$_UpdateUserCopyWithImpl<$Res>
+    extends _$AppBlocEventCopyWithImpl<$Res, _$_UpdateUser>
+    implements _$$_UpdateUserCopyWith<$Res> {
+  __$$_UpdateUserCopyWithImpl(
+      _$_UpdateUser _value, $Res Function(_$_UpdateUser) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$_UpdateUser(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_UpdateUser implements _UpdateUser {
+  const _$_UpdateUser({required this.user});
+
+  @override
+  final UserModel user;
 
   @override
   String toString() {
-    return 'AppBlocEvent.started()';
+    return 'AppBlocEvent.updateUser(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateUser &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateUserCopyWith<_$_UpdateUser> get copyWith =>
+      __$$_UpdateUserCopyWithImpl<_$_UpdateUser>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(UserModel user) updateUser,
   }) {
-    return started();
+    return updateUser(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(UserModel user)? updateUser,
   }) {
-    return started?.call();
+    return updateUser?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(UserModel user)? updateUser,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (updateUser != null) {
+      return updateUser(user);
     }
     return orElse();
   }
@@ -133,39 +195,46 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateUser value) updateUser,
   }) {
-    return started(this);
+    return updateUser(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) {
-    return started?.call(this);
+    return updateUser?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (updateUser != null) {
+      return updateUser(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements AppBlocEvent {
-  const factory _Started() = _$_Started;
+abstract class _UpdateUser implements AppBlocEvent {
+  const factory _UpdateUser({required final UserModel user}) = _$_UpdateUser;
+
+  @override
+  UserModel get user;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UpdateUserCopyWith<_$_UpdateUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$AppBlocState {
-  User get user => throw _privateConstructorUsedError;
+  UserModel get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppBlocStateCopyWith<AppBlocState> get copyWith =>
@@ -178,9 +247,9 @@ abstract class $AppBlocStateCopyWith<$Res> {
           AppBlocState value, $Res Function(AppBlocState) then) =
       _$AppBlocStateCopyWithImpl<$Res, AppBlocState>;
   @useResult
-  $Res call({User user});
+  $Res call({UserModel user});
 
-  $UserCopyWith<$Res> get user;
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -202,14 +271,14 @@ class _$AppBlocStateCopyWithImpl<$Res, $Val extends AppBlocState>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as UserModel,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -223,10 +292,10 @@ abstract class _$$_AppBlocStateCopyWith<$Res>
       __$$_AppBlocStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User user});
+  $Res call({UserModel user});
 
   @override
-  $UserCopyWith<$Res> get user;
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -246,7 +315,7 @@ class __$$_AppBlocStateCopyWithImpl<$Res>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as UserModel,
     ));
   }
 }
@@ -254,11 +323,11 @@ class __$$_AppBlocStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppBlocState extends _AppBlocState {
-  const _$_AppBlocState({this.user = User.empty}) : super._();
+  const _$_AppBlocState({this.user = UserModel.empty}) : super._();
 
   @override
   @JsonKey()
-  final User user;
+  final UserModel user;
 
   @override
   String toString() {
@@ -284,11 +353,11 @@ class _$_AppBlocState extends _AppBlocState {
 }
 
 abstract class _AppBlocState extends AppBlocState {
-  const factory _AppBlocState({final User user}) = _$_AppBlocState;
+  const factory _AppBlocState({final UserModel user}) = _$_AppBlocState;
   const _AppBlocState._() : super._();
 
   @override
-  User get user;
+  UserModel get user;
   @override
   @JsonKey(ignore: true)
   _$$_AppBlocStateCopyWith<_$_AppBlocState> get copyWith =>

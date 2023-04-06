@@ -5,6 +5,6 @@ class AppBlocState with _$AppBlocState {
   const AppBlocState._();
 
   const factory AppBlocState({
-    @Default(User.empty) User user,
+    @Default(UserModel.empty) UserModel user,
   }) = _AppBlocState;
 }

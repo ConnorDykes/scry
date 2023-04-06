@@ -14,14 +14,15 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-User _$UserFromJson(Map<String, dynamic> json) {
+UserModel _$UserModelFromJson(Map<String, dynamic> json) {
   return _User.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
+mixin _$UserModel {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
@@ -29,17 +30,19 @@ mixin _$User {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $UserModelCopyWith<UserModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+abstract class $UserModelCopyWith<$Res> {
+  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
+      _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
       {String id,
       String email,
+      String password,
       String displayName,
       String firstName,
       String lastName,
@@ -47,9 +50,9 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
+    implements $UserModelCopyWith<$Res> {
+  _$UserModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -61,6 +64,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = null,
     Object? email = null,
+    Object? password = null,
     Object? displayName = null,
     Object? firstName = null,
     Object? lastName = null,
@@ -74,6 +78,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
       displayName: null == displayName
           ? _value.displayName
@@ -96,7 +104,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 }
 
 /// @nodoc
-abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+abstract class _$$_UserCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
@@ -104,6 +112,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {String id,
       String email,
+      String password,
       String displayName,
       String firstName,
       String lastName,
@@ -111,7 +120,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
+class __$$_UserCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res, _$_User>
     implements _$$_UserCopyWith<$Res> {
   __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
       : super(_value, _then);
@@ -121,6 +130,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   $Res call({
     Object? id = null,
     Object? email = null,
+    Object? password = null,
     Object? displayName = null,
     Object? firstName = null,
     Object? lastName = null,
@@ -134,6 +144,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
       displayName: null == displayName
           ? _value.displayName
@@ -161,6 +175,7 @@ class _$_User extends _User {
   const _$_User(
       {this.id = '',
       this.email = '',
+      this.password = '',
       this.displayName = '',
       this.firstName = '',
       this.lastName = '',
@@ -177,6 +192,9 @@ class _$_User extends _User {
   final String email;
   @override
   @JsonKey()
+  final String password;
+  @override
+  @JsonKey()
   final String displayName;
   @override
   @JsonKey()
@@ -190,7 +208,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, displayName: $displayName, firstName: $firstName, lastName: $lastName, profilePicture: $profilePicture)';
+    return 'UserModel(id: $id, email: $email, password: $password, displayName: $displayName, firstName: $firstName, lastName: $lastName, profilePicture: $profilePicture)';
   }
 
   @override
@@ -200,6 +218,8 @@ class _$_User extends _User {
             other is _$_User &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.firstName, firstName) ||
@@ -212,8 +232,8 @@ class _$_User extends _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, email, displayName, firstName, lastName, profilePicture);
+  int get hashCode => Object.hash(runtimeType, id, email, password, displayName,
+      firstName, lastName, profilePicture);
 
   @JsonKey(ignore: true)
   @override
@@ -229,10 +249,11 @@ class _$_User extends _User {
   }
 }
 
-abstract class _User extends User {
+abstract class _User extends UserModel {
   const factory _User(
       {final String id,
       final String email,
+      final String password,
       final String displayName,
       final String firstName,
       final String lastName,
@@ -245,6 +266,8 @@ abstract class _User extends User {
   String get id;
   @override
   String get email;
+  @override
+  String get password;
   @override
   String get displayName;
   @override

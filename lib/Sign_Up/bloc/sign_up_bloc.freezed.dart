@@ -23,6 +23,9 @@ mixin _$SignUpEvent {
     required TResult Function(String confirmPassword) changeConfirmPassword,
     required TResult Function(String firstName) changeFirstName,
     required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +35,9 @@ mixin _$SignUpEvent {
     TResult? Function(String confirmPassword)? changeConfirmPassword,
     TResult? Function(String firstName)? changeFirstName,
     TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +47,9 @@ mixin _$SignUpEvent {
     TResult Function(String confirmPassword)? changeConfirmPassword,
     TResult Function(String firstName)? changeFirstName,
     TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +61,8 @@ mixin _$SignUpEvent {
         changeConfirmPassword,
     required TResult Function(_ChangeFirstName value) changeFirstName,
     required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +72,8 @@ mixin _$SignUpEvent {
     TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult? Function(_ChangeFirstName value)? changeFirstName,
     TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +83,8 @@ mixin _$SignUpEvent {
     TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult Function(_ChangeFirstName value)? changeFirstName,
     TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -162,6 +177,9 @@ class _$_ChangeEmail implements _ChangeEmail {
     required TResult Function(String confirmPassword) changeConfirmPassword,
     required TResult Function(String firstName) changeFirstName,
     required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
   }) {
     return changeEmail(email);
   }
@@ -174,6 +192,9 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult? Function(String confirmPassword)? changeConfirmPassword,
     TResult? Function(String firstName)? changeFirstName,
     TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
   }) {
     return changeEmail?.call(email);
   }
@@ -186,6 +207,9 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult Function(String confirmPassword)? changeConfirmPassword,
     TResult Function(String firstName)? changeFirstName,
     TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeEmail != null) {
@@ -203,6 +227,8 @@ class _$_ChangeEmail implements _ChangeEmail {
         changeConfirmPassword,
     required TResult Function(_ChangeFirstName value) changeFirstName,
     required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
   }) {
     return changeEmail(this);
   }
@@ -215,6 +241,8 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult? Function(_ChangeFirstName value)? changeFirstName,
     TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
   }) {
     return changeEmail?.call(this);
   }
@@ -227,6 +255,8 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult Function(_ChangeFirstName value)? changeFirstName,
     TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeEmail != null) {
@@ -315,6 +345,9 @@ class _$_ChangePassword implements _ChangePassword {
     required TResult Function(String confirmPassword) changeConfirmPassword,
     required TResult Function(String firstName) changeFirstName,
     required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
   }) {
     return changePassword(password);
   }
@@ -327,6 +360,9 @@ class _$_ChangePassword implements _ChangePassword {
     TResult? Function(String confirmPassword)? changeConfirmPassword,
     TResult? Function(String firstName)? changeFirstName,
     TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
   }) {
     return changePassword?.call(password);
   }
@@ -339,6 +375,9 @@ class _$_ChangePassword implements _ChangePassword {
     TResult Function(String confirmPassword)? changeConfirmPassword,
     TResult Function(String firstName)? changeFirstName,
     TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changePassword != null) {
@@ -356,6 +395,8 @@ class _$_ChangePassword implements _ChangePassword {
         changeConfirmPassword,
     required TResult Function(_ChangeFirstName value) changeFirstName,
     required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
   }) {
     return changePassword(this);
   }
@@ -368,6 +409,8 @@ class _$_ChangePassword implements _ChangePassword {
     TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult? Function(_ChangeFirstName value)? changeFirstName,
     TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
   }) {
     return changePassword?.call(this);
   }
@@ -380,6 +423,8 @@ class _$_ChangePassword implements _ChangePassword {
     TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult Function(_ChangeFirstName value)? changeFirstName,
     TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changePassword != null) {
@@ -470,6 +515,9 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     required TResult Function(String confirmPassword) changeConfirmPassword,
     required TResult Function(String firstName) changeFirstName,
     required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
   }) {
     return changeConfirmPassword(confirmPassword);
   }
@@ -482,6 +530,9 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult? Function(String confirmPassword)? changeConfirmPassword,
     TResult? Function(String firstName)? changeFirstName,
     TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
   }) {
     return changeConfirmPassword?.call(confirmPassword);
   }
@@ -494,6 +545,9 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult Function(String confirmPassword)? changeConfirmPassword,
     TResult Function(String firstName)? changeFirstName,
     TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeConfirmPassword != null) {
@@ -511,6 +565,8 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
         changeConfirmPassword,
     required TResult Function(_ChangeFirstName value) changeFirstName,
     required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
   }) {
     return changeConfirmPassword(this);
   }
@@ -523,6 +579,8 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult? Function(_ChangeFirstName value)? changeFirstName,
     TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
   }) {
     return changeConfirmPassword?.call(this);
   }
@@ -535,6 +593,8 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult Function(_ChangeFirstName value)? changeFirstName,
     TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeConfirmPassword != null) {
@@ -624,6 +684,9 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     required TResult Function(String confirmPassword) changeConfirmPassword,
     required TResult Function(String firstName) changeFirstName,
     required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
   }) {
     return changeFirstName(firstName);
   }
@@ -636,6 +699,9 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult? Function(String confirmPassword)? changeConfirmPassword,
     TResult? Function(String firstName)? changeFirstName,
     TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
   }) {
     return changeFirstName?.call(firstName);
   }
@@ -648,6 +714,9 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult Function(String confirmPassword)? changeConfirmPassword,
     TResult Function(String firstName)? changeFirstName,
     TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeFirstName != null) {
@@ -665,6 +734,8 @@ class _$_ChangeFirstName implements _ChangeFirstName {
         changeConfirmPassword,
     required TResult Function(_ChangeFirstName value) changeFirstName,
     required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
   }) {
     return changeFirstName(this);
   }
@@ -677,6 +748,8 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult? Function(_ChangeFirstName value)? changeFirstName,
     TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
   }) {
     return changeFirstName?.call(this);
   }
@@ -689,6 +762,8 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult Function(_ChangeFirstName value)? changeFirstName,
     TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeFirstName != null) {
@@ -778,6 +853,9 @@ class _$_ChangeLastName implements _ChangeLastName {
     required TResult Function(String confirmPassword) changeConfirmPassword,
     required TResult Function(String firstName) changeFirstName,
     required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
   }) {
     return changeLastName(lastName);
   }
@@ -790,6 +868,9 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult? Function(String confirmPassword)? changeConfirmPassword,
     TResult? Function(String firstName)? changeFirstName,
     TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
   }) {
     return changeLastName?.call(lastName);
   }
@@ -802,6 +883,9 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult Function(String confirmPassword)? changeConfirmPassword,
     TResult Function(String firstName)? changeFirstName,
     TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeLastName != null) {
@@ -819,6 +903,8 @@ class _$_ChangeLastName implements _ChangeLastName {
         changeConfirmPassword,
     required TResult Function(_ChangeFirstName value) changeFirstName,
     required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
   }) {
     return changeLastName(this);
   }
@@ -831,6 +917,8 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult? Function(_ChangeFirstName value)? changeFirstName,
     TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
   }) {
     return changeLastName?.call(this);
   }
@@ -843,6 +931,8 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
     TResult Function(_ChangeFirstName value)? changeFirstName,
     TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
     required TResult orElse(),
   }) {
     if (changeLastName != null) {
@@ -863,6 +953,234 @@ abstract class _ChangeLastName implements SignUpEvent {
 }
 
 /// @nodoc
+abstract class _$$_SignUpWithEmailAndPasswordCopyWith<$Res> {
+  factory _$$_SignUpWithEmailAndPasswordCopyWith(
+          _$_SignUpWithEmailAndPassword value,
+          $Res Function(_$_SignUpWithEmailAndPassword) then) =
+      __$$_SignUpWithEmailAndPasswordCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {BuildContext context,
+      String email,
+      String password,
+      String firstName,
+      String lastName});
+}
+
+/// @nodoc
+class __$$_SignUpWithEmailAndPasswordCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$_SignUpWithEmailAndPassword>
+    implements _$$_SignUpWithEmailAndPasswordCopyWith<$Res> {
+  __$$_SignUpWithEmailAndPasswordCopyWithImpl(
+      _$_SignUpWithEmailAndPassword _value,
+      $Res Function(_$_SignUpWithEmailAndPassword) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? email = null,
+    Object? password = null,
+    Object? firstName = null,
+    Object? lastName = null,
+  }) {
+    return _then(_$_SignUpWithEmailAndPassword(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SignUpWithEmailAndPassword implements _SignUpWithEmailAndPassword {
+  const _$_SignUpWithEmailAndPassword(
+      {required this.context,
+      required this.email,
+      required this.password,
+      required this.firstName,
+      required this.lastName});
+
+  @override
+  final BuildContext context;
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  @override
+  String toString() {
+    return 'SignUpEvent.signUpWithEmailAndPassword(context: $context, email: $email, password: $password, firstName: $firstName, lastName: $lastName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SignUpWithEmailAndPassword &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, context, email, password, firstName, lastName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SignUpWithEmailAndPasswordCopyWith<_$_SignUpWithEmailAndPassword>
+      get copyWith => __$$_SignUpWithEmailAndPasswordCopyWithImpl<
+          _$_SignUpWithEmailAndPassword>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) changeEmail,
+    required TResult Function(String password) changePassword,
+    required TResult Function(String confirmPassword) changeConfirmPassword,
+    required TResult Function(String firstName) changeFirstName,
+    required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
+  }) {
+    return signUpWithEmailAndPassword(
+        context, email, password, firstName, lastName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? changeEmail,
+    TResult? Function(String password)? changePassword,
+    TResult? Function(String confirmPassword)? changeConfirmPassword,
+    TResult? Function(String firstName)? changeFirstName,
+    TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
+  }) {
+    return signUpWithEmailAndPassword?.call(
+        context, email, password, firstName, lastName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? changeEmail,
+    TResult Function(String password)? changePassword,
+    TResult Function(String confirmPassword)? changeConfirmPassword,
+    TResult Function(String firstName)? changeFirstName,
+    TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
+    required TResult orElse(),
+  }) {
+    if (signUpWithEmailAndPassword != null) {
+      return signUpWithEmailAndPassword(
+          context, email, password, firstName, lastName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeEmail value) changeEmail,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ChangeConfirmPassword value)
+        changeConfirmPassword,
+    required TResult Function(_ChangeFirstName value) changeFirstName,
+    required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
+  }) {
+    return signUpWithEmailAndPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeEmail value)? changeEmail,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
+    TResult? Function(_ChangeFirstName value)? changeFirstName,
+    TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
+  }) {
+    return signUpWithEmailAndPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeEmail value)? changeEmail,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
+    TResult Function(_ChangeFirstName value)? changeFirstName,
+    TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
+    required TResult orElse(),
+  }) {
+    if (signUpWithEmailAndPassword != null) {
+      return signUpWithEmailAndPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignUpWithEmailAndPassword implements SignUpEvent {
+  const factory _SignUpWithEmailAndPassword(
+      {required final BuildContext context,
+      required final String email,
+      required final String password,
+      required final String firstName,
+      required final String lastName}) = _$_SignUpWithEmailAndPassword;
+
+  BuildContext get context;
+  String get email;
+  String get password;
+  String get firstName;
+  String get lastName;
+  @JsonKey(ignore: true)
+  _$$_SignUpWithEmailAndPasswordCopyWith<_$_SignUpWithEmailAndPassword>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SignUpState {
   ButtonState get buttonState => throw _privateConstructorUsedError;
   String get emailError => throw _privateConstructorUsedError;
@@ -871,6 +1189,7 @@ mixin _$SignUpState {
   String get confirmPassword => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
+  UserModel get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpStateCopyWith<SignUpState> get copyWith =>
@@ -890,7 +1209,10 @@ abstract class $SignUpStateCopyWith<$Res> {
       String password,
       String confirmPassword,
       String firstName,
-      String lastName});
+      String lastName,
+      UserModel user});
+
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -913,6 +1235,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? confirmPassword = null,
     Object? firstName = null,
     Object? lastName = null,
+    Object? user = null,
   }) {
     return _then(_value.copyWith(
       buttonState: null == buttonState
@@ -943,7 +1266,19 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -962,7 +1297,11 @@ abstract class _$$_SignUpStateCopyWith<$Res>
       String password,
       String confirmPassword,
       String firstName,
-      String lastName});
+      String lastName,
+      UserModel user});
+
+  @override
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -983,6 +1322,7 @@ class __$$_SignUpStateCopyWithImpl<$Res>
     Object? confirmPassword = null,
     Object? firstName = null,
     Object? lastName = null,
+    Object? user = null,
   }) {
     return _then(_$_SignUpState(
       buttonState: null == buttonState
@@ -1013,6 +1353,10 @@ class __$$_SignUpStateCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
     ));
   }
 }
@@ -1027,7 +1371,8 @@ class _$_SignUpState extends _SignUpState {
       this.password = '',
       this.confirmPassword = '',
       this.firstName = '',
-      this.lastName = ''})
+      this.lastName = '',
+      this.user = UserModel.empty})
       : super._();
 
   @override
@@ -1051,10 +1396,13 @@ class _$_SignUpState extends _SignUpState {
   @override
   @JsonKey()
   final String lastName;
+  @override
+  @JsonKey()
+  final UserModel user;
 
   @override
   String toString() {
-    return 'SignUpState(buttonState: $buttonState, emailError: $emailError, email: $email, password: $password, confirmPassword: $confirmPassword, firstName: $firstName, lastName: $lastName)';
+    return 'SignUpState(buttonState: $buttonState, emailError: $emailError, email: $email, password: $password, confirmPassword: $confirmPassword, firstName: $firstName, lastName: $lastName, user: $user)';
   }
 
   @override
@@ -1074,12 +1422,13 @@ class _$_SignUpState extends _SignUpState {
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
-                other.lastName == lastName));
+                other.lastName == lastName) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, buttonState, emailError, email,
-      password, confirmPassword, firstName, lastName);
+      password, confirmPassword, firstName, lastName, user);
 
   @JsonKey(ignore: true)
   @override
@@ -1096,7 +1445,8 @@ abstract class _SignUpState extends SignUpState {
       final String password,
       final String confirmPassword,
       final String firstName,
-      final String lastName}) = _$_SignUpState;
+      final String lastName,
+      final UserModel user}) = _$_SignUpState;
   const _SignUpState._() : super._();
 
   @override
@@ -1113,6 +1463,8 @@ abstract class _SignUpState extends SignUpState {
   String get firstName;
   @override
   String get lastName;
+  @override
+  UserModel get user;
   @override
   @JsonKey(ignore: true)
   _$$_SignUpStateCopyWith<_$_SignUpState> get copyWith =>

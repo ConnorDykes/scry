@@ -9,6 +9,8 @@ import 'package:scry/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Create_Trade/create_trade_view.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
 import 'package:scry/Home/home_view.dart';
+import 'package:scry/Profile/profile_view.dart';
+import 'package:scry/Sign_In/bloc/sign_in_bloc.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Sign_Up/bloc/sign_up_bloc.dart';
 import 'package:scry/firebase_options.dart';
@@ -42,6 +44,9 @@ class MyApp extends StatelessWidget {
           create: (context) => SignUpBloc(),
         ),
         BlocProvider(
+          create: (context) => SignInBloc(),
+        ),
+        BlocProvider(
           create: (context) => AppBlocBloc(),
         ),
       ],
@@ -52,6 +57,7 @@ class MyApp extends StatelessWidget {
           '/CreateTrade': (context) => CreateTradeView(),
           '/SignIn': (context) => SignInView(),
           '/SignUp': (context) => SignUpView(),
+          '/Profile': (context) => ProfileView(),
         },
         theme: ThemeData(
           dividerColor: Colors.grey[400],

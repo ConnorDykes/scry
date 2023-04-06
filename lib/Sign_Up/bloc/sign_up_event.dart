@@ -11,4 +11,11 @@ class SignUpEvent with _$SignUpEvent {
       _ChangeFirstName;
   const factory SignUpEvent.changeLastName({required String lastName}) =
       _ChangeLastName;
+  const factory SignUpEvent.signUpWithEmailAndPassword({
+    required BuildContext context,
+    required String email,
+    required String password,
+    required String firstName,
+    required String lastName,
+  }) = _SignUpWithEmailAndPassword;
 }
