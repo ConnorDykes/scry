@@ -14,5 +14,10 @@ class AppBlocBloc extends Bloc<AppBlocEvent, AppBlocState> {
     on<_UpdateUser>((event, emit) {
       emit(state.copyWith(user: event.user));
     });
+
+    on<_Logout>((event, emit) {
+      authRepo.logout();
+      emit(state.copyWith(user: UserModel.empty));
+    });
   }
 }

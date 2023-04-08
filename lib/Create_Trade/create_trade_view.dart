@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
+import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
+import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Create_Trade/bloc/create_trade_bloc.dart';
+import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
@@ -13,137 +16,143 @@ class CreateTradeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final bloc = context.read<CreateTradeBloc>();
+    final appBloc = context.read<AppBlocBloc>();
+    final user = appBloc.state.user;
 
     return BlocBuilder<CreateTradeBloc, CreateTradeState>(
       builder: (context, state) {
-        return Scaffold(
-            appBar: AppBar(
-              surfaceTintColor: Colors.transparent,
-              backgroundColor: theme.scaffoldBackgroundColor,
-              title: Text(
-                'Create Trade',
-              ),
-            ),
-            body: Column(
-              children: [
-                SearchCardTextField(),
-                if (state.cardLoadStatus == LoadStatus.loading) ...{
-                  Center(
-                    child: CircularProgressIndicator(),
-                  )
-                } else if (state.cardLoadStatus == LoadStatus.success) ...{
-                  if (state.cards.isEmpty) ...{
-                    Text('No Cards Found')
-                  } else ...{
-                    Expanded(
-                      child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        itemCount: state.cards.length,
-                        itemBuilder: (context, index) {
-                          final card = state.cards[index];
-                          final imageSmall = card.imageUris?.small ?? '';
-                          final imageNormal = card.imageUris?.normal ?? '';
+        return user == UserModel.empty
+            ? SignInView()
+            : Scaffold(
+                appBar: AppBar(
+                  surfaceTintColor: Colors.transparent,
+                  backgroundColor: theme.scaffoldBackgroundColor,
+                  title: Text(
+                    'Create Trade',
+                  ),
+                ),
+                body: Column(
+                  children: [
+                    SearchCardTextField(),
+                    if (state.cardLoadStatus == LoadStatus.loading) ...{
+                      Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    } else if (state.cardLoadStatus == LoadStatus.success) ...{
+                      if (state.cards.isEmpty) ...{
+                        Text('No Cards Found')
+                      } else ...{
+                        Expanded(
+                          child: ListView.builder(
+                            padding: EdgeInsets.zero,
+                            itemCount: state.cards.length,
+                            itemBuilder: (context, index) {
+                              final card = state.cards[index];
+                              final imageSmall = card.imageUris?.small ?? '';
+                              final imageNormal = card.imageUris?.normal ?? '';
 
-                          return ListTile(
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return Dialog(
-                                      backgroundColor: Colors.transparent,
-                                      elevation: 0,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
+                              return ListTile(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return Dialog(
+                                          backgroundColor: Colors.transparent,
+                                          elevation: 0,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              IconButton.filled(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  icon: Icon(Icons.close))
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  IconButton.filled(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      icon: Icon(Icons.close))
+                                                ],
+                                              ),
+                                              ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(14),
+                                                  child: Image.network(
+                                                      imageNormal)),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: FilledButton(
+                                                    onPressed: () {
+                                                      bloc.add(CreateTradeEvent
+                                                          .selectCard(
+                                                              card: card));
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text('Select')),
+                                              )
                                             ],
                                           ),
-                                          ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(14),
-                                              child:
-                                                  Image.network(imageNormal)),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: FilledButton(
-                                                onPressed: () {
-                                                  bloc.add(CreateTradeEvent
-                                                      .selectCard(card: card));
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text('Select')),
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  });
+                                        );
+                                      });
+                                },
+                                shape: RoundedRectangleBorder(),
+                                leading: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: imageSmall == ''
+                                      ? Icon(Icons.photo)
+                                      : Image.network(
+                                          imageSmall,
+                                        ),
+                                ),
+                                title: Text(card.name ?? ''),
+                                trailing: Icon(Icons.chevron_right_rounded),
+                              );
                             },
-                            shape: RoundedRectangleBorder(),
-                            leading: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: imageSmall == ''
-                                  ? Icon(Icons.photo)
-                                  : Image.network(
-                                      imageSmall,
-                                    ),
-                            ),
-                            title: Text(card.name ?? ''),
-                            trailing: Icon(Icons.chevron_right_rounded),
-                          );
-                        },
+                          ),
+                        ),
+                      }
+                    } else if (state.cardLoadStatus == LoadStatus.initial) ...{
+                      if (state.selectedCard.id != null) ...{
+                        const SelectedCard()
+                      } else ...{
+                        PlaceholderCard()
+                      },
+                      Container(
+                        color: Colors.grey[400],
+                        constraints: BoxConstraints(maxHeight: 1),
                       ),
-                    ),
-                  }
-                } else if (state.cardLoadStatus == LoadStatus.initial) ...{
-                  if (state.selectedCard.id != null) ...{
-                    const SelectedCard()
-                  } else ...{
-                    PlaceholderCard()
-                  },
-                  Container(
-                    color: Colors.grey[400],
-                    constraints: BoxConstraints(maxHeight: 1),
-                  ),
-                  DetailsTextField(),
-                  if (state.selectedCard.id != null) ...{
-                    ProgressButton.icon(
-                        iconedButtons: {
-                          ButtonState.idle: IconedButton(
-                              text: "Create",
-                              icon: Icon(Icons.add_circle_outlined,
-                                  color: Colors.white),
-                              color: theme.colorScheme.primary),
-                          ButtonState.loading: IconedButton(
-                              text: "Loading",
-                              color: theme.colorScheme.secondary),
-                          ButtonState.fail: IconedButton(
-                              text: "Failed",
-                              icon: Icon(Icons.cancel, color: Colors.white),
-                              color: Colors.red.shade300),
-                          ButtonState.success: IconedButton(
-                              text: "Success",
-                              icon: Icon(
-                                Icons.check_circle,
-                                color: Colors.white,
-                              ),
-                              color: Colors.green.shade400)
-                        },
-                        onPressed: () {
-                          bloc.add(const CreateTradeEvent.createTrade());
-                        },
-                        state: state.buttonState)
-                  }
-                }
-              ],
-            ));
+                      DetailsTextField(),
+                      if (state.selectedCard.id != null) ...{
+                        ProgressButton.icon(
+                            iconedButtons: {
+                              ButtonState.idle: IconedButton(
+                                  text: "Create",
+                                  icon: Icon(Icons.add_circle_outlined,
+                                      color: Colors.white),
+                                  color: theme.colorScheme.primary),
+                              ButtonState.loading: IconedButton(
+                                  text: "Loading",
+                                  color: theme.colorScheme.secondary),
+                              ButtonState.fail: IconedButton(
+                                  text: "Failed",
+                                  icon: Icon(Icons.cancel, color: Colors.white),
+                                  color: Colors.red.shade300),
+                              ButtonState.success: IconedButton(
+                                  text: "Success",
+                                  icon: Icon(
+                                    Icons.check_circle,
+                                    color: Colors.white,
+                                  ),
+                                  color: Colors.green.shade400)
+                            },
+                            onPressed: () {
+                              bloc.add(const CreateTradeEvent.createTrade());
+                            },
+                            state: state.buttonState)
+                      }
+                    }
+                  ],
+                ));
       },
     );
   }

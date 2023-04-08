@@ -26,6 +26,7 @@ mixin _$SignUpEvent {
     required TResult Function(BuildContext context, String email,
             String password, String firstName, String lastName)
         signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$SignUpEvent {
     TResult? Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$SignUpEvent {
     TResult Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$SignUpEvent {
     required TResult Function(_ChangeLastName value) changeLastName,
     required TResult Function(_SignUpWithEmailAndPassword value)
         signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +78,7 @@ mixin _$SignUpEvent {
     TResult? Function(_ChangeLastName value)? changeLastName,
     TResult? Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +90,7 @@ mixin _$SignUpEvent {
     TResult Function(_ChangeLastName value)? changeLastName,
     TResult Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -180,6 +186,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     required TResult Function(BuildContext context, String email,
             String password, String firstName, String lastName)
         signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
   }) {
     return changeEmail(email);
   }
@@ -195,6 +202,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult? Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
   }) {
     return changeEmail?.call(email);
   }
@@ -210,6 +218,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeEmail != null) {
@@ -229,6 +238,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     required TResult Function(_ChangeLastName value) changeLastName,
     required TResult Function(_SignUpWithEmailAndPassword value)
         signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
   }) {
     return changeEmail(this);
   }
@@ -243,6 +253,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult? Function(_ChangeLastName value)? changeLastName,
     TResult? Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
   }) {
     return changeEmail?.call(this);
   }
@@ -257,6 +268,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult Function(_ChangeLastName value)? changeLastName,
     TResult Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeEmail != null) {
@@ -348,6 +360,7 @@ class _$_ChangePassword implements _ChangePassword {
     required TResult Function(BuildContext context, String email,
             String password, String firstName, String lastName)
         signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
   }) {
     return changePassword(password);
   }
@@ -363,6 +376,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult? Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
   }) {
     return changePassword?.call(password);
   }
@@ -378,6 +392,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changePassword != null) {
@@ -397,6 +412,7 @@ class _$_ChangePassword implements _ChangePassword {
     required TResult Function(_ChangeLastName value) changeLastName,
     required TResult Function(_SignUpWithEmailAndPassword value)
         signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
   }) {
     return changePassword(this);
   }
@@ -411,6 +427,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult? Function(_ChangeLastName value)? changeLastName,
     TResult? Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
   }) {
     return changePassword?.call(this);
   }
@@ -425,6 +442,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult Function(_ChangeLastName value)? changeLastName,
     TResult Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changePassword != null) {
@@ -518,6 +536,7 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     required TResult Function(BuildContext context, String email,
             String password, String firstName, String lastName)
         signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
   }) {
     return changeConfirmPassword(confirmPassword);
   }
@@ -533,6 +552,7 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult? Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
   }) {
     return changeConfirmPassword?.call(confirmPassword);
   }
@@ -548,6 +568,7 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeConfirmPassword != null) {
@@ -567,6 +588,7 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     required TResult Function(_ChangeLastName value) changeLastName,
     required TResult Function(_SignUpWithEmailAndPassword value)
         signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
   }) {
     return changeConfirmPassword(this);
   }
@@ -581,6 +603,7 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult? Function(_ChangeLastName value)? changeLastName,
     TResult? Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
   }) {
     return changeConfirmPassword?.call(this);
   }
@@ -595,6 +618,7 @@ class _$_ChangeConfirmPassword implements _ChangeConfirmPassword {
     TResult Function(_ChangeLastName value)? changeLastName,
     TResult Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeConfirmPassword != null) {
@@ -687,6 +711,7 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     required TResult Function(BuildContext context, String email,
             String password, String firstName, String lastName)
         signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
   }) {
     return changeFirstName(firstName);
   }
@@ -702,6 +727,7 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult? Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
   }) {
     return changeFirstName?.call(firstName);
   }
@@ -717,6 +743,7 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeFirstName != null) {
@@ -736,6 +763,7 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     required TResult Function(_ChangeLastName value) changeLastName,
     required TResult Function(_SignUpWithEmailAndPassword value)
         signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
   }) {
     return changeFirstName(this);
   }
@@ -750,6 +778,7 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult? Function(_ChangeLastName value)? changeLastName,
     TResult? Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
   }) {
     return changeFirstName?.call(this);
   }
@@ -764,6 +793,7 @@ class _$_ChangeFirstName implements _ChangeFirstName {
     TResult Function(_ChangeLastName value)? changeLastName,
     TResult Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeFirstName != null) {
@@ -856,6 +886,7 @@ class _$_ChangeLastName implements _ChangeLastName {
     required TResult Function(BuildContext context, String email,
             String password, String firstName, String lastName)
         signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
   }) {
     return changeLastName(lastName);
   }
@@ -871,6 +902,7 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult? Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
   }) {
     return changeLastName?.call(lastName);
   }
@@ -886,6 +918,7 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeLastName != null) {
@@ -905,6 +938,7 @@ class _$_ChangeLastName implements _ChangeLastName {
     required TResult Function(_ChangeLastName value) changeLastName,
     required TResult Function(_SignUpWithEmailAndPassword value)
         signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
   }) {
     return changeLastName(this);
   }
@@ -919,6 +953,7 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult? Function(_ChangeLastName value)? changeLastName,
     TResult? Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
   }) {
     return changeLastName?.call(this);
   }
@@ -933,6 +968,7 @@ class _$_ChangeLastName implements _ChangeLastName {
     TResult Function(_ChangeLastName value)? changeLastName,
     TResult Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (changeLastName != null) {
@@ -1073,6 +1109,7 @@ class _$_SignUpWithEmailAndPassword implements _SignUpWithEmailAndPassword {
     required TResult Function(BuildContext context, String email,
             String password, String firstName, String lastName)
         signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
   }) {
     return signUpWithEmailAndPassword(
         context, email, password, firstName, lastName);
@@ -1089,6 +1126,7 @@ class _$_SignUpWithEmailAndPassword implements _SignUpWithEmailAndPassword {
     TResult? Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
   }) {
     return signUpWithEmailAndPassword?.call(
         context, email, password, firstName, lastName);
@@ -1105,6 +1143,7 @@ class _$_SignUpWithEmailAndPassword implements _SignUpWithEmailAndPassword {
     TResult Function(BuildContext context, String email, String password,
             String firstName, String lastName)?
         signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (signUpWithEmailAndPassword != null) {
@@ -1125,6 +1164,7 @@ class _$_SignUpWithEmailAndPassword implements _SignUpWithEmailAndPassword {
     required TResult Function(_ChangeLastName value) changeLastName,
     required TResult Function(_SignUpWithEmailAndPassword value)
         signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
   }) {
     return signUpWithEmailAndPassword(this);
   }
@@ -1139,6 +1179,7 @@ class _$_SignUpWithEmailAndPassword implements _SignUpWithEmailAndPassword {
     TResult? Function(_ChangeLastName value)? changeLastName,
     TResult? Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
   }) {
     return signUpWithEmailAndPassword?.call(this);
   }
@@ -1153,6 +1194,7 @@ class _$_SignUpWithEmailAndPassword implements _SignUpWithEmailAndPassword {
     TResult Function(_ChangeLastName value)? changeLastName,
     TResult Function(_SignUpWithEmailAndPassword value)?
         signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
     required TResult orElse(),
   }) {
     if (signUpWithEmailAndPassword != null) {
@@ -1178,6 +1220,180 @@ abstract class _SignUpWithEmailAndPassword implements SignUpEvent {
   @JsonKey(ignore: true)
   _$$_SignUpWithEmailAndPasswordCopyWith<_$_SignUpWithEmailAndPassword>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SignUpWithGoogleCopyWith<$Res> {
+  factory _$$_SignUpWithGoogleCopyWith(
+          _$_SignUpWithGoogle value, $Res Function(_$_SignUpWithGoogle) then) =
+      __$$_SignUpWithGoogleCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$_SignUpWithGoogleCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$_SignUpWithGoogle>
+    implements _$$_SignUpWithGoogleCopyWith<$Res> {
+  __$$_SignUpWithGoogleCopyWithImpl(
+      _$_SignUpWithGoogle _value, $Res Function(_$_SignUpWithGoogle) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$_SignUpWithGoogle(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SignUpWithGoogle implements _SignUpWithGoogle {
+  const _$_SignUpWithGoogle({required this.context});
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'SignUpEvent.signUpWithGoogle(context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SignUpWithGoogle &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SignUpWithGoogleCopyWith<_$_SignUpWithGoogle> get copyWith =>
+      __$$_SignUpWithGoogleCopyWithImpl<_$_SignUpWithGoogle>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) changeEmail,
+    required TResult Function(String password) changePassword,
+    required TResult Function(String confirmPassword) changeConfirmPassword,
+    required TResult Function(String firstName) changeFirstName,
+    required TResult Function(String lastName) changeLastName,
+    required TResult Function(BuildContext context, String email,
+            String password, String firstName, String lastName)
+        signUpWithEmailAndPassword,
+    required TResult Function(BuildContext context) signUpWithGoogle,
+  }) {
+    return signUpWithGoogle(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? changeEmail,
+    TResult? Function(String password)? changePassword,
+    TResult? Function(String confirmPassword)? changeConfirmPassword,
+    TResult? Function(String firstName)? changeFirstName,
+    TResult? Function(String lastName)? changeLastName,
+    TResult? Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
+    TResult? Function(BuildContext context)? signUpWithGoogle,
+  }) {
+    return signUpWithGoogle?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? changeEmail,
+    TResult Function(String password)? changePassword,
+    TResult Function(String confirmPassword)? changeConfirmPassword,
+    TResult Function(String firstName)? changeFirstName,
+    TResult Function(String lastName)? changeLastName,
+    TResult Function(BuildContext context, String email, String password,
+            String firstName, String lastName)?
+        signUpWithEmailAndPassword,
+    TResult Function(BuildContext context)? signUpWithGoogle,
+    required TResult orElse(),
+  }) {
+    if (signUpWithGoogle != null) {
+      return signUpWithGoogle(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeEmail value) changeEmail,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ChangeConfirmPassword value)
+        changeConfirmPassword,
+    required TResult Function(_ChangeFirstName value) changeFirstName,
+    required TResult Function(_ChangeLastName value) changeLastName,
+    required TResult Function(_SignUpWithEmailAndPassword value)
+        signUpWithEmailAndPassword,
+    required TResult Function(_SignUpWithGoogle value) signUpWithGoogle,
+  }) {
+    return signUpWithGoogle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeEmail value)? changeEmail,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ChangeConfirmPassword value)? changeConfirmPassword,
+    TResult? Function(_ChangeFirstName value)? changeFirstName,
+    TResult? Function(_ChangeLastName value)? changeLastName,
+    TResult? Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
+    TResult? Function(_SignUpWithGoogle value)? signUpWithGoogle,
+  }) {
+    return signUpWithGoogle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeEmail value)? changeEmail,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ChangeConfirmPassword value)? changeConfirmPassword,
+    TResult Function(_ChangeFirstName value)? changeFirstName,
+    TResult Function(_ChangeLastName value)? changeLastName,
+    TResult Function(_SignUpWithEmailAndPassword value)?
+        signUpWithEmailAndPassword,
+    TResult Function(_SignUpWithGoogle value)? signUpWithGoogle,
+    required TResult orElse(),
+  }) {
+    if (signUpWithGoogle != null) {
+      return signUpWithGoogle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignUpWithGoogle implements SignUpEvent {
+  const factory _SignUpWithGoogle({required final BuildContext context}) =
+      _$_SignUpWithGoogle;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_SignUpWithGoogleCopyWith<_$_SignUpWithGoogle> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

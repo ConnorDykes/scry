@@ -9,6 +9,7 @@ import 'package:scry/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Create_Trade/create_trade_view.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
 import 'package:scry/Home/home_view.dart';
+import 'package:scry/Profile/bloc/profile_bloc.dart';
 import 'package:scry/Profile/profile_view.dart';
 import 'package:scry/Sign_In/bloc/sign_in_bloc.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
@@ -49,6 +50,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AppBlocBloc(),
         ),
+        BlocProvider(
+          create: (context) => ProfileBloc(),
+        ),
       ],
       child: MaterialApp(
         title: 'Scry',
@@ -62,6 +66,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           dividerColor: Colors.grey[400],
           textTheme: GoogleFonts.rubikTextTheme(),
+          cardTheme: CardTheme(surfaceTintColor: Colors.transparent),
+          cardColor: Colors.white,
           colorScheme: ColorScheme(
               surface: Colors.white,
               onSurface: Colors.black,

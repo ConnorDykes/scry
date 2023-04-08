@@ -18,4 +18,7 @@ class SignUpEvent with _$SignUpEvent {
     required String firstName,
     required String lastName,
   }) = _SignUpWithEmailAndPassword;
+  const factory SignUpEvent.signUpWithGoogle({
+    required BuildContext context,
+  }) = _SignUpWithGoogle;
 }

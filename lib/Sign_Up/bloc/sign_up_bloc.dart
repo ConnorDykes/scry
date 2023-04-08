@@ -43,7 +43,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<_SignUpWithEmailAndPassword>((event, emit) async {
       emit(state.copyWith(buttonState: ButtonState.loading));
       try {
-        UserCredential userCredential = await authRepo.SignUpWithEmailandPass(
+        UserCredential userCredential = await authRepo.signUpWithEmailandPass(
             email: state.email, password: state.password);
 
         UserModel user = UserModel(
@@ -59,7 +59,33 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         emit(state.copyWith(
             buttonState: ButtonState.success, user: user, emailError: ''));
 
-        Navigator.pushNamed(event.context, '/Profile');
+        //Navigator.pushReplacementNamed(event.context, '/Profile');
+      } catch (e) {
+        emit(state.copyWith(
+            buttonState: ButtonState.fail, emailError: e.toString()));
+      }
+    });
+
+    on<_SignUpWithGoogle>((event, emit) async {
+      emit(state.copyWith(buttonState: ButtonState.loading));
+      try {
+        UserCredential userCredential = await authRepo.signUpWithGoogle();
+
+        UserModel user = UserModel(
+            id: userCredential.user!.uid,
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            displayName: userCredential.user?.displayName ?? '',
+            profilePicture: userCredential.user?.photoURL ?? '');
+
+        await authRepo.createUser(user: user);
+
+        emit(state.copyWith(
+            buttonState: ButtonState.success, user: user, emailError: ''));
+
+        Navigator.pop(event.context);
       } catch (e) {
         emit(state.copyWith(
             buttonState: ButtonState.fail, emailError: e.toString()));
