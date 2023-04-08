@@ -21,8 +21,9 @@ TradeModel _$TradeModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TradeModel {
   String get details => throw _privateConstructorUsedError;
-  UserModel get user => throw _privateConstructorUsedError;
-  CardModel get card => throw _privateConstructorUsedError;
+  String get userID => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
+  List<CardModel> get cards => throw _privateConstructorUsedError;
   List<CommentModel> get comments => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,11 +40,10 @@ abstract class $TradeModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String details,
-      UserModel user,
-      CardModel card,
+      String userID,
+      String userName,
+      List<CardModel> cards,
       List<CommentModel> comments});
-
-  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -60,8 +60,9 @@ class _$TradeModelCopyWithImpl<$Res, $Val extends TradeModel>
   @override
   $Res call({
     Object? details = null,
-    Object? user = null,
-    Object? card = null,
+    Object? userID = null,
+    Object? userName = null,
+    Object? cards = null,
     Object? comments = null,
   }) {
     return _then(_value.copyWith(
@@ -69,27 +70,23 @@ class _$TradeModelCopyWithImpl<$Res, $Val extends TradeModel>
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
-      card: null == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as CardModel,
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      cards: null == cards
+          ? _value.cards
+          : cards // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
       comments: null == comments
           ? _value.comments
           : comments // ignore: cast_nullable_to_non_nullable
               as List<CommentModel>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get user {
-    return $UserModelCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
   }
 }
 
@@ -103,12 +100,10 @@ abstract class _$$_TradeModelCopyWith<$Res>
   @useResult
   $Res call(
       {String details,
-      UserModel user,
-      CardModel card,
+      String userID,
+      String userName,
+      List<CardModel> cards,
       List<CommentModel> comments});
-
-  @override
-  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -123,8 +118,9 @@ class __$$_TradeModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? details = null,
-    Object? user = null,
-    Object? card = null,
+    Object? userID = null,
+    Object? userName = null,
+    Object? cards = null,
     Object? comments = null,
   }) {
     return _then(_$_TradeModel(
@@ -132,14 +128,18 @@ class __$$_TradeModelCopyWithImpl<$Res>
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
-      card: null == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as CardModel,
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      cards: null == cards
+          ? _value._cards
+          : cards // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
       comments: null == comments
           ? _value._comments
           : comments // ignore: cast_nullable_to_non_nullable
@@ -153,10 +153,12 @@ class __$$_TradeModelCopyWithImpl<$Res>
 class _$_TradeModel extends _TradeModel {
   const _$_TradeModel(
       {this.details = '',
-      this.user = UserModel.empty,
-      this.card = const CardModel.empty(),
+      this.userID = '',
+      this.userName = '',
+      final List<CardModel> cards = const [],
       final List<CommentModel> comments = const []})
-      : _comments = comments,
+      : _cards = cards,
+        _comments = comments,
         super._();
 
   factory _$_TradeModel.fromJson(Map<String, dynamic> json) =>
@@ -167,10 +169,19 @@ class _$_TradeModel extends _TradeModel {
   final String details;
   @override
   @JsonKey()
-  final UserModel user;
+  final String userID;
   @override
   @JsonKey()
-  final CardModel card;
+  final String userName;
+  final List<CardModel> _cards;
+  @override
+  @JsonKey()
+  List<CardModel> get cards {
+    if (_cards is EqualUnmodifiableListView) return _cards;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cards);
+  }
+
   final List<CommentModel> _comments;
   @override
   @JsonKey()
@@ -182,7 +193,7 @@ class _$_TradeModel extends _TradeModel {
 
   @override
   String toString() {
-    return 'TradeModel(details: $details, user: $user, card: $card, comments: $comments)';
+    return 'TradeModel(details: $details, userID: $userID, userName: $userName, cards: $cards, comments: $comments)';
   }
 
   @override
@@ -191,14 +202,21 @@ class _$_TradeModel extends _TradeModel {
         (other.runtimeType == runtimeType &&
             other is _$_TradeModel &&
             (identical(other.details, details) || other.details == details) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.card, card) || other.card == card) &&
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            const DeepCollectionEquality().equals(other._cards, _cards) &&
             const DeepCollectionEquality().equals(other._comments, _comments));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, details, user, card,
+  int get hashCode => Object.hash(
+      runtimeType,
+      details,
+      userID,
+      userName,
+      const DeepCollectionEquality().hash(_cards),
       const DeepCollectionEquality().hash(_comments));
 
   @JsonKey(ignore: true)
@@ -218,8 +236,9 @@ class _$_TradeModel extends _TradeModel {
 abstract class _TradeModel extends TradeModel {
   const factory _TradeModel(
       {final String details,
-      final UserModel user,
-      final CardModel card,
+      final String userID,
+      final String userName,
+      final List<CardModel> cards,
       final List<CommentModel> comments}) = _$_TradeModel;
   const _TradeModel._() : super._();
 
@@ -229,9 +248,11 @@ abstract class _TradeModel extends TradeModel {
   @override
   String get details;
   @override
-  UserModel get user;
+  String get userID;
   @override
-  CardModel get card;
+  String get userName;
+  @override
+  List<CardModel> get cards;
   @override
   List<CommentModel> get comments;
   @override

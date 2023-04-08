@@ -20,30 +20,36 @@ mixin _$CreateTradeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
     required TResult Function(CardModel card) selectCard,
-    required TResult Function() createTrade,
+    required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
     required TResult Function() clearSearch,
+    required TResult Function() resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
     TResult? Function(CardModel card)? selectCard,
-    TResult? Function()? createTrade,
+    TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
     TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
     TResult Function(CardModel card)? selectCard,
-    TResult Function()? createTrade,
+    TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
     TResult Function()? clearSearch,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,30 +57,36 @@ mixin _$CreateTradeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
     required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,10 +149,12 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
     required TResult Function(CardModel card) selectCard,
-    required TResult Function() createTrade,
+    required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
     required TResult Function() clearSearch,
+    required TResult Function() resetState,
   }) {
     return started();
   }
@@ -150,10 +164,12 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
     TResult? Function(CardModel card)? selectCard,
-    TResult? Function()? createTrade,
+    TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
     TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
   }) {
     return started?.call();
   }
@@ -163,10 +179,12 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
     TResult Function(CardModel card)? selectCard,
-    TResult Function()? createTrade,
+    TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
     TResult Function()? clearSearch,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -180,10 +198,12 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
     required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return started(this);
   }
@@ -193,10 +213,12 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return started?.call(this);
   }
@@ -206,10 +228,12 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -287,10 +311,12 @@ class _$_Search implements _Search {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
     required TResult Function(CardModel card) selectCard,
-    required TResult Function() createTrade,
+    required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
     required TResult Function() clearSearch,
+    required TResult Function() resetState,
   }) {
     return search(query);
   }
@@ -300,10 +326,12 @@ class _$_Search implements _Search {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
     TResult? Function(CardModel card)? selectCard,
-    TResult? Function()? createTrade,
+    TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
     TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
   }) {
     return search?.call(query);
   }
@@ -313,10 +341,12 @@ class _$_Search implements _Search {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
     TResult Function(CardModel card)? selectCard,
-    TResult Function()? createTrade,
+    TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
     TResult Function()? clearSearch,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -330,10 +360,12 @@ class _$_Search implements _Search {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
     required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return search(this);
   }
@@ -343,10 +375,12 @@ class _$_Search implements _Search {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return search?.call(this);
   }
@@ -356,10 +390,12 @@ class _$_Search implements _Search {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -375,6 +411,176 @@ abstract class _Search implements CreateTradeEvent {
   String get query;
   @JsonKey(ignore: true)
   _$$_SearchCopyWith<_$_Search> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateDetailsCopyWith<$Res> {
+  factory _$$_UpdateDetailsCopyWith(
+          _$_UpdateDetails value, $Res Function(_$_UpdateDetails) then) =
+      __$$_UpdateDetailsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String details});
+}
+
+/// @nodoc
+class __$$_UpdateDetailsCopyWithImpl<$Res>
+    extends _$CreateTradeEventCopyWithImpl<$Res, _$_UpdateDetails>
+    implements _$$_UpdateDetailsCopyWith<$Res> {
+  __$$_UpdateDetailsCopyWithImpl(
+      _$_UpdateDetails _value, $Res Function(_$_UpdateDetails) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? details = null,
+  }) {
+    return _then(_$_UpdateDetails(
+      details: null == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateDetails implements _UpdateDetails {
+  const _$_UpdateDetails({required this.details});
+
+  @override
+  final String details;
+
+  @override
+  String toString() {
+    return 'CreateTradeEvent.updateDetails(details: $details)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateDetails &&
+            (identical(other.details, details) || other.details == details));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, details);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateDetailsCopyWith<_$_UpdateDetails> get copyWith =>
+      __$$_UpdateDetailsCopyWithImpl<_$_UpdateDetails>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
+    required TResult Function(CardModel card) selectCard,
+    required TResult Function(UserModel user) createTrade,
+    required TResult Function() clearSelectedCard,
+    required TResult Function() clearSearch,
+    required TResult Function() resetState,
+  }) {
+    return updateDetails(details);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
+    TResult? Function(CardModel card)? selectCard,
+    TResult? Function(UserModel user)? createTrade,
+    TResult? Function()? clearSelectedCard,
+    TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
+  }) {
+    return updateDetails?.call(details);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
+    TResult Function(CardModel card)? selectCard,
+    TResult Function(UserModel user)? createTrade,
+    TResult Function()? clearSelectedCard,
+    TResult Function()? clearSearch,
+    TResult Function()? resetState,
+    required TResult orElse(),
+  }) {
+    if (updateDetails != null) {
+      return updateDetails(details);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_SelectCard value) selectCard,
+    required TResult Function(_CreateTrade value) createTrade,
+    required TResult Function(_ClearSelectedCard value) clearSelectedCard,
+    required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
+  }) {
+    return updateDetails(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_SelectCard value)? selectCard,
+    TResult? Function(_CreateTrade value)? createTrade,
+    TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
+  }) {
+    return updateDetails?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_SelectCard value)? selectCard,
+    TResult Function(_CreateTrade value)? createTrade,
+    TResult Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
+    required TResult orElse(),
+  }) {
+    if (updateDetails != null) {
+      return updateDetails(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateDetails implements CreateTradeEvent {
+  const factory _UpdateDetails({required final String details}) =
+      _$_UpdateDetails;
+
+  String get details;
+  @JsonKey(ignore: true)
+  _$$_UpdateDetailsCopyWith<_$_UpdateDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -444,10 +650,12 @@ class _$_SelectCard implements _SelectCard {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
     required TResult Function(CardModel card) selectCard,
-    required TResult Function() createTrade,
+    required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
     required TResult Function() clearSearch,
+    required TResult Function() resetState,
   }) {
     return selectCard(card);
   }
@@ -457,10 +665,12 @@ class _$_SelectCard implements _SelectCard {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
     TResult? Function(CardModel card)? selectCard,
-    TResult? Function()? createTrade,
+    TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
     TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
   }) {
     return selectCard?.call(card);
   }
@@ -470,10 +680,12 @@ class _$_SelectCard implements _SelectCard {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
     TResult Function(CardModel card)? selectCard,
-    TResult Function()? createTrade,
+    TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
     TResult Function()? clearSearch,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (selectCard != null) {
@@ -487,10 +699,12 @@ class _$_SelectCard implements _SelectCard {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
     required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return selectCard(this);
   }
@@ -500,10 +714,12 @@ class _$_SelectCard implements _SelectCard {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return selectCard?.call(this);
   }
@@ -513,10 +729,12 @@ class _$_SelectCard implements _SelectCard {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (selectCard != null) {
@@ -540,6 +758,10 @@ abstract class _$$_CreateTradeCopyWith<$Res> {
   factory _$$_CreateTradeCopyWith(
           _$_CreateTrade value, $Res Function(_$_CreateTrade) then) =
       __$$_CreateTradeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user});
+
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -549,38 +771,72 @@ class __$$_CreateTradeCopyWithImpl<$Res>
   __$$_CreateTradeCopyWithImpl(
       _$_CreateTrade _value, $Res Function(_$_CreateTrade) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$_CreateTrade(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_CreateTrade implements _CreateTrade {
-  const _$_CreateTrade();
+  const _$_CreateTrade({required this.user});
+
+  @override
+  final UserModel user;
 
   @override
   String toString() {
-    return 'CreateTradeEvent.createTrade()';
+    return 'CreateTradeEvent.createTrade(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreateTrade);
+        (other.runtimeType == runtimeType &&
+            other is _$_CreateTrade &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CreateTradeCopyWith<_$_CreateTrade> get copyWith =>
+      __$$_CreateTradeCopyWithImpl<_$_CreateTrade>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
     required TResult Function(CardModel card) selectCard,
-    required TResult Function() createTrade,
+    required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
     required TResult Function() clearSearch,
+    required TResult Function() resetState,
   }) {
-    return createTrade();
+    return createTrade(user);
   }
 
   @override
@@ -588,12 +844,14 @@ class _$_CreateTrade implements _CreateTrade {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
     TResult? Function(CardModel card)? selectCard,
-    TResult? Function()? createTrade,
+    TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
     TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
   }) {
-    return createTrade?.call();
+    return createTrade?.call(user);
   }
 
   @override
@@ -601,14 +859,16 @@ class _$_CreateTrade implements _CreateTrade {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
     TResult Function(CardModel card)? selectCard,
-    TResult Function()? createTrade,
+    TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
     TResult Function()? clearSearch,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (createTrade != null) {
-      return createTrade();
+      return createTrade(user);
     }
     return orElse();
   }
@@ -618,10 +878,12 @@ class _$_CreateTrade implements _CreateTrade {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
     required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return createTrade(this);
   }
@@ -631,10 +893,12 @@ class _$_CreateTrade implements _CreateTrade {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return createTrade?.call(this);
   }
@@ -644,10 +908,12 @@ class _$_CreateTrade implements _CreateTrade {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (createTrade != null) {
@@ -658,7 +924,12 @@ class _$_CreateTrade implements _CreateTrade {
 }
 
 abstract class _CreateTrade implements CreateTradeEvent {
-  const factory _CreateTrade() = _$_CreateTrade;
+  const factory _CreateTrade({required final UserModel user}) = _$_CreateTrade;
+
+  UserModel get user;
+  @JsonKey(ignore: true)
+  _$$_CreateTradeCopyWith<_$_CreateTrade> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -701,10 +972,12 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
     required TResult Function(CardModel card) selectCard,
-    required TResult Function() createTrade,
+    required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
     required TResult Function() clearSearch,
+    required TResult Function() resetState,
   }) {
     return clearSelectedCard();
   }
@@ -714,10 +987,12 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
     TResult? Function(CardModel card)? selectCard,
-    TResult? Function()? createTrade,
+    TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
     TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
   }) {
     return clearSelectedCard?.call();
   }
@@ -727,10 +1002,12 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
     TResult Function(CardModel card)? selectCard,
-    TResult Function()? createTrade,
+    TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
     TResult Function()? clearSearch,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (clearSelectedCard != null) {
@@ -744,10 +1021,12 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
     required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return clearSelectedCard(this);
   }
@@ -757,10 +1036,12 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return clearSelectedCard?.call(this);
   }
@@ -770,10 +1051,12 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (clearSelectedCard != null) {
@@ -827,10 +1110,12 @@ class _$_ClearSearch implements _ClearSearch {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
     required TResult Function(CardModel card) selectCard,
-    required TResult Function() createTrade,
+    required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
     required TResult Function() clearSearch,
+    required TResult Function() resetState,
   }) {
     return clearSearch();
   }
@@ -840,10 +1125,12 @@ class _$_ClearSearch implements _ClearSearch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
     TResult? Function(CardModel card)? selectCard,
-    TResult? Function()? createTrade,
+    TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
     TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
   }) {
     return clearSearch?.call();
   }
@@ -853,10 +1140,12 @@ class _$_ClearSearch implements _ClearSearch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
     TResult Function(CardModel card)? selectCard,
-    TResult Function()? createTrade,
+    TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
     TResult Function()? clearSearch,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (clearSearch != null) {
@@ -870,10 +1159,12 @@ class _$_ClearSearch implements _ClearSearch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
     required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return clearSearch(this);
   }
@@ -883,10 +1174,12 @@ class _$_ClearSearch implements _ClearSearch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return clearSearch?.call(this);
   }
@@ -896,10 +1189,12 @@ class _$_ClearSearch implements _ClearSearch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
     TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (clearSearch != null) {
@@ -914,10 +1209,150 @@ abstract class _ClearSearch implements CreateTradeEvent {
 }
 
 /// @nodoc
+abstract class _$$_ResetStateCopyWith<$Res> {
+  factory _$$_ResetStateCopyWith(
+          _$_ResetState value, $Res Function(_$_ResetState) then) =
+      __$$_ResetStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ResetStateCopyWithImpl<$Res>
+    extends _$CreateTradeEventCopyWithImpl<$Res, _$_ResetState>
+    implements _$$_ResetStateCopyWith<$Res> {
+  __$$_ResetStateCopyWithImpl(
+      _$_ResetState _value, $Res Function(_$_ResetState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ResetState implements _ResetState {
+  const _$_ResetState();
+
+  @override
+  String toString() {
+    return 'CreateTradeEvent.resetState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ResetState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
+    required TResult Function(CardModel card) selectCard,
+    required TResult Function(UserModel user) createTrade,
+    required TResult Function() clearSelectedCard,
+    required TResult Function() clearSearch,
+    required TResult Function() resetState,
+  }) {
+    return resetState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
+    TResult? Function(CardModel card)? selectCard,
+    TResult? Function(UserModel user)? createTrade,
+    TResult? Function()? clearSelectedCard,
+    TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
+  }) {
+    return resetState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
+    TResult Function(CardModel card)? selectCard,
+    TResult Function(UserModel user)? createTrade,
+    TResult Function()? clearSelectedCard,
+    TResult Function()? clearSearch,
+    TResult Function()? resetState,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_SelectCard value) selectCard,
+    required TResult Function(_CreateTrade value) createTrade,
+    required TResult Function(_ClearSelectedCard value) clearSelectedCard,
+    required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
+  }) {
+    return resetState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_SelectCard value)? selectCard,
+    TResult? Function(_CreateTrade value)? createTrade,
+    TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
+  }) {
+    return resetState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_SelectCard value)? selectCard,
+    TResult Function(_CreateTrade value)? createTrade,
+    TResult Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetState implements CreateTradeEvent {
+  const factory _ResetState() = _$_ResetState;
+}
+
+/// @nodoc
 mixin _$CreateTradeState {
+  String get uploadError => throw _privateConstructorUsedError;
   String get queryString => throw _privateConstructorUsedError;
+  String get details => throw _privateConstructorUsedError;
   List<CardModel> get cards => throw _privateConstructorUsedError;
-  CardModel get selectedCard => throw _privateConstructorUsedError;
+  List<CardModel> get selectedCards => throw _privateConstructorUsedError;
   ButtonState get buttonState => throw _privateConstructorUsedError;
   LoadStatus get cardLoadStatus => throw _privateConstructorUsedError;
 
@@ -933,9 +1368,11 @@ abstract class $CreateTradeStateCopyWith<$Res> {
       _$CreateTradeStateCopyWithImpl<$Res, CreateTradeState>;
   @useResult
   $Res call(
-      {String queryString,
+      {String uploadError,
+      String queryString,
+      String details,
       List<CardModel> cards,
-      CardModel selectedCard,
+      List<CardModel> selectedCards,
       ButtonState buttonState,
       LoadStatus cardLoadStatus});
 }
@@ -953,25 +1390,35 @@ class _$CreateTradeStateCopyWithImpl<$Res, $Val extends CreateTradeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? uploadError = null,
     Object? queryString = null,
+    Object? details = null,
     Object? cards = null,
-    Object? selectedCard = null,
+    Object? selectedCards = null,
     Object? buttonState = null,
     Object? cardLoadStatus = null,
   }) {
     return _then(_value.copyWith(
+      uploadError: null == uploadError
+          ? _value.uploadError
+          : uploadError // ignore: cast_nullable_to_non_nullable
+              as String,
       queryString: null == queryString
           ? _value.queryString
           : queryString // ignore: cast_nullable_to_non_nullable
+              as String,
+      details: null == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
               as String,
       cards: null == cards
           ? _value.cards
           : cards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
-      selectedCard: null == selectedCard
-          ? _value.selectedCard
-          : selectedCard // ignore: cast_nullable_to_non_nullable
-              as CardModel,
+      selectedCards: null == selectedCards
+          ? _value.selectedCards
+          : selectedCards // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
       buttonState: null == buttonState
           ? _value.buttonState
           : buttonState // ignore: cast_nullable_to_non_nullable
@@ -993,9 +1440,11 @@ abstract class _$$_CreateTradeStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String queryString,
+      {String uploadError,
+      String queryString,
+      String details,
       List<CardModel> cards,
-      CardModel selectedCard,
+      List<CardModel> selectedCards,
       ButtonState buttonState,
       LoadStatus cardLoadStatus});
 }
@@ -1011,25 +1460,35 @@ class __$$_CreateTradeStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? uploadError = null,
     Object? queryString = null,
+    Object? details = null,
     Object? cards = null,
-    Object? selectedCard = null,
+    Object? selectedCards = null,
     Object? buttonState = null,
     Object? cardLoadStatus = null,
   }) {
     return _then(_$_CreateTradeState(
+      uploadError: null == uploadError
+          ? _value.uploadError
+          : uploadError // ignore: cast_nullable_to_non_nullable
+              as String,
       queryString: null == queryString
           ? _value.queryString
           : queryString // ignore: cast_nullable_to_non_nullable
+              as String,
+      details: null == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
               as String,
       cards: null == cards
           ? _value._cards
           : cards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
-      selectedCard: null == selectedCard
-          ? _value.selectedCard
-          : selectedCard // ignore: cast_nullable_to_non_nullable
-              as CardModel,
+      selectedCards: null == selectedCards
+          ? _value._selectedCards
+          : selectedCards // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
       buttonState: null == buttonState
           ? _value.buttonState
           : buttonState // ignore: cast_nullable_to_non_nullable
@@ -1046,17 +1505,26 @@ class __$$_CreateTradeStateCopyWithImpl<$Res>
 
 class _$_CreateTradeState extends _CreateTradeState {
   const _$_CreateTradeState(
-      {this.queryString = '',
+      {this.uploadError = '',
+      this.queryString = '',
+      this.details = '',
       final List<CardModel> cards = const [],
-      this.selectedCard = const CardModel.empty(),
+      final List<CardModel> selectedCards = const [],
       this.buttonState = ButtonState.idle,
       this.cardLoadStatus = LoadStatus.initial})
       : _cards = cards,
+        _selectedCards = selectedCards,
         super._();
 
   @override
   @JsonKey()
+  final String uploadError;
+  @override
+  @JsonKey()
   final String queryString;
+  @override
+  @JsonKey()
+  final String details;
   final List<CardModel> _cards;
   @override
   @JsonKey()
@@ -1066,9 +1534,15 @@ class _$_CreateTradeState extends _CreateTradeState {
     return EqualUnmodifiableListView(_cards);
   }
 
+  final List<CardModel> _selectedCards;
   @override
   @JsonKey()
-  final CardModel selectedCard;
+  List<CardModel> get selectedCards {
+    if (_selectedCards is EqualUnmodifiableListView) return _selectedCards;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedCards);
+  }
+
   @override
   @JsonKey()
   final ButtonState buttonState;
@@ -1078,7 +1552,7 @@ class _$_CreateTradeState extends _CreateTradeState {
 
   @override
   String toString() {
-    return 'CreateTradeState(queryString: $queryString, cards: $cards, selectedCard: $selectedCard, buttonState: $buttonState, cardLoadStatus: $cardLoadStatus)';
+    return 'CreateTradeState(uploadError: $uploadError, queryString: $queryString, details: $details, cards: $cards, selectedCards: $selectedCards, buttonState: $buttonState, cardLoadStatus: $cardLoadStatus)';
   }
 
   @override
@@ -1086,11 +1560,14 @@ class _$_CreateTradeState extends _CreateTradeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreateTradeState &&
+            (identical(other.uploadError, uploadError) ||
+                other.uploadError == uploadError) &&
             (identical(other.queryString, queryString) ||
                 other.queryString == queryString) &&
+            (identical(other.details, details) || other.details == details) &&
             const DeepCollectionEquality().equals(other._cards, _cards) &&
-            (identical(other.selectedCard, selectedCard) ||
-                other.selectedCard == selectedCard) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedCards, _selectedCards) &&
             (identical(other.buttonState, buttonState) ||
                 other.buttonState == buttonState) &&
             (identical(other.cardLoadStatus, cardLoadStatus) ||
@@ -1100,9 +1577,11 @@ class _$_CreateTradeState extends _CreateTradeState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      uploadError,
       queryString,
+      details,
       const DeepCollectionEquality().hash(_cards),
-      selectedCard,
+      const DeepCollectionEquality().hash(_selectedCards),
       buttonState,
       cardLoadStatus);
 
@@ -1115,19 +1594,25 @@ class _$_CreateTradeState extends _CreateTradeState {
 
 abstract class _CreateTradeState extends CreateTradeState {
   const factory _CreateTradeState(
-      {final String queryString,
+      {final String uploadError,
+      final String queryString,
+      final String details,
       final List<CardModel> cards,
-      final CardModel selectedCard,
+      final List<CardModel> selectedCards,
       final ButtonState buttonState,
       final LoadStatus cardLoadStatus}) = _$_CreateTradeState;
   const _CreateTradeState._() : super._();
 
   @override
+  String get uploadError;
+  @override
   String get queryString;
+  @override
+  String get details;
   @override
   List<CardModel> get cards;
   @override
-  CardModel get selectedCard;
+  List<CardModel> get selectedCards;
   @override
   ButtonState get buttonState;
   @override

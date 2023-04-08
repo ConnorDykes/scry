@@ -70,16 +70,16 @@ class CardRepository {
     }
   }
 
-  Future<bool> createTrade({required TradeModel trade}) async {
+  Future<bool> createTrade({required Map<String, dynamic> trade}) async {
     try {
       // Get a reference to the Document in the Trades collection
       DocumentReference docRef = _firebaseFirestore.collection('trades').doc();
 
       // Set the values of the Trade Document
-      await docRef.set(trade.toJson());
+      await docRef.set(trade);
 
       // Add the Doc id of the Trade document to the users 'trades' field
-      await _firebaseFirestore.collection('users').doc(trade.user.id).set({
+      await _firebaseFirestore.collection('users').doc(trade['userID']).set({
         'trades': FieldValue.arrayUnion([docRef.id])
       }, SetOptions(merge: true));
       return true;

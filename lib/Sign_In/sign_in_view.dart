@@ -23,13 +23,14 @@ class SignInView extends StatelessWidget {
       listener: (context, state) {
         if (state.user != UserModel.empty) {
           appBloc.add(AppBlocEvent.updateUser(user: state.user));
-          debugPrint(state.user.toJson().toString());
+          Navigator.pop(context, true);
         }
       },
       child: BlocBuilder<SignInBloc, SignInState>(
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: theme.scaffoldBackgroundColor,
               title: Text('Sign In'),
             ),
@@ -60,7 +61,7 @@ class SignInView extends StatelessWidget {
                             borderSide: BorderSide(color: theme.primaryColor),
                             borderRadius: BorderRadius.circular(15)),
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                            borderSide: BorderSide(color: theme.dividerColor),
                             borderRadius: BorderRadius.circular(15)),
                         errorBorder: OutlineInputBorder(
                             borderSide:
@@ -99,7 +100,7 @@ class SignInView extends StatelessWidget {
                             borderSide: BorderSide(color: theme.primaryColor),
                             borderRadius: BorderRadius.circular(15)),
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                            borderSide: BorderSide(color: theme.dividerColor),
                             borderRadius: BorderRadius.circular(15)),
                         errorBorder: OutlineInputBorder(
                             borderSide:

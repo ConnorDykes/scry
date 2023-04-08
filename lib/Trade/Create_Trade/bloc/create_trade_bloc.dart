@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';
+import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Card_Repo/card_repository.dart';
+import 'package:scry/Trade/trade_model.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
@@ -16,8 +18,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
   CreateTradeBloc() : super(const CreateTradeState()) {
     on<_Search>((event, emit) async {
       emit(state.copyWith(
-        cardLoadStatus: LoadStatus.loading,
-      ));
+          cardLoadStatus: LoadStatus.loading, queryString: event.query));
 
       var response = await cardRepo.searchNamed(name: event.query);
       if (response != null) {
@@ -25,6 +26,9 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
             cardLoadStatus: LoadStatus.success, cards: response));
       }
     });
+
+    on<_UpdateDetails>(
+        (event, emit) => emit(state.copyWith(details: event.details)));
 
     on<_ClearSearch>((event, emit) {
       searchController.clear();
@@ -35,7 +39,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
     on<_SelectCard>((event, emit) {
       searchController.clear();
       emit(state.copyWith(
-          selectedCard: event.card,
+          selectedCards: [...state.selectedCards, event.card],
           cards: [],
           cardLoadStatus: LoadStatus.initial,
           queryString: ''));
@@ -43,22 +47,43 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
     on<_ClearSelectedCard>((event, emit) {
       debugPrint('clearSelectedCard');
       emit(state.copyWith(
-        selectedCard: const CardModel.empty(),
+        selectedCards: [],
       ));
-      debugPrint(state.selectedCard.toString());
+      debugPrint(state.selectedCards.toString());
     });
 
     on<_CreateTrade>((event, emit) async {
-      //* add firebase upload here
       emit(state.copyWith(
         buttonState: ButtonState.loading,
       ));
 
-      await Future.delayed(const Duration(seconds: 2), () {
+      String name = event.user.displayName != ''
+          ? event.user.displayName
+          : event.user.fullName;
+
+      Map<String, dynamic> trade = {
+        'details': state.details,
+        'cards': [...state.selectedCards.map((card) => card.toJson())],
+        'userID': event.user.id,
+        'userName': name,
+        'comments': []
+      };
+
+      try {
+        bool upload = await cardRepo.createTrade(trade: trade);
+        if (upload) {
+          emit(state.copyWith(
+            buttonState: ButtonState.success,
+          ));
+        } else {
+          emit(state.copyWith(
+              buttonState: ButtonState.fail,
+              uploadError: 'Error Creating Trade'));
+        }
+      } catch (e) {
         emit(state.copyWith(
-          buttonState: ButtonState.success,
-        ));
-      });
+            buttonState: ButtonState.fail, uploadError: e.toString()));
+      }
     });
   }
 }

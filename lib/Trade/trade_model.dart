@@ -10,8 +10,9 @@ part 'trade_model.g.dart';
 class TradeModel with _$TradeModel {
   const factory TradeModel({
     @Default('') String details,
-    @Default(UserModel.empty) UserModel user,
-    @Default(CardModel.empty()) CardModel card,
+    @Default('') String userID,
+    @Default('') String userName,
+    @Default([]) List<CardModel> cards,
     @Default([]) List<CommentModel> comments,
   }) = _TradeModel;
 

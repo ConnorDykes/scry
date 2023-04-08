@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
-import 'package:scry/Create_Trade/bloc/create_trade_bloc.dart';
-import 'package:scry/Create_Trade/create_trade_view.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
 import 'package:scry/Home/home_view.dart';
 import 'package:scry/Profile/bloc/profile_bloc.dart';
@@ -14,6 +12,8 @@ import 'package:scry/Profile/profile_view.dart';
 import 'package:scry/Sign_In/bloc/sign_in_bloc.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Sign_Up/bloc/sign_up_bloc.dart';
+import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
+import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/firebase_options.dart';
 
 import 'Sign_Up/sign_up_view.dart';
@@ -39,9 +39,6 @@ class MyApp extends StatelessWidget {
           create: (context) => HomeBloc(),
         ),
         BlocProvider(
-          create: (context) => CreateTradeBloc(),
-        ),
-        BlocProvider(
           create: (context) => SignUpBloc(),
         ),
         BlocProvider(
@@ -58,7 +55,10 @@ class MyApp extends StatelessWidget {
         title: 'Scry',
         initialRoute: '/',
         routes: {
-          '/CreateTrade': (context) => CreateTradeView(),
+          '/CreateTrade': (context) => BlocProvider(
+                create: (context) => CreateTradeBloc(),
+                child: CreateTradeView(),
+              ),
           '/SignIn': (context) => SignInView(),
           '/SignUp': (context) => SignUpView(),
           '/Profile': (context) => ProfileView(),

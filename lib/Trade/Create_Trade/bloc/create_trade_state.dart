@@ -5,9 +5,11 @@ class CreateTradeState with _$CreateTradeState {
   const CreateTradeState._();
 
   const factory CreateTradeState(
-          {@Default('') String queryString,
+          {@Default('') String uploadError,
+          @Default('') String queryString,
+          @Default('') String details,
           @Default([]) List<CardModel> cards,
-          @Default(CardModel.empty()) CardModel selectedCard,
+          @Default([]) List<CardModel> selectedCards,
           @Default(ButtonState.idle) ButtonState buttonState,
           @Default(LoadStatus.initial) LoadStatus cardLoadStatus}) =
       _CreateTradeState;
