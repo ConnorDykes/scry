@@ -6,8 +6,8 @@ import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
-import 'package:scry/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
+import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 

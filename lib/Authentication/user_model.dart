@@ -16,7 +16,7 @@ class UserModel with _$UserModel {
     @Default('') String firstName,
     @Default('') String lastName,
     @Default('') String profilePicture,
-  }) = _User;
+  }) = _UserModel;
 
   const UserModel._();
 

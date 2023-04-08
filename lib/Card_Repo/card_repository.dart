@@ -1,14 +1,17 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:scry/Trade/trade_model.dart';
 import 'package:scry/card_model.dart';
 
 class CardRepository {
+  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+
   Future<List<CardModel>?> searchNamed({required String name}) async {
     final client = http.Client();
     final query = name.toLowerCase().replaceAll(" ", "+");
-    debugPrint(query);
 
     var uri = Uri.parse('https://api.scryfall.com/cards/search?q=$query ');
     try {
@@ -45,11 +48,16 @@ class CardRepository {
         List<CardModel> page =
             List<CardModel>.from(data.map((x) => CardModel.fromJson(x)));
         cards.addAll(page);
-        // if (body['has_more'] == true) {
+
+        //* these function remove Alchemy cards
+        cards.removeWhere((card) => card.legalities!.alchemy == 'legal');
+        cards.removeWhere((card) => !card.games!.contains('paper'));
+        debugPrint(cards.first.toJson().toString());
+        // if (body['has_more'] == true
         //   debugPrint('has more pages');
         //   getPage(url: body['next_page']);
         // }
-        debugPrint(cards.first.toString());
+
         return cards;
       }
       if (response.statusCode == 404) {
@@ -59,6 +67,25 @@ class CardRepository {
     } catch (e) {
       debugPrint(e.toString());
       return [];
+    }
+  }
+
+  Future<bool> createTrade({required TradeModel trade}) async {
+    try {
+      // Get a reference to the Document in the Trades collection
+      DocumentReference docRef = _firebaseFirestore.collection('trades').doc();
+
+      // Set the values of the Trade Document
+      await docRef.set(trade.toJson());
+
+      // Add the Doc id of the Trade document to the users 'trades' field
+      await _firebaseFirestore.collection('users').doc(trade.user.id).set({
+        'trades': FieldValue.arrayUnion([docRef.id])
+      }, SetOptions(merge: true));
+      return true;
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
     }
   }
 }
