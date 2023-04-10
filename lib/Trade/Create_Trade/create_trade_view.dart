@@ -8,10 +8,17 @@ import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
+import 'package:scry/Trade/trade_model.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
 class CreateTradeView extends StatelessWidget {
+  final bool proposeTrade;
+  final TradePostModel trade;
+
+  CreateTradeView(
+      {this.proposeTrade = false, this.trade = TradePostModel.empty});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -33,7 +40,10 @@ class CreateTradeView extends StatelessWidget {
                     Icons.check_circle_outline_rounded,
                     color: Colors.white,
                   ),
-                  Expanded(child: Text('Your Trade Was Successfuly Created')),
+                  Expanded(
+                      child: proposeTrade
+                          ? Text('Trade Offer Was Successfuly Sent')
+                          : Text('Trade Was Successfuly Created')),
                 ],
               )));
         }
@@ -42,10 +52,11 @@ class CreateTradeView extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
               appBar: AppBar(
+                automaticallyImplyLeading: proposeTrade == true ? false : true,
                 surfaceTintColor: Colors.transparent,
                 backgroundColor: theme.scaffoldBackgroundColor,
                 title: Text(
-                  'Create Trade',
+                  proposeTrade == true ? 'Offer A Trade' : 'Create Trade',
                 ),
               ),
               body: Column(
@@ -146,9 +157,12 @@ class CreateTradeView extends StatelessWidget {
                       ProgressButton.icon(
                           iconedButtons: {
                             ButtonState.idle: IconedButton(
-                                text: "Create",
-                                icon: Icon(Icons.add_circle_outlined,
-                                    color: Colors.white),
+                                text: proposeTrade == true ? "Offer" : "Create",
+                                icon: proposeTrade == true
+                                    ? Icon(Icons.swap_vert_outlined,
+                                        color: Colors.white)
+                                    : Icon(Icons.add_circle_outlined,
+                                        color: Colors.white),
                                 color: theme.colorScheme.primary),
                             ButtonState.loading: IconedButton(
                                 text: "Loading",
@@ -166,8 +180,11 @@ class CreateTradeView extends StatelessWidget {
                                 color: Colors.green.shade400)
                           },
                           onPressed: () {
-                            bloc.add(CreateTradeEvent.createTrade(
-                                user: appBloc.state.user));
+                            proposeTrade
+                                ? bloc
+                                    .add(CreateTradeEvent.createTradeProposal())
+                                : bloc.add(CreateTradeEvent.createTrade(
+                                    user: appBloc.state.user));
                           },
                           state: state.buttonState),
                       Padding(
@@ -233,7 +250,7 @@ class DetailsTextField extends StatelessWidget {
       child: TextField(
         textCapitalization: TextCapitalization.sentences,
         maxLines: null,
-        minLines: 3,
+        minLines: 2,
         onChanged: (value) =>
             createTradeBloc.add(CreateTradeEvent.updateDetails(details: value)),
         decoration: InputDecoration(

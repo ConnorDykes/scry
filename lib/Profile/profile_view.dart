@@ -50,6 +50,12 @@ class ProfileView extends StatelessWidget {
                                     backgroundImage: NetworkImage(user
                                         .profilePicture
                                         .replaceAll("s96-c", "s192-c")),
+                                    child: user.profilePicture == ''
+                                        ? Icon(
+                                            Icons.person,
+                                            size: 100,
+                                          )
+                                        : null,
                                   ),
                                 ),
                               ),

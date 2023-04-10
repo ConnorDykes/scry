@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'trade_model.dart';
+part of 'offer_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TradePostModel _$TradePostModelFromJson(Map<String, dynamic> json) {
-  return _TradeModel.fromJson(json);
+OfferModel _$OfferModelFromJson(Map<String, dynamic> json) {
+  return _OfferModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TradePostModel {
+mixin _$OfferModel {
   String get details => throw _privateConstructorUsedError;
   String get userID => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
@@ -27,24 +27,24 @@ mixin _$TradePostModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TradePostModelCopyWith<TradePostModel> get copyWith =>
+  $OfferModelCopyWith<OfferModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TradePostModelCopyWith<$Res> {
-  factory $TradePostModelCopyWith(
-          TradePostModel value, $Res Function(TradePostModel) then) =
-      _$TradePostModelCopyWithImpl<$Res, TradePostModel>;
+abstract class $OfferModelCopyWith<$Res> {
+  factory $OfferModelCopyWith(
+          OfferModel value, $Res Function(OfferModel) then) =
+      _$OfferModelCopyWithImpl<$Res, OfferModel>;
   @useResult
   $Res call(
       {String details, String userID, String userName, List<CardModel> cards});
 }
 
 /// @nodoc
-class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
-    implements $TradePostModelCopyWith<$Res> {
-  _$TradePostModelCopyWithImpl(this._value, this._then);
+class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
+    implements $OfferModelCopyWith<$Res> {
+  _$OfferModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,11 +81,11 @@ class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
 }
 
 /// @nodoc
-abstract class _$$_TradeModelCopyWith<$Res>
-    implements $TradePostModelCopyWith<$Res> {
-  factory _$$_TradeModelCopyWith(
-          _$_TradeModel value, $Res Function(_$_TradeModel) then) =
-      __$$_TradeModelCopyWithImpl<$Res>;
+abstract class _$$_OfferModelCopyWith<$Res>
+    implements $OfferModelCopyWith<$Res> {
+  factory _$$_OfferModelCopyWith(
+          _$_OfferModel value, $Res Function(_$_OfferModel) then) =
+      __$$_OfferModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +93,11 @@ abstract class _$$_TradeModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TradeModelCopyWithImpl<$Res>
-    extends _$TradePostModelCopyWithImpl<$Res, _$_TradeModel>
-    implements _$$_TradeModelCopyWith<$Res> {
-  __$$_TradeModelCopyWithImpl(
-      _$_TradeModel _value, $Res Function(_$_TradeModel) _then)
+class __$$_OfferModelCopyWithImpl<$Res>
+    extends _$OfferModelCopyWithImpl<$Res, _$_OfferModel>
+    implements _$$_OfferModelCopyWith<$Res> {
+  __$$_OfferModelCopyWithImpl(
+      _$_OfferModel _value, $Res Function(_$_OfferModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +108,7 @@ class __$$_TradeModelCopyWithImpl<$Res>
     Object? userName = null,
     Object? cards = null,
   }) {
-    return _then(_$_TradeModel(
+    return _then(_$_OfferModel(
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
@@ -131,8 +131,8 @@ class __$$_TradeModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TradeModel extends _TradeModel {
-  const _$_TradeModel(
+class _$_OfferModel extends _OfferModel {
+  const _$_OfferModel(
       {this.details = '',
       this.userID = '',
       this.userName = '',
@@ -140,8 +140,8 @@ class _$_TradeModel extends _TradeModel {
       : _cards = cards,
         super._();
 
-  factory _$_TradeModel.fromJson(Map<String, dynamic> json) =>
-      _$$_TradeModelFromJson(json);
+  factory _$_OfferModel.fromJson(Map<String, dynamic> json) =>
+      _$$_OfferModelFromJson(json);
 
   @override
   @JsonKey()
@@ -163,14 +163,14 @@ class _$_TradeModel extends _TradeModel {
 
   @override
   String toString() {
-    return 'TradePostModel(details: $details, userID: $userID, userName: $userName, cards: $cards)';
+    return 'OfferModel(details: $details, userID: $userID, userName: $userName, cards: $cards)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TradeModel &&
+            other is _$_OfferModel &&
             (identical(other.details, details) || other.details == details) &&
             (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.userName, userName) ||
@@ -186,27 +186,27 @@ class _$_TradeModel extends _TradeModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TradeModelCopyWith<_$_TradeModel> get copyWith =>
-      __$$_TradeModelCopyWithImpl<_$_TradeModel>(this, _$identity);
+  _$$_OfferModelCopyWith<_$_OfferModel> get copyWith =>
+      __$$_OfferModelCopyWithImpl<_$_OfferModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TradeModelToJson(
+    return _$$_OfferModelToJson(
       this,
     );
   }
 }
 
-abstract class _TradeModel extends TradePostModel {
-  const factory _TradeModel(
+abstract class _OfferModel extends OfferModel {
+  const factory _OfferModel(
       {final String details,
       final String userID,
       final String userName,
-      final List<CardModel> cards}) = _$_TradeModel;
-  const _TradeModel._() : super._();
+      final List<CardModel> cards}) = _$_OfferModel;
+  const _OfferModel._() : super._();
 
-  factory _TradeModel.fromJson(Map<String, dynamic> json) =
-      _$_TradeModel.fromJson;
+  factory _OfferModel.fromJson(Map<String, dynamic> json) =
+      _$_OfferModel.fromJson;
 
   @override
   String get details;
@@ -218,6 +218,6 @@ abstract class _TradeModel extends TradePostModel {
   List<CardModel> get cards;
   @override
   @JsonKey(ignore: true)
-  _$$_TradeModelCopyWith<_$_TradeModel> get copyWith =>
+  _$$_OfferModelCopyWith<_$_OfferModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

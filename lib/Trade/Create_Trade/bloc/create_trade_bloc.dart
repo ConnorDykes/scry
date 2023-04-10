@@ -15,7 +15,14 @@ part 'create_trade_bloc.freezed.dart';
 class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
   final cardRepo = CardRepository();
   final searchController = TextEditingController();
-  CreateTradeBloc() : super(const CreateTradeState()) {
+  final bool proposeTrade;
+  final UserModel currentUser;
+  final TradePostModel trade;
+  CreateTradeBloc(
+      {this.proposeTrade = false,
+      this.currentUser = UserModel.empty,
+      this.trade = TradePostModel.empty})
+      : super(const CreateTradeState()) {
     on<_Search>((event, emit) async {
       emit(state.copyWith(
           cardLoadStatus: LoadStatus.loading, queryString: event.query));
@@ -51,6 +58,40 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       ));
       debugPrint(state.selectedCards.toString());
     });
+
+    on<_CreateTradeProposal>(
+      (event, emit) async {
+        String name = currentUser.displayName != ''
+            ? currentUser.displayName
+            : currentUser.fullName;
+
+        Map<String, dynamic> offer = {
+          'details': state.details,
+          'cards': [...state.selectedCards.map((card) => card.toJson())],
+          'offeringUserID': currentUser.id,
+          'offeringUserName': name,
+          'recipientUserID': trade.userID,
+          'recipientName': trade.userName,
+          'comments': []
+        };
+
+        try {
+          bool upload = await cardRepo.createTradeOffer(offer: offer);
+          if (upload) {
+            emit(state.copyWith(
+              buttonState: ButtonState.success,
+            ));
+          } else {
+            emit(state.copyWith(
+                buttonState: ButtonState.fail,
+                uploadError: 'Error Creating Trade Offer'));
+          }
+        } catch (e) {
+          emit(state.copyWith(
+              buttonState: ButtonState.fail, uploadError: e.toString()));
+        }
+      },
+    );
 
     on<_CreateTrade>((event, emit) async {
       emit(state.copyWith(

@@ -88,4 +88,28 @@ class CardRepository {
       return false;
     }
   }
+
+  Future<bool> createTradeOffer({required Map<String, dynamic> offer}) async {
+    print(offer['offeringUserID']);
+    try {
+      // Get a reference to the Document in the Sending Users users Offers  collection
+      await _firebaseFirestore
+          .collection('users')
+          .doc(offer['offeringUserID'])
+          .collection('offers')
+          .add(offer);
+
+      // Get a reference to the Document in the Receiving Users users Offers collection
+      await _firebaseFirestore
+          .collection('users')
+          .doc(offer['recipientUserID'])
+          .collection('offers')
+          .add(offer);
+
+      return true;
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
+    }
+  }
 }

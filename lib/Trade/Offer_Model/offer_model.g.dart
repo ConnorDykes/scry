@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'trade_model.dart';
+part of 'offer_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TradeModel _$$_TradeModelFromJson(Map<String, dynamic> json) =>
-    _$_TradeModel(
+_$_OfferModel _$$_OfferModelFromJson(Map<String, dynamic> json) =>
+    _$_OfferModel(
       details: json['details'] as String? ?? '',
       userID: json['userID'] as String? ?? '',
       userName: json['userName'] as String? ?? '',
@@ -17,7 +17,7 @@ _$_TradeModel _$$_TradeModelFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_TradeModelToJson(_$_TradeModel instance) =>
+Map<String, dynamic> _$$_OfferModelToJson(_$_OfferModel instance) =>
     <String, dynamic>{
       'details': instance.details,
       'userID': instance.userID,
