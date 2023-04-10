@@ -52,7 +52,7 @@ class CardRepository {
         //* these function remove Alchemy cards
         cards.removeWhere((card) => card.legalities!.alchemy == 'legal');
         cards.removeWhere((card) => !card.games!.contains('paper'));
-        debugPrint(cards.first.toJson().toString());
+
         // if (body['has_more'] == true
         //   debugPrint('has more pages');
         //   getPage(url: body['next_page']);
