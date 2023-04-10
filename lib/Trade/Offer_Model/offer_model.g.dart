@@ -9,8 +9,10 @@ part of 'offer_model.dart';
 _$_OfferModel _$$_OfferModelFromJson(Map<String, dynamic> json) =>
     _$_OfferModel(
       details: json['details'] as String? ?? '',
-      userID: json['userID'] as String? ?? '',
-      userName: json['userName'] as String? ?? '',
+      offeringUserID: json['offeringUserID'] as String? ?? '',
+      offeringUserName: json['offeringUserName'] as String? ?? '',
+      recipientUserID: json['recipientUserID'] as String? ?? '',
+      recipientName: json['recipientName'] as String? ?? '',
       cards: (json['cards'] as List<dynamic>?)
               ?.map((e) => CardModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -20,7 +22,9 @@ _$_OfferModel _$$_OfferModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_OfferModelToJson(_$_OfferModel instance) =>
     <String, dynamic>{
       'details': instance.details,
-      'userID': instance.userID,
-      'userName': instance.userName,
+      'offeringUserID': instance.offeringUserID,
+      'offeringUserName': instance.offeringUserName,
+      'recipientUserID': instance.recipientUserID,
+      'recipientName': instance.recipientName,
       'cards': instance.cards,
     };

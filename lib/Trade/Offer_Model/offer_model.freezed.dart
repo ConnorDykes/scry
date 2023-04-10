@@ -21,8 +21,10 @@ OfferModel _$OfferModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OfferModel {
   String get details => throw _privateConstructorUsedError;
-  String get userID => throw _privateConstructorUsedError;
-  String get userName => throw _privateConstructorUsedError;
+  String get offeringUserID => throw _privateConstructorUsedError;
+  String get offeringUserName => throw _privateConstructorUsedError;
+  String get recipientUserID => throw _privateConstructorUsedError;
+  String get recipientName => throw _privateConstructorUsedError;
   List<CardModel> get cards => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +40,12 @@ abstract class $OfferModelCopyWith<$Res> {
       _$OfferModelCopyWithImpl<$Res, OfferModel>;
   @useResult
   $Res call(
-      {String details, String userID, String userName, List<CardModel> cards});
+      {String details,
+      String offeringUserID,
+      String offeringUserName,
+      String recipientUserID,
+      String recipientName,
+      List<CardModel> cards});
 }
 
 /// @nodoc
@@ -55,8 +62,10 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
   @override
   $Res call({
     Object? details = null,
-    Object? userID = null,
-    Object? userName = null,
+    Object? offeringUserID = null,
+    Object? offeringUserName = null,
+    Object? recipientUserID = null,
+    Object? recipientName = null,
     Object? cards = null,
   }) {
     return _then(_value.copyWith(
@@ -64,13 +73,21 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      userID: null == userID
-          ? _value.userID
-          : userID // ignore: cast_nullable_to_non_nullable
+      offeringUserID: null == offeringUserID
+          ? _value.offeringUserID
+          : offeringUserID // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      offeringUserName: null == offeringUserName
+          ? _value.offeringUserName
+          : offeringUserName // ignore: cast_nullable_to_non_nullable
+              as String,
+      recipientUserID: null == recipientUserID
+          ? _value.recipientUserID
+          : recipientUserID // ignore: cast_nullable_to_non_nullable
+              as String,
+      recipientName: null == recipientName
+          ? _value.recipientName
+          : recipientName // ignore: cast_nullable_to_non_nullable
               as String,
       cards: null == cards
           ? _value.cards
@@ -89,7 +106,12 @@ abstract class _$$_OfferModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String details, String userID, String userName, List<CardModel> cards});
+      {String details,
+      String offeringUserID,
+      String offeringUserName,
+      String recipientUserID,
+      String recipientName,
+      List<CardModel> cards});
 }
 
 /// @nodoc
@@ -104,8 +126,10 @@ class __$$_OfferModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? details = null,
-    Object? userID = null,
-    Object? userName = null,
+    Object? offeringUserID = null,
+    Object? offeringUserName = null,
+    Object? recipientUserID = null,
+    Object? recipientName = null,
     Object? cards = null,
   }) {
     return _then(_$_OfferModel(
@@ -113,13 +137,21 @@ class __$$_OfferModelCopyWithImpl<$Res>
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      userID: null == userID
-          ? _value.userID
-          : userID // ignore: cast_nullable_to_non_nullable
+      offeringUserID: null == offeringUserID
+          ? _value.offeringUserID
+          : offeringUserID // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      offeringUserName: null == offeringUserName
+          ? _value.offeringUserName
+          : offeringUserName // ignore: cast_nullable_to_non_nullable
+              as String,
+      recipientUserID: null == recipientUserID
+          ? _value.recipientUserID
+          : recipientUserID // ignore: cast_nullable_to_non_nullable
+              as String,
+      recipientName: null == recipientName
+          ? _value.recipientName
+          : recipientName // ignore: cast_nullable_to_non_nullable
               as String,
       cards: null == cards
           ? _value._cards
@@ -134,8 +166,10 @@ class __$$_OfferModelCopyWithImpl<$Res>
 class _$_OfferModel extends _OfferModel {
   const _$_OfferModel(
       {this.details = '',
-      this.userID = '',
-      this.userName = '',
+      this.offeringUserID = '',
+      this.offeringUserName = '',
+      this.recipientUserID = '',
+      this.recipientName = '',
       final List<CardModel> cards = const []})
       : _cards = cards,
         super._();
@@ -148,10 +182,16 @@ class _$_OfferModel extends _OfferModel {
   final String details;
   @override
   @JsonKey()
-  final String userID;
+  final String offeringUserID;
   @override
   @JsonKey()
-  final String userName;
+  final String offeringUserName;
+  @override
+  @JsonKey()
+  final String recipientUserID;
+  @override
+  @JsonKey()
+  final String recipientName;
   final List<CardModel> _cards;
   @override
   @JsonKey()
@@ -163,7 +203,7 @@ class _$_OfferModel extends _OfferModel {
 
   @override
   String toString() {
-    return 'OfferModel(details: $details, userID: $userID, userName: $userName, cards: $cards)';
+    return 'OfferModel(details: $details, offeringUserID: $offeringUserID, offeringUserName: $offeringUserName, recipientUserID: $recipientUserID, recipientName: $recipientName, cards: $cards)';
   }
 
   @override
@@ -172,15 +212,26 @@ class _$_OfferModel extends _OfferModel {
         (other.runtimeType == runtimeType &&
             other is _$_OfferModel &&
             (identical(other.details, details) || other.details == details) &&
-            (identical(other.userID, userID) || other.userID == userID) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
+            (identical(other.offeringUserID, offeringUserID) ||
+                other.offeringUserID == offeringUserID) &&
+            (identical(other.offeringUserName, offeringUserName) ||
+                other.offeringUserName == offeringUserName) &&
+            (identical(other.recipientUserID, recipientUserID) ||
+                other.recipientUserID == recipientUserID) &&
+            (identical(other.recipientName, recipientName) ||
+                other.recipientName == recipientName) &&
             const DeepCollectionEquality().equals(other._cards, _cards));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, details, userID, userName,
+  int get hashCode => Object.hash(
+      runtimeType,
+      details,
+      offeringUserID,
+      offeringUserName,
+      recipientUserID,
+      recipientName,
       const DeepCollectionEquality().hash(_cards));
 
   @JsonKey(ignore: true)
@@ -200,8 +251,10 @@ class _$_OfferModel extends _OfferModel {
 abstract class _OfferModel extends OfferModel {
   const factory _OfferModel(
       {final String details,
-      final String userID,
-      final String userName,
+      final String offeringUserID,
+      final String offeringUserName,
+      final String recipientUserID,
+      final String recipientName,
       final List<CardModel> cards}) = _$_OfferModel;
   const _OfferModel._() : super._();
 
@@ -211,9 +264,13 @@ abstract class _OfferModel extends OfferModel {
   @override
   String get details;
   @override
-  String get userID;
+  String get offeringUserID;
   @override
-  String get userName;
+  String get offeringUserName;
+  @override
+  String get recipientUserID;
+  @override
+  String get recipientName;
   @override
   List<CardModel> get cards;
   @override

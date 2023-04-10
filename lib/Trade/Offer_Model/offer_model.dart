@@ -8,8 +8,10 @@ part 'offer_model.g.dart';
 class OfferModel with _$OfferModel {
   const factory OfferModel({
     @Default('') String details,
-    @Default('') String userID,
-    @Default('') String userName,
+    @Default('') String offeringUserID,
+    @Default('') String offeringUserName,
+    @Default('') String recipientUserID,
+    @Default('') String recipientName,
     @Default([]) List<CardModel> cards,
   }) = _OfferModel;
 

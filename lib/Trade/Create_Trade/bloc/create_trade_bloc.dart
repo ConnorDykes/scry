@@ -72,7 +72,6 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
           'offeringUserName': name,
           'recipientUserID': trade.userID,
           'recipientName': trade.userName,
-          'comments': []
         };
 
         try {
