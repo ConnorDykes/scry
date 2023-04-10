@@ -49,7 +49,10 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
           selectedCards: [...state.selectedCards, event.card],
           cards: [],
           cardLoadStatus: LoadStatus.initial,
-          queryString: ''));
+          queryString: '',
+          details: trade != TradePostModel.empty
+              ? 'Would you like to trade my ${state.selectedCards.first.name} for your ${trade.cards.first.name}?'
+              : state.details));
     });
     on<_ClearSelectedCard>((event, emit) {
       debugPrint('clearSelectedCard');

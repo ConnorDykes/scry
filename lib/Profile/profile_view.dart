@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
@@ -26,63 +27,86 @@ class ProfileView extends StatelessWidget {
                   child: Text('Sign in'),
                 ),
               )
-            : Scaffold(
-                appBar: AppBar(
-                  backgroundColor: Colors.transparent,
-                  title: Text('Profile'),
-                  actions: [
-                    IconButton(
-                        onPressed: () {
-                          _showLogoutDialog(
-                            context: context,
-                          );
-                        },
-                        icon: Icon(Icons.logout_rounded))
-                  ],
-                ),
-                body: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Padding(
+            : AnnotatedRegion<SystemUiOverlayStyle>(
+                value: SystemUiOverlayStyle.dark,
+                child: Scaffold(
+                  appBar: AppBar(
+                    backgroundColor: theme.scaffoldBackgroundColor,
+                    title: Text('Profile'),
+                    actions: [
+                      IconButton(
+                          onPressed: () {
+                            _showLogoutDialog(
+                              context: context,
+                            );
+                          },
+                          icon: Icon(Icons.logout_rounded))
+                    ],
+                  ),
+                  body: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: CircleAvatar(
-                                  radius: 78,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
                                   child: CircleAvatar(
-                                    radius: 75,
-                                    backgroundImage: NetworkImage(user
-                                        .profilePicture
-                                        .replaceAll("s96-c", "s192-c")),
-                                    child: user.profilePicture == ''
-                                        ? Icon(
-                                            Icons.person,
-                                            size: 100,
-                                          )
-                                        : null,
+                                    radius: 78,
+                                    child: CircleAvatar(
+                                      radius: 75,
+                                      backgroundImage: NetworkImage(user
+                                          .profilePicture
+                                          .replaceAll("s96-c", "s192-c")),
+                                      child: user.profilePicture == ''
+                                          ? Icon(
+                                              Icons.person,
+                                              size: 100,
+                                            )
+                                          : null,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              user.displayName != ''
-                                  ? user.displayName
-                                  : user.fullName,
-                              style: theme.textTheme.titleLarge,
-                            ),
-                            SelectableText('User ID: ${user.id}')
-                          ],
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      color: theme.dividerColor,
-                    )
-                  ],
+                              Text(
+                                user.displayName != ''
+                                    ? user.displayName
+                                    : user.fullName,
+                                style: theme.textTheme.titleLarge,
+                              ),
+                              Text('City, State'),
+                              SelectableText('User ID: ${user.id}')
+                            ],
+                          ),
+                        ],
+                      ),
+                      Divider(
+                        color: theme.dividerColor,
+                      ),
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.red,
+                              side: BorderSide(color: Colors.red),
+                              surfaceTintColor: Colors.red),
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.no_accounts_outlined,
+                                color: Colors.red,
+                              ),
+                              Text(
+                                'Delete Account',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ],
+                          ))
+                    ],
+                  ),
                 ),
               );
       },

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
 import 'package:scry/Trade/offer_view.dart';
 
@@ -19,35 +20,36 @@ class MessagesView extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          flexibleSpace: const Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TabBar(
-                tabs: [
-                  Tab(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.swap_vert),
-                        Text('Trade Offers'),
-                      ],
-                    ),
+          elevation: 0,
+          backgroundColor: theme.scaffoldBackgroundColor,
+          flexibleSpace: SafeArea(
+            child: TabBar(
+              // enableFeedback: true,
+              dividerColor: theme.dividerColor,
+              tabs: [
+                Tab(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.swap_vert),
+                      Text('Trade Offers'),
+                    ],
                   ),
-                  Tab(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.message),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                          child: Text('Messages'),
-                        ),
-                      ],
-                    ),
+                ),
+                Tab(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.message),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 4),
+                        child: Text('Messages'),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
         body: const TabBarView(
@@ -72,7 +74,9 @@ class Offers extends StatelessWidget {
         return state.user == UserModel.empty
             ? Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    SignInModal().showSignInModal(context: context);
+                  },
                   child: Text('Sign in'),
                 ),
               )
@@ -107,187 +111,212 @@ class Offers extends StatelessWidget {
                         itemBuilder: (context, index) {
                           OfferModel offer = offers[index];
 
-                          return InkWell(
-                            onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        OfferView(offer: offer))),
-                            child: Card(
-                              child: Column(
-                                children: [
-                                  Row(children: [
-                                    Flexible(
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0,
-                                                    right: 8,
-                                                    top: 8),
-                                                child: CircleAvatar(
-                                                  radius: 27,
-                                                  child: FutureBuilder(
-                                                    //method to be waiting for in the future
-                                                    future: FirebaseFirestore
-                                                        .instance
-                                                        .collection('users')
-                                                        .doc(offer
-                                                            .recipientUserID)
-                                                        .get(),
-                                                    builder: (_, snapshot) {
-                                                      //if done show data,
-                                                      if (snapshot
-                                                              .connectionState ==
-                                                          ConnectionState
-                                                              .done) {
-                                                        if (snapshot.hasData &&
-                                                            snapshot.data !=
-                                                                null) {
-                                                          final doc = snapshot
-                                                              .data!
-                                                              .data();
-                                                          String imageUrl =
-                                                              doc?['profilePicture'] ??
-                                                                  '';
-                                                          return imageUrl == ''
-                                                              ? CircleAvatar(
-                                                                  radius: 25,
-                                                                  child: Icon(Icons
-                                                                      .person),
-                                                                )
-                                                              : CircleAvatar(
-                                                                  radius: 25,
-                                                                  backgroundImage:
-                                                                      NetworkImage(
-                                                                          doc![
-                                                                              'profilePicture']),
-                                                                );
-                                                        } else {
-                                                          return CircleAvatar(
-                                                            radius: 25,
-                                                            child: Icon(
-                                                                Icons.person),
-                                                          );
-                                                        }
-                                                      } else {
-                                                        //if the process is not finished then show the indicator process
-                                                        return Center(
-                                                            child:
-                                                                CircularProgressIndicator());
-                                                      }
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    offer.recipientName,
-                                                    style: theme
-                                                        .textTheme.titleMedium!
-                                                        .copyWith(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                  ),
-                                                  Text(
-                                                    'City, State',
-                                                    style: theme
-                                                        .textTheme.titleSmall,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                child: offer
-                                                            .offeredCards
-                                                            .first
-                                                            .imageUris
-                                                            ?.normal !=
-                                                        null
-                                                    ? Image.network(
-                                                        offer
-                                                                .offeredCards
-                                                                .first
-                                                                .imageUris
-                                                                ?.normal ??
-                                                            '',
+                          return Card(
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8, top: 8),
+                                      child: CircleAvatar(
+                                        radius: 27,
+                                        child: FutureBuilder(
+                                          //method to be waiting for in the future
+                                          future: FirebaseFirestore.instance
+                                              .collection('users')
+                                              .doc(offer.recipientUserID)
+                                              .get(),
+                                          builder: (_, snapshot) {
+                                            //if done show data,
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.done) {
+                                              if (snapshot.hasData &&
+                                                  snapshot.data != null) {
+                                                final doc =
+                                                    snapshot.data!.data();
+                                                String imageUrl =
+                                                    doc?['profilePicture'] ??
+                                                        '';
+                                                return imageUrl == ''
+                                                    ? CircleAvatar(
+                                                        radius: 25,
+                                                        child:
+                                                            Icon(Icons.person),
                                                       )
-                                                    : Icon(Icons.photo)),
-                                          ),
-                                        ],
+                                                    : CircleAvatar(
+                                                        radius: 25,
+                                                        backgroundImage:
+                                                            NetworkImage(doc![
+                                                                'profilePicture']),
+                                                      );
+                                              } else {
+                                                return CircleAvatar(
+                                                  radius: 25,
+                                                  child: Icon(Icons.person),
+                                                );
+                                              }
+                                            } else {
+                                              //if the process is not finished then show the indicator process
+                                              return Center(
+                                                  child:
+                                                      CircularProgressIndicator());
+                                            }
+                                          },
+                                        ),
                                       ),
                                     ),
-                                    Icon(Icons.swap_horiz),
-                                    Flexible(
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          offer.recipientName,
+                                          style: theme.textTheme.titleMedium!
+                                              .copyWith(
+                                                  fontWeight: FontWeight.w600),
+                                        ),
+                                        Text(
+                                          'City, State',
+                                          style: theme.textTheme.titleSmall,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(0),
+                                        topRight: Radius.circular(15),
+                                        bottomLeft: Radius.circular(15),
+                                        bottomRight: Radius.circular(15),
+                                      )),
+                                      color: theme.colorScheme.primary,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            child: offer.availableCards.first
-                                                        .imageUris?.normal !=
-                                                    null
-                                                ? Image.network(
-                                                    offer
-                                                            .availableCards
-                                                            .first
-                                                            .imageUris
-                                                            ?.normal ??
-                                                        '',
-                                                    fit: BoxFit.fitWidth,
-                                                  )
-                                                : Icon(Icons.photo)),
+                                        child: Text(
+                                          offer.details,
+                                          style: theme.textTheme.titleMedium!
+                                              .copyWith(color: Colors.white),
+                                        ),
                                       ),
                                     )
-                                  ]),
-                                  Padding(
-                                      padding: EdgeInsets.all(8),
-                                      child: Text(offer.details)),
-                                  Padding(
+                                  ],
+                                ),
+                                Divider(
+                                  color: theme.dividerColor,
+                                ),
+                                Row(children: [
+                                  Flexible(
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child: offer.offeredCards.first
+                                                          .imageUris?.normal !=
+                                                      null
+                                                  ? Image.network(
+                                                      offer
+                                                              .offeredCards
+                                                              .first
+                                                              .imageUris
+                                                              ?.normal ??
+                                                          '',
+                                                    )
+                                                  : Icon(Icons.photo)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Icon(Icons.swap_horiz),
+                                  Flexible(
+                                    child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: RichText(
-                                        text: TextSpan(
-                                            style: DefaultTextStyle.of(context)
-                                                .style
-                                                .copyWith(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                            text: '${offer.offeringUserName}',
+                                      child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          child: offer.availableCards.first
+                                                      .imageUris?.normal !=
+                                                  null
+                                              ? Image.network(
+                                                  offer.availableCards.first
+                                                          .imageUris?.normal ??
+                                                      '',
+                                                  fit: BoxFit.fitWidth,
+                                                )
+                                              : Icon(Icons.photo)),
+                                    ),
+                                  )
+                                ]),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              side: BorderSide(
+                                                  color: Colors.green)),
+                                          onPressed: () {},
+                                          child: Row(
                                             children: [
-                                              TextSpan(
-                                                  text: ' wants to trade',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.normal)),
-                                              TextSpan(
-                                                  text:
-                                                      ' ${offer.offeredCards.first.name}'),
-                                              TextSpan(
-                                                  text: ' for your',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.normal)),
-                                              TextSpan(
-                                                  text:
-                                                      ' ${offer.availableCards.first.name}',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold)),
-                                            ]),
-                                      ))
-                                ],
-                              ),
+                                              Icon(Icons
+                                                  .check_circle_outline_rounded),
+                                              Text('Accept'),
+                                            ],
+                                          )),
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              foregroundColor: Colors.red,
+                                              side:
+                                                  BorderSide(color: Colors.red),
+                                              surfaceTintColor: Colors.red),
+                                          onPressed: () {},
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.block,
+                                                color: Colors.red,
+                                              ),
+                                              Text(
+                                                'Reject',
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                            ],
+                                          )),
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              foregroundColor: Colors.blue,
+                                              side: BorderSide(
+                                                  color: Colors.blue),
+                                              surfaceTintColor: Colors.blue),
+                                          onPressed: () {},
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.chat,
+                                                color: Colors.blue,
+                                              ),
+                                              Text(
+                                                'Message',
+                                                style: TextStyle(
+                                                    color: Colors.blue),
+                                              ),
+                                            ],
+                                          ))
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
                           );
                         });

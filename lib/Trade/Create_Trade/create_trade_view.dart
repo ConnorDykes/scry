@@ -248,6 +248,7 @@ class DetailsTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8),
       child: TextField(
+        controller: TextEditingController(text: createTradeBloc.state.details),
         textCapitalization: TextCapitalization.sentences,
         maxLines: null,
         minLines: 2,

@@ -13,7 +13,8 @@ class OfferView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Trade Offer')),
+      appBar: AppBar(
+          backgroundColor: Colors.transparent, title: Text('Trade Offer')),
       body: Column(
         children: [
           Row(children: [
@@ -115,24 +116,29 @@ class OfferView extends StatelessWidget {
           Padding(padding: EdgeInsets.all(8), child: Text(offer.details)),
           Padding(
               padding: const EdgeInsets.all(8.0),
-              child: RichText(
-                text: TextSpan(
-                    style: DefaultTextStyle.of(context)
-                        .style
-                        .copyWith(fontWeight: FontWeight.bold),
-                    text: '${offer.offeringUserName}',
-                    children: [
-                      TextSpan(
-                          text: ' wants to trade',
-                          style: TextStyle(fontWeight: FontWeight.normal)),
-                      TextSpan(text: ' ${offer.offeredCards.first.name}'),
-                      TextSpan(
-                          text: ' for your',
-                          style: TextStyle(fontWeight: FontWeight.normal)),
-                      TextSpan(
-                          text: ' ${offer.availableCards.first.name}',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                    ]),
+              child: Card(
+                child: DefaultTextStyle(
+                  style: theme.textTheme.titleMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
+                  child: RichText(
+                    text: TextSpan(
+                        style: theme.textTheme.titleMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
+                        text: '${offer.offeringUserName}',
+                        children: [
+                          TextSpan(
+                              text: ' wants to trade',
+                              style: TextStyle(fontWeight: FontWeight.normal)),
+                          TextSpan(text: ' ${offer.offeredCards.first.name}'),
+                          TextSpan(
+                              text: ' for your',
+                              style: TextStyle(fontWeight: FontWeight.normal)),
+                          TextSpan(
+                              text: ' ${offer.availableCards.first.name}',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                        ]),
+                  ),
+                ),
               ))
         ],
       ),

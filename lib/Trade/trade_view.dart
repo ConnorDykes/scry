@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
@@ -200,25 +201,57 @@ class TradeCard extends StatelessWidget {
                     side: BorderSide(color: theme.colorScheme.primary),
                   ),
                   onPressed: () {
-                    showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        builder: (context) => BlocProvider(
-                              create: (context) => CreateTradeBloc(
-                                  trade: trade,
-                                  currentUser: appbloc.state.user),
-                              child: Container(
-                                  clipBehavior: Clip.hardEdge,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          topRight: Radius.circular(20))),
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.85,
-                                  child: CreateTradeView(
-                                    proposeTrade: true,
-                                  )),
-                            ));
+                    appbloc.state.user == UserModel.empty
+                        ? SignInModal()
+                            .showSignInModal(context: context)
+                            .then((value) => value
+                                ? showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    context: context,
+                                    builder: (context) => BlocProvider(
+                                          create: (context) => CreateTradeBloc(
+                                              trade: trade,
+                                              currentUser: appbloc.state.user),
+                                          child: Container(
+                                              clipBehavior: Clip.hardEdge,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  20),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  20))),
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.85,
+                                              child: CreateTradeView(
+                                                proposeTrade: true,
+                                              )),
+                                        ))
+                                : null)
+                        : showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (context) => BlocProvider(
+                                  create: (context) => CreateTradeBloc(
+                                      trade: trade,
+                                      currentUser: appbloc.state.user),
+                                  child: Container(
+                                      clipBehavior: Clip.hardEdge,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              topRight: Radius.circular(20))),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.85,
+                                      child: CreateTradeView(
+                                        proposeTrade: true,
+                                      )),
+                                ));
                   },
                   child: Row(
                     children: [
