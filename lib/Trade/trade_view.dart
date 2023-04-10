@@ -244,7 +244,7 @@ class TradeCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(8),
                 child: trade.cards.first.imageUris?.normal != null
                     ? Image.network(
                         trade.cards.first.imageUris?.normal ?? '',
