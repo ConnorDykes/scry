@@ -187,21 +187,30 @@ class Offers extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(0),
-                                        topRight: Radius.circular(15),
-                                        bottomLeft: Radius.circular(15),
-                                        bottomRight: Radius.circular(15),
-                                      )),
-                                      color: theme.colorScheme.primary,
+                                    Flexible(
                                       child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          offer.details,
-                                          style: theme.textTheme.titleMedium!
-                                              .copyWith(color: Colors.white),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(0),
+                                            topRight: Radius.circular(15),
+                                            bottomLeft: Radius.circular(15),
+                                            bottomRight: Radius.circular(15),
+                                          )),
+                                          color: theme.colorScheme.primary,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              maxLines: null,
+                                              offer.details,
+                                              style: theme
+                                                  .textTheme.titleMedium!
+                                                  .copyWith(
+                                                      color: Colors.white),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     )
