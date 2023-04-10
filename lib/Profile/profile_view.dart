@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
 
 class ProfileView extends StatelessWidget {
@@ -17,7 +18,14 @@ class ProfileView extends StatelessWidget {
         debugPrint(state.user.toString());
         final user = state.user;
         return state.user == UserModel.empty
-            ? SignInView()
+            ? Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    SignInModal().showSignInModal(context: context);
+                  },
+                  child: Text('Sign in'),
+                ),
+              )
             : Scaffold(
                 appBar: AppBar(
                   backgroundColor: Colors.transparent,
