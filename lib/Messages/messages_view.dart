@@ -21,10 +21,8 @@ class MessagesView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: theme.scaffoldBackgroundColor,
           flexibleSpace: SafeArea(
             child: TabBar(
-              // enableFeedback: true,
               dividerColor: theme.dividerColor,
               tabs: [
                 Tab(
@@ -107,6 +105,7 @@ class Offers extends StatelessWidget {
                         .toList();
 
                     return ListView.builder(
+                        padding: EdgeInsets.zero,
                         itemCount: offers.length,
                         itemBuilder: (context, index) {
                           OfferModel offer = offers[index];
