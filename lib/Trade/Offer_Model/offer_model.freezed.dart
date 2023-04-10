@@ -25,7 +25,8 @@ mixin _$OfferModel {
   String get offeringUserName => throw _privateConstructorUsedError;
   String get recipientUserID => throw _privateConstructorUsedError;
   String get recipientName => throw _privateConstructorUsedError;
-  List<CardModel> get cards => throw _privateConstructorUsedError;
+  List<CardModel> get offeredCards => throw _privateConstructorUsedError;
+  List<CardModel> get availableCards => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,8 @@ abstract class $OfferModelCopyWith<$Res> {
       String offeringUserName,
       String recipientUserID,
       String recipientName,
-      List<CardModel> cards});
+      List<CardModel> offeredCards,
+      List<CardModel> availableCards});
 }
 
 /// @nodoc
@@ -66,7 +68,8 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
     Object? offeringUserName = null,
     Object? recipientUserID = null,
     Object? recipientName = null,
-    Object? cards = null,
+    Object? offeredCards = null,
+    Object? availableCards = null,
   }) {
     return _then(_value.copyWith(
       details: null == details
@@ -89,9 +92,13 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
           ? _value.recipientName
           : recipientName // ignore: cast_nullable_to_non_nullable
               as String,
-      cards: null == cards
-          ? _value.cards
-          : cards // ignore: cast_nullable_to_non_nullable
+      offeredCards: null == offeredCards
+          ? _value.offeredCards
+          : offeredCards // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
+      availableCards: null == availableCards
+          ? _value.availableCards
+          : availableCards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
     ) as $Val);
   }
@@ -111,7 +118,8 @@ abstract class _$$_OfferModelCopyWith<$Res>
       String offeringUserName,
       String recipientUserID,
       String recipientName,
-      List<CardModel> cards});
+      List<CardModel> offeredCards,
+      List<CardModel> availableCards});
 }
 
 /// @nodoc
@@ -130,7 +138,8 @@ class __$$_OfferModelCopyWithImpl<$Res>
     Object? offeringUserName = null,
     Object? recipientUserID = null,
     Object? recipientName = null,
-    Object? cards = null,
+    Object? offeredCards = null,
+    Object? availableCards = null,
   }) {
     return _then(_$_OfferModel(
       details: null == details
@@ -153,9 +162,13 @@ class __$$_OfferModelCopyWithImpl<$Res>
           ? _value.recipientName
           : recipientName // ignore: cast_nullable_to_non_nullable
               as String,
-      cards: null == cards
-          ? _value._cards
-          : cards // ignore: cast_nullable_to_non_nullable
+      offeredCards: null == offeredCards
+          ? _value._offeredCards
+          : offeredCards // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
+      availableCards: null == availableCards
+          ? _value._availableCards
+          : availableCards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
     ));
   }
@@ -170,8 +183,10 @@ class _$_OfferModel extends _OfferModel {
       this.offeringUserName = '',
       this.recipientUserID = '',
       this.recipientName = '',
-      final List<CardModel> cards = const []})
-      : _cards = cards,
+      final List<CardModel> offeredCards = const [],
+      final List<CardModel> availableCards = const []})
+      : _offeredCards = offeredCards,
+        _availableCards = availableCards,
         super._();
 
   factory _$_OfferModel.fromJson(Map<String, dynamic> json) =>
@@ -192,18 +207,27 @@ class _$_OfferModel extends _OfferModel {
   @override
   @JsonKey()
   final String recipientName;
-  final List<CardModel> _cards;
+  final List<CardModel> _offeredCards;
   @override
   @JsonKey()
-  List<CardModel> get cards {
-    if (_cards is EqualUnmodifiableListView) return _cards;
+  List<CardModel> get offeredCards {
+    if (_offeredCards is EqualUnmodifiableListView) return _offeredCards;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cards);
+    return EqualUnmodifiableListView(_offeredCards);
+  }
+
+  final List<CardModel> _availableCards;
+  @override
+  @JsonKey()
+  List<CardModel> get availableCards {
+    if (_availableCards is EqualUnmodifiableListView) return _availableCards;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_availableCards);
   }
 
   @override
   String toString() {
-    return 'OfferModel(details: $details, offeringUserID: $offeringUserID, offeringUserName: $offeringUserName, recipientUserID: $recipientUserID, recipientName: $recipientName, cards: $cards)';
+    return 'OfferModel(details: $details, offeringUserID: $offeringUserID, offeringUserName: $offeringUserName, recipientUserID: $recipientUserID, recipientName: $recipientName, offeredCards: $offeredCards, availableCards: $availableCards)';
   }
 
   @override
@@ -220,7 +244,10 @@ class _$_OfferModel extends _OfferModel {
                 other.recipientUserID == recipientUserID) &&
             (identical(other.recipientName, recipientName) ||
                 other.recipientName == recipientName) &&
-            const DeepCollectionEquality().equals(other._cards, _cards));
+            const DeepCollectionEquality()
+                .equals(other._offeredCards, _offeredCards) &&
+            const DeepCollectionEquality()
+                .equals(other._availableCards, _availableCards));
   }
 
   @JsonKey(ignore: true)
@@ -232,7 +259,8 @@ class _$_OfferModel extends _OfferModel {
       offeringUserName,
       recipientUserID,
       recipientName,
-      const DeepCollectionEquality().hash(_cards));
+      const DeepCollectionEquality().hash(_offeredCards),
+      const DeepCollectionEquality().hash(_availableCards));
 
   @JsonKey(ignore: true)
   @override
@@ -255,7 +283,8 @@ abstract class _OfferModel extends OfferModel {
       final String offeringUserName,
       final String recipientUserID,
       final String recipientName,
-      final List<CardModel> cards}) = _$_OfferModel;
+      final List<CardModel> offeredCards,
+      final List<CardModel> availableCards}) = _$_OfferModel;
   const _OfferModel._() : super._();
 
   factory _OfferModel.fromJson(Map<String, dynamic> json) =
@@ -272,7 +301,9 @@ abstract class _OfferModel extends OfferModel {
   @override
   String get recipientName;
   @override
-  List<CardModel> get cards;
+  List<CardModel> get offeredCards;
+  @override
+  List<CardModel> get availableCards;
   @override
   @JsonKey(ignore: true)
   _$$_OfferModelCopyWith<_$_OfferModel> get copyWith =>

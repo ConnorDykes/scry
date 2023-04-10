@@ -13,7 +13,11 @@ _$_OfferModel _$$_OfferModelFromJson(Map<String, dynamic> json) =>
       offeringUserName: json['offeringUserName'] as String? ?? '',
       recipientUserID: json['recipientUserID'] as String? ?? '',
       recipientName: json['recipientName'] as String? ?? '',
-      cards: (json['cards'] as List<dynamic>?)
+      offeredCards: (json['offeredCards'] as List<dynamic>?)
+              ?.map((e) => CardModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      availableCards: (json['availableCards'] as List<dynamic>?)
               ?.map((e) => CardModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -26,5 +30,6 @@ Map<String, dynamic> _$$_OfferModelToJson(_$_OfferModel instance) =>
       'offeringUserName': instance.offeringUserName,
       'recipientUserID': instance.recipientUserID,
       'recipientName': instance.recipientName,
-      'cards': instance.cards,
+      'offeredCards': instance.offeredCards,
+      'availableCards': instance.availableCards,
     };

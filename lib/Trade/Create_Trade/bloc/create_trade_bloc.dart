@@ -67,11 +67,12 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
 
         Map<String, dynamic> offer = {
           'details': state.details,
-          'cards': [...state.selectedCards.map((card) => card.toJson())],
+          'offeredCards': [...state.selectedCards.map((card) => card.toJson())],
           'offeringUserID': currentUser.id,
           'offeringUserName': name,
           'recipientUserID': trade.userID,
           'recipientName': trade.userName,
+          'availableCards': [...trade.cards.map((card) => card.toJson())]
         };
 
         try {
