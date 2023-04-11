@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
@@ -24,7 +23,7 @@ class MessagesView extends StatelessWidget {
           flexibleSpace: SafeArea(
             child: TabBar(
               dividerColor: theme.dividerColor,
-              tabs: [
+              tabs: const [
                 Tab(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +54,6 @@ class MessagesView extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
 
@@ -75,7 +73,7 @@ class Offers extends StatelessWidget {
                   onPressed: () {
                     SignInModal().showSignInModal(context: context);
                   },
-                  child: Text('Sign in'),
+                  child: const Text('Sign in'),
                 ),
               )
             : StreamBuilder<QuerySnapshot>(
@@ -86,7 +84,7 @@ class Offers extends StatelessWidget {
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
@@ -138,7 +136,7 @@ class Offers extends StatelessWidget {
                                                     doc?['profilePicture'] ??
                                                         '';
                                                 return imageUrl == ''
-                                                    ? CircleAvatar(
+                                                    ? const CircleAvatar(
                                                         radius: 25,
                                                         child:
                                                             Icon(Icons.person),
@@ -150,14 +148,14 @@ class Offers extends StatelessWidget {
                                                                 'profilePicture']),
                                                       );
                                               } else {
-                                                return CircleAvatar(
+                                                return const CircleAvatar(
                                                   radius: 25,
                                                   child: Icon(Icons.person),
                                                 );
                                               }
                                             } else {
                                               //if the process is not finished then show the indicator process
-                                              return Center(
+                                              return const Center(
                                                   child:
                                                       CircularProgressIndicator());
                                             }
@@ -191,7 +189,7 @@ class Offers extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8.0),
                                         child: Card(
-                                          shape: RoundedRectangleBorder(
+                                          shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(0),
                                             topRight: Radius.circular(15),
@@ -250,14 +248,15 @@ class Offers extends StatelessWidget {
                                                                   ?.normal ??
                                                               '',
                                                         )
-                                                      : Icon(Icons.photo)),
+                                                      : const Icon(
+                                                          Icons.photo)),
                                             ),
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  Icon(Icons.swap_horiz),
+                                  const Icon(Icons.swap_horiz),
                                   Flexible(
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
@@ -283,73 +282,75 @@ class Offers extends StatelessWidget {
                                                               ?.normal ??
                                                           '',
                                                     )
-                                                  : Icon(Icons.photo)),
+                                                  : const Icon(Icons.photo)),
                                         ),
                                       ),
                                     ),
                                   )
                                 ]),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                              side: BorderSide(
-                                                  color: Colors.green)),
-                                          onPressed: () {},
-                                          child: Row(
-                                            children: [
-                                              Icon(Icons
-                                                  .check_circle_outline_rounded),
-                                              Text('Accept'),
-                                            ],
-                                          )),
-                                      ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                              foregroundColor: Colors.red,
-                                              side:
-                                                  BorderSide(color: Colors.red),
-                                              surfaceTintColor: Colors.red),
-                                          onPressed: () {},
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.block,
-                                                color: Colors.red,
-                                              ),
-                                              Text(
-                                                'Reject',
-                                                style: TextStyle(
+                                if (offer.offeringUserID !=
+                                    appBloc.state.user.id)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                side: const BorderSide(
+                                                    color: Colors.green)),
+                                            onPressed: () {},
+                                            child: const Row(
+                                              children: [
+                                                Icon(Icons
+                                                    .check_circle_outline_rounded),
+                                                Text('Accept'),
+                                              ],
+                                            )),
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                foregroundColor: Colors.red,
+                                                side: const BorderSide(
                                                     color: Colors.red),
-                                              ),
-                                            ],
-                                          )),
-                                      ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                              foregroundColor: Colors.blue,
-                                              side: BorderSide(
-                                                  color: Colors.blue),
-                                              surfaceTintColor: Colors.blue),
-                                          onPressed: () {},
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.chat,
-                                                color: Colors.blue,
-                                              ),
-                                              Text(
-                                                'Message',
-                                                style: TextStyle(
+                                                surfaceTintColor: Colors.red),
+                                            onPressed: () {},
+                                            child: const Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.block,
+                                                  color: Colors.red,
+                                                ),
+                                                Text(
+                                                  'Reject',
+                                                  style: TextStyle(
+                                                      color: Colors.red),
+                                                ),
+                                              ],
+                                            )),
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                foregroundColor: Colors.blue,
+                                                side: const BorderSide(
                                                     color: Colors.blue),
-                                              ),
-                                            ],
-                                          ))
-                                    ],
-                                  ),
-                                )
+                                                surfaceTintColor: Colors.blue),
+                                            onPressed: () {},
+                                            child: const Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.chat,
+                                                  color: Colors.blue,
+                                                ),
+                                                Text(
+                                                  'Message',
+                                                  style: TextStyle(
+                                                      color: Colors.blue),
+                                                ),
+                                              ],
+                                            ))
+                                      ],
+                                    ),
+                                  )
                               ],
                             ),
                           );

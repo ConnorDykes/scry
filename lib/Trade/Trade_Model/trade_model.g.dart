@@ -15,6 +15,8 @@ _$_TradeModel _$$_TradeModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => CardModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      lookingFor: json['lookingFor'] ?? true,
+      willingToTrade: json['willingToTrade'] ?? false,
     );
 
 Map<String, dynamic> _$$_TradeModelToJson(_$_TradeModel instance) =>
@@ -23,4 +25,6 @@ Map<String, dynamic> _$$_TradeModelToJson(_$_TradeModel instance) =>
       'userID': instance.userID,
       'userName': instance.userName,
       'cards': instance.cards,
+      'lookingFor': instance.lookingFor,
+      'willingToTrade': instance.willingToTrade,
     };

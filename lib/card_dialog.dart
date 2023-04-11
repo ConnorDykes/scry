@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scry/card_model.dart';
 
@@ -23,7 +22,7 @@ class CardDialog extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.close))
+                  icon: const Icon(Icons.close))
             ],
           ),
           ClipRRect(

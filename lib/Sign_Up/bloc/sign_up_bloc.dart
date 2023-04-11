@@ -19,7 +19,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final TextEditingController lastNameController = TextEditingController();
   final authRepo = AuthRepo();
 
-  SignUpBloc() : super(SignUpState()) {
+  SignUpBloc() : super(const SignUpState()) {
     on<_ChangeEmail>((event, emit) {
       emit(state.copyWith(email: event.email));
     });

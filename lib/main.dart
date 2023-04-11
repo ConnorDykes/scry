@@ -57,16 +57,16 @@ class MyApp extends StatelessWidget {
         routes: {
           '/CreateTrade': (context) => BlocProvider(
                 create: (context) => CreateTradeBloc(),
-                child: CreateTradeView(),
+                child: const CreateTradeView(),
               ),
-          '/SignIn': (context) => SignInView(),
-          '/SignUp': (context) => SignUpView(),
-          '/Profile': (context) => ProfileView(),
+          '/SignIn': (context) => const SignInView(),
+          '/SignUp': (context) => const SignUpView(),
+          '/Profile': (context) => const ProfileView(),
         },
         theme: ThemeData(
           dividerColor: Colors.grey[400],
           textTheme: GoogleFonts.rubikTextTheme(),
-          cardTheme: CardTheme(surfaceTintColor: Colors.transparent),
+          cardTheme: const CardTheme(surfaceTintColor: Colors.transparent),
           cardColor: Colors.white,
           colorScheme: ColorScheme(
               surface: Colors.white,
@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
               error: Colors.red),
           useMaterial3: true,
         ),
-        home: HomeView(),
+        home: const HomeView(),
       ),
     );
   }

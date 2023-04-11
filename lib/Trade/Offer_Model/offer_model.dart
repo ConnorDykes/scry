@@ -7,6 +7,7 @@ part 'offer_model.g.dart';
 @freezed
 class OfferModel with _$OfferModel {
   const factory OfferModel({
+    @Default('') String id,
     @Default('') String details,
     @Default('') String offeringUserID,
     @Default('') String offeringUserName,

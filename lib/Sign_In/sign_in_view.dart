@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -32,7 +31,7 @@ class SignInView extends StatelessWidget {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               backgroundColor: theme.scaffoldBackgroundColor,
-              title: Text('Sign In'),
+              title: const Text('Sign In'),
             ),
             body: Column(children: [
               Padding(
@@ -50,10 +49,10 @@ class SignInView extends StatelessWidget {
                       signInBloc.add(SignInEvent.changeEmail(email: value));
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    autofillHints: [AutofillHints.email],
+                    autofillHints: const [AutofillHints.email],
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 8),
+                        contentPadding: const EdgeInsets.only(left: 8),
                         fillColor: theme.cardColor,
                         filled: true,
                         hintText: 'Email',
@@ -83,16 +82,17 @@ class SignInView extends StatelessWidget {
                       if (value!.length < 6 || value.isEmpty) {
                         return 'Password must be at least 6 characters';
                       }
+                      return null;
                     },
                     onChanged: (value) {
                       signInBloc
                           .add(SignInEvent.changePassword(password: value));
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    autofillHints: [AutofillHints.password],
+                    autofillHints: const [AutofillHints.password],
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 8),
+                        contentPadding: const EdgeInsets.only(left: 8),
                         fillColor: theme.cardColor,
                         filled: true,
                         hintText: 'Password',
@@ -116,13 +116,13 @@ class SignInView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: AnimatedOpacity(
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   opacity: state.isFromValid ? 1.0 : 0.0,
                   child: ProgressButton.icon(
                       iconedButtons: {
                         ButtonState.idle: IconedButton(
                           text: "Sign In",
-                          icon: Icon(Icons.login_rounded, color: Colors.white),
+                          icon: const Icon(Icons.login_rounded, color: Colors.white),
                           color: theme.colorScheme.primary,
                         ),
                         ButtonState.loading: IconedButton(
@@ -130,11 +130,11 @@ class SignInView extends StatelessWidget {
                             color: theme.colorScheme.secondary),
                         ButtonState.fail: IconedButton(
                             text: "Failed",
-                            icon: Icon(Icons.cancel, color: Colors.white),
+                            icon: const Icon(Icons.cancel, color: Colors.white),
                             color: Colors.red.shade300),
                         ButtonState.success: IconedButton(
                             text: "Success",
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.check_circle,
                               color: Colors.white,
                             ),
@@ -158,7 +158,7 @@ class SignInView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       side: BorderSide(
@@ -170,7 +170,7 @@ class SignInView extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      FaIcon(FontAwesomeIcons.apple),
+                      const FaIcon(FontAwesomeIcons.apple),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
@@ -183,19 +183,19 @@ class SignInView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       side: BorderSide(
                     color: theme.colorScheme.primary,
                   )),
                   onPressed: () {
-                    signInBloc.add(SignInEvent.signInWithGoogle());
+                    signInBloc.add(const SignInEvent.signInWithGoogle());
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      FaIcon(FontAwesomeIcons.google),
+                      const FaIcon(FontAwesomeIcons.google),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
@@ -207,7 +207,7 @@ class SignInView extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -216,9 +216,9 @@ class SignInView extends StatelessWidget {
                     child: SizedBox(
                       height: 1.0,
                       width: 40,
-                      child: new Center(
-                        child: new Container(
-                          margin: new EdgeInsetsDirectional.only(
+                      child: Center(
+                        child: Container(
+                          margin: const EdgeInsetsDirectional.only(
                               start: 1.0, end: 1.0),
                           height: 5.0,
                           color: Colors.black,
@@ -235,9 +235,9 @@ class SignInView extends StatelessWidget {
                     child: SizedBox(
                       height: 1.0,
                       width: 40,
-                      child: new Center(
-                        child: new Container(
-                          margin: new EdgeInsetsDirectional.only(
+                      child: Center(
+                        child: Container(
+                          margin: const EdgeInsetsDirectional.only(
                               start: 1.0, end: 1.0),
                           height: 5.0,
                           color: Colors.black,
@@ -248,7 +248,7 @@ class SignInView extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       side: BorderSide(
@@ -263,7 +263,7 @@ class SignInView extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer()
+              const Spacer()
             ]),
           );
         },

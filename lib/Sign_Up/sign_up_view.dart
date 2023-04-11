@@ -1,6 +1,4 @@
-import 'dart:collection';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,7 +32,7 @@ class SignUpView extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               backgroundColor: theme.scaffoldBackgroundColor,
-              title: Text('Create New Account'),
+              title: const Text('Create New Account'),
             ),
             body: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -72,10 +70,10 @@ class SignUpView extends StatelessWidget {
                               },
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
-                              autofillHints: [AutofillHints.email],
+                              autofillHints: const [AutofillHints.email],
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(left: 8),
+                                contentPadding: const EdgeInsets.only(left: 8),
                                 fillColor: theme.cardColor,
                                 filled: true,
                                 hintText: 'Email',
@@ -99,7 +97,7 @@ class SignUpView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(padding: EdgeInsets.all(8)),
+                        const Padding(padding: EdgeInsets.all(8)),
                         Form(
                           key: passwordKey,
                           child: Column(
@@ -126,9 +124,9 @@ class SignUpView extends StatelessWidget {
                                   },
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
-                                  autofillHints: [AutofillHints.newPassword],
+                                  autofillHints: const [AutofillHints.newPassword],
                                   decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(left: 8),
+                                    contentPadding: const EdgeInsets.only(left: 8),
                                     fillColor: theme.cardColor,
                                     filled: true,
                                     hintText: 'Password',
@@ -179,9 +177,9 @@ class SignUpView extends StatelessWidget {
                                   },
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
-                                  autofillHints: [AutofillHints.newPassword],
+                                  autofillHints: const [AutofillHints.newPassword],
                                   decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(left: 8),
+                                    contentPadding: const EdgeInsets.only(left: 8),
                                     fillColor: theme.cardColor,
                                     filled: true,
                                     hintText: 'Confirm Password',
@@ -240,10 +238,10 @@ class SignUpView extends StatelessWidget {
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
-                                    autofillHints: [AutofillHints.name],
+                                    autofillHints: const [AutofillHints.name],
                                     decoration: InputDecoration(
                                         contentPadding:
-                                            EdgeInsets.only(left: 8),
+                                            const EdgeInsets.only(left: 8),
                                         fillColor: theme.cardColor,
                                         filled: true,
                                         hintText: 'First Name',
@@ -291,10 +289,10 @@ class SignUpView extends StatelessWidget {
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
-                                    autofillHints: [AutofillHints.name],
+                                    autofillHints: const [AutofillHints.name],
                                     decoration: InputDecoration(
                                         contentPadding:
-                                            EdgeInsets.only(left: 8),
+                                            const EdgeInsets.only(left: 8),
                                         fillColor: theme.cardColor,
                                         filled: true,
                                         hintText: 'Last Name',
@@ -327,15 +325,15 @@ class SignUpView extends StatelessWidget {
                       ]),
                     ),
                   ),
-                  Padding(padding: EdgeInsets.all(8)),
+                  const Padding(padding: EdgeInsets.all(8)),
                   AnimatedOpacity(
-                    duration: Duration(seconds: 1),
+                    duration: const Duration(seconds: 1),
                     opacity: state.isFromValid ? 1.0 : 0.0,
                     child: ProgressButton.icon(
                         iconedButtons: {
                           ButtonState.idle: IconedButton(
                               text: "Create Account",
-                              icon: Icon(Icons.person_add_alt_rounded,
+                              icon: const Icon(Icons.person_add_alt_rounded,
                                   color: Colors.white),
                               color: theme.colorScheme.primary),
                           ButtonState.loading: IconedButton(
@@ -343,11 +341,11 @@ class SignUpView extends StatelessWidget {
                               color: theme.colorScheme.secondary),
                           ButtonState.fail: IconedButton(
                               text: "Failed",
-                              icon: Icon(Icons.cancel, color: Colors.white),
+                              icon: const Icon(Icons.cancel, color: Colors.white),
                               color: Colors.red.shade300),
                           ButtonState.success: IconedButton(
                               text: "Success",
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.check_circle,
                                 color: Colors.white,
                               ),
@@ -370,7 +368,7 @@ class SignUpView extends StatelessWidget {
                       child: Text(state.emailError),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -379,9 +377,9 @@ class SignUpView extends StatelessWidget {
                         child: SizedBox(
                           height: 1.0,
                           width: 40,
-                          child: new Center(
-                            child: new Container(
-                              margin: new EdgeInsetsDirectional.only(
+                          child: Center(
+                            child: Container(
+                              margin: const EdgeInsetsDirectional.only(
                                   start: 1.0, end: 1.0),
                               height: 5.0,
                               color: Colors.black,
@@ -398,9 +396,9 @@ class SignUpView extends StatelessWidget {
                         child: SizedBox(
                           height: 1.0,
                           width: 40,
-                          child: new Center(
-                            child: new Container(
-                              margin: new EdgeInsetsDirectional.only(
+                          child: Center(
+                            child: Container(
+                              margin: const EdgeInsetsDirectional.only(
                                   start: 1.0, end: 1.0),
                               height: 5.0,
                               color: Colors.black,
@@ -411,7 +409,7 @@ class SignUpView extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           side: BorderSide(
@@ -423,7 +421,7 @@ class SignUpView extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          FaIcon(FontAwesomeIcons.apple),
+                          const FaIcon(FontAwesomeIcons.apple),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 8.0),
@@ -437,7 +435,7 @@ class SignUpView extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           side: BorderSide(
@@ -450,7 +448,7 @@ class SignUpView extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          FaIcon(FontAwesomeIcons.google),
+                          const FaIcon(FontAwesomeIcons.google),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 8.0),
@@ -463,8 +461,8 @@ class SignUpView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Spacer(),
-                  Spacer()
+                  const Spacer(),
+                  const Spacer()
                 ],
               ),
             ),

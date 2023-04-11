@@ -15,7 +15,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final AuthRepo _authRepo = AuthRepo();
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  SignInBloc() : super(SignInState()) {
+  SignInBloc() : super(const SignInState()) {
     on<_ChangeEmail>((event, emit) {
       emit(state.copyWith(email: event.email));
     });

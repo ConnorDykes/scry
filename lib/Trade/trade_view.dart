@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
@@ -9,7 +7,7 @@ import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
-import 'package:scry/Trade/trade_model.dart';
+import 'package:scry/Trade/Trade_Model/trade_model.dart';
 
 class TradeView extends StatelessWidget {
   const TradeView({super.key});
@@ -25,7 +23,7 @@ class TradeView extends StatelessWidget {
             if (appBloc.state.user == UserModel.empty) {
               showModalBottomSheet(
                   context: context,
-                  builder: (context) => ClipRRect(
+                  builder: (context) => const ClipRRect(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
@@ -38,7 +36,7 @@ class TradeView extends StatelessWidget {
               Navigator.pushNamed(context, '/CreateTrade');
             }
           },
-          child: Icon(
+          child: const Icon(
             Icons.add_rounded,
             size: 45,
           ),
@@ -47,7 +45,7 @@ class TradeView extends StatelessWidget {
           stream: FirebaseFirestore.instance.collection('trades').snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Column(
+              return const Column(
                 children: [
                   Center(
                     child: CircularProgressIndicator(),
@@ -68,17 +66,20 @@ class TradeView extends StatelessWidget {
                   });
             } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
                     child: Text(
-                      "No Trades Available ",
+                      textAlign: TextAlign.center,
+                      "No Trades Available\nTap the + Button to Create One ",
                       style: theme.textTheme.titleMedium,
                     ),
                   )
                 ],
               );
             } else {
-              return Column(
+              return const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
                     child: Text('ERROR'),
@@ -92,7 +93,7 @@ class TradeView extends StatelessWidget {
 }
 
 class TradeCard extends StatelessWidget {
-  TradeCard({super.key, required TradePostModel this.trade});
+  TradeCard({super.key, required this.trade});
 
   TradePostModel trade;
 
@@ -124,7 +125,7 @@ class TradeCard extends StatelessWidget {
                           final doc = snapshot.data!.data();
                           String imageUrl = doc?['profilePicture'] ?? '';
                           return imageUrl == ''
-                              ? CircleAvatar(
+                              ? const CircleAvatar(
                                   radius: 25,
                                   child: Icon(Icons.person),
                                 )
@@ -134,14 +135,14 @@ class TradeCard extends StatelessWidget {
                                       NetworkImage(doc!['profilePicture']),
                                 );
                         } else {
-                          return CircleAvatar(
+                          return const CircleAvatar(
                             radius: 25,
                             child: Icon(Icons.person),
                           );
                         }
                       } else {
                         //if the process is not finished then show the indicator process
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       }
                     },
                   ),
@@ -168,26 +169,71 @@ class TradeCard extends StatelessWidget {
                 surfaceTintColor: Colors.red,
                 itemBuilder: (BuildContext context) => [
                   PopupMenuItem(
-                    child: TextButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.report,
-                              color: Colors.red,
-                            ),
-                            Text(
-                              'Report Trade',
-                              style: TextStyle(
-                                color: Colors.red,
-                              ),
-                            ),
-                          ],
-                        )),
+                    child: trade.userID == appbloc.state.user.id
+                        ? TextButton(
+                            onPressed: () {
+                              //* call logic for deleting trade
+                            },
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.report,
+                                  color: Colors.red,
+                                ),
+                                Text(
+                                  'Delete',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ],
+                            ))
+                        : TextButton(
+                            onPressed: () {},
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.report,
+                                  color: Colors.red,
+                                ),
+                                Text(
+                                  'Report Trade',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ],
+                            )),
                   )
                 ],
               ),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0, left: 16),
+            child: Row(
+              children: [
+                Card(
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(0),
+                    topRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  )),
+                  color: theme.colorScheme.primary,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      maxLines: null,
+                      trade.details,
+                      style: theme.textTheme.titleMedium!
+                          .copyWith(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Divider(
             color: theme.dividerColor,
@@ -214,7 +260,7 @@ class TradeCard extends StatelessWidget {
                                               currentUser: appbloc.state.user),
                                           child: Container(
                                               clipBehavior: Clip.hardEdge,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.only(
                                                           topLeft:
@@ -227,7 +273,7 @@ class TradeCard extends StatelessWidget {
                                                       .size
                                                       .height *
                                                   0.85,
-                                              child: CreateTradeView(
+                                              child: const CreateTradeView(
                                                 proposeTrade: true,
                                               )),
                                         ))
@@ -241,22 +287,22 @@ class TradeCard extends StatelessWidget {
                                       currentUser: appbloc.state.user),
                                   child: Container(
                                       clipBehavior: Clip.hardEdge,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(20),
                                               topRight: Radius.circular(20))),
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.85,
-                                      child: CreateTradeView(
+                                      child: const CreateTradeView(
                                         proposeTrade: true,
                                       )),
                                 ));
                   },
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(Icons.swap_vert),
-                      Text('Trade'),
+                      Text('Offer A Trade'),
                     ],
                   )),
               ElevatedButton(
@@ -265,7 +311,7 @@ class TradeCard extends StatelessWidget {
                     side: BorderSide(color: theme.colorScheme.primary),
                   ),
                   onPressed: () {},
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(Icons.message),
                       Padding(padding: EdgeInsets.all(4)),
@@ -283,20 +329,7 @@ class TradeCard extends StatelessWidget {
                         trade.cards.first.imageUris?.normal ?? '',
                         height: 400,
                       )
-                    : Icon(Icons.photo)),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    trade.details,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
+                    : const Icon(Icons.photo)),
           ),
         ]),
       ),

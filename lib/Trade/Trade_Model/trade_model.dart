@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/card_model.dart';
 
 part 'trade_model.freezed.dart';
@@ -12,6 +11,8 @@ class TradePostModel with _$TradePostModel {
     @Default('') String userID,
     @Default('') String userName,
     @Default([]) List<CardModel> cards,
+    @Default(true) lookingFor,
+    @Default(false) willingToTrade,
   }) = _TradeModel;
 
   const TradePostModel._();

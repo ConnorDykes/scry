@@ -10,7 +10,7 @@ part 'app_bloc_bloc.freezed.dart';
 class AppBlocBloc extends Bloc<AppBlocEvent, AppBlocState> {
   final authRepo = AuthRepo();
 
-  AppBlocBloc() : super(AppBlocState()) {
+  AppBlocBloc() : super(const AppBlocState()) {
     on<_UpdateUser>((event, emit) {
       emit(state.copyWith(user: event.user));
     });

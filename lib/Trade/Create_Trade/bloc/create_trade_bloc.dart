@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Card_Repo/card_repository.dart';
-import 'package:scry/Trade/trade_model.dart';
+import 'package:scry/Trade/Trade_Model/trade_model.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
@@ -34,6 +34,47 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       }
     });
 
+    on<_UpdateTradeType>(
+      (event, emit) {
+        if (state.selectedCards.isEmpty) {
+          emit(state.copyWith(
+              lookingFor: !state.lookingFor,
+              willingToTrade: !state.willingToTrade));
+        } else {
+          //* this method formats the text with the appropriate grammar
+          String details() {
+            String firstLetter =
+                state.selectedCards.first.name!.trim().substring(0, 1);
+            final firstThreeLetter =
+                state.selectedCards.first.name!.trim().substring(0, 3);
+
+            if (firstLetter == 'A' ||
+                firstLetter == 'E' ||
+                firstLetter == 'I' ||
+                firstLetter == 'O' ||
+                firstLetter == 'U') {
+              return state.lookingFor
+                  ? "I have an ${state.selectedCards.first.name} and would like to trade it."
+                  : "I am looking for an ${state.selectedCards.first.name}.";
+            } else if (firstThreeLetter == 'The') {
+              return state.lookingFor
+                  ? "I have ${state.selectedCards.first.name} and would like to trade it."
+                  : "I am looking for ${state.selectedCards.first.name}.";
+            } else {
+              return state.lookingFor
+                  ? "I have a ${state.selectedCards.first.name} and would like to trade it."
+                  : "I am looking for a ${state.selectedCards.first.name}.";
+            }
+          }
+
+          emit(state.copyWith(
+              lookingFor: !state.lookingFor,
+              willingToTrade: !state.willingToTrade,
+              details: details()));
+        }
+      },
+    );
+
     on<_UpdateDetails>(
         (event, emit) => emit(state.copyWith(details: event.details)));
 
@@ -44,15 +85,40 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
     });
 
     on<_SelectCard>((event, emit) {
+      String details() {
+        if (trade != TradePostModel.empty) {
+          return 'Would you like to trade your ${trade.cards.first.name} for my ${event.card.name}?';
+        } else {
+          String firstLetter = event.card.name!.trim().substring(0, 1);
+          final firstThreeLetter = event.card.name!.trim().substring(0, 3);
+
+          if (firstLetter == 'A' ||
+              firstLetter == 'E' ||
+              firstLetter == 'I' ||
+              firstLetter == 'O' ||
+              firstLetter == 'U') {
+            return !state.lookingFor
+                ? "I have an ${event.card.name} and would like to trade it."
+                : "I am looking for an ${event.card.name}.";
+          } else if (firstThreeLetter == 'The') {
+            return !state.lookingFor
+                ? "I have ${event.card.name} and would like to trade it."
+                : "I am looking for ${event.card.name}.";
+          } else {
+            return !state.lookingFor
+                ? "I have a ${event.card.name} and would like to trade it."
+                : "I am looking for a ${event.card.name}.";
+          }
+        }
+      }
+
       searchController.clear();
       emit(state.copyWith(
           selectedCards: [...state.selectedCards, event.card],
           cards: [],
           cardLoadStatus: LoadStatus.initial,
           queryString: '',
-          details: trade != TradePostModel.empty
-              ? 'Would you like to trade my ${event.card.name} for your ${trade.cards.first.name}?'
-              : state.details));
+          details: details()));
     });
     on<_ClearSelectedCard>((event, emit) {
       debugPrint('clearSelectedCard');
@@ -110,7 +176,8 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
         'cards': [...state.selectedCards.map((card) => card.toJson())],
         'userID': event.user.id,
         'userName': name,
-        'comments': []
+        'willingToTrade': state.willingToTrade,
+        'lookingFor': state.lookingFor,
       };
 
       try {

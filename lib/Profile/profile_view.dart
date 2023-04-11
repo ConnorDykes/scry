@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
-import 'package:scry/Sign_In/sign_in_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -24,7 +22,7 @@ class ProfileView extends StatelessWidget {
                   onPressed: () {
                     SignInModal().showSignInModal(context: context);
                   },
-                  child: Text('Sign in'),
+                  child: const Text('Sign in'),
                 ),
               )
             : AnnotatedRegion<SystemUiOverlayStyle>(
@@ -32,7 +30,7 @@ class ProfileView extends StatelessWidget {
                 child: Scaffold(
                   appBar: AppBar(
                     backgroundColor: theme.scaffoldBackgroundColor,
-                    title: Text('Profile'),
+                    title: const Text('Profile'),
                     actions: [
                       IconButton(
                           onPressed: () {
@@ -40,7 +38,7 @@ class ProfileView extends StatelessWidget {
                               context: context,
                             );
                           },
-                          icon: Icon(Icons.logout_rounded))
+                          icon: const Icon(Icons.logout_rounded))
                     ],
                   ),
                   body: Column(
@@ -62,7 +60,7 @@ class ProfileView extends StatelessWidget {
                                           .profilePicture
                                           .replaceAll("s96-c", "s192-c")),
                                       child: user.profilePicture == ''
-                                          ? Icon(
+                                          ? const Icon(
                                               Icons.person,
                                               size: 100,
                                             )
@@ -77,7 +75,7 @@ class ProfileView extends StatelessWidget {
                                     : user.fullName,
                                 style: theme.textTheme.titleLarge,
                               ),
-                              Text('City, State'),
+                              const Text('City, State'),
                               SelectableText('User ID: ${user.id}')
                             ],
                           ),
@@ -89,10 +87,10 @@ class ProfileView extends StatelessWidget {
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.red,
-                              side: BorderSide(color: Colors.red),
+                              side: const BorderSide(color: Colors.red),
                               surfaceTintColor: Colors.red),
                           onPressed: () {},
-                          child: Row(
+                          child: const Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(
@@ -119,8 +117,8 @@ void _showLogoutDialog({required BuildContext context}) {
   showDialog(
       context: context,
       builder: (context) => AlertDialog(
-            title: Text('Log Out ?'),
-            content: Text("Do you wish to Log Out ?"),
+            title: const Text('Log Out ?'),
+            content: const Text("Do you wish to Log Out ?"),
             actions: [
               TextButton(
                   onPressed: () => Navigator.pop(context),
@@ -131,10 +129,10 @@ void _showLogoutDialog({required BuildContext context}) {
               ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   onPressed: () {
-                    context.read<AppBlocBloc>().add(AppBlocEvent.logout());
+                    context.read<AppBlocBloc>().add(const AppBlocEvent.logout());
                     Navigator.pop(context);
                   },
-                  child: Text(
+                  child: const Text(
                     'LogOut',
                     style: TextStyle(color: Colors.white),
                   ))

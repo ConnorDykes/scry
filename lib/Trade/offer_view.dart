@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
 
@@ -14,7 +13,7 @@ class OfferView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.transparent, title: Text('Trade Offer')),
+          backgroundColor: Colors.transparent, title: const Text('Trade Offer')),
       body: Column(
         children: [
           Row(children: [
@@ -43,7 +42,7 @@ class OfferView extends StatelessWidget {
                                   String imageUrl =
                                       doc?['profilePicture'] ?? '';
                                   return imageUrl == ''
-                                      ? CircleAvatar(
+                                      ? const CircleAvatar(
                                           radius: 25,
                                           child: Icon(Icons.person),
                                         )
@@ -53,14 +52,14 @@ class OfferView extends StatelessWidget {
                                               doc!['profilePicture']),
                                         );
                                 } else {
-                                  return CircleAvatar(
+                                  return const CircleAvatar(
                                     radius: 25,
                                     child: Icon(Icons.person),
                                   );
                                 }
                               } else {
                                 //if the process is not finished then show the indicator process
-                                return Center(
+                                return const Center(
                                     child: CircularProgressIndicator());
                               }
                             },
@@ -93,12 +92,12 @@ class OfferView extends StatelessWidget {
                                 offer.offeredCards.first.imageUris?.normal ??
                                     '',
                               )
-                            : Icon(Icons.photo)),
+                            : const Icon(Icons.photo)),
                   ),
                 ],
               ),
             ),
-            Icon(Icons.swap_horiz),
+            const Icon(Icons.swap_horiz),
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -109,11 +108,11 @@ class OfferView extends StatelessWidget {
                             offer.availableCards.first.imageUris?.normal ?? '',
                             fit: BoxFit.fitWidth,
                           )
-                        : Icon(Icons.photo)),
+                        : const Icon(Icons.photo)),
               ),
             )
           ]),
-          Padding(padding: EdgeInsets.all(8), child: Text(offer.details)),
+          Padding(padding: const EdgeInsets.all(8), child: Text(offer.details)),
           Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
@@ -124,18 +123,18 @@ class OfferView extends StatelessWidget {
                     text: TextSpan(
                         style: theme.textTheme.titleMedium!
                             .copyWith(fontWeight: FontWeight.bold),
-                        text: '${offer.offeringUserName}',
+                        text: offer.offeringUserName,
                         children: [
-                          TextSpan(
+                          const TextSpan(
                               text: ' wants to trade',
                               style: TextStyle(fontWeight: FontWeight.normal)),
                           TextSpan(text: ' ${offer.offeredCards.first.name}'),
-                          TextSpan(
+                          const TextSpan(
                               text: ' for your',
                               style: TextStyle(fontWeight: FontWeight.normal)),
                           TextSpan(
                               text: ' ${offer.availableCards.first.name}',
-                              style: TextStyle(fontWeight: FontWeight.bold)),
+                              style: const TextStyle(fontWeight: FontWeight.bold)),
                         ]),
                   ),
                 ),

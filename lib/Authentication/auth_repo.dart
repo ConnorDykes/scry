@@ -7,7 +7,7 @@ import 'package:scry/Authentication/user_model.dart';
 class AuthRepo {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-  GoogleSignIn _googleSignIn = GoogleSignIn(
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
       // scopes: [
       //   'email',
       //   'https://www.googleapis.com/auth/contacts.readonly',

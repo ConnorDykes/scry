@@ -4,18 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
 import 'package:scry/Messages/messages_view.dart';
 import 'package:scry/Profile/profile_view.dart';
-import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Trade/trade_view.dart';
 
 class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final view = {
-      0: TradeView(),
-      1: MessagesView(),
-      2: Text('Play'),
-      3: ProfileView()
+      0: const TradeView(),
+      1: const MessagesView(),
+      2: const Text('Play'),
+      3: const ProfileView()
     };
 
     return BlocBuilder<HomeBloc, HomeState>(

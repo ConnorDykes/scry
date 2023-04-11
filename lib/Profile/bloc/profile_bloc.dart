@@ -8,8 +8,8 @@ part 'profile_state.dart';
 part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  AuthRepo _authRepo = AuthRepo();
-  ProfileBloc() : super(ProfileState()) {
+  final AuthRepo _authRepo = AuthRepo();
+  ProfileBloc() : super(const ProfileState()) {
     // on<_Logout>((event, emit) {});
   }
 }

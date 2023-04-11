@@ -20,6 +20,7 @@ OfferModel _$OfferModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OfferModel {
+  String get id => throw _privateConstructorUsedError;
   String get details => throw _privateConstructorUsedError;
   String get offeringUserID => throw _privateConstructorUsedError;
   String get offeringUserName => throw _privateConstructorUsedError;
@@ -41,7 +42,8 @@ abstract class $OfferModelCopyWith<$Res> {
       _$OfferModelCopyWithImpl<$Res, OfferModel>;
   @useResult
   $Res call(
-      {String details,
+      {String id,
+      String details,
       String offeringUserID,
       String offeringUserName,
       String recipientUserID,
@@ -63,6 +65,7 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? details = null,
     Object? offeringUserID = null,
     Object? offeringUserName = null,
@@ -72,6 +75,10 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
     Object? availableCards = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
@@ -113,7 +120,8 @@ abstract class _$$_OfferModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String details,
+      {String id,
+      String details,
       String offeringUserID,
       String offeringUserName,
       String recipientUserID,
@@ -133,6 +141,7 @@ class __$$_OfferModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? details = null,
     Object? offeringUserID = null,
     Object? offeringUserName = null,
@@ -142,6 +151,10 @@ class __$$_OfferModelCopyWithImpl<$Res>
     Object? availableCards = null,
   }) {
     return _then(_$_OfferModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
@@ -178,7 +191,8 @@ class __$$_OfferModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OfferModel extends _OfferModel {
   const _$_OfferModel(
-      {this.details = '',
+      {this.id = '',
+      this.details = '',
       this.offeringUserID = '',
       this.offeringUserName = '',
       this.recipientUserID = '',
@@ -192,6 +206,9 @@ class _$_OfferModel extends _OfferModel {
   factory _$_OfferModel.fromJson(Map<String, dynamic> json) =>
       _$$_OfferModelFromJson(json);
 
+  @override
+  @JsonKey()
+  final String id;
   @override
   @JsonKey()
   final String details;
@@ -227,7 +244,7 @@ class _$_OfferModel extends _OfferModel {
 
   @override
   String toString() {
-    return 'OfferModel(details: $details, offeringUserID: $offeringUserID, offeringUserName: $offeringUserName, recipientUserID: $recipientUserID, recipientName: $recipientName, offeredCards: $offeredCards, availableCards: $availableCards)';
+    return 'OfferModel(id: $id, details: $details, offeringUserID: $offeringUserID, offeringUserName: $offeringUserName, recipientUserID: $recipientUserID, recipientName: $recipientName, offeredCards: $offeredCards, availableCards: $availableCards)';
   }
 
   @override
@@ -235,6 +252,7 @@ class _$_OfferModel extends _OfferModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OfferModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.details, details) || other.details == details) &&
             (identical(other.offeringUserID, offeringUserID) ||
                 other.offeringUserID == offeringUserID) &&
@@ -254,6 +272,7 @@ class _$_OfferModel extends _OfferModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       details,
       offeringUserID,
       offeringUserName,
@@ -278,7 +297,8 @@ class _$_OfferModel extends _OfferModel {
 
 abstract class _OfferModel extends OfferModel {
   const factory _OfferModel(
-      {final String details,
+      {final String id,
+      final String details,
       final String offeringUserID,
       final String offeringUserName,
       final String recipientUserID,
@@ -290,6 +310,8 @@ abstract class _OfferModel extends OfferModel {
   factory _OfferModel.fromJson(Map<String, dynamic> json) =
       _$_OfferModel.fromJson;
 
+  @override
+  String get id;
   @override
   String get details;
   @override

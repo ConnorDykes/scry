@@ -21,6 +21,7 @@ mixin _$CreateTradeEvent {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -34,6 +35,7 @@ mixin _$CreateTradeEvent {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -47,6 +49,7 @@ mixin _$CreateTradeEvent {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -61,6 +64,7 @@ mixin _$CreateTradeEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -74,6 +78,7 @@ mixin _$CreateTradeEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -87,6 +92,7 @@ mixin _$CreateTradeEvent {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -156,6 +162,7 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -172,6 +179,7 @@ class _$_Started implements _Started {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -188,6 +196,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -208,6 +217,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -224,6 +234,7 @@ class _$_Started implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -240,6 +251,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -324,6 +336,7 @@ class _$_Search implements _Search {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -340,6 +353,7 @@ class _$_Search implements _Search {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -356,6 +370,7 @@ class _$_Search implements _Search {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -376,6 +391,7 @@ class _$_Search implements _Search {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -392,6 +408,7 @@ class _$_Search implements _Search {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -408,6 +425,7 @@ class _$_Search implements _Search {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -499,6 +517,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -515,6 +534,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -531,6 +551,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -551,6 +572,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -567,6 +589,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -583,6 +606,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -606,6 +630,156 @@ abstract class _UpdateDetails implements CreateTradeEvent {
   @JsonKey(ignore: true)
   _$$_UpdateDetailsCopyWith<_$_UpdateDetails> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateTradeTypeCopyWith<$Res> {
+  factory _$$_UpdateTradeTypeCopyWith(
+          _$_UpdateTradeType value, $Res Function(_$_UpdateTradeType) then) =
+      __$$_UpdateTradeTypeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UpdateTradeTypeCopyWithImpl<$Res>
+    extends _$CreateTradeEventCopyWithImpl<$Res, _$_UpdateTradeType>
+    implements _$$_UpdateTradeTypeCopyWith<$Res> {
+  __$$_UpdateTradeTypeCopyWithImpl(
+      _$_UpdateTradeType _value, $Res Function(_$_UpdateTradeType) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UpdateTradeType implements _UpdateTradeType {
+  const _$_UpdateTradeType();
+
+  @override
+  String toString() {
+    return 'CreateTradeEvent.updateTradeType()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UpdateTradeType);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
+    required TResult Function(CardModel card) selectCard,
+    required TResult Function(UserModel user) createTrade,
+    required TResult Function() clearSelectedCard,
+    required TResult Function() createTradeProposal,
+    required TResult Function() clearSearch,
+    required TResult Function() resetState,
+  }) {
+    return updateTradeType();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
+    TResult? Function(CardModel card)? selectCard,
+    TResult? Function(UserModel user)? createTrade,
+    TResult? Function()? clearSelectedCard,
+    TResult? Function()? createTradeProposal,
+    TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
+  }) {
+    return updateTradeType?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
+    TResult Function(CardModel card)? selectCard,
+    TResult Function(UserModel user)? createTrade,
+    TResult Function()? clearSelectedCard,
+    TResult Function()? createTradeProposal,
+    TResult Function()? clearSearch,
+    TResult Function()? resetState,
+    required TResult orElse(),
+  }) {
+    if (updateTradeType != null) {
+      return updateTradeType();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
+    required TResult Function(_SelectCard value) selectCard,
+    required TResult Function(_CreateTrade value) createTrade,
+    required TResult Function(_ClearSelectedCard value) clearSelectedCard,
+    required TResult Function(_CreateTradeProposal value) createTradeProposal,
+    required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
+  }) {
+    return updateTradeType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
+    TResult? Function(_SelectCard value)? selectCard,
+    TResult? Function(_CreateTrade value)? createTrade,
+    TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult? Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
+  }) {
+    return updateTradeType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
+    TResult Function(_SelectCard value)? selectCard,
+    TResult Function(_CreateTrade value)? createTrade,
+    TResult Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
+    required TResult orElse(),
+  }) {
+    if (updateTradeType != null) {
+      return updateTradeType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateTradeType implements CreateTradeEvent {
+  const factory _UpdateTradeType() = _$_UpdateTradeType;
 }
 
 /// @nodoc
@@ -675,6 +849,7 @@ class _$_SelectCard implements _SelectCard {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -691,6 +866,7 @@ class _$_SelectCard implements _SelectCard {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -707,6 +883,7 @@ class _$_SelectCard implements _SelectCard {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -727,6 +904,7 @@ class _$_SelectCard implements _SelectCard {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -743,6 +921,7 @@ class _$_SelectCard implements _SelectCard {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -759,6 +938,7 @@ class _$_SelectCard implements _SelectCard {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -860,6 +1040,7 @@ class _$_CreateTrade implements _CreateTrade {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -876,6 +1057,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -892,6 +1074,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -912,6 +1095,7 @@ class _$_CreateTrade implements _CreateTrade {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -928,6 +1112,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -944,6 +1129,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1009,6 +1195,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -1025,6 +1212,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -1041,6 +1229,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -1061,6 +1250,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -1077,6 +1267,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1093,6 +1284,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1153,6 +1345,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -1169,6 +1362,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -1185,6 +1379,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -1205,6 +1400,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -1221,6 +1417,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1237,6 +1434,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1297,6 +1495,7 @@ class _$_ClearSearch implements _ClearSearch {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -1313,6 +1512,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -1329,6 +1529,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -1349,6 +1550,7 @@ class _$_ClearSearch implements _ClearSearch {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -1365,6 +1567,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1381,6 +1584,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1441,6 +1645,7 @@ class _$_ResetState implements _ResetState {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
@@ -1457,6 +1662,7 @@ class _$_ResetState implements _ResetState {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
@@ -1473,6 +1679,7 @@ class _$_ResetState implements _ResetState {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
@@ -1493,6 +1700,7 @@ class _$_ResetState implements _ResetState {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
     required TResult Function(_ClearSelectedCard value) clearSelectedCard,
@@ -1509,6 +1717,7 @@ class _$_ResetState implements _ResetState {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
     TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1525,6 +1734,7 @@ class _$_ResetState implements _ResetState {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
     TResult Function(_ClearSelectedCard value)? clearSelectedCard,
@@ -1553,6 +1763,8 @@ mixin _$CreateTradeState {
   List<CardModel> get selectedCards => throw _privateConstructorUsedError;
   ButtonState get buttonState => throw _privateConstructorUsedError;
   LoadStatus get cardLoadStatus => throw _privateConstructorUsedError;
+  bool get lookingFor => throw _privateConstructorUsedError;
+  bool get willingToTrade => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateTradeStateCopyWith<CreateTradeState> get copyWith =>
@@ -1572,7 +1784,9 @@ abstract class $CreateTradeStateCopyWith<$Res> {
       List<CardModel> cards,
       List<CardModel> selectedCards,
       ButtonState buttonState,
-      LoadStatus cardLoadStatus});
+      LoadStatus cardLoadStatus,
+      bool lookingFor,
+      bool willingToTrade});
 }
 
 /// @nodoc
@@ -1595,6 +1809,8 @@ class _$CreateTradeStateCopyWithImpl<$Res, $Val extends CreateTradeState>
     Object? selectedCards = null,
     Object? buttonState = null,
     Object? cardLoadStatus = null,
+    Object? lookingFor = null,
+    Object? willingToTrade = null,
   }) {
     return _then(_value.copyWith(
       uploadError: null == uploadError
@@ -1625,6 +1841,14 @@ class _$CreateTradeStateCopyWithImpl<$Res, $Val extends CreateTradeState>
           ? _value.cardLoadStatus
           : cardLoadStatus // ignore: cast_nullable_to_non_nullable
               as LoadStatus,
+      lookingFor: null == lookingFor
+          ? _value.lookingFor
+          : lookingFor // ignore: cast_nullable_to_non_nullable
+              as bool,
+      willingToTrade: null == willingToTrade
+          ? _value.willingToTrade
+          : willingToTrade // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -1644,7 +1868,9 @@ abstract class _$$_CreateTradeStateCopyWith<$Res>
       List<CardModel> cards,
       List<CardModel> selectedCards,
       ButtonState buttonState,
-      LoadStatus cardLoadStatus});
+      LoadStatus cardLoadStatus,
+      bool lookingFor,
+      bool willingToTrade});
 }
 
 /// @nodoc
@@ -1665,6 +1891,8 @@ class __$$_CreateTradeStateCopyWithImpl<$Res>
     Object? selectedCards = null,
     Object? buttonState = null,
     Object? cardLoadStatus = null,
+    Object? lookingFor = null,
+    Object? willingToTrade = null,
   }) {
     return _then(_$_CreateTradeState(
       uploadError: null == uploadError
@@ -1695,6 +1923,14 @@ class __$$_CreateTradeStateCopyWithImpl<$Res>
           ? _value.cardLoadStatus
           : cardLoadStatus // ignore: cast_nullable_to_non_nullable
               as LoadStatus,
+      lookingFor: null == lookingFor
+          ? _value.lookingFor
+          : lookingFor // ignore: cast_nullable_to_non_nullable
+              as bool,
+      willingToTrade: null == willingToTrade
+          ? _value.willingToTrade
+          : willingToTrade // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1709,7 +1945,9 @@ class _$_CreateTradeState extends _CreateTradeState {
       final List<CardModel> cards = const [],
       final List<CardModel> selectedCards = const [],
       this.buttonState = ButtonState.idle,
-      this.cardLoadStatus = LoadStatus.initial})
+      this.cardLoadStatus = LoadStatus.initial,
+      this.lookingFor = true,
+      this.willingToTrade = false})
       : _cards = cards,
         _selectedCards = selectedCards,
         super._();
@@ -1747,10 +1985,16 @@ class _$_CreateTradeState extends _CreateTradeState {
   @override
   @JsonKey()
   final LoadStatus cardLoadStatus;
+  @override
+  @JsonKey()
+  final bool lookingFor;
+  @override
+  @JsonKey()
+  final bool willingToTrade;
 
   @override
   String toString() {
-    return 'CreateTradeState(uploadError: $uploadError, queryString: $queryString, details: $details, cards: $cards, selectedCards: $selectedCards, buttonState: $buttonState, cardLoadStatus: $cardLoadStatus)';
+    return 'CreateTradeState(uploadError: $uploadError, queryString: $queryString, details: $details, cards: $cards, selectedCards: $selectedCards, buttonState: $buttonState, cardLoadStatus: $cardLoadStatus, lookingFor: $lookingFor, willingToTrade: $willingToTrade)';
   }
 
   @override
@@ -1769,7 +2013,11 @@ class _$_CreateTradeState extends _CreateTradeState {
             (identical(other.buttonState, buttonState) ||
                 other.buttonState == buttonState) &&
             (identical(other.cardLoadStatus, cardLoadStatus) ||
-                other.cardLoadStatus == cardLoadStatus));
+                other.cardLoadStatus == cardLoadStatus) &&
+            (identical(other.lookingFor, lookingFor) ||
+                other.lookingFor == lookingFor) &&
+            (identical(other.willingToTrade, willingToTrade) ||
+                other.willingToTrade == willingToTrade));
   }
 
   @override
@@ -1781,7 +2029,9 @@ class _$_CreateTradeState extends _CreateTradeState {
       const DeepCollectionEquality().hash(_cards),
       const DeepCollectionEquality().hash(_selectedCards),
       buttonState,
-      cardLoadStatus);
+      cardLoadStatus,
+      lookingFor,
+      willingToTrade);
 
   @JsonKey(ignore: true)
   @override
@@ -1798,7 +2048,9 @@ abstract class _CreateTradeState extends CreateTradeState {
       final List<CardModel> cards,
       final List<CardModel> selectedCards,
       final ButtonState buttonState,
-      final LoadStatus cardLoadStatus}) = _$_CreateTradeState;
+      final LoadStatus cardLoadStatus,
+      final bool lookingFor,
+      final bool willingToTrade}) = _$_CreateTradeState;
   const _CreateTradeState._() : super._();
 
   @override
@@ -1815,6 +2067,10 @@ abstract class _CreateTradeState extends CreateTradeState {
   ButtonState get buttonState;
   @override
   LoadStatus get cardLoadStatus;
+  @override
+  bool get lookingFor;
+  @override
+  bool get willingToTrade;
   @override
   @JsonKey(ignore: true)
   _$$_CreateTradeStateCopyWith<_$_CreateTradeState> get copyWith =>

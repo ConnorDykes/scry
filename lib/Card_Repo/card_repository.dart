@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:scry/Trade/trade_model.dart';
 import 'package:scry/card_model.dart';
 
 class CardRepository {
-  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   Future<List<CardModel>?> searchNamed({required String name}) async {
     final client = http.Client();
@@ -68,6 +67,7 @@ class CardRepository {
       debugPrint(e.toString());
       return [];
     }
+    return null;
   }
 
   Future<bool> createTrade({required Map<String, dynamic> trade}) async {

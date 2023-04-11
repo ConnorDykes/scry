@@ -24,6 +24,8 @@ mixin _$TradePostModel {
   String get userID => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
   List<CardModel> get cards => throw _privateConstructorUsedError;
+  dynamic get lookingFor => throw _privateConstructorUsedError;
+  dynamic get willingToTrade => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +40,12 @@ abstract class $TradePostModelCopyWith<$Res> {
       _$TradePostModelCopyWithImpl<$Res, TradePostModel>;
   @useResult
   $Res call(
-      {String details, String userID, String userName, List<CardModel> cards});
+      {String details,
+      String userID,
+      String userName,
+      List<CardModel> cards,
+      dynamic lookingFor,
+      dynamic willingToTrade});
 }
 
 /// @nodoc
@@ -58,6 +65,8 @@ class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
     Object? userID = null,
     Object? userName = null,
     Object? cards = null,
+    Object? lookingFor = freezed,
+    Object? willingToTrade = freezed,
   }) {
     return _then(_value.copyWith(
       details: null == details
@@ -76,6 +85,14 @@ class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
           ? _value.cards
           : cards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
+      lookingFor: freezed == lookingFor
+          ? _value.lookingFor
+          : lookingFor // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      willingToTrade: freezed == willingToTrade
+          ? _value.willingToTrade
+          : willingToTrade // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -89,7 +106,12 @@ abstract class _$$_TradeModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String details, String userID, String userName, List<CardModel> cards});
+      {String details,
+      String userID,
+      String userName,
+      List<CardModel> cards,
+      dynamic lookingFor,
+      dynamic willingToTrade});
 }
 
 /// @nodoc
@@ -107,6 +129,8 @@ class __$$_TradeModelCopyWithImpl<$Res>
     Object? userID = null,
     Object? userName = null,
     Object? cards = null,
+    Object? lookingFor = freezed,
+    Object? willingToTrade = freezed,
   }) {
     return _then(_$_TradeModel(
       details: null == details
@@ -125,6 +149,9 @@ class __$$_TradeModelCopyWithImpl<$Res>
           ? _value._cards
           : cards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
+      lookingFor: freezed == lookingFor ? _value.lookingFor! : lookingFor,
+      willingToTrade:
+          freezed == willingToTrade ? _value.willingToTrade! : willingToTrade,
     ));
   }
 }
@@ -136,7 +163,9 @@ class _$_TradeModel extends _TradeModel {
       {this.details = '',
       this.userID = '',
       this.userName = '',
-      final List<CardModel> cards = const []})
+      final List<CardModel> cards = const [],
+      this.lookingFor = true,
+      this.willingToTrade = false})
       : _cards = cards,
         super._();
 
@@ -162,8 +191,15 @@ class _$_TradeModel extends _TradeModel {
   }
 
   @override
+  @JsonKey()
+  final dynamic lookingFor;
+  @override
+  @JsonKey()
+  final dynamic willingToTrade;
+
+  @override
   String toString() {
-    return 'TradePostModel(details: $details, userID: $userID, userName: $userName, cards: $cards)';
+    return 'TradePostModel(details: $details, userID: $userID, userName: $userName, cards: $cards, lookingFor: $lookingFor, willingToTrade: $willingToTrade)';
   }
 
   @override
@@ -175,13 +211,23 @@ class _$_TradeModel extends _TradeModel {
             (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
-            const DeepCollectionEquality().equals(other._cards, _cards));
+            const DeepCollectionEquality().equals(other._cards, _cards) &&
+            const DeepCollectionEquality()
+                .equals(other.lookingFor, lookingFor) &&
+            const DeepCollectionEquality()
+                .equals(other.willingToTrade, willingToTrade));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, details, userID, userName,
-      const DeepCollectionEquality().hash(_cards));
+  int get hashCode => Object.hash(
+      runtimeType,
+      details,
+      userID,
+      userName,
+      const DeepCollectionEquality().hash(_cards),
+      const DeepCollectionEquality().hash(lookingFor),
+      const DeepCollectionEquality().hash(willingToTrade));
 
   @JsonKey(ignore: true)
   @override
@@ -202,7 +248,9 @@ abstract class _TradeModel extends TradePostModel {
       {final String details,
       final String userID,
       final String userName,
-      final List<CardModel> cards}) = _$_TradeModel;
+      final List<CardModel> cards,
+      final dynamic lookingFor,
+      final dynamic willingToTrade}) = _$_TradeModel;
   const _TradeModel._() : super._();
 
   factory _TradeModel.fromJson(Map<String, dynamic> json) =
@@ -216,6 +264,10 @@ abstract class _TradeModel extends TradePostModel {
   String get userName;
   @override
   List<CardModel> get cards;
+  @override
+  dynamic get lookingFor;
+  @override
+  dynamic get willingToTrade;
   @override
   @JsonKey(ignore: true)
   _$$_TradeModelCopyWith<_$_TradeModel> get copyWith =>
