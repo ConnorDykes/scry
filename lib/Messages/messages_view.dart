@@ -6,7 +6,7 @@ import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
-import 'package:scry/Trade/offer_view.dart';
+import 'package:scry/card_dialog.dart';
 
 class MessagesView extends StatelessWidget {
   const MessagesView({super.key});
@@ -224,21 +224,35 @@ class Offers extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: offer.offeredCards.first
-                                                          .imageUris?.normal !=
-                                                      null
-                                                  ? Image.network(
-                                                      offer
+                                          child: GestureDetector(
+                                            onTap: () => showDialog(
+                                                context: context,
+                                                builder: (context) =>
+                                                    CardDialog(
+                                                        card: offer.offeredCards
+                                                            .first)),
+                                            child: Material(
+                                              elevation: 6,
+                                              child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  child: offer
                                                               .offeredCards
                                                               .first
                                                               .imageUris
-                                                              ?.normal ??
-                                                          '',
-                                                    )
-                                                  : Icon(Icons.photo)),
+                                                              ?.normal !=
+                                                          null
+                                                      ? Image.network(
+                                                          offer
+                                                                  .offeredCards
+                                                                  .first
+                                                                  .imageUris
+                                                                  ?.normal ??
+                                                              '',
+                                                        )
+                                                      : Icon(Icons.photo)),
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -247,19 +261,31 @@ class Offers extends StatelessWidget {
                                   Flexible(
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          child: offer.availableCards.first
-                                                      .imageUris?.normal !=
-                                                  null
-                                              ? Image.network(
-                                                  offer.availableCards.first
-                                                          .imageUris?.normal ??
-                                                      '',
-                                                  fit: BoxFit.fitWidth,
-                                                )
-                                              : Icon(Icons.photo)),
+                                      child: GestureDetector(
+                                        onTap: () => showDialog(
+                                            context: context,
+                                            builder: (context) => CardDialog(
+                                                card: offer
+                                                    .availableCards.first)),
+                                        child: Material(
+                                          elevation: 6,
+                                          child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child: offer.availableCards.first
+                                                          .imageUris?.normal !=
+                                                      null
+                                                  ? Image.network(
+                                                      offer
+                                                              .availableCards
+                                                              .first
+                                                              .imageUris
+                                                              ?.normal ??
+                                                          '',
+                                                    )
+                                                  : Icon(Icons.photo)),
+                                        ),
+                                      ),
                                     ),
                                   )
                                 ]),
