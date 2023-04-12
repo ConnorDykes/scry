@@ -320,16 +320,33 @@ class TradeCard extends StatelessWidget {
                   ))
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: trade.cards.first.imageUris?.normal != null
-                    ? Image.network(
-                        trade.cards.first.imageUris?.normal ?? '',
-                        height: 400,
-                      )
-                    : const Icon(Icons.photo)),
+          Card(
+            elevation: 0,
+            color: trade.lookingFor
+                ? theme.colorScheme.primary.withOpacity(.2)
+                : Colors.blue.withOpacity(.2),
+            child: Column(
+              children: [
+                Text(
+                  trade.lookingFor ? "Looking For" : "Willing To Trade",
+                  style: theme.textTheme.titleMedium!.copyWith(
+                      color: trade.lookingFor
+                          ? theme.colorScheme.primary
+                          : Colors.blue),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: trade.cards.first.imageUris?.normal != null
+                          ? Image.network(
+                              trade.cards.first.imageUris?.normal ?? '',
+                              height: 400,
+                            )
+                          : const Icon(Icons.photo)),
+                ),
+              ],
+            ),
           ),
         ]),
       ),

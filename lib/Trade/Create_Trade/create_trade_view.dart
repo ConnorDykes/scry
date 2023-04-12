@@ -188,7 +188,7 @@ class CreateTradeView extends StatelessWidget {
                               showDuration: const Duration(seconds: 6),
                               key: tooltipkey,
                               message:
-                                  "Looking For indicates that you are searchign for this card,\nwhere as Willing To Trade means you currently have this card and want to trade it for something else ",
+                                  "Looking For indicates that you are searching for this card,\nwhere as Willing To Trade means you currently have this card and want to trade it for something else ",
                               child: Icon(
                                 CupertinoIcons.info,
                                 color: Colors.grey,
