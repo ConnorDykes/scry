@@ -117,6 +117,8 @@ void _showLogoutDialog({required BuildContext context}) {
   showDialog(
       context: context,
       builder: (context) => AlertDialog(
+            surfaceTintColor: Colors.grey,
+            backgroundColor: theme.scaffoldBackgroundColor,
             title: const Text('Log Out ?'),
             content: const Text("Do you wish to Log Out ?"),
             actions: [
@@ -129,7 +131,9 @@ void _showLogoutDialog({required BuildContext context}) {
               ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   onPressed: () {
-                    context.read<AppBlocBloc>().add(const AppBlocEvent.logout());
+                    context
+                        .read<AppBlocBloc>()
+                        .add(const AppBlocEvent.logout());
                     Navigator.pop(context);
                   },
                   child: const Text(

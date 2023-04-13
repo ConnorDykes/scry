@@ -56,13 +56,13 @@ class CreateTradeView extends StatelessWidget {
             0: Text(
               "Looking For",
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: state.lookingFor ? Colors.white : Colors.black),
             ),
             1: Text(
               "Willing To Trade",
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: state.willingToTrade ? Colors.white : Colors.black),
             ),
           };

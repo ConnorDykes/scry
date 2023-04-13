@@ -49,8 +49,8 @@ class CardRepository {
         cards.addAll(page);
 
         //* these function remove Alchemy cards
-        cards.removeWhere((card) => card.legalities!.alchemy == 'legal');
-        cards.removeWhere((card) => !card.games!.contains('paper'));
+        //cards.removeWhere((card) => card.legalities!.alchemy == 'legal');
+        // cards.removeWhere((card) => !card.games!.contains('paper'));
 
         // if (body['has_more'] == true
         //   debugPrint('has more pages');
@@ -93,18 +93,23 @@ class CardRepository {
     print(offer['offeringUserID']);
     try {
       // Get a reference to the Document in the Sending Users users Offers  collection
-      await _firebaseFirestore
+      final offeringUserDoc = await _firebaseFirestore
           .collection('users')
           .doc(offer['offeringUserID'])
           .collection('offers')
-          .add(offer);
+          .doc();
+
+      offer['id'] = offeringUserDoc.id;
+
+      offeringUserDoc.set(offer);
 
       // Get a reference to the Document in the Receiving Users users Offers collection
-      await _firebaseFirestore
+      final receivingUserDoc = await _firebaseFirestore
           .collection('users')
           .doc(offer['recipientUserID'])
           .collection('offers')
-          .add(offer);
+          .doc(offer['id'])
+          .set(offer);
 
       return true;
     } catch (e) {

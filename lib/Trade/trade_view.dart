@@ -210,25 +210,27 @@ class TradeCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 8.0, left: 16),
+            padding: const EdgeInsets.only(bottom: 8.0, left: 16, right: 8),
             child: Row(
               children: [
-                Card(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(15),
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
-                  )),
-                  color: theme.colorScheme.primary,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      maxLines: null,
-                      trade.details,
-                      style: theme.textTheme.titleMedium!
-                          .copyWith(color: Colors.white),
+                Flexible(
+                  child: Card(
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(15),
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    )),
+                    color: theme.colorScheme.primary,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        maxLines: null,
+                        trade.details,
+                        style: theme.textTheme.titleMedium!
+                            .copyWith(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
@@ -337,7 +339,7 @@ class TradeCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(12),
                       child: trade.cards.first.imageUris?.normal != null
                           ? Image.network(
                               trade.cards.first.imageUris?.normal ?? '',

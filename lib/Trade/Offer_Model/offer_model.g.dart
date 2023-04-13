@@ -8,6 +8,7 @@ part of 'offer_model.dart';
 
 _$_OfferModel _$$_OfferModelFromJson(Map<String, dynamic> json) =>
     _$_OfferModel(
+      id: json['id'] as String? ?? '',
       details: json['details'] as String? ?? '',
       offeringUserID: json['offeringUserID'] as String? ?? '',
       offeringUserName: json['offeringUserName'] as String? ?? '',
@@ -25,6 +26,7 @@ _$_OfferModel _$$_OfferModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_OfferModelToJson(_$_OfferModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'details': instance.details,
       'offeringUserID': instance.offeringUserID,
       'offeringUserName': instance.offeringUserName,

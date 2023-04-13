@@ -59,7 +59,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         emit(state.copyWith(
             buttonState: ButtonState.success, user: user, emailError: ''));
 
-        //Navigator.pushReplacementNamed(event.context, '/Profile');
+        if (Navigator.canPop(event.context)) {
+          Navigator.pop(event.context);
+        }
+        if (Navigator.canPop(event.context)) {
+          Navigator.pop(event.context);
+        }
       } catch (e) {
         emit(state.copyWith(
             buttonState: ButtonState.fail, emailError: e.toString()));

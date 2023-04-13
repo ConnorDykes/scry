@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Messages/Chat_Model/chat_model.dart';
+import 'package:scry/Messages/Messages_Model/message_model.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
+import 'package:scry/Trade/Trade_Offer/bloc/trade_offer_bloc.dart';
 import 'package:scry/card_dialog.dart';
 
 class MessagesView extends StatelessWidget {
@@ -91,7 +94,7 @@ class Offers extends StatelessWidget {
                     return Center(
                       child: Text(
                         'No Trade Offers',
-                        style: theme.textTheme.titleLarge,
+                        style: theme.textTheme.titleMedium,
                       ),
                     );
                   } else if (snapshot.hasData &&
@@ -108,250 +111,387 @@ class Offers extends StatelessWidget {
                         itemBuilder: (context, index) {
                           OfferModel offer = offers[index];
 
-                          return Card(
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, right: 8, top: 8),
-                                      child: CircleAvatar(
-                                        radius: 27,
-                                        child: FutureBuilder(
-                                          //method to be waiting for in the future
-                                          future: FirebaseFirestore.instance
-                                              .collection('users')
-                                              .doc(offer.recipientUserID)
-                                              .get(),
-                                          builder: (_, snapshot) {
-                                            //if done show data,
-                                            if (snapshot.connectionState ==
-                                                ConnectionState.done) {
-                                              if (snapshot.hasData &&
-                                                  snapshot.data != null) {
-                                                final doc =
-                                                    snapshot.data!.data();
-                                                String imageUrl =
-                                                    doc?['profilePicture'] ??
-                                                        '';
-                                                return imageUrl == ''
-                                                    ? const CircleAvatar(
+                          return BlocProvider(
+                            create: (context) => TradeOfferBloc(offer: offer),
+                            child: BlocBuilder<TradeOfferBloc, TradeOfferState>(
+                              builder: (context, state) {
+                                return Card(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, right: 8, top: 8),
+                                            child: CircleAvatar(
+                                              radius: 27,
+                                              child: FutureBuilder(
+                                                //method to be waiting for in the future
+                                                future: FirebaseFirestore
+                                                    .instance
+                                                    .collection('users')
+                                                    .doc(offer.offeringUserID)
+                                                    .get(),
+                                                builder: (_, snapshot) {
+                                                  //if done show data,
+                                                  if (snapshot
+                                                          .connectionState ==
+                                                      ConnectionState.done) {
+                                                    if (snapshot.hasData &&
+                                                        snapshot.data != null) {
+                                                      final doc =
+                                                          snapshot.data!.data();
+                                                      String imageUrl = doc?[
+                                                              'profilePicture'] ??
+                                                          '';
+                                                      return imageUrl == ''
+                                                          ? const CircleAvatar(
+                                                              radius: 25,
+                                                              child: Icon(
+                                                                  Icons.person),
+                                                            )
+                                                          : CircleAvatar(
+                                                              radius: 25,
+                                                              backgroundImage:
+                                                                  NetworkImage(doc![
+                                                                      'profilePicture']),
+                                                            );
+                                                    } else {
+                                                      return const CircleAvatar(
                                                         radius: 25,
                                                         child:
                                                             Icon(Icons.person),
-                                                      )
-                                                    : CircleAvatar(
-                                                        radius: 25,
-                                                        backgroundImage:
-                                                            NetworkImage(doc![
-                                                                'profilePicture']),
                                                       );
-                                              } else {
-                                                return const CircleAvatar(
-                                                  radius: 25,
-                                                  child: Icon(Icons.person),
-                                                );
-                                              }
-                                            } else {
-                                              //if the process is not finished then show the indicator process
-                                              return const Center(
-                                                  child:
-                                                      CircularProgressIndicator());
-                                            }
-                                          },
-                                        ),
+                                                    }
+                                                  } else {
+                                                    //if the process is not finished then show the indicator process
+                                                    return const Center(
+                                                        child:
+                                                            CircularProgressIndicator());
+                                                  }
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                offer.offeringUserName,
+                                                style: theme
+                                                    .textTheme.titleMedium!
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                              Text(
+                                                'City, State',
+                                                style:
+                                                    theme.textTheme.titleSmall,
+                                              ),
+                                            ],
+                                          ),
+                                          Expanded(
+                                              child: Icon(
+                                                  Icons.arrow_forward_rounded)),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                offer.recipientName,
+                                                style: theme
+                                                    .textTheme.titleMedium!
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                              Text(
+                                                'City, State',
+                                                style:
+                                                    theme.textTheme.titleSmall,
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, right: 8, top: 8),
+                                            child: CircleAvatar(
+                                              radius: 27,
+                                              child: FutureBuilder(
+                                                //method to be waiting for in the future
+                                                future: FirebaseFirestore
+                                                    .instance
+                                                    .collection('users')
+                                                    .doc(offer.recipientUserID)
+                                                    .get(),
+                                                builder: (_, snapshot) {
+                                                  //if done show data,
+                                                  if (snapshot
+                                                          .connectionState ==
+                                                      ConnectionState.done) {
+                                                    if (snapshot.hasData &&
+                                                        snapshot.data != null) {
+                                                      final doc =
+                                                          snapshot.data!.data();
+                                                      String imageUrl = doc?[
+                                                              'profilePicture'] ??
+                                                          '';
+                                                      return imageUrl == ''
+                                                          ? const CircleAvatar(
+                                                              radius: 25,
+                                                              child: Icon(
+                                                                  Icons.person),
+                                                            )
+                                                          : CircleAvatar(
+                                                              radius: 25,
+                                                              backgroundImage:
+                                                                  NetworkImage(doc![
+                                                                      'profilePicture']),
+                                                            );
+                                                    } else {
+                                                      return const CircleAvatar(
+                                                        radius: 25,
+                                                        child:
+                                                            Icon(Icons.person),
+                                                      );
+                                                    }
+                                                  } else {
+                                                    //if the process is not finished then show the indicator process
+                                                    return const Center(
+                                                        child:
+                                                            CircularProgressIndicator());
+                                                  }
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          offer.recipientName,
-                                          style: theme.textTheme.titleMedium!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w600),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Flexible(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8.0),
+                                              child: Card(
+                                                shape:
+                                                    const RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                  topLeft: Radius.circular(0),
+                                                  topRight: Radius.circular(15),
+                                                  bottomLeft:
+                                                      Radius.circular(15),
+                                                  bottomRight:
+                                                      Radius.circular(15),
+                                                )),
+                                                color:
+                                                    theme.colorScheme.primary,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    maxLines: null,
+                                                    offer.details,
+                                                    style: theme
+                                                        .textTheme.titleMedium!
+                                                        .copyWith(
+                                                            color:
+                                                                Colors.white),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      Divider(
+                                        color: theme.dividerColor,
+                                      ),
+                                      Row(children: [
+                                        Flexible(
+                                          child: Column(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: GestureDetector(
+                                                  onTap: () => showDialog(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                          CardDialog(
+                                                              card: offer
+                                                                  .offeredCards
+                                                                  .first)),
+                                                  child: Material(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8)),
+                                                    clipBehavior: Clip.hardEdge,
+                                                    elevation: 6,
+                                                    child: offer
+                                                                .offeredCards
+                                                                .first
+                                                                .imageUris
+                                                                ?.normal !=
+                                                            null
+                                                        ? Image.network(
+                                                            offer
+                                                                    .offeredCards
+                                                                    .first
+                                                                    .imageUris
+                                                                    ?.normal ??
+                                                                '',
+                                                          )
+                                                        : const Icon(
+                                                            Icons.photo),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Text(
-                                          'City, State',
-                                          style: theme.textTheme.titleSmall,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Flexible(
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8.0),
-                                        child: Card(
-                                          shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(0),
-                                            topRight: Radius.circular(15),
-                                            bottomLeft: Radius.circular(15),
-                                            bottomRight: Radius.circular(15),
-                                          )),
-                                          color: theme.colorScheme.primary,
+                                        const Icon(Icons.swap_horiz),
+                                        Flexible(
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              maxLines: null,
-                                              offer.details,
-                                              style: theme
-                                                  .textTheme.titleMedium!
-                                                  .copyWith(
-                                                      color: Colors.white),
+                                            child: GestureDetector(
+                                              onTap: () => showDialog(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      CardDialog(
+                                                          card: offer
+                                                              .availableCards
+                                                              .first)),
+                                              child: Material(
+                                                elevation: 6,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8)),
+                                                clipBehavior: Clip.hardEdge,
+                                                child: offer
+                                                            .availableCards
+                                                            .first
+                                                            .imageUris
+                                                            ?.normal !=
+                                                        null
+                                                    ? Image.network(
+                                                        offer
+                                                                .availableCards
+                                                                .first
+                                                                .imageUris
+                                                                ?.normal ??
+                                                            '',
+                                                      )
+                                                    : const Icon(Icons.photo),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Divider(
-                                  color: theme.dividerColor,
-                                ),
-                                Row(children: [
-                                  Flexible(
-                                    child: Column(
-                                      children: [
+                                        )
+                                      ]),
+                                      if (offer.offeringUserID !=
+                                          appBloc.state.user.id)
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: GestureDetector(
-                                            onTap: () => showDialog(
-                                                context: context,
-                                                builder: (context) =>
-                                                    CardDialog(
-                                                        card: offer.offeredCards
-                                                            .first)),
-                                            child: Material(
-                                              elevation: 6,
-                                              child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  child: offer
-                                                              .offeredCards
-                                                              .first
-                                                              .imageUris
-                                                              ?.normal !=
-                                                          null
-                                                      ? Image.network(
-                                                          offer
-                                                                  .offeredCards
-                                                                  .first
-                                                                  .imageUris
-                                                                  ?.normal ??
-                                                              '',
-                                                        )
-                                                      : const Icon(
-                                                          Icons.photo)),
-                                            ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          side:
+                                                              const BorderSide(
+                                                                  color: Colors
+                                                                      .green)),
+                                                  onPressed: () {
+                                                    context
+                                                        .read<TradeOfferBloc>()
+                                                        .add(TradeOfferEvent
+                                                            .accept(
+                                                                context:
+                                                                    context));
+                                                  },
+                                                  child: const Row(
+                                                    children: [
+                                                      Icon(Icons
+                                                          .check_circle_outline_rounded),
+                                                      Text('Accept'),
+                                                    ],
+                                                  )),
+                                              ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          foregroundColor:
+                                                              Colors.red,
+                                                          side:
+                                                              const BorderSide(
+                                                                  color: Colors
+                                                                      .red),
+                                                          surfaceTintColor:
+                                                              Colors.red),
+                                                  onPressed: () async {
+                                                    context
+                                                        .read<TradeOfferBloc>()
+                                                        .add(TradeOfferEvent
+                                                            .reject(
+                                                                context:
+                                                                    context));
+                                                  },
+                                                  child: const Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.block,
+                                                        color: Colors.red,
+                                                      ),
+                                                      Text(
+                                                        'Reject',
+                                                        style: TextStyle(
+                                                            color: Colors.red),
+                                                      ),
+                                                    ],
+                                                  )),
+                                              ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          foregroundColor:
+                                                              Colors.blue,
+                                                          side:
+                                                              const BorderSide(
+                                                                  color: Colors
+                                                                      .blue),
+                                                          surfaceTintColor:
+                                                              Colors.blue),
+                                                  onPressed: () {},
+                                                  child: const Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.chat,
+                                                        color: Colors.blue,
+                                                      ),
+                                                      Text(
+                                                        'Message',
+                                                        style: TextStyle(
+                                                            color: Colors.blue),
+                                                      ),
+                                                    ],
+                                                  ))
+                                            ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
+                                        )
+                                    ],
                                   ),
-                                  const Icon(Icons.swap_horiz),
-                                  Flexible(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: GestureDetector(
-                                        onTap: () => showDialog(
-                                            context: context,
-                                            builder: (context) => CardDialog(
-                                                card: offer
-                                                    .availableCards.first)),
-                                        child: Material(
-                                          elevation: 6,
-                                          child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: offer.availableCards.first
-                                                          .imageUris?.normal !=
-                                                      null
-                                                  ? Image.network(
-                                                      offer
-                                                              .availableCards
-                                                              .first
-                                                              .imageUris
-                                                              ?.normal ??
-                                                          '',
-                                                    )
-                                                  : const Icon(Icons.photo)),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ]),
-                                if (offer.offeringUserID !=
-                                    appBloc.state.user.id)
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                side: const BorderSide(
-                                                    color: Colors.green)),
-                                            onPressed: () {},
-                                            child: const Row(
-                                              children: [
-                                                Icon(Icons
-                                                    .check_circle_outline_rounded),
-                                                Text('Accept'),
-                                              ],
-                                            )),
-                                        ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                foregroundColor: Colors.red,
-                                                side: const BorderSide(
-                                                    color: Colors.red),
-                                                surfaceTintColor: Colors.red),
-                                            onPressed: () {},
-                                            child: const Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.block,
-                                                  color: Colors.red,
-                                                ),
-                                                Text(
-                                                  'Reject',
-                                                  style: TextStyle(
-                                                      color: Colors.red),
-                                                ),
-                                              ],
-                                            )),
-                                        ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                foregroundColor: Colors.blue,
-                                                side: const BorderSide(
-                                                    color: Colors.blue),
-                                                surfaceTintColor: Colors.blue),
-                                            onPressed: () {},
-                                            child: const Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.chat,
-                                                  color: Colors.blue,
-                                                ),
-                                                Text(
-                                                  'Message',
-                                                  style: TextStyle(
-                                                      color: Colors.blue),
-                                                ),
-                                              ],
-                                            ))
-                                      ],
-                                    ),
-                                  )
-                              ],
+                                );
+                              },
                             ),
                           );
                         });
@@ -375,8 +515,234 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Messages'),
+    final theme = Theme.of(context);
+
+    return BlocBuilder<AppBlocBloc, AppBlocState>(
+      builder: (context, state) {
+        final currentUserID = state.user.id;
+
+        return state.user == UserModel.empty
+            ? Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    SignInModal().showSignInModal(context: context);
+                  },
+                  child: const Text('Sign in'),
+                ),
+              )
+            : StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection('chats')
+                    .where('users', arrayContains: currentUserID)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return Center(
+                      child: Text(
+                        'No Messages',
+                        style: theme.textTheme.titleMedium,
+                      ),
+                    );
+                  } else if (snapshot.hasData &&
+                      snapshot.data!.docs.isNotEmpty) {
+                    final docs = snapshot.data!.docs;
+                    List<ChatModel> chats = docs
+                        .map((doc) => ChatModel.fromJson(
+                            doc.data() as Map<String, dynamic>))
+                        .toList();
+
+                    return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: chats.length,
+                        itemBuilder: (context, index) {
+                          ChatModel chat = chats[index];
+
+                          //* wrap the builder in a bloc provider for the ChatBloc
+                          return Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8.0, right: 8, top: 8),
+                                          child: CircleAvatar(
+                                            radius: 27,
+                                            child: FutureBuilder(
+                                              //method to be waiting for in the future
+                                              future: FirebaseFirestore.instance
+                                                  .collection('users')
+                                                  .doc(
+                                                      chat.offer.offeringUserID)
+                                                  .get(),
+                                              builder: (_, snapshot) {
+                                                //if done show data,
+                                                if (snapshot.connectionState ==
+                                                    ConnectionState.done) {
+                                                  if (snapshot.hasData &&
+                                                      snapshot.data != null) {
+                                                    final doc =
+                                                        snapshot.data!.data();
+                                                    String imageUrl = doc?[
+                                                            'profilePicture'] ??
+                                                        '';
+                                                    return imageUrl == ''
+                                                        ? const CircleAvatar(
+                                                            radius: 25,
+                                                            child: Icon(
+                                                                Icons.person),
+                                                          )
+                                                        : CircleAvatar(
+                                                            radius: 25,
+                                                            backgroundImage:
+                                                                NetworkImage(doc![
+                                                                    'profilePicture']),
+                                                          );
+                                                  } else {
+                                                    return const CircleAvatar(
+                                                      radius: 25,
+                                                      child: Icon(Icons.person),
+                                                    );
+                                                  }
+                                                } else {
+                                                  //if the process is not finished then show the indicator process
+                                                  return const Center(
+                                                      child:
+                                                          CircularProgressIndicator());
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              chat.offer.offeringUserName,
+                                              style: theme
+                                                  .textTheme.titleMedium!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                            ),
+                                            Text(
+                                              'City, State',
+                                              style: theme.textTheme.titleSmall,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    StreamBuilder<QuerySnapshot>(
+                                        stream: FirebaseFirestore.instance
+                                            .collection('chats')
+                                            .doc(chat.id)
+                                            .collection('messages')
+                                            .snapshots(),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return const Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            );
+                                          } else if (!snapshot.hasData ||
+                                              snapshot.data!.docs.isEmpty) {
+                                            return Center(
+                                              child: Text(
+                                                'No Messages',
+                                                style:
+                                                    theme.textTheme.titleMedium,
+                                              ),
+                                            );
+                                          } else if (snapshot.hasData &&
+                                              snapshot.data!.docs.isNotEmpty) {
+                                            final docs = snapshot.data!.docs;
+
+                                            List<MessageModel> messages = docs
+                                                .map((doc) =>
+                                                    MessageModel.fromJson(
+                                                        doc.data() as Map<
+                                                            String, dynamic>))
+                                                .toList();
+
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8.0),
+                                              child: Card(
+                                                shape:
+                                                    const RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                  topLeft: Radius.circular(0),
+                                                  topRight: Radius.circular(15),
+                                                  bottomLeft:
+                                                      Radius.circular(15),
+                                                  bottomRight:
+                                                      Radius.circular(15),
+                                                )),
+                                                color:
+                                                    theme.colorScheme.primary,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    maxLines: 2,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    messages.first.message,
+                                                    style: theme
+                                                        .textTheme.titleMedium!
+                                                        .copyWith(
+                                                            color:
+                                                                Colors.white),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          } else {
+                                            return Center(
+                                              child: Text(
+                                                'No Message',
+                                                style: theme
+                                                    .textTheme.titleLarge!
+                                                    .copyWith(
+                                                        color: Colors.red),
+                                              ),
+                                            );
+                                          }
+                                        }),
+                                    Divider(
+                                      color: theme.dividerColor,
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.chevron_right_rounded)
+                            ],
+                          );
+                        });
+                  } else {
+                    return Center(
+                      child: Text(
+                        'No Trade Offers',
+                        style: theme.textTheme.titleLarge!
+                            .copyWith(color: Colors.red),
+                      ),
+                    );
+                  }
+                });
+      },
     );
   }
 }
