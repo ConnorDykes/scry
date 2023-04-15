@@ -6,5 +6,6 @@ class ChatState with _$ChatState {
 
   const factory ChatState({
     @Default('') String newMessage,
+    @Default(LoadStatus.initial) LoadStatus loadStatus,
   }) = _ChatState;
 }

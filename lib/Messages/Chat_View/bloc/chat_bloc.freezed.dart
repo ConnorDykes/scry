@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatEvent {
-  String get value => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) updateMessage,
+    required TResult Function() sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? updateMessage,
+    TResult? Function()? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? updateMessage,
+    TResult Function()? sendMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateMessage value) updateMessage,
+    required TResult Function(_SendMessage value) sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateMessage value)? updateMessage,
+    TResult? Function(_SendMessage value)? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateMessage value)? updateMessage,
+    TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ChatEventCopyWith<ChatEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -59,8 +60,6 @@ mixin _$ChatEvent {
 abstract class $ChatEventCopyWith<$Res> {
   factory $ChatEventCopyWith(ChatEvent value, $Res Function(ChatEvent) then) =
       _$ChatEventCopyWithImpl<$Res, ChatEvent>;
-  @useResult
-  $Res call({String value});
 }
 
 /// @nodoc
@@ -72,28 +71,13 @@ class _$ChatEventCopyWithImpl<$Res, $Val extends ChatEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_UpdateMessageCopyWith<$Res>
-    implements $ChatEventCopyWith<$Res> {
+abstract class _$$_UpdateMessageCopyWith<$Res> {
   factory _$$_UpdateMessageCopyWith(
           _$_UpdateMessage value, $Res Function(_$_UpdateMessage) then) =
       __$$_UpdateMessageCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String value});
 }
@@ -154,6 +138,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) updateMessage,
+    required TResult Function() sendMessage,
   }) {
     return updateMessage(value);
   }
@@ -162,6 +147,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? updateMessage,
+    TResult? Function()? sendMessage,
   }) {
     return updateMessage?.call(value);
   }
@@ -170,6 +156,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? updateMessage,
+    TResult Function()? sendMessage,
     required TResult orElse(),
   }) {
     if (updateMessage != null) {
@@ -182,6 +169,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateMessage value) updateMessage,
+    required TResult Function(_SendMessage value) sendMessage,
   }) {
     return updateMessage(this);
   }
@@ -190,6 +178,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateMessage value)? updateMessage,
+    TResult? Function(_SendMessage value)? sendMessage,
   }) {
     return updateMessage?.call(this);
   }
@@ -198,6 +187,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateMessage value)? updateMessage,
+    TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (updateMessage != null) {
@@ -211,17 +201,118 @@ abstract class _UpdateMessage implements ChatEvent {
   const factory _UpdateMessage({required final String value}) =
       _$_UpdateMessage;
 
-  @override
   String get value;
-  @override
   @JsonKey(ignore: true)
   _$$_UpdateMessageCopyWith<_$_UpdateMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$_SendMessageCopyWith<$Res> {
+  factory _$$_SendMessageCopyWith(
+          _$_SendMessage value, $Res Function(_$_SendMessage) then) =
+      __$$_SendMessageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SendMessageCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$_SendMessage>
+    implements _$$_SendMessageCopyWith<$Res> {
+  __$$_SendMessageCopyWithImpl(
+      _$_SendMessage _value, $Res Function(_$_SendMessage) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SendMessage implements _SendMessage {
+  const _$_SendMessage();
+
+  @override
+  String toString() {
+    return 'ChatEvent.sendMessage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SendMessage);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String value) updateMessage,
+    required TResult Function() sendMessage,
+  }) {
+    return sendMessage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? updateMessage,
+    TResult? Function()? sendMessage,
+  }) {
+    return sendMessage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? updateMessage,
+    TResult Function()? sendMessage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateMessage value) updateMessage,
+    required TResult Function(_SendMessage value) sendMessage,
+  }) {
+    return sendMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateMessage value)? updateMessage,
+    TResult? Function(_SendMessage value)? sendMessage,
+  }) {
+    return sendMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateMessage value)? updateMessage,
+    TResult Function(_SendMessage value)? sendMessage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendMessage implements ChatEvent {
+  const factory _SendMessage() = _$_SendMessage;
+}
+
+/// @nodoc
 mixin _$ChatState {
   String get newMessage => throw _privateConstructorUsedError;
+  LoadStatus get loadStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatStateCopyWith<ChatState> get copyWith =>
@@ -233,7 +324,7 @@ abstract class $ChatStateCopyWith<$Res> {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
       _$ChatStateCopyWithImpl<$Res, ChatState>;
   @useResult
-  $Res call({String newMessage});
+  $Res call({String newMessage, LoadStatus loadStatus});
 }
 
 /// @nodoc
@@ -250,12 +341,17 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
   @override
   $Res call({
     Object? newMessage = null,
+    Object? loadStatus = null,
   }) {
     return _then(_value.copyWith(
       newMessage: null == newMessage
           ? _value.newMessage
           : newMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      loadStatus: null == loadStatus
+          ? _value.loadStatus
+          : loadStatus // ignore: cast_nullable_to_non_nullable
+              as LoadStatus,
     ) as $Val);
   }
 }
@@ -267,7 +363,7 @@ abstract class _$$_ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
       __$$_ChatStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String newMessage});
+  $Res call({String newMessage, LoadStatus loadStatus});
 }
 
 /// @nodoc
@@ -282,12 +378,17 @@ class __$$_ChatStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? newMessage = null,
+    Object? loadStatus = null,
   }) {
     return _then(_$_ChatState(
       newMessage: null == newMessage
           ? _value.newMessage
           : newMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      loadStatus: null == loadStatus
+          ? _value.loadStatus
+          : loadStatus // ignore: cast_nullable_to_non_nullable
+              as LoadStatus,
     ));
   }
 }
@@ -295,15 +396,20 @@ class __$$_ChatStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChatState extends _ChatState {
-  const _$_ChatState({this.newMessage = ''}) : super._();
+  const _$_ChatState(
+      {this.newMessage = '', this.loadStatus = LoadStatus.initial})
+      : super._();
 
   @override
   @JsonKey()
   final String newMessage;
+  @override
+  @JsonKey()
+  final LoadStatus loadStatus;
 
   @override
   String toString() {
-    return 'ChatState(newMessage: $newMessage)';
+    return 'ChatState(newMessage: $newMessage, loadStatus: $loadStatus)';
   }
 
   @override
@@ -312,11 +418,13 @@ class _$_ChatState extends _ChatState {
         (other.runtimeType == runtimeType &&
             other is _$_ChatState &&
             (identical(other.newMessage, newMessage) ||
-                other.newMessage == newMessage));
+                other.newMessage == newMessage) &&
+            (identical(other.loadStatus, loadStatus) ||
+                other.loadStatus == loadStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, newMessage);
+  int get hashCode => Object.hash(runtimeType, newMessage, loadStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -326,11 +434,14 @@ class _$_ChatState extends _ChatState {
 }
 
 abstract class _ChatState extends ChatState {
-  const factory _ChatState({final String newMessage}) = _$_ChatState;
+  const factory _ChatState(
+      {final String newMessage, final LoadStatus loadStatus}) = _$_ChatState;
   const _ChatState._() : super._();
 
   @override
   String get newMessage;
+  @override
+  LoadStatus get loadStatus;
   @override
   @JsonKey(ignore: true)
   _$$_ChatStateCopyWith<_$_ChatState> get copyWith =>

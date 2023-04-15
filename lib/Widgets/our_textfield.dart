@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class OurTextfield extends StatelessWidget {
   const OurTextfield(
       {super.key,
-      required this.controller,
+      this.controller,
       required this.onChanged,
       this.suffixIcon,
       this.hintText});
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final Function onChanged;
   final Widget? suffixIcon;
   final String? hintText;
@@ -18,9 +18,9 @@ class OurTextfield extends StatelessWidget {
     final theme = Theme.of(context);
 
     return TextField(
-      controller: controller,
+      controller: controller ?? TextEditingController(),
       onChanged: (value) async {
-        onChanged;
+        onChanged(value);
       },
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.only(left: 8),

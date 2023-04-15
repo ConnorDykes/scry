@@ -6,6 +6,7 @@ import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Messages/Chat_Model/chat_model.dart';
 import 'package:scry/Messages/Chat_View/chat_view.dart';
 import 'package:scry/Messages/Messages_Model/message_model.dart';
+import 'package:scry/Messages/message_widget.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
 import 'package:scry/Trade/Trade_Offer/bloc/trade_offer_bloc.dart';
@@ -663,6 +664,8 @@ class Messages extends StatelessWidget {
                                                 .collection('chats')
                                                 .doc(chat.id)
                                                 .collection('messages')
+                                                .orderBy(
+                                                    'createDateInMillisecondsSinceEpoch')
                                                 .snapshots(),
                                             builder: (context, snapshot) {
                                               if (snapshot.connectionState ==
@@ -695,43 +698,17 @@ class Messages extends StatelessWidget {
                                                     .toList();
 
                                                 return Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 8.0),
-                                                  child: Card(
-                                                    shape:
-                                                        const RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                      topLeft:
-                                                          Radius.circular(0),
-                                                      topRight:
-                                                          Radius.circular(15),
-                                                      bottomLeft:
-                                                          Radius.circular(15),
-                                                      bottomRight:
-                                                          Radius.circular(15),
-                                                    )),
-                                                    color: theme
-                                                        .colorScheme.primary,
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        maxLines: 2,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        messages.first.message,
-                                                        style: theme.textTheme
-                                                            .titleMedium!
-                                                            .copyWith(
-                                                                color: Colors
-                                                                    .white),
-                                                      ),
-                                                    ),
-                                                  ),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 16.0),
+                                                  child: MessageWidget(
+                                                      userName: null,
+                                                      isCurrentUser: messages
+                                                              .last
+                                                              .sendingUserID ==
+                                                          currentUserID,
+                                                      message: messages
+                                                          .last.message),
                                                 );
                                               } else {
                                                 return Center(
