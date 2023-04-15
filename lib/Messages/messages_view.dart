@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Messages/Chat_Model/chat_model.dart';
+import 'package:scry/Messages/Chat_View/chat_view.dart';
 import 'package:scry/Messages/Messages_Model/message_model.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
@@ -562,174 +563,195 @@ class Messages extends StatelessWidget {
                           ChatModel chat = chats[index];
 
                           //* wrap the builder in a bloc provider for the ChatBloc
-                          return Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Row(
+                          return InkWell(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ChatView(chat: chat))),
+                            child: Card(
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8.0, right: 8, top: 8),
-                                          child: CircleAvatar(
-                                            radius: 27,
-                                            child: FutureBuilder(
-                                              //method to be waiting for in the future
-                                              future: FirebaseFirestore.instance
-                                                  .collection('users')
-                                                  .doc(
-                                                      chat.offer.offeringUserID)
-                                                  .get(),
-                                              builder: (_, snapshot) {
-                                                //if done show data,
-                                                if (snapshot.connectionState ==
-                                                    ConnectionState.done) {
-                                                  if (snapshot.hasData &&
-                                                      snapshot.data != null) {
-                                                    final doc =
-                                                        snapshot.data!.data();
-                                                    String imageUrl = doc?[
-                                                            'profilePicture'] ??
-                                                        '';
-                                                    return imageUrl == ''
-                                                        ? const CircleAvatar(
-                                                            radius: 25,
-                                                            child: Icon(
-                                                                Icons.person),
-                                                          )
-                                                        : CircleAvatar(
-                                                            radius: 25,
-                                                            backgroundImage:
-                                                                NetworkImage(doc![
-                                                                    'profilePicture']),
-                                                          );
-                                                  } else {
-                                                    return const CircleAvatar(
-                                                      radius: 25,
-                                                      child: Icon(Icons.person),
-                                                    );
-                                                  }
-                                                } else {
-                                                  //if the process is not finished then show the indicator process
-                                                  return const Center(
-                                                      child:
-                                                          CircularProgressIndicator());
-                                                }
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                        Row(
                                           children: [
-                                            Text(
-                                              chat.offer.offeringUserName,
-                                              style: theme
-                                                  .textTheme.titleMedium!
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.w600),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0, right: 8, top: 8),
+                                              child: CircleAvatar(
+                                                radius: 27,
+                                                child: FutureBuilder(
+                                                  //method to be waiting for in the future
+                                                  future: FirebaseFirestore
+                                                      .instance
+                                                      .collection('users')
+                                                      .doc(chat.offer
+                                                          .recipientUserID)
+                                                      .get(),
+                                                  builder: (_, snapshot) {
+                                                    //if done show data,
+                                                    if (snapshot
+                                                            .connectionState ==
+                                                        ConnectionState.done) {
+                                                      if (snapshot.hasData &&
+                                                          snapshot.data !=
+                                                              null) {
+                                                        final doc = snapshot
+                                                            .data!
+                                                            .data();
+                                                        String imageUrl = doc?[
+                                                                'profilePicture'] ??
+                                                            '';
+                                                        return imageUrl == ''
+                                                            ? const CircleAvatar(
+                                                                radius: 25,
+                                                                child: Icon(Icons
+                                                                    .person),
+                                                              )
+                                                            : CircleAvatar(
+                                                                radius: 25,
+                                                                backgroundImage:
+                                                                    NetworkImage(
+                                                                        doc![
+                                                                            'profilePicture']),
+                                                              );
+                                                      } else {
+                                                        return const CircleAvatar(
+                                                          radius: 25,
+                                                          child: Icon(
+                                                              Icons.person),
+                                                        );
+                                                      }
+                                                    } else {
+                                                      //if the process is not finished then show the indicator process
+                                                      return const Center(
+                                                          child:
+                                                              CircularProgressIndicator());
+                                                    }
+                                                  },
+                                                ),
+                                              ),
                                             ),
-                                            Text(
-                                              'City, State',
-                                              style: theme.textTheme.titleSmall,
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  chat.offer.recipientName,
+                                                  style: theme
+                                                      .textTheme.titleMedium!
+                                                      .copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                ),
+                                                Text(
+                                                  'City, State',
+                                                  style: theme
+                                                      .textTheme.titleSmall,
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
+                                        StreamBuilder<QuerySnapshot>(
+                                            stream: FirebaseFirestore.instance
+                                                .collection('chats')
+                                                .doc(chat.id)
+                                                .collection('messages')
+                                                .snapshots(),
+                                            builder: (context, snapshot) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
+                                                return const Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                );
+                                              } else if (!snapshot.hasData ||
+                                                  snapshot.data!.docs.isEmpty) {
+                                                return Center(
+                                                  child: Text(
+                                                    'No Messages',
+                                                    style: theme
+                                                        .textTheme.titleMedium,
+                                                  ),
+                                                );
+                                              } else if (snapshot.hasData &&
+                                                  snapshot
+                                                      .data!.docs.isNotEmpty) {
+                                                final docs =
+                                                    snapshot.data!.docs;
+
+                                                List<MessageModel> messages = docs
+                                                    .map((doc) =>
+                                                        MessageModel.fromJson(
+                                                            doc.data() as Map<
+                                                                String,
+                                                                dynamic>))
+                                                    .toList();
+
+                                                return Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 8.0),
+                                                  child: Card(
+                                                    shape:
+                                                        const RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                      topLeft:
+                                                          Radius.circular(0),
+                                                      topRight:
+                                                          Radius.circular(15),
+                                                      bottomLeft:
+                                                          Radius.circular(15),
+                                                      bottomRight:
+                                                          Radius.circular(15),
+                                                    )),
+                                                    color: theme
+                                                        .colorScheme.primary,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        messages.first.message,
+                                                        style: theme.textTheme
+                                                            .titleMedium!
+                                                            .copyWith(
+                                                                color: Colors
+                                                                    .white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              } else {
+                                                return Center(
+                                                  child: Text(
+                                                    'No Message',
+                                                    style: theme
+                                                        .textTheme.titleLarge!
+                                                        .copyWith(
+                                                            color: Colors.red),
+                                                  ),
+                                                );
+                                              }
+                                            }),
                                       ],
                                     ),
-                                    StreamBuilder<QuerySnapshot>(
-                                        stream: FirebaseFirestore.instance
-                                            .collection('chats')
-                                            .doc(chat.id)
-                                            .collection('messages')
-                                            .snapshots(),
-                                        builder: (context, snapshot) {
-                                          if (snapshot.connectionState ==
-                                              ConnectionState.waiting) {
-                                            return const Center(
-                                              child:
-                                                  CircularProgressIndicator(),
-                                            );
-                                          } else if (!snapshot.hasData ||
-                                              snapshot.data!.docs.isEmpty) {
-                                            return Center(
-                                              child: Text(
-                                                'No Messages',
-                                                style:
-                                                    theme.textTheme.titleMedium,
-                                              ),
-                                            );
-                                          } else if (snapshot.hasData &&
-                                              snapshot.data!.docs.isNotEmpty) {
-                                            final docs = snapshot.data!.docs;
-
-                                            List<MessageModel> messages = docs
-                                                .map((doc) =>
-                                                    MessageModel.fromJson(
-                                                        doc.data() as Map<
-                                                            String, dynamic>))
-                                                .toList();
-
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 8.0),
-                                              child: Card(
-                                                shape:
-                                                    const RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                  topLeft: Radius.circular(0),
-                                                  topRight: Radius.circular(15),
-                                                  bottomLeft:
-                                                      Radius.circular(15),
-                                                  bottomRight:
-                                                      Radius.circular(15),
-                                                )),
-                                                color:
-                                                    theme.colorScheme.primary,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    maxLines: 2,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    messages.first.message,
-                                                    style: theme
-                                                        .textTheme.titleMedium!
-                                                        .copyWith(
-                                                            color:
-                                                                Colors.white),
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          } else {
-                                            return Center(
-                                              child: Text(
-                                                'No Message',
-                                                style: theme
-                                                    .textTheme.titleLarge!
-                                                    .copyWith(
-                                                        color: Colors.red),
-                                              ),
-                                            );
-                                          }
-                                        }),
-                                    Divider(
-                                      color: theme.dividerColor,
-                                    )
-                                  ],
-                                ),
+                                  ),
+                                  Icon(Icons.chevron_right_rounded)
+                                ],
                               ),
-                              Icon(Icons.chevron_right_rounded)
-                            ],
+                            ),
                           );
                         });
                   } else {
