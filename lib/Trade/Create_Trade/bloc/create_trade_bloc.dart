@@ -84,7 +84,6 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
 
             OurSnackbar.success(message: 'Message Sent')
                 .show(context: event.context);
-            //trigger snackbar
           } else {
             emit(state.copyWith(messageError: 'Error Sending Message'));
           }

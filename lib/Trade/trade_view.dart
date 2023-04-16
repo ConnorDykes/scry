@@ -333,8 +333,17 @@ class TradeCard extends StatelessWidget {
                           side: BorderSide(color: theme.colorScheme.primary),
                         ),
                         onPressed: () {
-                          context.read<CreateTradeBloc>().add(
-                              CreateTradeEvent.messageTapped(context: context));
+                          appbloc.state.user == UserModel.empty
+                              ? SignInModal()
+                                  .showSignInModal(context: context)
+                                  .then((value) => value
+                                      ? context.read<CreateTradeBloc>().add(
+                                          CreateTradeEvent.messageTapped(
+                                              context: context))
+                                      : null)
+                              : context.read<CreateTradeBloc>().add(
+                                  CreateTradeEvent.messageTapped(
+                                      context: context));
                         },
                         child: const Row(
                           children: [
