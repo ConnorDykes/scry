@@ -27,30 +27,6 @@ class ChatView extends StatelessWidget {
     final ScrollController scrollController = ScrollController();
 
     return Scaffold(
-        // floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-        // floatingActionButton: Material(
-        //   elevation: 2,
-        //   type: MaterialType.transparency,
-        //   child: Ink(
-        //     decoration: BoxDecoration(
-        //       border: Border.all(color: Colors.green, width: 1.0),
-        //       color: theme.cardColor,
-        //       shape: BoxShape.circle,
-        //     ),
-        //     child: InkWell(
-        //       borderRadius: BorderRadius.circular(500.0),
-        //       onTap: () {
-        //         Navigator.pop(context);
-        //       },
-        //       child: Padding(
-        //         padding: EdgeInsets.all(8.0),
-        //         child: Icon(
-        //             color: theme.colorScheme.primary,
-        //             Icons.chevron_left_rounded),
-        //       ),
-        //     ),
-        //   ),
-        // ),
         resizeToAvoidBottomInset: true,
         body: SafeArea(
           child: Column(
@@ -177,9 +153,7 @@ class ChatView extends StatelessWidget {
                 child: BlocListener<ChatBloc, ChatState>(
                   listener: (context, state) {
                     if (state.loadStatus == LoadStatus.success ||
-                        state.loadStatus == LoadStatus.failure) {
-                      //
-                    }
+                        state.loadStatus == LoadStatus.failure) {}
                   },
                   child: BlocBuilder<ChatBloc, ChatState>(
                     builder: (context, state) {

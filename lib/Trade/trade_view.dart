@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
+import 'package:scry/Widgets/our_textfield.dart';
 
 class TradeView extends StatelessWidget {
   const TradeView({super.key});
@@ -102,255 +104,279 @@ class TradeCard extends StatelessWidget {
     final theme = Theme.of(context);
     final appbloc = context.read<AppBlocBloc>();
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Card(
-        child: Column(children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
-                child: CircleAvatar(
-                  radius: 27,
-                  child: FutureBuilder(
-                    //method to be waiting for in the future
-                    future: FirebaseFirestore.instance
-                        .collection('users')
-                        .doc(trade.userID)
-                        .get(),
-                    builder: (_, snapshot) {
-                      //if done show data,
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        if (snapshot.hasData && snapshot.data != null) {
-                          final doc = snapshot.data!.data();
-                          String imageUrl = doc?['profilePicture'] ?? '';
-                          return imageUrl == ''
-                              ? const CircleAvatar(
+    return BlocProvider(
+      create: (context) =>
+          CreateTradeBloc(trade: trade, currentUser: appbloc.state.user),
+      child: BlocBuilder<CreateTradeBloc, CreateTradeState>(
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Card(
+              child: Column(children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 8.0, right: 8, top: 8),
+                      child: CircleAvatar(
+                        radius: 27,
+                        child: FutureBuilder(
+                          //method to be waiting for in the future
+                          future: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(trade.userID)
+                              .get(),
+                          builder: (_, snapshot) {
+                            //if done show data,
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              if (snapshot.hasData && snapshot.data != null) {
+                                final doc = snapshot.data!.data();
+                                String imageUrl = doc?['profilePicture'] ?? '';
+                                return imageUrl == ''
+                                    ? const CircleAvatar(
+                                        radius: 25,
+                                        child: Icon(Icons.person),
+                                      )
+                                    : CircleAvatar(
+                                        radius: 25,
+                                        backgroundImage: NetworkImage(
+                                            doc!['profilePicture']),
+                                      );
+                              } else {
+                                return const CircleAvatar(
                                   radius: 25,
                                   child: Icon(Icons.person),
-                                )
-                              : CircleAvatar(
-                                  radius: 25,
-                                  backgroundImage:
-                                      NetworkImage(doc!['profilePicture']),
                                 );
-                        } else {
-                          return const CircleAvatar(
-                            radius: 25,
-                            child: Icon(Icons.person),
-                          );
-                        }
-                      } else {
-                        //if the process is not finished then show the indicator process
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      trade.userName,
-                      style: theme.textTheme.titleMedium!
-                          .copyWith(fontWeight: FontWeight.w600),
+                              }
+                            } else {
+                              //if the process is not finished then show the indicator process
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                          },
+                        ),
+                      ),
                     ),
-                    Text(
-                      'City, State',
-                      style: theme.textTheme.titleSmall,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            trade.userName,
+                            style: theme.textTheme.titleMedium!
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            'City, State',
+                            style: theme.textTheme.titleSmall,
+                          ),
+                        ],
+                      ),
+                    ),
+                    PopupMenuButton(
+                      // Callback that sets the selected popup menu item.
+                      surfaceTintColor: Colors.red,
+                      itemBuilder: (BuildContext context) => [
+                        PopupMenuItem(
+                          child: trade.userID == appbloc.state.user.id
+                              ? TextButton(
+                                  onPressed: () {
+                                    //* call logic for deleting trade
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.report,
+                                        color: Colors.red,
+                                      ),
+                                      Text(
+                                        'Delete',
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                              : TextButton(
+                                  onPressed: () {},
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.report,
+                                        color: Colors.red,
+                                      ),
+                                      Text(
+                                        'Report Trade',
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                        )
+                      ],
                     ),
                   ],
                 ),
-              ),
-              PopupMenuButton(
-                // Callback that sets the selected popup menu item.
-                surfaceTintColor: Colors.red,
-                itemBuilder: (BuildContext context) => [
-                  PopupMenuItem(
-                    child: trade.userID == appbloc.state.user.id
-                        ? TextButton(
-                            onPressed: () {
-                              //* call logic for deleting trade
-                            },
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.report,
-                                  color: Colors.red,
-                                ),
-                                Text(
-                                  'Delete',
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              ],
-                            ))
-                        : TextButton(
-                            onPressed: () {},
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.report,
-                                  color: Colors.red,
-                                ),
-                                Text(
-                                  'Report Trade',
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              ],
+                if (trade.details != '')
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(bottom: 8.0, left: 16, right: 8),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: Card(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
                             )),
-                  )
-                ],
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0, left: 16, right: 8),
-            child: Row(
-              children: [
-                Flexible(
-                  child: Card(
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(15),
-                      bottomLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(15),
-                    )),
-                    color: theme.colorScheme.primary,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        maxLines: null,
-                        trade.details,
-                        style: theme.textTheme.titleMedium!
-                            .copyWith(color: Colors.white),
-                      ),
+                            color: theme.colorScheme.primary,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                maxLines: null,
+                                trade.details,
+                                style: theme.textTheme.titleMedium!
+                                    .copyWith(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                Divider(
+                  color: theme.dividerColor,
                 ),
-              ],
-            ),
-          ),
-          Divider(
-            color: theme.dividerColor,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 1,
-                    side: BorderSide(color: theme.colorScheme.primary),
-                  ),
-                  onPressed: () {
-                    appbloc.state.user == UserModel.empty
-                        ? SignInModal()
-                            .showSignInModal(context: context)
-                            .then((value) => value
-                                ? showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    context: context,
-                                    builder: (context) => BlocProvider(
-                                          create: (context) => CreateTradeBloc(
-                                              trade: trade,
-                                              currentUser: appbloc.state.user),
-                                          child: Container(
-                                              clipBehavior: Clip.hardEdge,
-                                              decoration: const BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  20),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  20))),
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.85,
-                                              child: const CreateTradeView(
-                                                proposeTrade: true,
-                                              )),
-                                        ))
-                                : null)
-                        : showModalBottomSheet(
-                            isScrollControlled: true,
-                            context: context,
-                            builder: (context) => BlocProvider(
-                                  create: (context) => CreateTradeBloc(
-                                      trade: trade,
-                                      currentUser: appbloc.state.user),
-                                  child: Container(
-                                      clipBehavior: Clip.hardEdge,
-                                      decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(20),
-                                              topRight: Radius.circular(20))),
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.85,
-                                      child: const CreateTradeView(
-                                        proposeTrade: true,
-                                      )),
-                                ));
-                  },
-                  child: const Row(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          elevation: 1,
+                          side: BorderSide(color: theme.colorScheme.primary),
+                        ),
+                        onPressed: () {
+                          appbloc.state.user == UserModel.empty
+                              ? SignInModal()
+                                  .showSignInModal(context: context)
+                                  .then((value) => value
+                                      ? showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          context: context,
+                                          builder: (context) => BlocProvider(
+                                                create: (context) =>
+                                                    CreateTradeBloc(
+                                                        trade: trade,
+                                                        currentUser:
+                                                            appbloc.state.user),
+                                                child: Container(
+                                                    clipBehavior: Clip.hardEdge,
+                                                    decoration: const BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                                topLeft:
+                                                                    Radius
+                                                                        .circular(
+                                                                            20),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        20))),
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.85,
+                                                    child:
+                                                        const CreateTradeView(
+                                                      proposeTrade: true,
+                                                    )),
+                                              ))
+                                      : null)
+                              : showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) => BlocProvider(
+                                        create: (context) => CreateTradeBloc(
+                                            trade: trade,
+                                            currentUser: appbloc.state.user),
+                                        child: Container(
+                                            clipBehavior: Clip.hardEdge,
+                                            decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(20),
+                                                    topRight:
+                                                        Radius.circular(20))),
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.85,
+                                            child: const CreateTradeView(
+                                              proposeTrade: true,
+                                            )),
+                                      ));
+                        },
+                        child: const Row(
+                          children: [
+                            Icon(Icons.swap_vert),
+                            Text('Offer A Trade'),
+                          ],
+                        )),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          elevation: 1,
+                          side: BorderSide(color: theme.colorScheme.primary),
+                        ),
+                        onPressed: () {
+                          context.read<CreateTradeBloc>().add(
+                              CreateTradeEvent.messageTapped(context: context));
+                        },
+                        child: const Row(
+                          children: [
+                            Icon(Icons.message),
+                            Padding(padding: EdgeInsets.all(4)),
+                            Text('Message'),
+                          ],
+                        ))
+                  ],
+                ),
+                Card(
+                  elevation: 0,
+                  color: trade.lookingFor
+                      ? theme.colorScheme.primary.withOpacity(.2)
+                      : Colors.blue.withOpacity(.2),
+                  child: Column(
                     children: [
-                      Icon(Icons.swap_vert),
-                      Text('Offer A Trade'),
+                      Text(
+                        trade.lookingFor ? "Looking For" : "Willing To Trade",
+                        style: theme.textTheme.titleMedium!.copyWith(
+                            color: trade.lookingFor
+                                ? theme.colorScheme.primary
+                                : Colors.blue),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: trade.cards.first.imageUris?.normal != null
+                                ? Image.network(
+                                    trade.cards.first.imageUris?.normal ?? '',
+                                    height: 400,
+                                  )
+                                : const Icon(Icons.photo)),
+                      ),
                     ],
-                  )),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 1,
-                    side: BorderSide(color: theme.colorScheme.primary),
                   ),
-                  onPressed: () {},
-                  child: const Row(
-                    children: [
-                      Icon(Icons.message),
-                      Padding(padding: EdgeInsets.all(4)),
-                      Text('Message'),
-                    ],
-                  ))
-            ],
-          ),
-          Card(
-            elevation: 0,
-            color: trade.lookingFor
-                ? theme.colorScheme.primary.withOpacity(.2)
-                : Colors.blue.withOpacity(.2),
-            child: Column(
-              children: [
-                Text(
-                  trade.lookingFor ? "Looking For" : "Willing To Trade",
-                  style: theme.textTheme.titleMedium!.copyWith(
-                      color: trade.lookingFor
-                          ? theme.colorScheme.primary
-                          : Colors.blue),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: trade.cards.first.imageUris?.normal != null
-                          ? Image.network(
-                              trade.cards.first.imageUris?.normal ?? '',
-                              height: 400,
-                            )
-                          : const Icon(Icons.photo)),
-                ),
-              ],
+              ]),
             ),
-          ),
-        ]),
+          );
+        },
       ),
     );
   }

@@ -22,6 +22,7 @@ ChatModel _$ChatModelFromJson(Map<String, dynamic> json) {
 mixin _$ChatModel {
   String get id => throw _privateConstructorUsedError;
   OfferModel get offer => throw _privateConstructorUsedError;
+  CardModel get card => throw _privateConstructorUsedError;
   List<String> get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $ChatModelCopyWith<$Res> {
   factory $ChatModelCopyWith(ChatModel value, $Res Function(ChatModel) then) =
       _$ChatModelCopyWithImpl<$Res, ChatModel>;
   @useResult
-  $Res call({String id, OfferModel offer, List<String> users});
+  $Res call({String id, OfferModel offer, CardModel card, List<String> users});
 
   $OfferModelCopyWith<$Res> get offer;
 }
@@ -55,6 +56,7 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
   $Res call({
     Object? id = null,
     Object? offer = null,
+    Object? card = null,
     Object? users = null,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +68,10 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
           ? _value.offer
           : offer // ignore: cast_nullable_to_non_nullable
               as OfferModel,
+      card: null == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as CardModel,
       users: null == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
@@ -89,7 +95,7 @@ abstract class _$$_ChatModelCopyWith<$Res> implements $ChatModelCopyWith<$Res> {
       __$$_ChatModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, OfferModel offer, List<String> users});
+  $Res call({String id, OfferModel offer, CardModel card, List<String> users});
 
   @override
   $OfferModelCopyWith<$Res> get offer;
@@ -108,6 +114,7 @@ class __$$_ChatModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? offer = null,
+    Object? card = null,
     Object? users = null,
   }) {
     return _then(_$_ChatModel(
@@ -119,6 +126,10 @@ class __$$_ChatModelCopyWithImpl<$Res>
           ? _value.offer
           : offer // ignore: cast_nullable_to_non_nullable
               as OfferModel,
+      card: null == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as CardModel,
       users: null == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
@@ -133,6 +144,7 @@ class _$_ChatModel extends _ChatModel {
   const _$_ChatModel(
       {this.id = '',
       this.offer = OfferModel.empty,
+      this.card = const CardModel.empty(),
       final List<String> users = const []})
       : _users = users,
         super._();
@@ -146,6 +158,9 @@ class _$_ChatModel extends _ChatModel {
   @override
   @JsonKey()
   final OfferModel offer;
+  @override
+  @JsonKey()
+  final CardModel card;
   final List<String> _users;
   @override
   @JsonKey()
@@ -157,7 +172,7 @@ class _$_ChatModel extends _ChatModel {
 
   @override
   String toString() {
-    return 'ChatModel(id: $id, offer: $offer, users: $users)';
+    return 'ChatModel(id: $id, offer: $offer, card: $card, users: $users)';
   }
 
   @override
@@ -167,13 +182,14 @@ class _$_ChatModel extends _ChatModel {
             other is _$_ChatModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.offer, offer) || other.offer == offer) &&
+            (identical(other.card, card) || other.card == card) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, offer, const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(runtimeType, id, offer, card,
+      const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
@@ -193,6 +209,7 @@ abstract class _ChatModel extends ChatModel {
   const factory _ChatModel(
       {final String id,
       final OfferModel offer,
+      final CardModel card,
       final List<String> users}) = _$_ChatModel;
   const _ChatModel._() : super._();
 
@@ -203,6 +220,8 @@ abstract class _ChatModel extends ChatModel {
   String get id;
   @override
   OfferModel get offer;
+  @override
+  CardModel get card;
   @override
   List<String> get users;
   @override

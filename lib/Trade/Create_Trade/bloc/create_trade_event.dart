@@ -6,6 +6,12 @@ class CreateTradeEvent with _$CreateTradeEvent {
   const factory CreateTradeEvent.search({required String query}) = _Search;
   const factory CreateTradeEvent.updateDetails({required String details}) =
       _UpdateDetails;
+
+  const factory CreateTradeEvent.messageTapped(
+      {required BuildContext context}) = _MessageTapped;
+  const factory CreateTradeEvent.sendMessage() = _SendMessage;
+  const factory CreateTradeEvent.updateMessage({required String message}) =
+      _UpdateMessage;
   const factory CreateTradeEvent.updateTradeType() = _UpdateTradeType;
   const factory CreateTradeEvent.selectCard({required CardModel card}) =
       _SelectCard;

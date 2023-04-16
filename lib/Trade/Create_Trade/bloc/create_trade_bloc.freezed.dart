@@ -21,6 +21,9 @@ mixin _$CreateTradeEvent {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -35,6 +38,9 @@ mixin _$CreateTradeEvent {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -49,6 +55,9 @@ mixin _$CreateTradeEvent {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -64,6 +73,9 @@ mixin _$CreateTradeEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -78,6 +90,9 @@ mixin _$CreateTradeEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -92,6 +107,9 @@ mixin _$CreateTradeEvent {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -162,6 +180,9 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -179,6 +200,9 @@ class _$_Started implements _Started {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -196,6 +220,9 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -217,6 +244,9 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -234,6 +264,9 @@ class _$_Started implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -251,6 +284,9 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -336,6 +372,9 @@ class _$_Search implements _Search {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -353,6 +392,9 @@ class _$_Search implements _Search {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -370,6 +412,9 @@ class _$_Search implements _Search {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -391,6 +436,9 @@ class _$_Search implements _Search {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -408,6 +456,9 @@ class _$_Search implements _Search {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -425,6 +476,9 @@ class _$_Search implements _Search {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -517,6 +571,9 @@ class _$_UpdateDetails implements _UpdateDetails {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -534,6 +591,9 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -551,6 +611,9 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -572,6 +635,9 @@ class _$_UpdateDetails implements _UpdateDetails {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -589,6 +655,9 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -606,6 +675,9 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -629,6 +701,574 @@ abstract class _UpdateDetails implements CreateTradeEvent {
   String get details;
   @JsonKey(ignore: true)
   _$$_UpdateDetailsCopyWith<_$_UpdateDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_MessageTappedCopyWith<$Res> {
+  factory _$$_MessageTappedCopyWith(
+          _$_MessageTapped value, $Res Function(_$_MessageTapped) then) =
+      __$$_MessageTappedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$_MessageTappedCopyWithImpl<$Res>
+    extends _$CreateTradeEventCopyWithImpl<$Res, _$_MessageTapped>
+    implements _$$_MessageTappedCopyWith<$Res> {
+  __$$_MessageTappedCopyWithImpl(
+      _$_MessageTapped _value, $Res Function(_$_MessageTapped) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$_MessageTapped(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MessageTapped implements _MessageTapped {
+  const _$_MessageTapped({required this.context});
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'CreateTradeEvent.messageTapped(context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MessageTapped &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MessageTappedCopyWith<_$_MessageTapped> get copyWith =>
+      __$$_MessageTappedCopyWithImpl<_$_MessageTapped>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
+    required TResult Function() updateTradeType,
+    required TResult Function(CardModel card) selectCard,
+    required TResult Function(UserModel user) createTrade,
+    required TResult Function() clearSelectedCard,
+    required TResult Function() createTradeProposal,
+    required TResult Function() clearSearch,
+    required TResult Function() resetState,
+  }) {
+    return messageTapped(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
+    TResult? Function()? updateTradeType,
+    TResult? Function(CardModel card)? selectCard,
+    TResult? Function(UserModel user)? createTrade,
+    TResult? Function()? clearSelectedCard,
+    TResult? Function()? createTradeProposal,
+    TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
+  }) {
+    return messageTapped?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
+    TResult Function()? updateTradeType,
+    TResult Function(CardModel card)? selectCard,
+    TResult Function(UserModel user)? createTrade,
+    TResult Function()? clearSelectedCard,
+    TResult Function()? createTradeProposal,
+    TResult Function()? clearSearch,
+    TResult Function()? resetState,
+    required TResult orElse(),
+  }) {
+    if (messageTapped != null) {
+      return messageTapped(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
+    required TResult Function(_SelectCard value) selectCard,
+    required TResult Function(_CreateTrade value) createTrade,
+    required TResult Function(_ClearSelectedCard value) clearSelectedCard,
+    required TResult Function(_CreateTradeProposal value) createTradeProposal,
+    required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
+  }) {
+    return messageTapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
+    TResult? Function(_SelectCard value)? selectCard,
+    TResult? Function(_CreateTrade value)? createTrade,
+    TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult? Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
+  }) {
+    return messageTapped?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
+    TResult Function(_SelectCard value)? selectCard,
+    TResult Function(_CreateTrade value)? createTrade,
+    TResult Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
+    required TResult orElse(),
+  }) {
+    if (messageTapped != null) {
+      return messageTapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MessageTapped implements CreateTradeEvent {
+  const factory _MessageTapped({required final BuildContext context}) =
+      _$_MessageTapped;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_MessageTappedCopyWith<_$_MessageTapped> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SendMessageCopyWith<$Res> {
+  factory _$$_SendMessageCopyWith(
+          _$_SendMessage value, $Res Function(_$_SendMessage) then) =
+      __$$_SendMessageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SendMessageCopyWithImpl<$Res>
+    extends _$CreateTradeEventCopyWithImpl<$Res, _$_SendMessage>
+    implements _$$_SendMessageCopyWith<$Res> {
+  __$$_SendMessageCopyWithImpl(
+      _$_SendMessage _value, $Res Function(_$_SendMessage) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SendMessage implements _SendMessage {
+  const _$_SendMessage();
+
+  @override
+  String toString() {
+    return 'CreateTradeEvent.sendMessage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SendMessage);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
+    required TResult Function() updateTradeType,
+    required TResult Function(CardModel card) selectCard,
+    required TResult Function(UserModel user) createTrade,
+    required TResult Function() clearSelectedCard,
+    required TResult Function() createTradeProposal,
+    required TResult Function() clearSearch,
+    required TResult Function() resetState,
+  }) {
+    return sendMessage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
+    TResult? Function()? updateTradeType,
+    TResult? Function(CardModel card)? selectCard,
+    TResult? Function(UserModel user)? createTrade,
+    TResult? Function()? clearSelectedCard,
+    TResult? Function()? createTradeProposal,
+    TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
+  }) {
+    return sendMessage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
+    TResult Function()? updateTradeType,
+    TResult Function(CardModel card)? selectCard,
+    TResult Function(UserModel user)? createTrade,
+    TResult Function()? clearSelectedCard,
+    TResult Function()? createTradeProposal,
+    TResult Function()? clearSearch,
+    TResult Function()? resetState,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
+    required TResult Function(_SelectCard value) selectCard,
+    required TResult Function(_CreateTrade value) createTrade,
+    required TResult Function(_ClearSelectedCard value) clearSelectedCard,
+    required TResult Function(_CreateTradeProposal value) createTradeProposal,
+    required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
+  }) {
+    return sendMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
+    TResult? Function(_SelectCard value)? selectCard,
+    TResult? Function(_CreateTrade value)? createTrade,
+    TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult? Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
+  }) {
+    return sendMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
+    TResult Function(_SelectCard value)? selectCard,
+    TResult Function(_CreateTrade value)? createTrade,
+    TResult Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendMessage implements CreateTradeEvent {
+  const factory _SendMessage() = _$_SendMessage;
+}
+
+/// @nodoc
+abstract class _$$_UpdateMessageCopyWith<$Res> {
+  factory _$$_UpdateMessageCopyWith(
+          _$_UpdateMessage value, $Res Function(_$_UpdateMessage) then) =
+      __$$_UpdateMessageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_UpdateMessageCopyWithImpl<$Res>
+    extends _$CreateTradeEventCopyWithImpl<$Res, _$_UpdateMessage>
+    implements _$$_UpdateMessageCopyWith<$Res> {
+  __$$_UpdateMessageCopyWithImpl(
+      _$_UpdateMessage _value, $Res Function(_$_UpdateMessage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_UpdateMessage(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateMessage implements _UpdateMessage {
+  const _$_UpdateMessage({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'CreateTradeEvent.updateMessage(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateMessage &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateMessageCopyWith<_$_UpdateMessage> get copyWith =>
+      __$$_UpdateMessageCopyWithImpl<_$_UpdateMessage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
+    required TResult Function() updateTradeType,
+    required TResult Function(CardModel card) selectCard,
+    required TResult Function(UserModel user) createTrade,
+    required TResult Function() clearSelectedCard,
+    required TResult Function() createTradeProposal,
+    required TResult Function() clearSearch,
+    required TResult Function() resetState,
+  }) {
+    return updateMessage(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
+    TResult? Function()? updateTradeType,
+    TResult? Function(CardModel card)? selectCard,
+    TResult? Function(UserModel user)? createTrade,
+    TResult? Function()? clearSelectedCard,
+    TResult? Function()? createTradeProposal,
+    TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
+  }) {
+    return updateMessage?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
+    TResult Function()? updateTradeType,
+    TResult Function(CardModel card)? selectCard,
+    TResult Function(UserModel user)? createTrade,
+    TResult Function()? clearSelectedCard,
+    TResult Function()? createTradeProposal,
+    TResult Function()? clearSearch,
+    TResult Function()? resetState,
+    required TResult orElse(),
+  }) {
+    if (updateMessage != null) {
+      return updateMessage(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
+    required TResult Function(_SelectCard value) selectCard,
+    required TResult Function(_CreateTrade value) createTrade,
+    required TResult Function(_ClearSelectedCard value) clearSelectedCard,
+    required TResult Function(_CreateTradeProposal value) createTradeProposal,
+    required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
+  }) {
+    return updateMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
+    TResult? Function(_SelectCard value)? selectCard,
+    TResult? Function(_CreateTrade value)? createTrade,
+    TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult? Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
+  }) {
+    return updateMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
+    TResult Function(_SelectCard value)? selectCard,
+    TResult Function(_CreateTrade value)? createTrade,
+    TResult Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
+    required TResult orElse(),
+  }) {
+    if (updateMessage != null) {
+      return updateMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateMessage implements CreateTradeEvent {
+  const factory _UpdateMessage({required final String message}) =
+      _$_UpdateMessage;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_UpdateMessageCopyWith<_$_UpdateMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -673,6 +1313,9 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -690,6 +1333,9 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -707,6 +1353,9 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -728,6 +1377,9 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -745,6 +1397,9 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -762,6 +1417,9 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -849,6 +1507,9 @@ class _$_SelectCard implements _SelectCard {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -866,6 +1527,9 @@ class _$_SelectCard implements _SelectCard {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -883,6 +1547,9 @@ class _$_SelectCard implements _SelectCard {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -904,6 +1571,9 @@ class _$_SelectCard implements _SelectCard {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -921,6 +1591,9 @@ class _$_SelectCard implements _SelectCard {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -938,6 +1611,9 @@ class _$_SelectCard implements _SelectCard {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -1040,6 +1716,9 @@ class _$_CreateTrade implements _CreateTrade {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -1057,6 +1736,9 @@ class _$_CreateTrade implements _CreateTrade {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -1074,6 +1756,9 @@ class _$_CreateTrade implements _CreateTrade {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -1095,6 +1780,9 @@ class _$_CreateTrade implements _CreateTrade {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -1112,6 +1800,9 @@ class _$_CreateTrade implements _CreateTrade {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -1129,6 +1820,9 @@ class _$_CreateTrade implements _CreateTrade {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -1195,6 +1889,9 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -1212,6 +1909,9 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -1229,6 +1929,9 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -1250,6 +1953,9 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -1267,6 +1973,9 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -1284,6 +1993,9 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -1345,6 +2057,9 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -1362,6 +2077,9 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -1379,6 +2097,9 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -1400,6 +2121,9 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -1417,6 +2141,9 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -1434,6 +2161,9 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -1495,6 +2225,9 @@ class _$_ClearSearch implements _ClearSearch {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -1512,6 +2245,9 @@ class _$_ClearSearch implements _ClearSearch {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -1529,6 +2265,9 @@ class _$_ClearSearch implements _ClearSearch {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -1550,6 +2289,9 @@ class _$_ClearSearch implements _ClearSearch {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -1567,6 +2309,9 @@ class _$_ClearSearch implements _ClearSearch {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -1584,6 +2329,9 @@ class _$_ClearSearch implements _ClearSearch {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -1645,6 +2393,9 @@ class _$_ResetState implements _ResetState {
     required TResult Function() started,
     required TResult Function(String query) search,
     required TResult Function(String details) updateDetails,
+    required TResult Function(BuildContext context) messageTapped,
+    required TResult Function() sendMessage,
+    required TResult Function(String message) updateMessage,
     required TResult Function() updateTradeType,
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
@@ -1662,6 +2413,9 @@ class _$_ResetState implements _ResetState {
     TResult? Function()? started,
     TResult? Function(String query)? search,
     TResult? Function(String details)? updateDetails,
+    TResult? Function(BuildContext context)? messageTapped,
+    TResult? Function()? sendMessage,
+    TResult? Function(String message)? updateMessage,
     TResult? Function()? updateTradeType,
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
@@ -1679,6 +2433,9 @@ class _$_ResetState implements _ResetState {
     TResult Function()? started,
     TResult Function(String query)? search,
     TResult Function(String details)? updateDetails,
+    TResult Function(BuildContext context)? messageTapped,
+    TResult Function()? sendMessage,
+    TResult Function(String message)? updateMessage,
     TResult Function()? updateTradeType,
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
@@ -1700,6 +2457,9 @@ class _$_ResetState implements _ResetState {
     required TResult Function(_Started value) started,
     required TResult Function(_Search value) search,
     required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateMessage value) updateMessage,
     required TResult Function(_UpdateTradeType value) updateTradeType,
     required TResult Function(_SelectCard value) selectCard,
     required TResult Function(_CreateTrade value) createTrade,
@@ -1717,6 +2477,9 @@ class _$_ResetState implements _ResetState {
     TResult? Function(_Started value)? started,
     TResult? Function(_Search value)? search,
     TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateMessage value)? updateMessage,
     TResult? Function(_UpdateTradeType value)? updateTradeType,
     TResult? Function(_SelectCard value)? selectCard,
     TResult? Function(_CreateTrade value)? createTrade,
@@ -1734,6 +2497,9 @@ class _$_ResetState implements _ResetState {
     TResult Function(_Started value)? started,
     TResult Function(_Search value)? search,
     TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateMessage value)? updateMessage,
     TResult Function(_UpdateTradeType value)? updateTradeType,
     TResult Function(_SelectCard value)? selectCard,
     TResult Function(_CreateTrade value)? createTrade,
@@ -1759,6 +2525,7 @@ mixin _$CreateTradeState {
   String get uploadError => throw _privateConstructorUsedError;
   String get queryString => throw _privateConstructorUsedError;
   String get details => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
   List<CardModel> get cards => throw _privateConstructorUsedError;
   List<CardModel> get selectedCards => throw _privateConstructorUsedError;
   ButtonState get buttonState => throw _privateConstructorUsedError;
@@ -1781,6 +2548,7 @@ abstract class $CreateTradeStateCopyWith<$Res> {
       {String uploadError,
       String queryString,
       String details,
+      String message,
       List<CardModel> cards,
       List<CardModel> selectedCards,
       ButtonState buttonState,
@@ -1805,6 +2573,7 @@ class _$CreateTradeStateCopyWithImpl<$Res, $Val extends CreateTradeState>
     Object? uploadError = null,
     Object? queryString = null,
     Object? details = null,
+    Object? message = null,
     Object? cards = null,
     Object? selectedCards = null,
     Object? buttonState = null,
@@ -1824,6 +2593,10 @@ class _$CreateTradeStateCopyWithImpl<$Res, $Val extends CreateTradeState>
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
       cards: null == cards
           ? _value.cards
@@ -1865,6 +2638,7 @@ abstract class _$$_CreateTradeStateCopyWith<$Res>
       {String uploadError,
       String queryString,
       String details,
+      String message,
       List<CardModel> cards,
       List<CardModel> selectedCards,
       ButtonState buttonState,
@@ -1887,6 +2661,7 @@ class __$$_CreateTradeStateCopyWithImpl<$Res>
     Object? uploadError = null,
     Object? queryString = null,
     Object? details = null,
+    Object? message = null,
     Object? cards = null,
     Object? selectedCards = null,
     Object? buttonState = null,
@@ -1906,6 +2681,10 @@ class __$$_CreateTradeStateCopyWithImpl<$Res>
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
       cards: null == cards
           ? _value._cards
@@ -1942,6 +2721,7 @@ class _$_CreateTradeState extends _CreateTradeState {
       {this.uploadError = '',
       this.queryString = '',
       this.details = '',
+      this.message = '',
       final List<CardModel> cards = const [],
       final List<CardModel> selectedCards = const [],
       this.buttonState = ButtonState.idle,
@@ -1961,6 +2741,9 @@ class _$_CreateTradeState extends _CreateTradeState {
   @override
   @JsonKey()
   final String details;
+  @override
+  @JsonKey()
+  final String message;
   final List<CardModel> _cards;
   @override
   @JsonKey()
@@ -1994,7 +2777,7 @@ class _$_CreateTradeState extends _CreateTradeState {
 
   @override
   String toString() {
-    return 'CreateTradeState(uploadError: $uploadError, queryString: $queryString, details: $details, cards: $cards, selectedCards: $selectedCards, buttonState: $buttonState, cardLoadStatus: $cardLoadStatus, lookingFor: $lookingFor, willingToTrade: $willingToTrade)';
+    return 'CreateTradeState(uploadError: $uploadError, queryString: $queryString, details: $details, message: $message, cards: $cards, selectedCards: $selectedCards, buttonState: $buttonState, cardLoadStatus: $cardLoadStatus, lookingFor: $lookingFor, willingToTrade: $willingToTrade)';
   }
 
   @override
@@ -2007,6 +2790,7 @@ class _$_CreateTradeState extends _CreateTradeState {
             (identical(other.queryString, queryString) ||
                 other.queryString == queryString) &&
             (identical(other.details, details) || other.details == details) &&
+            (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._cards, _cards) &&
             const DeepCollectionEquality()
                 .equals(other._selectedCards, _selectedCards) &&
@@ -2026,6 +2810,7 @@ class _$_CreateTradeState extends _CreateTradeState {
       uploadError,
       queryString,
       details,
+      message,
       const DeepCollectionEquality().hash(_cards),
       const DeepCollectionEquality().hash(_selectedCards),
       buttonState,
@@ -2045,6 +2830,7 @@ abstract class _CreateTradeState extends CreateTradeState {
       {final String uploadError,
       final String queryString,
       final String details,
+      final String message,
       final List<CardModel> cards,
       final List<CardModel> selectedCards,
       final ButtonState buttonState,
@@ -2059,6 +2845,8 @@ abstract class _CreateTradeState extends CreateTradeState {
   String get queryString;
   @override
   String get details;
+  @override
+  String get message;
   @override
   List<CardModel> get cards;
   @override

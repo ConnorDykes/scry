@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
+import 'package:scry/card_model.dart';
 
 part 'chat_model.freezed.dart';
 part 'chat_model.g.dart';
@@ -9,6 +10,7 @@ class ChatModel with _$ChatModel {
   const factory ChatModel({
     @Default('') String id,
     @Default(OfferModel.empty) OfferModel offer,
+    @Default(CardModel.empty()) CardModel card,
     @Default([]) List<String> users,
   }) = _ChatModel;
 

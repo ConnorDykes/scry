@@ -1,10 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Card_Repo/card_repository.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
+import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
@@ -33,6 +36,46 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
             cardLoadStatus: LoadStatus.success, cards: response));
       }
     });
+
+    on<_MessageTapped>((event, emit) async => await showDialog(
+        context: event.context,
+        builder: (_) => BlocProvider(
+            create: (context) => event.context.read<CreateTradeBloc>(),
+            child: BlocBuilder<CreateTradeBloc, CreateTradeState>(
+              builder: (context, state) {
+                final theme = Theme.of(context);
+
+                return AlertDialog(
+                  title: Text('Send Message'),
+                  content: OurTextfield(
+                    controller: TextEditingController(text: state.message),
+                    onChanged: (value) {
+                      debugPrint(value);
+                      _UpdateMessage(message: value);
+                    },
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          _SendMessage;
+                        },
+                        icon: Icon(
+                          CupertinoIcons.arrow_up_circle_fill,
+                          color: theme.colorScheme.primary,
+                        )),
+                  ),
+                );
+              },
+            ))));
+
+    on<_SendMessage>(
+      (event, emit) async {
+        //* check if a chat already exists between the users with the same card id
+        //*  otherwise call the repo to send message that includes the card
+      },
+    );
+
+    on<_UpdateMessage>(
+      (event, emit) => emit(state.copyWith(message: event.message)),
+    );
 
     on<_UpdateTradeType>(
       (event, emit) {
