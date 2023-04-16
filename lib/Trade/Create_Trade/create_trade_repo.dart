@@ -15,16 +15,20 @@ class CreateTradeRepo {
   Future<bool> sendMessage({required String message}) async {
     bool chatExists = await checkForExistingChat();
     if (chatExists) {
+      debugPrint('Chat Exists');
       return false;
     } else {
       try {
+        final List users = [currentUser.id, tradePost.userID];
+        users.sort();
+
         final chatDocRef = _firebaseFirestore.collection('chats').doc();
 
         Map<String, dynamic> chat = {
           'id': chatDocRef.id,
           'offer': OfferModel.empty.toJson(),
           'card': tradePost.cards.first.toJson(),
-          'users': [tradePost.userID, currentUser.id]
+          'users': users
         };
 
         await chatDocRef.set(chat);
@@ -55,19 +59,23 @@ class CreateTradeRepo {
 // We check to see if there is a chat that already exists between these users
   // and if that chat is also about the same card
   Future<bool> checkForExistingChat() async {
+    final List users = [currentUser.id, tradePost.userID];
+    users.sort();
+
     try {
       return await _firebaseFirestore
           .collection('chats')
-          .where('users', arrayContains: [currentUser.id, tradePost.userID])
+          .where('users', isEqualTo: users)
           .where('card.id', isEqualTo: '${tradePost.cards.first.id}')
           .get()
           .then((snapshot) {
-            if (snapshot.size > 0) {
-              return true;
-            } else {
-              return false;
-            }
-          });
+        debugPrint(snapshot.docs.toString());
+        if (snapshot.size > 0) {
+          return true;
+        } else {
+          return false;
+        }
+      });
     } catch (e) {
       debugPrint(e.toString());
       return false;

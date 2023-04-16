@@ -12,6 +12,7 @@ import 'package:scry/Trade/Offer_Model/offer_model.dart';
 import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/user_tile.dart';
 import 'package:scry/card_dialog.dart';
+import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
 class ChatView extends StatelessWidget {
@@ -31,7 +32,8 @@ class ChatView extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              if (chat.offer != OfferModel.empty) ...{
+              if (chat.offer != OfferModel.empty ||
+                  chat.card != CardModel.empty()) ...{
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -237,6 +239,13 @@ class _OfferPanelState extends State<OfferPanel> {
   Widget build(BuildContext context) {
     final chat = widget.chat;
     final theme = Theme.of(context);
+    bool isOffer = chat.offer != OfferModel.empty;
+    final appBloc = context.read<AppBlocBloc>().state;
+    final otherUserID = chat.users
+        .where(
+          (element) => element != appBloc.user.id,
+        )
+        .first;
 
     return Card(
         clipBehavior: Clip.hardEdge,
@@ -247,7 +256,7 @@ class _OfferPanelState extends State<OfferPanel> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Offer',
+                  isOffer ? 'Offer' : "Card",
                   style: theme.textTheme.titleMedium!
                       .copyWith(color: theme.colorScheme.primary),
                 ),
@@ -256,51 +265,64 @@ class _OfferPanelState extends State<OfferPanel> {
             children: [
               Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: UserTile(
-                            userID: chat.offer.offeringUserID,
-                            userName: chat.offer.offeringUserName),
-                      ),
-                    ],
-                  ),
+                  if (isOffer)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: UserTile(
+                              userID: otherUserID,
+                              userName: chat.offer.offeringUserName ?? ''),
+                        ),
+                      ],
+                    ),
                   Divider(
                     color: theme.dividerColor,
                   ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
+                  isOffer
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                              GestureDetector(
+                                onTap: () => showDialog(
+                                  context: context,
+                                  builder: (context) => CardDialog(
+                                      card: chat.offer.offeredCards.first),
+                                ),
+                                child: Container(
+                                  height: 100,
+                                  child: Image.network(chat.offer.offeredCards
+                                          .first.imageUris?.small ??
+                                      ''),
+                                ),
+                              ),
+                              Icon(Icons.arrow_forward),
+                              GestureDetector(
+                                onTap: () => showDialog(
+                                  context: context,
+                                  builder: (context) => CardDialog(
+                                      card: chat.offer.availableCards.first),
+                                ),
+                                child: Container(
+                                  height: 100,
+                                  child: Image.network(chat.offer.availableCards
+                                          .first.imageUris?.small ??
+                                      ''),
+                                ),
+                              ),
+                            ])
+                      : GestureDetector(
                           onTap: () => showDialog(
                             context: context,
-                            builder: (context) =>
-                                CardDialog(card: chat.offer.offeredCards.first),
+                            builder: (context) => CardDialog(card: chat.card),
                           ),
                           child: Container(
                             height: 100,
-                            child: Image.network(chat.offer.offeredCards.first
-                                    .imageUris?.small ??
-                                ''),
+                            child:
+                                Image.network(chat.card.imageUris?.small ?? ''),
                           ),
                         ),
-                        Icon(Icons.arrow_forward),
-                        GestureDetector(
-                          onTap: () => showDialog(
-                            context: context,
-                            builder: (context) => CardDialog(
-                                card: chat.offer.availableCards.first),
-                          ),
-                          child: Container(
-                            height: 100,
-                            child: Image.network(chat.offer.availableCards.first
-                                    .imageUris?.small ??
-                                ''),
-                          ),
-                        ),
-                      ]),
                   Padding(
                     padding: EdgeInsets.all(4),
                   ),

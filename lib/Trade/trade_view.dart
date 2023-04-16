@@ -339,10 +339,12 @@ class TradeCard extends StatelessWidget {
                                   .then((value) => value
                                       ? context.read<CreateTradeBloc>().add(
                                           CreateTradeEvent.messageTapped(
+                                              currentUser: appbloc.state.user,
                                               context: context))
                                       : null)
                               : context.read<CreateTradeBloc>().add(
                                   CreateTradeEvent.messageTapped(
+                                      currentUser: appbloc.state.user,
                                       context: context));
                         },
                         child: const Row(

@@ -20,6 +20,7 @@ part 'create_trade_bloc.freezed.dart';
 class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
   final cardRepo = CardRepository();
   final searchController = TextEditingController();
+  final messageController = TextEditingController();
   final bool proposeTrade;
   final UserModel currentUser;
   final TradePostModel trade;
@@ -29,6 +30,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       this.currentUser = UserModel.empty,
       this.trade = TradePostModel.empty})
       : super(const CreateTradeState()) {
+    debugPrint("current user is ${currentUser.id}");
     final CreateTradeRepo _createTradeRepo =
         CreateTradeRepo(tradePost: trade, currentUser: currentUser);
 
@@ -43,60 +45,108 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       }
     });
 
-    on<_MessageTapped>((event, emit) async => await showDialog(
-        context: event.context,
-        builder: (_) => BlocProvider(
-            create: (context) => event.context.read<CreateTradeBloc>(),
-            child: BlocBuilder<CreateTradeBloc, CreateTradeState>(
-              builder: (context, state) {
-                final theme = Theme.of(context);
+    on<_MessageTapped>((event, emit) async =>
+        CreateTradeRepo(currentUser: event.currentUser, tradePost: trade)
+            .checkForExistingChat()
+            .then(
+          (exists) async {
+            !exists
+                ? await showDialog(
+                    context: event.context,
+                    builder: (_) => BlocProvider(
+                        create: (context) =>
+                            event.context.read<CreateTradeBloc>(),
+                        child: BlocBuilder<CreateTradeBloc, CreateTradeState>(
+                          builder: (context, state) {
+                            debugPrint(
+                                "Message Tapped current user is ${currentUser.id}");
+                            final theme = Theme.of(context);
 
-                return AlertDialog(
-                  title: Text('Send Message'),
-                  content: OurTextfield(
-                    controller: TextEditingController(text: state.message),
-                    onChanged: (value) {
-                      debugPrint(value);
-                      _UpdateMessage(message: value);
-                    },
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          _SendMessage(context: context);
-                        },
-                        icon: Icon(
-                          CupertinoIcons.arrow_up_circle_fill,
-                          color: theme.colorScheme.primary,
-                        )),
-                  ),
-                );
-              },
-            ))));
+                            return AlertDialog(
+                              title: Text('Send Message'),
+                              content: OurTextfield(
+                                controller: messageController,
+                                onChanged: (value) {},
+                                suffixIcon: IconButton(
+                                    onPressed: () async {
+                                      try {
+                                        final messageStatus =
+                                            await CreateTradeRepo(
+                                                    currentUser:
+                                                        event.currentUser,
+                                                    tradePost: trade)
+                                                .sendMessage(
+                                                    message:
+                                                        messageController.text);
+                                        if (messageStatus) {
+                                          if (Navigator.canPop(event.context)) {
+                                            Navigator.pop(event.context);
+                                          }
 
-    on<_SendMessage>(
-      (event, emit) async {
-        try {
-          final messageStatus =
-              await _createTradeRepo.sendMessage(message: state.message);
-          if (messageStatus) {
-            if (Navigator.canPop(event.context)) {
-              Navigator.pop(event.context);
-            }
+                                          OurSnackbar.success(
+                                                  message: 'Message Sent')
+                                              .show(context: event.context);
+                                        } else {
+                                          emit(state.copyWith(
+                                              messageError:
+                                                  'Error Sending Message'));
+                                        }
+                                      } catch (e) {
+                                        debugPrint(e.toString());
+                                        emit(state.copyWith(
+                                            messageError: e.toString()));
+                                      }
+                                    },
+                                    icon: Icon(
+                                      CupertinoIcons.arrow_up_circle_fill,
+                                      color: theme.colorScheme.primary,
+                                    )),
+                              ),
+                            );
+                          },
+                        )))
+                : await showDialog(
+                    context: event.context,
+                    builder: (_) => AlertDialog(
+                          title: Text('Converation Already Exists'),
+                          content: Text('Go to Messages to view.'),
+                          actions: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(event.context);
+                                },
+                                child: Text(
+                                  'Dismiss',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.grey),
+                                ))
+                          ],
+                        ));
+          },
+        ));
 
-            OurSnackbar.success(message: 'Message Sent')
-                .show(context: event.context);
-          } else {
-            emit(state.copyWith(messageError: 'Error Sending Message'));
-          }
-        } catch (e) {
-          debugPrint(e.toString());
-          emit(state.copyWith(messageError: e.toString()));
-        }
-      },
-    );
+    // on<_SendMessage>(
+    //   (event, emit) async {
+    //     debugPrint('_SendMessage');
+    //     try {
+    //       final messageStatus =
+    //           await _createTradeRepo.sendMessage(message: state.message);
+    //       if (messageStatus) {
+    //         if (Navigator.canPop(event.context)) {
+    //           Navigator.pop(event.context);
+    //         }
 
-    on<_UpdateMessage>(
-      (event, emit) => emit(state.copyWith(message: event.message)),
-    );
+    //         OurSnackbar.success(message: 'Message Sent')
+    //             .show(context: event.context);
+    //       } else {
+    //         emit(state.copyWith(messageError: 'Error Sending Message'));
+    //       }
+    //     } catch (e) {
+    //       debugPrint(e.toString());
+    //       emit(state.copyWith(messageError: e.toString()));
+    //     }
+    //   },
+    // );
 
     on<_UpdateTradeType>(
       (event, emit) {

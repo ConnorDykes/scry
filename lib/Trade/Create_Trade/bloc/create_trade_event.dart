@@ -8,11 +8,11 @@ class CreateTradeEvent with _$CreateTradeEvent {
       _UpdateDetails;
 
   const factory CreateTradeEvent.messageTapped(
-      {required BuildContext context}) = _MessageTapped;
+      {required UserModel currentUser,
+      required BuildContext context}) = _MessageTapped;
   const factory CreateTradeEvent.sendMessage({required BuildContext context}) =
       _SendMessage;
-  const factory CreateTradeEvent.updateMessage({required String message}) =
-      _UpdateMessage;
+
   const factory CreateTradeEvent.updateTradeType() = _UpdateTradeType;
   const factory CreateTradeEvent.selectCard({required CardModel card}) =
       _SelectCard;

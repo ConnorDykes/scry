@@ -6,12 +6,16 @@ class OurTextfield extends StatelessWidget {
       this.controller,
       required this.onChanged,
       this.suffixIcon,
-      this.hintText});
+      this.hintText,
+      this.maxLines = null,
+      this.textCapitalization = TextCapitalization.sentences});
 
   final TextEditingController? controller;
   final Function onChanged;
   final Widget? suffixIcon;
   final String? hintText;
+  final int? maxLines;
+  final TextCapitalization textCapitalization;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +26,8 @@ class OurTextfield extends StatelessWidget {
       onChanged: (value) async {
         onChanged(value);
       },
+      textCapitalization: textCapitalization,
+      maxLines: maxLines,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.only(left: 8),
           fillColor: theme.cardColor,
