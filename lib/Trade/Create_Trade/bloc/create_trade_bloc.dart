@@ -6,8 +6,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Card_Repo/card_repository.dart';
+import 'package:scry/Trade/Create_Trade/create_trade_repo.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
 import 'package:scry/Widgets/our_textfield.dart';
+import 'package:scry/Widgets/snackbar.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
@@ -21,11 +23,15 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
   final bool proposeTrade;
   final UserModel currentUser;
   final TradePostModel trade;
+
   CreateTradeBloc(
       {this.proposeTrade = false,
       this.currentUser = UserModel.empty,
       this.trade = TradePostModel.empty})
       : super(const CreateTradeState()) {
+    final CreateTradeRepo _createTradeRepo =
+        CreateTradeRepo(tradePost: trade, currentUser: currentUser);
+
     on<_Search>((event, emit) async {
       emit(state.copyWith(
           cardLoadStatus: LoadStatus.loading, queryString: event.query));
@@ -55,7 +61,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
                     },
                     suffixIcon: IconButton(
                         onPressed: () {
-                          _SendMessage;
+                          _SendMessage(context: context);
                         },
                         icon: Icon(
                           CupertinoIcons.arrow_up_circle_fill,
@@ -68,8 +74,24 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
 
     on<_SendMessage>(
       (event, emit) async {
-        //* check if a chat already exists between the users with the same card id
-        //*  otherwise call the repo to send message that includes the card
+        try {
+          final messageStatus =
+              await _createTradeRepo.sendMessage(message: state.message);
+          if (messageStatus) {
+            if (Navigator.canPop(event.context)) {
+              Navigator.pop(event.context);
+            }
+
+            OurSnackbar.success(message: 'Message Sent')
+                .show(context: event.context);
+            //trigger snackbar
+          } else {
+            emit(state.copyWith(messageError: 'Error Sending Message'));
+          }
+        } catch (e) {
+          debugPrint(e.toString());
+          emit(state.copyWith(messageError: e.toString()));
+        }
       },
     );
 

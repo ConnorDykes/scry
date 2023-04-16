@@ -9,6 +9,7 @@ class CreateTradeState with _$CreateTradeState {
     @Default('') String queryString,
     @Default('') String details,
     @Default('') String message,
+    @Default('') String messageError,
     @Default([]) List<CardModel> cards,
     @Default([]) List<CardModel> selectedCards,
     @Default(ButtonState.idle) ButtonState buttonState,

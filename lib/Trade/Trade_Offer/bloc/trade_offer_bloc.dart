@@ -80,6 +80,7 @@ class TradeOfferBloc extends Bloc<TradeOfferEvent, TradeOfferState> {
                               controller: TextEditingController(
                                   text: state.acceptMessage),
                               onChanged: (value) async {
+                                
                                 _UpdateAcceptMessage(value: value);
                               },
                               maxLines: null,

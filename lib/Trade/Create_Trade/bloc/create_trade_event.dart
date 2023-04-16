@@ -9,7 +9,8 @@ class CreateTradeEvent with _$CreateTradeEvent {
 
   const factory CreateTradeEvent.messageTapped(
       {required BuildContext context}) = _MessageTapped;
-  const factory CreateTradeEvent.sendMessage() = _SendMessage;
+  const factory CreateTradeEvent.sendMessage({required BuildContext context}) =
+      _SendMessage;
   const factory CreateTradeEvent.updateMessage({required String message}) =
       _UpdateMessage;
   const factory CreateTradeEvent.updateTradeType() = _UpdateTradeType;

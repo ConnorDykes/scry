@@ -33,6 +33,7 @@ class UserModel with _$UserModel {
   /// Convenience getter to determine whether the current user is not empty.
   bool get isNotEmpty => this != UserModel.empty;
 
-  ///
-  String get fullName => '$firstName $lastName';
+  /// checks if display name is set other wise uses first and last
+  String get fullName =>
+      displayName == '' ? '$firstName $lastName' : displayName;
 }

@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Messages/Messages_Model/message_model.dart';
+import 'package:scry/Trade/Offer_Model/offer_model.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
 
 class CreateTradeRepo {
@@ -8,28 +11,66 @@ class CreateTradeRepo {
   final TradePostModel tradePost;
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  // Future<void> sendMessage() {
-
-  // }
-  Future<void> createChat() async {
+  // check if chat already exists, otherwise creates one and adds the message
+  Future<bool> sendMessage({required String message}) async {
     bool chatExists = await checkForExistingChat();
-    if (chatExists) {}
+    if (chatExists) {
+      return false;
+    } else {
+      try {
+        final chatDocRef = _firebaseFirestore.collection('chats').doc();
+
+        Map<String, dynamic> chat = {
+          'id': chatDocRef.id,
+          'offer': OfferModel.empty.toJson(),
+          'card': tradePost.cards.first.toJson(),
+          'users': [tradePost.userID, currentUser.id]
+        };
+
+        await chatDocRef.set(chat);
+
+        final time = DateTime.now().millisecondsSinceEpoch;
+
+        final messageDocRef = chatDocRef.collection('messages').doc();
+
+        MessageModel messageModel = MessageModel(
+            id: messageDocRef.id,
+            message: message,
+            sendingUserID: currentUser.id,
+            sendingUsername: currentUser.fullName,
+            receivingUserID: tradePost.userID,
+            receivingUsername: tradePost.userName,
+            createDateInMillisecondsSinceEpoch: time);
+
+        await messageDocRef.set(messageModel.toJson());
+
+        return true;
+      } catch (e) {
+        debugPrint(e.toString());
+        return false;
+      }
+    }
   }
 
+// We check to see if there is a chat that already exists between these users
+  // and if that chat is also about the same card
   Future<bool> checkForExistingChat() async {
-    // We check to see if there is a chat that already exists between these users
-    // and if that chat is also about the same same
-    return await _firebaseFirestore
-        .collection('chats')
-        .where('users', arrayContains: [currentUser.id, tradePost.userID])
-        .where('card.id', isEqualTo: '${tradePost.cards.first.id}')
-        .get()
-        .then((snapshot) {
-          if (snapshot.size > 0) {
-            return true;
-          } else {
-            return false;
-          }
-        });
+    try {
+      return await _firebaseFirestore
+          .collection('chats')
+          .where('users', arrayContains: [currentUser.id, tradePost.userID])
+          .where('card.id', isEqualTo: '${tradePost.cards.first.id}')
+          .get()
+          .then((snapshot) {
+            if (snapshot.size > 0) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
+    }
   }
 }
