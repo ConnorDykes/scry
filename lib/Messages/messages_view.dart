@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Messages/Chat_Model/chat_model.dart';
@@ -42,7 +43,7 @@ class MessagesView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.message),
+                      Icon(FontAwesomeIcons.message),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 4),
                         child: Text('Messages'),

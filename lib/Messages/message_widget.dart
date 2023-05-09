@@ -21,19 +21,19 @@ class MessageWidget extends StatelessWidget {
     final theme = Theme.of(context);
     debugPrint(message.card.id);
 
-    if (message.card.id == null) {
-      return Row(
-        mainAxisAlignment:
-            isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-        children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: isCurrentUser
-                  ? CrossAxisAlignment.end
-                  : CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                userName != null ? Text(userName!) : SizedBox.shrink(),
+    return Row(
+      mainAxisAlignment:
+          isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        Flexible(
+          child: Column(
+            crossAxisAlignment: isCurrentUser
+                ? CrossAxisAlignment.end
+                : CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              userName != null ? Text(userName!) : SizedBox.shrink(),
+              if (message.card.id == null) ...{
                 Card(
                   shape: isCurrentUser
                       ? const RoundedRectangleBorder(
@@ -62,25 +62,25 @@ class MessageWidget extends StatelessWidget {
                     ),
                   ),
                 )
-              ],
-            ),
+              } else ...{
+                GestureDetector(
+                  onTap: () => showDialog(
+                    context: context,
+                    builder: (context) => CardDialog(card: message.card),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: Container(
+                      height: 150,
+                      child: Image.network(message.card.imageUris?.small ?? ''),
+                    ),
+                  ),
+                )
+              }
+            ],
           ),
-        ],
-      );
-    } else {
-      return GestureDetector(
-        onTap: () => showDialog(
-          context: context,
-          builder: (context) => CardDialog(card: message.card),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Container(
-            height: 150,
-            child: Image.network(message.card.imageUris?.small ?? ''),
-          ),
-        ),
-      );
-    }
+      ],
+    );
   }
 }

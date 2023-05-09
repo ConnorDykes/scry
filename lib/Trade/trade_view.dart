@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
@@ -405,7 +406,7 @@ class TradeCard extends StatelessWidget {
                         },
                         child: const Row(
                           children: [
-                            Icon(Icons.message),
+                            Icon(FontAwesomeIcons.message),
                             Padding(padding: EdgeInsets.all(4)),
                             Text('Message'),
                           ],
