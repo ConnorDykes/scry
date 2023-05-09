@@ -203,7 +203,7 @@ class TradeCard extends StatelessWidget {
                                   child: const Row(
                                     children: [
                                       Icon(
-                                        Icons.report,
+                                        Icons.delete_forever,
                                         color: Colors.red,
                                       ),
                                       Text(

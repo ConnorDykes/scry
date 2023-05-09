@@ -122,7 +122,8 @@ class SignInView extends StatelessWidget {
                       iconedButtons: {
                         ButtonState.idle: IconedButton(
                           text: "Sign In",
-                          icon: const Icon(Icons.login_rounded, color: Colors.white),
+                          icon: const Icon(Icons.login_rounded,
+                              color: Colors.white),
                           color: theme.colorScheme.primary,
                         ),
                         ButtonState.loading: IconedButton(
@@ -228,7 +229,7 @@ class SignInView extends StatelessWidget {
                   ),
                   Text(
                     "OR",
-                    style: theme.textTheme.titleLarge,
+                    style: theme.textTheme.titleMedium,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -249,17 +250,18 @@ class SignInView extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      side: BorderSide(
-                    color: theme.colorScheme.primary,
-                  )),
+                child: TextButton(
+                  // style: ElevatedButton.styleFrom(
+                  //     side: BorderSide(
+                  //   color: theme.colorScheme.primary,
+                  // )),
                   onPressed: () {
                     Navigator.pushNamed(context, '/SignUp');
                   },
                   child: Text(
                     'Sign Up',
-                    style: theme.textTheme.titleMedium,
+                    style: theme.textTheme.titleMedium
+                        ?.copyWith(color: theme.colorScheme.primary),
                   ),
                 ),
               ),

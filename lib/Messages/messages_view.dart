@@ -425,8 +425,8 @@ class Offers extends StatelessWidget {
                                                   },
                                                   child: const Row(
                                                     children: [
-                                                      Icon(Icons
-                                                          .check_circle_outline_rounded),
+                                                      // Icon(Icons
+                                                      //     .check_circle_outline_rounded),
                                                       Text('Accept'),
                                                     ],
                                                   )),
@@ -451,10 +451,10 @@ class Offers extends StatelessWidget {
                                                   },
                                                   child: const Row(
                                                     children: [
-                                                      Icon(
-                                                        Icons.block,
-                                                        color: Colors.red,
-                                                      ),
+                                                      // Icon(
+                                                      //   Icons.block,
+                                                      //   color: Colors.red,
+                                                      // ),
                                                       Text(
                                                         'Reject',
                                                         style: TextStyle(
@@ -476,10 +476,10 @@ class Offers extends StatelessWidget {
                                                   onPressed: () {},
                                                   child: const Row(
                                                     children: [
-                                                      Icon(
-                                                        Icons.chat,
-                                                        color: Colors.blue,
-                                                      ),
+                                                      // Icon(
+                                                      //   Icons.chat,
+                                                      //   color: Colors.blue,
+                                                      // ),
                                                       Text(
                                                         'Message',
                                                         style: TextStyle(

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Messages/Chat_Model/chat_model.dart';
 import 'package:scry/Messages/Chat_View/bloc/chat_bloc.dart';
@@ -200,18 +201,50 @@ class ChatView extends StatelessWidget {
                         }
                       }
 
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: OurTextfield(
-                          controller: chatBloc.newMessageController,
-                          onChanged: (value) {
-                            chatBloc.add(ChatEvent.updateMessage(value: value));
-                          },
-                          hintText: 'Message',
-                          suffixIcon: state.newMessage == ''
-                              ? null
-                              : sendIcon(state.loadStatus),
-                        ),
+                      return Row(
+                        children: [
+                          Flexible(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: OurTextfield(
+                                controller: chatBloc.newMessageController,
+                                onChanged: (value) {
+                                  chatBloc.add(
+                                      ChatEvent.updateMessage(value: value));
+                                },
+                                hintText: 'Message',
+                                suffixIcon: state.newMessage == ''
+                                    ? null
+                                    : sendIcon(state.loadStatus),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              //! add card selection popup
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: Container(
+                                height: 40,
+                                width: 30,
+                                decoration: BoxDecoration(
+                                    color: theme.colorScheme.primary
+                                        .withOpacity(.5),
+                                    borderRadius: BorderRadius.circular(4),
+                                    border: Border.all(
+                                        width: 1,
+                                        color: theme.colorScheme.primary)),
+                                child: Image.asset(
+                                  'assets/magic_logo.png',
+                                  height: 30,
+                                  width: 20,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       );
                     },
                   ),
@@ -318,7 +351,7 @@ class _OfferPanelState extends State<OfferPanel> {
                             builder: (context) => CardDialog(card: chat.card),
                           ),
                           child: Container(
-                            height: 100,
+                            height: 150,
                             child:
                                 Image.network(chat.card.imageUris?.small ?? ''),
                           ),
