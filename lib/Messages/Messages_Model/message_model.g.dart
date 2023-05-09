@@ -17,6 +17,9 @@ _$_MessageModel _$$_MessageModelFromJson(Map<String, dynamic> json) =>
       receivingUsername: json['receivingUsername'] as String? ?? '',
       createDateInMillisecondsSinceEpoch:
           json['createDateInMillisecondsSinceEpoch'] as int? ?? 0,
+      card: json['card'] == null
+          ? const CardModel.empty()
+          : CardModel.fromJson(json['card'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_MessageModelToJson(_$_MessageModel instance) =>
@@ -30,4 +33,5 @@ Map<String, dynamic> _$$_MessageModelToJson(_$_MessageModel instance) =>
       'receivingUsername': instance.receivingUsername,
       'createDateInMillisecondsSinceEpoch':
           instance.createDateInMillisecondsSinceEpoch,
+      'card': instance.card,
     };

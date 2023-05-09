@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
+import 'package:scry/card_model.dart';
 
 part 'message_model.freezed.dart';
 part 'message_model.g.dart';
@@ -15,6 +16,7 @@ class MessageModel with _$MessageModel {
     @Default('') String sendingUsername,
     @Default('') String receivingUsername,
     @Default(0) int createDateInMillisecondsSinceEpoch,
+    @Default(CardModel.empty()) CardModel card,
   }) = _MessageModel;
 
   const MessageModel._();

@@ -70,24 +70,24 @@ class CardRepository {
     return null;
   }
 
-  Future<bool> createTrade({required Map<String, dynamic> trade}) async {
-    try {
-      // Get a reference to the Document in the Trades collection
-      DocumentReference docRef = _firebaseFirestore.collection('trades').doc();
+  // Future<bool> createTrade({required Map<String, dynamic> trade}) async {
+  //   try {
+  //     // Get a reference to the Document in the Trades collection
+  //     DocumentReference docRef = _firebaseFirestore.collection('trades').doc();
 
-      // Set the values of the Trade Document
-      await docRef.set(trade);
+  //     // Set the values of the Trade Document
+  //     await docRef.set(trade);
 
-      // Add the Doc id of the Trade document to the users 'trades' field
-      await _firebaseFirestore.collection('users').doc(trade['userID']).set({
-        'trades': FieldValue.arrayUnion([docRef.id])
-      }, SetOptions(merge: true));
-      return true;
-    } catch (e) {
-      debugPrint(e.toString());
-      return false;
-    }
-  }
+  //     // Add the Doc id of the Trade document to the users 'trades' field
+  //     await _firebaseFirestore.collection('users').doc(trade['userID']).set({
+  //       'trades': FieldValue.arrayUnion([docRef.id])
+  //     }, SetOptions(merge: true));
+  //     return true;
+  //   } catch (e) {
+  //     debugPrint(e.toString());
+  //     return false;
+  //   }
+  // }
 
   Future<bool> createTradeOffer({required Map<String, dynamic> offer}) async {
     print(offer['offeringUserID']);

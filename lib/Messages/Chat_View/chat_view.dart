@@ -9,6 +9,8 @@ import 'package:scry/Messages/Chat_Model/chat_model.dart';
 import 'package:scry/Messages/Chat_View/bloc/chat_bloc.dart';
 import 'package:scry/Messages/Messages_Model/message_model.dart';
 import 'package:scry/Messages/message_widget.dart';
+import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
+import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
 import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/user_tile.dart';
@@ -118,7 +120,14 @@ class ChatView extends StatelessWidget {
                       return CircularProgressIndicator();
                     } else if (!snapshot.hasData ||
                         snapshot.data!.docs.isEmpty) {
-                      return Text('No Messages');
+                      return Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('No Messages'),
+                          ],
+                        ),
+                      );
                     } else if (snapshot.hasData &&
                         snapshot.data!.docs.isNotEmpty) {
                       final docs = snapshot.data!.docs;
@@ -140,7 +149,7 @@ class ChatView extends StatelessWidget {
                                 child: MessageWidget(
                                   isCurrentUser:
                                       message.sendingUserID == currentUser.id,
-                                  message: message.message,
+                                  message: message,
                                   userName: message.sendingUsername,
                                 ),
                               );
@@ -222,12 +231,26 @@ class ChatView extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              //! add card selection popup
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (_) => FractionallySizedBox(
+                                      heightFactor: .9,
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              topRight: Radius.circular(20)),
+                                          child: SendCardView()))).then((card) {
+                                if (card != null) {
+                                  chatBloc
+                                      .add(ChatEvent.sendMessage(card: card));
+                                }
+                              });
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(right: 16.0),
                               child: Container(
-                                height: 40,
+                                height: 45,
                                 width: 30,
                                 decoration: BoxDecoration(
                                     color: theme.colorScheme.primary
@@ -364,5 +387,155 @@ class _OfferPanelState extends State<OfferPanel> {
             ],
           ),
         ));
+  }
+}
+
+class SendCardView extends StatelessWidget {
+  const SendCardView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return BlocProvider(
+      create: (context) => CreateTradeBloc(),
+      child: BlocBuilder<CreateTradeBloc, CreateTradeState>(
+        builder: (context, state) {
+          final bloc = context.read<CreateTradeBloc>();
+
+          return Scaffold(
+              appBar: AppBar(
+                automaticallyImplyLeading: false,
+                surfaceTintColor: Colors.transparent,
+                backgroundColor: theme.scaffoldBackgroundColor,
+                title: Text(
+                  'Send Card',
+                ),
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.close))
+                ],
+              ),
+              body: Column(
+                children: [
+                  const SearchCardTextField(),
+                  if (state.cardLoadStatus == LoadStatus.loading &&
+                      bloc.state.queryString.isNotEmpty) ...{
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  } else if (state.cardLoadStatus == LoadStatus.success &&
+                      bloc.state.queryString != '') ...{
+                    if (state.cards.isEmpty) ...{
+                      const Text('No Cards Found')
+                    } else ...{
+                      Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: state.cards.length,
+                          itemBuilder: (context, index) {
+                            final card = state.cards[index];
+                            final imageSmall = card.imageUris?.small ?? '';
+                            final imageNormal = card.imageUris?.normal ?? '';
+
+                            return ListTile(
+                              onTap: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        backgroundColor: Colors.transparent,
+                                        elevation: 0,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                IconButton.filled(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon:
+                                                        const Icon(Icons.close))
+                                              ],
+                                            ),
+                                            ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(14),
+                                                child:
+                                                    Image.network(imageNormal)),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: FilledButton(
+                                                  onPressed: () {
+                                                    bloc.add(CreateTradeEvent
+                                                        .selectCard(
+                                                            card: card));
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Select')),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    });
+                              },
+                              shape: const RoundedRectangleBorder(),
+                              leading: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: imageSmall == ''
+                                    ? const Icon(Icons.photo)
+                                    : Image.network(
+                                        imageSmall,
+                                      ),
+                              ),
+                              title: Text(card.name ?? ''),
+                              trailing: const Icon(Icons.chevron_right_rounded),
+                            );
+                          },
+                        ),
+                      ),
+                    }
+                  } else if (state.cardLoadStatus == LoadStatus.initial ||
+                      bloc.state.queryString == '') ...{
+                    if (state.selectedCards.isNotEmpty) ...{
+                      const SelectedCard()
+                    } else ...{
+                      const PlaceholderCard()
+                    },
+                  },
+                  if (state.selectedCards.isNotEmpty)
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primary),
+                        onPressed: () {
+                          Navigator.pop(context, state.selectedCards.first);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Send',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            Icon(CupertinoIcons.arrow_up_circle_fill,
+                                color: Colors.white)
+                          ],
+                        ))
+                ],
+              ));
+        },
+      ),
+    );
   }
 }

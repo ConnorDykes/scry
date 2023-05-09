@@ -29,6 +29,7 @@ mixin _$MessageModel {
   String get receivingUsername => throw _privateConstructorUsedError;
   int get createDateInMillisecondsSinceEpoch =>
       throw _privateConstructorUsedError;
+  CardModel get card => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +51,8 @@ abstract class $MessageModelCopyWith<$Res> {
       String receivingUserID,
       String sendingUsername,
       String receivingUsername,
-      int createDateInMillisecondsSinceEpoch});
+      int createDateInMillisecondsSinceEpoch,
+      CardModel card});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
     Object? sendingUsername = null,
     Object? receivingUsername = null,
     Object? createDateInMillisecondsSinceEpoch = null,
+    Object? card = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -109,6 +112,10 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
           ? _value.createDateInMillisecondsSinceEpoch
           : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
               as int,
+      card: null == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as CardModel,
     ) as $Val);
   }
 }
@@ -129,7 +136,8 @@ abstract class _$$_MessageModelCopyWith<$Res>
       String receivingUserID,
       String sendingUsername,
       String receivingUsername,
-      int createDateInMillisecondsSinceEpoch});
+      int createDateInMillisecondsSinceEpoch,
+      CardModel card});
 }
 
 /// @nodoc
@@ -151,6 +159,7 @@ class __$$_MessageModelCopyWithImpl<$Res>
     Object? sendingUsername = null,
     Object? receivingUsername = null,
     Object? createDateInMillisecondsSinceEpoch = null,
+    Object? card = null,
   }) {
     return _then(_$_MessageModel(
       id: null == id
@@ -186,6 +195,10 @@ class __$$_MessageModelCopyWithImpl<$Res>
           ? _value.createDateInMillisecondsSinceEpoch
           : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
               as int,
+      card: null == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as CardModel,
     ));
   }
 }
@@ -201,7 +214,8 @@ class _$_MessageModel extends _MessageModel {
       this.receivingUserID = '',
       this.sendingUsername = '',
       this.receivingUsername = '',
-      this.createDateInMillisecondsSinceEpoch = 0})
+      this.createDateInMillisecondsSinceEpoch = 0,
+      this.card = const CardModel.empty()})
       : super._();
 
   factory _$_MessageModel.fromJson(Map<String, dynamic> json) =>
@@ -231,10 +245,13 @@ class _$_MessageModel extends _MessageModel {
   @override
   @JsonKey()
   final int createDateInMillisecondsSinceEpoch;
+  @override
+  @JsonKey()
+  final CardModel card;
 
   @override
   String toString() {
-    return 'MessageModel(id: $id, message: $message, isRead: $isRead, sendingUserID: $sendingUserID, receivingUserID: $receivingUserID, sendingUsername: $sendingUsername, receivingUsername: $receivingUsername, createDateInMillisecondsSinceEpoch: $createDateInMillisecondsSinceEpoch)';
+    return 'MessageModel(id: $id, message: $message, isRead: $isRead, sendingUserID: $sendingUserID, receivingUserID: $receivingUserID, sendingUsername: $sendingUsername, receivingUsername: $receivingUsername, createDateInMillisecondsSinceEpoch: $createDateInMillisecondsSinceEpoch, card: $card)';
   }
 
   @override
@@ -256,7 +273,8 @@ class _$_MessageModel extends _MessageModel {
             (identical(other.createDateInMillisecondsSinceEpoch,
                     createDateInMillisecondsSinceEpoch) ||
                 other.createDateInMillisecondsSinceEpoch ==
-                    createDateInMillisecondsSinceEpoch));
+                    createDateInMillisecondsSinceEpoch) &&
+            (identical(other.card, card) || other.card == card));
   }
 
   @JsonKey(ignore: true)
@@ -270,7 +288,8 @@ class _$_MessageModel extends _MessageModel {
       receivingUserID,
       sendingUsername,
       receivingUsername,
-      createDateInMillisecondsSinceEpoch);
+      createDateInMillisecondsSinceEpoch,
+      card);
 
   @JsonKey(ignore: true)
   @override
@@ -295,7 +314,8 @@ abstract class _MessageModel extends MessageModel {
       final String receivingUserID,
       final String sendingUsername,
       final String receivingUsername,
-      final int createDateInMillisecondsSinceEpoch}) = _$_MessageModel;
+      final int createDateInMillisecondsSinceEpoch,
+      final CardModel card}) = _$_MessageModel;
   const _MessageModel._() : super._();
 
   factory _MessageModel.fromJson(Map<String, dynamic> json) =
@@ -317,6 +337,8 @@ abstract class _MessageModel extends MessageModel {
   String get receivingUsername;
   @override
   int get createDateInMillisecondsSinceEpoch;
+  @override
+  CardModel get card;
   @override
   @JsonKey(ignore: true)
   _$$_MessageModelCopyWith<_$_MessageModel> get copyWith =>

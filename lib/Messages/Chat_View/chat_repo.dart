@@ -8,15 +8,16 @@ class ChatRepo {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   ChatRepo({required ChatModel this.chat});
 
-  Future<bool> sendMessage({required MessageModel message}) async {
+  Future<bool> sendMessage({required Map<String, dynamic> message}) async {
     try {
       final messageDocRef = _firebaseFirestore
           .collection('chats')
           .doc(chat.id)
           .collection('messages')
           .doc();
-      MessageModel updatedMessage = message.copyWith(id: messageDocRef.id);
-      await messageDocRef.set(updatedMessage.toJson());
+      final updatedMessage = message;
+      updatedMessage['id'] = messageDocRef.id;
+      await messageDocRef.set(updatedMessage);
       return true;
     } catch (e) {
       debugPrint(e.toString());

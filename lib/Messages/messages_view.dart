@@ -616,11 +616,18 @@ class Messages extends StatelessWidget {
                                                             radius: 27,
                                                             child: user.profilePicture ==
                                                                     ''
-                                                                ? const CircleAvatar(
+                                                                ? CircleAvatar(
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .white,
                                                                     radius: 25,
                                                                     child: Icon(
-                                                                        Icons
-                                                                            .person),
+                                                                      Icons
+                                                                          .person,
+                                                                      color: theme
+                                                                          .colorScheme
+                                                                          .primary,
+                                                                    ),
                                                                   )
                                                                 : CircleAvatar(
                                                                     radius: 25,
@@ -715,8 +722,7 @@ class Messages extends StatelessWidget {
                                                               .last
                                                               .sendingUserID ==
                                                           currentUserID,
-                                                      message: messages
-                                                          .last.message),
+                                                      message: messages.last),
                                                 );
                                               } else {
                                                 return Center(

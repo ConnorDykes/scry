@@ -19,19 +19,19 @@ mixin _$ChatEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) updateMessage,
-    required TResult Function() sendMessage,
+    required TResult Function(CardModel? card) sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? updateMessage,
-    TResult? Function()? sendMessage,
+    TResult? Function(CardModel? card)? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? updateMessage,
-    TResult Function()? sendMessage,
+    TResult Function(CardModel? card)? sendMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,7 +138,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) updateMessage,
-    required TResult Function() sendMessage,
+    required TResult Function(CardModel? card) sendMessage,
   }) {
     return updateMessage(value);
   }
@@ -147,7 +147,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? updateMessage,
-    TResult? Function()? sendMessage,
+    TResult? Function(CardModel? card)? sendMessage,
   }) {
     return updateMessage?.call(value);
   }
@@ -156,7 +156,7 @@ class _$_UpdateMessage implements _UpdateMessage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? updateMessage,
-    TResult Function()? sendMessage,
+    TResult Function(CardModel? card)? sendMessage,
     required TResult orElse(),
   }) {
     if (updateMessage != null) {
@@ -212,6 +212,8 @@ abstract class _$$_SendMessageCopyWith<$Res> {
   factory _$$_SendMessageCopyWith(
           _$_SendMessage value, $Res Function(_$_SendMessage) then) =
       __$$_SendMessageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CardModel? card});
 }
 
 /// @nodoc
@@ -221,54 +223,78 @@ class __$$_SendMessageCopyWithImpl<$Res>
   __$$_SendMessageCopyWithImpl(
       _$_SendMessage _value, $Res Function(_$_SendMessage) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? card = freezed,
+  }) {
+    return _then(_$_SendMessage(
+      card: freezed == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as CardModel?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_SendMessage implements _SendMessage {
-  const _$_SendMessage();
+  const _$_SendMessage({this.card});
+
+  @override
+  final CardModel? card;
 
   @override
   String toString() {
-    return 'ChatEvent.sendMessage()';
+    return 'ChatEvent.sendMessage(card: $card)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SendMessage);
+        (other.runtimeType == runtimeType &&
+            other is _$_SendMessage &&
+            (identical(other.card, card) || other.card == card));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, card);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>
+      __$$_SendMessageCopyWithImpl<_$_SendMessage>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) updateMessage,
-    required TResult Function() sendMessage,
+    required TResult Function(CardModel? card) sendMessage,
   }) {
-    return sendMessage();
+    return sendMessage(card);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? updateMessage,
-    TResult? Function()? sendMessage,
+    TResult? Function(CardModel? card)? sendMessage,
   }) {
-    return sendMessage?.call();
+    return sendMessage?.call(card);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? updateMessage,
-    TResult Function()? sendMessage,
+    TResult Function(CardModel? card)? sendMessage,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
-      return sendMessage();
+      return sendMessage(card);
     }
     return orElse();
   }
@@ -306,7 +332,12 @@ class _$_SendMessage implements _SendMessage {
 }
 
 abstract class _SendMessage implements ChatEvent {
-  const factory _SendMessage() = _$_SendMessage;
+  const factory _SendMessage({final CardModel? card}) = _$_SendMessage;
+
+  CardModel? get card;
+  @JsonKey(ignore: true)
+  _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -9,6 +9,7 @@ part of 'trade_model.dart';
 _$_TradeModel _$$_TradeModelFromJson(Map<String, dynamic> json) =>
     _$_TradeModel(
       details: json['details'] as String? ?? '',
+      id: json['id'] as String? ?? '',
       userID: json['userID'] as String? ?? '',
       userName: json['userName'] as String? ?? '',
       cards: (json['cards'] as List<dynamic>?)
@@ -22,6 +23,7 @@ _$_TradeModel _$$_TradeModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_TradeModelToJson(_$_TradeModel instance) =>
     <String, dynamic>{
       'details': instance.details,
+      'id': instance.id,
       'userID': instance.userID,
       'userName': instance.userName,
       'cards': instance.cards,

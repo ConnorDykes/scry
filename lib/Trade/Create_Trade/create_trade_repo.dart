@@ -56,6 +56,13 @@ class CreateTradeRepo {
     }
   }
 
+  Future<void> deleteTrade() async {
+    await _firebaseFirestore.collection('trades').doc(tradePost.id).delete();
+    await _firebaseFirestore.collection('users').doc(currentUser.id).set({
+      'trades': FieldValue.arrayRemove([tradePost.id])
+    }, SetOptions(merge: true));
+  }
+
 // We check to see if there is a chat that already exists between these users
   // and if that chat is also about the same card
   Future<bool> checkForExistingChat() async {
@@ -76,6 +83,27 @@ class CreateTradeRepo {
           return false;
         }
       });
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
+    }
+  }
+
+  Future<bool> createTrade({required Map<String, dynamic> trade}) async {
+    try {
+      // Get a reference to the Document in the Trades collection
+      DocumentReference docRef = _firebaseFirestore.collection('trades').doc();
+      final newTrade = trade;
+      newTrade['id'] = docRef.id;
+
+      // Set the values of the Trade Document
+      await docRef.set(newTrade);
+
+      // Add the Doc id of the Trade document to the users 'trades' field
+      await _firebaseFirestore.collection('users').doc(trade['userID']).set({
+        'trades': FieldValue.arrayUnion([docRef.id])
+      }, SetOptions(merge: true));
+      return true;
     } catch (e) {
       debugPrint(e.toString());
       return false;

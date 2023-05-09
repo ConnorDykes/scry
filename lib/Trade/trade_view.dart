@@ -24,12 +24,16 @@ class TradeView extends StatelessWidget {
           onPressed: () {
             if (appBloc.state.user == UserModel.empty) {
               showModalBottomSheet(
+                  isScrollControlled: true,
                   context: context,
-                  builder: (context) => const ClipRRect(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20)),
-                      child: SignInView())).then((value) {
+                  builder: (context) => const FractionallySizedBox(
+                        heightFactor: .9,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                            child: SignInView()),
+                      )).then((value) {
                 if (value == true) {
                   Navigator.pushNamed(context, '/CreateTrade');
                 }
@@ -62,6 +66,7 @@ class TradeView extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final trade = TradePostModel.fromJson(
                         docs[index].data() as Map<String, dynamic>);
+
                     return TradeCard(
                       trade: trade,
                     );
@@ -134,9 +139,13 @@ class TradeCard extends StatelessWidget {
                                 final doc = snapshot.data!.data();
                                 String imageUrl = doc?['profilePicture'] ?? '';
                                 return imageUrl == ''
-                                    ? const CircleAvatar(
+                                    ? CircleAvatar(
+                                        backgroundColor: Colors.white,
                                         radius: 25,
-                                        child: Icon(Icons.person),
+                                        child: Icon(
+                                          Icons.person,
+                                          color: theme.colorScheme.primary,
+                                        ),
                                       )
                                     : CircleAvatar(
                                         radius: 25,
@@ -182,12 +191,73 @@ class TradeCard extends StatelessWidget {
                           child: trade.userID == appbloc.state.user.id
                               ? TextButton(
                                   onPressed: () {
-                                    //* call logic for deleting trade
+                                    Navigator.pop(context);
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) => AlertDialog(
+                                              surfaceTintColor:
+                                                  theme.colorScheme.error,
+                                              title: const Text(
+                                                  'Delete This Trade?'),
+                                              content: const Text(
+                                                  'This cannot be undone'),
+                                              actions: [
+                                                ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    elevation: 1,
+                                                    side: BorderSide(
+                                                        color:
+                                                            theme.dividerColor),
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text("Cancel",
+                                                      style: TextStyle(
+                                                          color: Colors.grey)),
+                                                ),
+                                                ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    surfaceTintColor:
+                                                        theme.colorScheme.error,
+                                                    elevation: 1,
+                                                    side: BorderSide(
+                                                        color: theme
+                                                            .colorScheme.error),
+                                                  ),
+                                                  onPressed: () {
+                                                    context
+                                                        .read<CreateTradeBloc>()
+                                                        .add(
+                                                            const CreateTradeEvent
+                                                                .deleteTrade());
+                                                    Navigator.pop(context);
+                                                    ScaffoldMessenger
+                                                            .of(context)
+                                                        .showSnackBar(SnackBar(
+                                                            backgroundColor:
+                                                                theme
+                                                                    .colorScheme
+                                                                    .primary,
+                                                            content: const Text(
+                                                                'Trade deleted')));
+                                                    //! call bloc delete function
+                                                  },
+                                                  child: Text("Delete",
+                                                      style: TextStyle(
+                                                          color: theme
+                                                              .colorScheme
+                                                              .error)),
+                                                ),
+                                              ],
+                                            ));
                                   },
                                   child: const Row(
                                     children: [
                                       Icon(
-                                        Icons.report,
+                                        Icons.delete_forever,
                                         color: Colors.red,
                                       ),
                                       Text(
@@ -203,7 +273,7 @@ class TradeCard extends StatelessWidget {
                                   child: const Row(
                                     children: [
                                       Icon(
-                                        Icons.delete_forever,
+                                        Icons.report,
                                         color: Colors.red,
                                       ),
                                       Text(
@@ -222,28 +292,14 @@ class TradeCard extends StatelessWidget {
                 if (trade.details != '')
                   Padding(
                     padding:
-                        const EdgeInsets.only(bottom: 8.0, left: 16, right: 8),
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Row(
                       children: [
                         Flexible(
-                          child: Card(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(15),
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            )),
-                            color: theme.colorScheme.primary,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                maxLines: null,
-                                trade.details,
-                                style: theme.textTheme.titleMedium!
-                                    .copyWith(color: Colors.white),
-                              ),
-                            ),
+                          child: Text(
+                            maxLines: null,
+                            trade.details,
+                            style: theme.textTheme.titleMedium,
                           ),
                         ),
                       ],
@@ -257,7 +313,7 @@ class TradeCard extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          elevation: 1,
+                          elevation: 2,
                           side: BorderSide(color: theme.colorScheme.primary),
                         ),
                         onPressed: () {
@@ -329,7 +385,7 @@ class TradeCard extends StatelessWidget {
                         )),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          elevation: 1,
+                          elevation: 2,
                           side: BorderSide(color: theme.colorScheme.primary),
                         ),
                         onPressed: () {

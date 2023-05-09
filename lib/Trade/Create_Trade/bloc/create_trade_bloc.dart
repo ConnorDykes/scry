@@ -19,6 +19,7 @@ part 'create_trade_bloc.freezed.dart';
 
 class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
   final cardRepo = CardRepository();
+
   final searchController = TextEditingController();
   final messageController = TextEditingController();
   final bool proposeTrade;
@@ -30,7 +31,6 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       this.currentUser = UserModel.empty,
       this.trade = TradePostModel.empty})
       : super(const CreateTradeState()) {
-    debugPrint("current user is ${currentUser.id}");
     final CreateTradeRepo _createTradeRepo =
         CreateTradeRepo(tradePost: trade, currentUser: currentUser);
 
@@ -295,7 +295,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       };
 
       try {
-        bool upload = await cardRepo.createTrade(trade: trade);
+        bool upload = await _createTradeRepo.createTrade(trade: trade);
         if (upload) {
           emit(state.copyWith(
             buttonState: ButtonState.success,
@@ -309,6 +309,10 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
         emit(state.copyWith(
             buttonState: ButtonState.fail, uploadError: e.toString()));
       }
+    });
+
+    on<_DeleteTrade>((event, emit) async {
+      _createTradeRepo.deleteTrade();
     });
   }
 }

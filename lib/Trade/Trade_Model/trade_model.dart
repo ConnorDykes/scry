@@ -8,6 +8,7 @@ part 'trade_model.g.dart';
 class TradePostModel with _$TradePostModel {
   const factory TradePostModel({
     @Default('') String details,
+    @Default('') String id,
     @Default('') String userID,
     @Default('') String userName,
     @Default([]) List<CardModel> cards,

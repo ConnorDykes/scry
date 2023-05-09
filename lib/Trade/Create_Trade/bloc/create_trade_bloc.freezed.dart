@@ -31,6 +31,7 @@ mixin _$CreateTradeEvent {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +49,7 @@ mixin _$CreateTradeEvent {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +67,7 @@ mixin _$CreateTradeEvent {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +85,7 @@ mixin _$CreateTradeEvent {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +102,7 @@ mixin _$CreateTradeEvent {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -114,6 +119,7 @@ mixin _$CreateTradeEvent {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -187,6 +193,7 @@ class _$_Started implements _Started {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return started();
   }
@@ -207,6 +214,7 @@ class _$_Started implements _Started {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return started?.call();
   }
@@ -227,6 +235,7 @@ class _$_Started implements _Started {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -250,6 +259,7 @@ class _$_Started implements _Started {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return started(this);
   }
@@ -269,6 +279,7 @@ class _$_Started implements _Started {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return started?.call(this);
   }
@@ -288,6 +299,7 @@ class _$_Started implements _Started {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -376,6 +388,7 @@ class _$_Search implements _Search {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return search(query);
   }
@@ -396,6 +409,7 @@ class _$_Search implements _Search {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return search?.call(query);
   }
@@ -416,6 +430,7 @@ class _$_Search implements _Search {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -439,6 +454,7 @@ class _$_Search implements _Search {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return search(this);
   }
@@ -458,6 +474,7 @@ class _$_Search implements _Search {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return search?.call(this);
   }
@@ -477,6 +494,7 @@ class _$_Search implements _Search {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -572,6 +590,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return updateDetails(details);
   }
@@ -592,6 +611,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return updateDetails?.call(details);
   }
@@ -612,6 +632,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (updateDetails != null) {
@@ -635,6 +656,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return updateDetails(this);
   }
@@ -654,6 +676,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return updateDetails?.call(this);
   }
@@ -673,6 +696,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (updateDetails != null) {
@@ -788,6 +812,7 @@ class _$_MessageTapped implements _MessageTapped {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return messageTapped(currentUser, context);
   }
@@ -808,6 +833,7 @@ class _$_MessageTapped implements _MessageTapped {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return messageTapped?.call(currentUser, context);
   }
@@ -828,6 +854,7 @@ class _$_MessageTapped implements _MessageTapped {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (messageTapped != null) {
@@ -851,6 +878,7 @@ class _$_MessageTapped implements _MessageTapped {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return messageTapped(this);
   }
@@ -870,6 +898,7 @@ class _$_MessageTapped implements _MessageTapped {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return messageTapped?.call(this);
   }
@@ -889,6 +918,7 @@ class _$_MessageTapped implements _MessageTapped {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (messageTapped != null) {
@@ -987,6 +1017,7 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return sendMessage(context);
   }
@@ -1007,6 +1038,7 @@ class _$_SendMessage implements _SendMessage {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return sendMessage?.call(context);
   }
@@ -1027,6 +1059,7 @@ class _$_SendMessage implements _SendMessage {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -1050,6 +1083,7 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return sendMessage(this);
   }
@@ -1069,6 +1103,7 @@ class _$_SendMessage implements _SendMessage {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return sendMessage?.call(this);
   }
@@ -1088,6 +1123,7 @@ class _$_SendMessage implements _SendMessage {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -1158,6 +1194,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return updateTradeType();
   }
@@ -1178,6 +1215,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return updateTradeType?.call();
   }
@@ -1198,6 +1236,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (updateTradeType != null) {
@@ -1221,6 +1260,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return updateTradeType(this);
   }
@@ -1240,6 +1280,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return updateTradeType?.call(this);
   }
@@ -1259,6 +1300,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (updateTradeType != null) {
@@ -1349,6 +1391,7 @@ class _$_SelectCard implements _SelectCard {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return selectCard(card);
   }
@@ -1369,6 +1412,7 @@ class _$_SelectCard implements _SelectCard {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return selectCard?.call(card);
   }
@@ -1389,6 +1433,7 @@ class _$_SelectCard implements _SelectCard {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (selectCard != null) {
@@ -1412,6 +1457,7 @@ class _$_SelectCard implements _SelectCard {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return selectCard(this);
   }
@@ -1431,6 +1477,7 @@ class _$_SelectCard implements _SelectCard {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return selectCard?.call(this);
   }
@@ -1450,6 +1497,7 @@ class _$_SelectCard implements _SelectCard {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (selectCard != null) {
@@ -1555,6 +1603,7 @@ class _$_CreateTrade implements _CreateTrade {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return createTrade(user);
   }
@@ -1575,6 +1624,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return createTrade?.call(user);
   }
@@ -1595,6 +1645,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (createTrade != null) {
@@ -1618,6 +1669,7 @@ class _$_CreateTrade implements _CreateTrade {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return createTrade(this);
   }
@@ -1637,6 +1689,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return createTrade?.call(this);
   }
@@ -1656,6 +1709,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (createTrade != null) {
@@ -1725,6 +1779,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return clearSelectedCard();
   }
@@ -1745,6 +1800,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return clearSelectedCard?.call();
   }
@@ -1765,6 +1821,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (clearSelectedCard != null) {
@@ -1788,6 +1845,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return clearSelectedCard(this);
   }
@@ -1807,6 +1865,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return clearSelectedCard?.call(this);
   }
@@ -1826,6 +1885,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (clearSelectedCard != null) {
@@ -1890,6 +1950,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return createTradeProposal();
   }
@@ -1910,6 +1971,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return createTradeProposal?.call();
   }
@@ -1930,6 +1992,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (createTradeProposal != null) {
@@ -1953,6 +2016,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return createTradeProposal(this);
   }
@@ -1972,6 +2036,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return createTradeProposal?.call(this);
   }
@@ -1991,6 +2056,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (createTradeProposal != null) {
@@ -2055,6 +2121,7 @@ class _$_ClearSearch implements _ClearSearch {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return clearSearch();
   }
@@ -2075,6 +2142,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return clearSearch?.call();
   }
@@ -2095,6 +2163,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (clearSearch != null) {
@@ -2118,6 +2187,7 @@ class _$_ClearSearch implements _ClearSearch {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return clearSearch(this);
   }
@@ -2137,6 +2207,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return clearSearch?.call(this);
   }
@@ -2156,6 +2227,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (clearSearch != null) {
@@ -2220,6 +2292,7 @@ class _$_ResetState implements _ResetState {
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
+    required TResult Function() deleteTrade,
   }) {
     return resetState();
   }
@@ -2240,6 +2313,7 @@ class _$_ResetState implements _ResetState {
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
   }) {
     return resetState?.call();
   }
@@ -2260,6 +2334,7 @@ class _$_ResetState implements _ResetState {
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
+    TResult Function()? deleteTrade,
     required TResult orElse(),
   }) {
     if (resetState != null) {
@@ -2283,6 +2358,7 @@ class _$_ResetState implements _ResetState {
     required TResult Function(_CreateTradeProposal value) createTradeProposal,
     required TResult Function(_ClearSearch value) clearSearch,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
   }) {
     return resetState(this);
   }
@@ -2302,6 +2378,7 @@ class _$_ResetState implements _ResetState {
     TResult? Function(_CreateTradeProposal value)? createTradeProposal,
     TResult? Function(_ClearSearch value)? clearSearch,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
   }) {
     return resetState?.call(this);
   }
@@ -2321,6 +2398,7 @@ class _$_ResetState implements _ResetState {
     TResult Function(_CreateTradeProposal value)? createTradeProposal,
     TResult Function(_ClearSearch value)? clearSearch,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
     required TResult orElse(),
   }) {
     if (resetState != null) {
@@ -2332,6 +2410,177 @@ class _$_ResetState implements _ResetState {
 
 abstract class _ResetState implements CreateTradeEvent {
   const factory _ResetState() = _$_ResetState;
+}
+
+/// @nodoc
+abstract class _$$_DeleteTradeCopyWith<$Res> {
+  factory _$$_DeleteTradeCopyWith(
+          _$_DeleteTrade value, $Res Function(_$_DeleteTrade) then) =
+      __$$_DeleteTradeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DeleteTradeCopyWithImpl<$Res>
+    extends _$CreateTradeEventCopyWithImpl<$Res, _$_DeleteTrade>
+    implements _$$_DeleteTradeCopyWith<$Res> {
+  __$$_DeleteTradeCopyWithImpl(
+      _$_DeleteTrade _value, $Res Function(_$_DeleteTrade) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_DeleteTrade implements _DeleteTrade {
+  const _$_DeleteTrade();
+
+  @override
+  String toString() {
+    return 'CreateTradeEvent.deleteTrade()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_DeleteTrade);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) search,
+    required TResult Function(String details) updateDetails,
+    required TResult Function(UserModel currentUser, BuildContext context)
+        messageTapped,
+    required TResult Function(BuildContext context) sendMessage,
+    required TResult Function() updateTradeType,
+    required TResult Function(CardModel card) selectCard,
+    required TResult Function(UserModel user) createTrade,
+    required TResult Function() clearSelectedCard,
+    required TResult Function() createTradeProposal,
+    required TResult Function() clearSearch,
+    required TResult Function() resetState,
+    required TResult Function() deleteTrade,
+  }) {
+    return deleteTrade();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? search,
+    TResult? Function(String details)? updateDetails,
+    TResult? Function(UserModel currentUser, BuildContext context)?
+        messageTapped,
+    TResult? Function(BuildContext context)? sendMessage,
+    TResult? Function()? updateTradeType,
+    TResult? Function(CardModel card)? selectCard,
+    TResult? Function(UserModel user)? createTrade,
+    TResult? Function()? clearSelectedCard,
+    TResult? Function()? createTradeProposal,
+    TResult? Function()? clearSearch,
+    TResult? Function()? resetState,
+    TResult? Function()? deleteTrade,
+  }) {
+    return deleteTrade?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? search,
+    TResult Function(String details)? updateDetails,
+    TResult Function(UserModel currentUser, BuildContext context)?
+        messageTapped,
+    TResult Function(BuildContext context)? sendMessage,
+    TResult Function()? updateTradeType,
+    TResult Function(CardModel card)? selectCard,
+    TResult Function(UserModel user)? createTrade,
+    TResult Function()? clearSelectedCard,
+    TResult Function()? createTradeProposal,
+    TResult Function()? clearSearch,
+    TResult Function()? resetState,
+    TResult Function()? deleteTrade,
+    required TResult orElse(),
+  }) {
+    if (deleteTrade != null) {
+      return deleteTrade();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
+    required TResult Function(_UpdateDetails value) updateDetails,
+    required TResult Function(_MessageTapped value) messageTapped,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_UpdateTradeType value) updateTradeType,
+    required TResult Function(_SelectCard value) selectCard,
+    required TResult Function(_CreateTrade value) createTrade,
+    required TResult Function(_ClearSelectedCard value) clearSelectedCard,
+    required TResult Function(_CreateTradeProposal value) createTradeProposal,
+    required TResult Function(_ClearSearch value) clearSearch,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_DeleteTrade value) deleteTrade,
+  }) {
+    return deleteTrade(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_UpdateDetails value)? updateDetails,
+    TResult? Function(_MessageTapped value)? messageTapped,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_UpdateTradeType value)? updateTradeType,
+    TResult? Function(_SelectCard value)? selectCard,
+    TResult? Function(_CreateTrade value)? createTrade,
+    TResult? Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult? Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult? Function(_ClearSearch value)? clearSearch,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_DeleteTrade value)? deleteTrade,
+  }) {
+    return deleteTrade?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
+    TResult Function(_UpdateDetails value)? updateDetails,
+    TResult Function(_MessageTapped value)? messageTapped,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_UpdateTradeType value)? updateTradeType,
+    TResult Function(_SelectCard value)? selectCard,
+    TResult Function(_CreateTrade value)? createTrade,
+    TResult Function(_ClearSelectedCard value)? clearSelectedCard,
+    TResult Function(_CreateTradeProposal value)? createTradeProposal,
+    TResult Function(_ClearSearch value)? clearSearch,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_DeleteTrade value)? deleteTrade,
+    required TResult orElse(),
+  }) {
+    if (deleteTrade != null) {
+      return deleteTrade(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteTrade implements CreateTradeEvent {
+  const factory _DeleteTrade() = _$_DeleteTrade;
 }
 
 /// @nodoc

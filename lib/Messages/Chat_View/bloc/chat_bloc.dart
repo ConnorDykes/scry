@@ -7,6 +7,7 @@ import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Messages/Chat_Model/chat_model.dart';
 import 'package:scry/Messages/Chat_View/chat_repo.dart';
 import 'package:scry/Messages/Messages_Model/message_model.dart';
+import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
 part 'chat_event.dart';
@@ -28,15 +29,17 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_SendMessage>((event, emit) async {
       final time = DateTime.now().millisecondsSinceEpoch;
 
-      final MessageModel message = MessageModel(
-          message: state.newMessage,
-          sendingUserID: currentUser.id,
-          sendingUsername: currentUser.displayName != ''
-              ? currentUser.displayName
-              : currentUser.fullName,
-          receivingUserID: chat.offer.offeringUserID,
-          receivingUsername: chat.offer.offeringUserName,
-          createDateInMillisecondsSinceEpoch: time);
+      final Map<String, dynamic> message = {
+        'message': state.newMessage,
+        'sendingUserID': currentUser.id,
+        'sendingUsername': currentUser.displayName != ''
+            ? currentUser.displayName
+            : currentUser.fullName,
+        'receivingUserID': chat.offer.offeringUserID,
+        'receivingUsername': chat.offer.offeringUserName,
+        'createDateInMillisecondsSinceEpoch': time,
+        if (event.card != null) 'card': event.card!.toJson()
+      };
 
       await ChatRepo(
         chat: chat,

@@ -32,13 +32,27 @@ class ProfileView extends StatelessWidget {
                     backgroundColor: theme.scaffoldBackgroundColor,
                     title: const Text('Profile'),
                     actions: [
-                      IconButton(
-                          onPressed: () {
-                            _showLogoutDialog(
-                              context: context,
-                            );
-                          },
-                          icon: const Icon(Icons.logout_rounded))
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(
+                            onPressed: () {
+                              _showLogoutDialog(
+                                context: context,
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 4.0),
+                                  child: Text(
+                                    'Logout',
+                                    style: TextStyle(fontSize: 15),
+                                  ),
+                                ),
+                                Icon(Icons.logout_rounded),
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                   body: Column(

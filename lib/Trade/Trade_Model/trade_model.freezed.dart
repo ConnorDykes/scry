@@ -21,6 +21,7 @@ TradePostModel _$TradePostModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TradePostModel {
   String get details => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get userID => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
   List<CardModel> get cards => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $TradePostModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String details,
+      String id,
       String userID,
       String userName,
       List<CardModel> cards,
@@ -62,6 +64,7 @@ class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
   @override
   $Res call({
     Object? details = null,
+    Object? id = null,
     Object? userID = null,
     Object? userName = null,
     Object? cards = null,
@@ -72,6 +75,10 @@ class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       userID: null == userID
           ? _value.userID
@@ -107,6 +114,7 @@ abstract class _$$_TradeModelCopyWith<$Res>
   @useResult
   $Res call(
       {String details,
+      String id,
       String userID,
       String userName,
       List<CardModel> cards,
@@ -126,6 +134,7 @@ class __$$_TradeModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? details = null,
+    Object? id = null,
     Object? userID = null,
     Object? userName = null,
     Object? cards = null,
@@ -136,6 +145,10 @@ class __$$_TradeModelCopyWithImpl<$Res>
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       userID: null == userID
           ? _value.userID
@@ -161,6 +174,7 @@ class __$$_TradeModelCopyWithImpl<$Res>
 class _$_TradeModel extends _TradeModel {
   const _$_TradeModel(
       {this.details = '',
+      this.id = '',
       this.userID = '',
       this.userName = '',
       final List<CardModel> cards = const [],
@@ -175,6 +189,9 @@ class _$_TradeModel extends _TradeModel {
   @override
   @JsonKey()
   final String details;
+  @override
+  @JsonKey()
+  final String id;
   @override
   @JsonKey()
   final String userID;
@@ -199,7 +216,7 @@ class _$_TradeModel extends _TradeModel {
 
   @override
   String toString() {
-    return 'TradePostModel(details: $details, userID: $userID, userName: $userName, cards: $cards, lookingFor: $lookingFor, willingToTrade: $willingToTrade)';
+    return 'TradePostModel(details: $details, id: $id, userID: $userID, userName: $userName, cards: $cards, lookingFor: $lookingFor, willingToTrade: $willingToTrade)';
   }
 
   @override
@@ -208,6 +225,7 @@ class _$_TradeModel extends _TradeModel {
         (other.runtimeType == runtimeType &&
             other is _$_TradeModel &&
             (identical(other.details, details) || other.details == details) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
@@ -223,6 +241,7 @@ class _$_TradeModel extends _TradeModel {
   int get hashCode => Object.hash(
       runtimeType,
       details,
+      id,
       userID,
       userName,
       const DeepCollectionEquality().hash(_cards),
@@ -246,6 +265,7 @@ class _$_TradeModel extends _TradeModel {
 abstract class _TradeModel extends TradePostModel {
   const factory _TradeModel(
       {final String details,
+      final String id,
       final String userID,
       final String userName,
       final List<CardModel> cards,
@@ -258,6 +278,8 @@ abstract class _TradeModel extends TradePostModel {
 
   @override
   String get details;
+  @override
+  String get id;
   @override
   String get userID;
   @override
