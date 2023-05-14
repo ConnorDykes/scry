@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 class CardModel {
   CardModel({
     this.object,
@@ -13,6 +15,7 @@ class CardModel {
     this.tcgplayerId,
     this.cardmarketId,
     this.name,
+    this.cardFaces,
     this.lang,
     this.releasedAt,
     this.uri,
@@ -75,6 +78,7 @@ class CardModel {
     this.multiverseIds,
     this.tcgplayerId,
     this.cardmarketId,
+    this.cardFaces,
     this.name,
     this.lang,
     this.releasedAt,
@@ -140,6 +144,7 @@ class CardModel {
   final String? name;
   final String? lang;
   final DateTime? releasedAt;
+  final List<CardFaces>? cardFaces;
   final String? uri;
   final String? scryfallUri;
   final String? layout;
@@ -196,6 +201,7 @@ class CardModel {
     String? object,
     String? id,
     String? oracleId,
+    final List<CardFaces>? cardFaces,
     List<int>? multiverseIds,
     int? tcgplayerId,
     int? cardmarketId,
@@ -276,6 +282,7 @@ class CardModel {
         oracleText: oracleText ?? this.oracleText,
         power: power ?? this.power,
         toughness: toughness ?? this.toughness,
+        cardFaces: cardFaces ?? this.cardFaces,
         colors: colors ?? this.colors,
         colorIdentity: colorIdentity ?? this.colorIdentity,
         keywords: keywords ?? this.keywords,
@@ -407,6 +414,10 @@ class CardModel {
         purchaseUris: json["purchase_uris"] == null
             ? null
             : PurchaseUris.fromJson(json["purchase_uris"]),
+        cardFaces: json["card_faces"] == null
+            ? null
+            : List<CardFaces>.from(
+                json["card_faces"]!.map((x) => CardFaces.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -446,6 +457,9 @@ class CardModel {
         "reserved": reserved,
         "foil": foil,
         "nonfoil": nonfoil,
+        "card_faces": cardFaces == null
+            ? []
+            : List<dynamic>.from(cardFaces!.map((x) => x)),
         "finishes":
             finishes == null ? [] : List<dynamic>.from(finishes!.map((x) => x)),
         "oversized": oversized,
@@ -686,6 +700,82 @@ class Legalities {
         "oldschool": oldschool,
         "premodern": premodern,
         "predh": predh,
+      };
+}
+
+class CardFaces {
+  CardFaces({
+    this.object,
+    this.name,
+    this.manaCost,
+    this.typeLine,
+    this.oracleText,
+    this.artist,
+    this.artistID,
+    this.illustrationID,
+    this.imageUris,
+  });
+
+  String? object;
+  String? name;
+  String? manaCost;
+  String? typeLine;
+  String? oracleText;
+  String? artist;
+  String? artistID;
+  String? illustrationID;
+  Map<String, dynamic>? imageUris;
+
+  CardFaces copyWith({
+    String? object,
+    String? name,
+    String? manaCost,
+    String? typeLine,
+    String? oracleText,
+    String? artist,
+    String? artistID,
+    String? illustrationID,
+    Map<String, dynamic>? imageUris,
+  }) =>
+      CardFaces(
+        object: object ?? this.object,
+        name: name ?? this.name,
+        manaCost: manaCost ?? this.manaCost,
+        typeLine: typeLine ?? this.typeLine,
+        oracleText: oracleText ?? this.oracleText,
+        artist: artist ?? this.artist,
+        artistID: artistID ?? this.artistID,
+        illustrationID: illustrationID ?? this.illustrationID,
+        imageUris: imageUris ?? this.imageUris,
+      );
+
+  factory CardFaces.fromRawJson(String str) =>
+      CardFaces.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory CardFaces.fromJson(Map<String, dynamic> json) => CardFaces(
+        object: json["object"],
+        name: json["name"],
+        manaCost: json["mana_cost"],
+        typeLine: json["type_line"],
+        oracleText: json["oracle_text"],
+        artist: json["artist"],
+        artistID: json["artist_id"],
+        illustrationID: json["illustration_id"],
+        imageUris: json["image_uris"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "object": object,
+        "name": name,
+        "type_line": manaCost,
+        "oracle_text": typeLine,
+        "eur_foil": oracleText,
+        "artist": artist,
+        "artist_id": artistID,
+        "illustration_id": illustrationID,
+        "image_uris": imageUris,
       };
 }
 

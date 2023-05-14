@@ -7,6 +7,7 @@ import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
+import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
 
 class CreateTradeView extends StatelessWidget {
@@ -94,9 +95,17 @@ class CreateTradeView extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           itemCount: state.cards.length,
                           itemBuilder: (context, index) {
-                            final card = state.cards[index];
+                            CardModel card = state.cards[index];
                             final imageSmall = card.imageUris?.small ?? '';
                             final imageNormal = card.imageUris?.normal ?? '';
+                            final frontImageSmall =
+                                card.cardFaces?.first.imageUris?['small'] ?? '';
+
+                            final frontImageNormal =
+                                card.cardFaces?.first.imageUris?['normal'] ??
+                                    '';
+                            final backImageNormal =
+                                card.cardFaces?[1].imageUris?['normal'] ?? '';
 
                             return ListTile(
                               onTap: () {
@@ -113,6 +122,7 @@ class CreateTradeView extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                               children: [
+                                                Text('Tap Card to Flip'),
                                                 IconButton.filled(
                                                     onPressed: () {
                                                       Navigator.pop(context);
@@ -121,11 +131,78 @@ class CreateTradeView extends StatelessWidget {
                                                         const Icon(Icons.close))
                                               ],
                                             ),
-                                            ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(14),
-                                                child:
-                                                    Image.network(imageNormal)),
+                                            imageNormal.isNotEmpty
+                                                ? ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14),
+                                                    child: Image.network(
+                                                      imageNormal,
+                                                      errorBuilder: (context,
+                                                              error,
+                                                              stackTrace) =>
+                                                          Icon(
+                                                        Icons.photo,
+                                                        size: 80,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ))
+                                                : Stack(
+                                                    children: [
+                                                      FlipCard(
+                                                        flipOnTouch: true,
+                                                        front: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        14),
+                                                            child: Image.network(
+                                                                frontImageNormal)),
+                                                        back: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        14),
+                                                            child: Image.network(
+                                                                backImageNormal)),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 150.0),
+                                                        child: IgnorePointer(
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              IgnorePointer(
+                                                                child:
+                                                                    CircleAvatar(
+                                                                  radius: 30,
+                                                                  backgroundColor: theme
+                                                                      .primaryColor
+                                                                      .withOpacity(
+                                                                          .6),
+                                                                  child:
+                                                                      IgnorePointer(
+                                                                    child: IconButton(
+                                                                        iconSize:
+                                                                            40,
+                                                                        onPressed:
+                                                                            () {},
+                                                                        icon: Icon(
+                                                                            Icons.autorenew)),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                             Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
@@ -147,7 +224,9 @@ class CreateTradeView extends StatelessWidget {
                               leading: Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: imageSmall == ''
-                                    ? const Icon(Icons.photo)
+                                    ? Image.network(
+                                        frontImageSmall,
+                                      )
                                     : Image.network(
                                         imageSmall,
                                       ),
@@ -373,6 +452,13 @@ class SelectedCard extends StatelessWidget {
 
     return BlocBuilder<CreateTradeBloc, CreateTradeState>(
       builder: (context, state) {
+        CardModel card = state.selectedCards.first;
+        String frontImageNormal =
+            card.cardFaces?.first.imageUris?['normal'] ?? '';
+        String backImageNormal = card.cardFaces?[1].imageUris?['normal'] ?? '';
+        String imageNoraml = card.imageUris?.normal ?? '';
+        final theme = Theme.of(context);
+
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Stack(
@@ -381,30 +467,63 @@ class SelectedCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: state.selectedCards.first.imageUris?.normal != null
-                          ? FlipCard(
-                              autoFlipDuration:
-                                  const Duration(milliseconds: 500),
-                              fill: Fill.fillBack,
-                              side: CardSide.BACK,
-                              front: Image.network(
-                                state.selectedCards.first.imageUris?.normal ??
-                                    '',
-                                height: 400,
-                              ),
-                              back: Container(
-                                decoration: BoxDecoration(
-                                    image: const DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image:
-                                            AssetImage('assets/card_back.png')),
-                                    borderRadius: BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(15),
+                    child: state.selectedCards.first.imageUris?.normal != null
+                        ? FlipCard(
+                            autoFlipDuration: const Duration(milliseconds: 500),
+                            fill: Fill.fillBack,
+                            side: CardSide.BACK,
+                            front: Image.network(
+                              state.selectedCards.first.imageUris?.normal ?? '',
+                              height: 400,
+                            ),
+                            back: Container(
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image:
+                                          AssetImage('assets/card_back.png')),
+                                  borderRadius: BorderRadius.circular(15)),
+                              height: 400,
+                              width: 285,
+                            ),
+                          )
+                        : Stack(
+                            children: [
+                              Container(
                                 height: 400,
                                 width: 285,
+                                child: FlipCard(
+                                  flipOnTouch: true,
+                                  front: ClipRRect(
+                                      borderRadius: BorderRadius.circular(14),
+                                      child: Image.network(frontImageNormal)),
+                                  back: ClipRRect(
+                                      borderRadius: BorderRadius.circular(14),
+                                      child: Image.network(backImageNormal)),
+                                ),
                               ),
-                            )
-                          : const Icon(Icons.photo)),
+                              Positioned.fill(
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: IgnorePointer(
+                                    child: CircleAvatar(
+                                      radius: 30,
+                                      backgroundColor:
+                                          theme.primaryColor.withOpacity(.8),
+                                      child: IgnorePointer(
+                                        child: IconButton(
+                                            iconSize: 40,
+                                            onPressed: () {},
+                                            icon: Icon(Icons.autorenew)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
                 ],
               ),
               Positioned(

@@ -68,11 +68,15 @@ class MessageWidget extends StatelessWidget {
                     context: context,
                     builder: (context) => CardDialog(card: message.card),
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: Container(
-                      height: 150,
-                      child: Image.network(message.card.imageUris?.small ?? ''),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        height: 150,
+                        child:
+                            Image.network(message.card.imageUris?.small ?? ''),
+                      ),
                     ),
                   ),
                 )

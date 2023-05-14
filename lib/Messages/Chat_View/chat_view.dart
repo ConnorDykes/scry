@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -333,9 +334,6 @@ class _OfferPanelState extends State<OfferPanel> {
                         ),
                       ],
                     ),
-                  Divider(
-                    color: theme.dividerColor,
-                  ),
                   isOffer
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -439,7 +437,14 @@ class SendCardView extends StatelessWidget {
                           itemBuilder: (context, index) {
                             final card = state.cards[index];
                             final imageSmall = card.imageUris?.small ?? '';
+                            final frontImageSmall =
+                                card.cardFaces?.first.imageUris?['small'] ?? '';
                             final imageNormal = card.imageUris?.normal ?? '';
+                            final frontImageNormal =
+                                card.cardFaces?.first.imageUris?['normal'] ??
+                                    '';
+                            final backImageNormal =
+                                card.cardFaces?[1].imageUris?['normal'] ?? '';
 
                             return ListTile(
                               onTap: () {
@@ -464,11 +469,78 @@ class SendCardView extends StatelessWidget {
                                                         const Icon(Icons.close))
                                               ],
                                             ),
-                                            ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(14),
-                                                child:
-                                                    Image.network(imageNormal)),
+                                            imageNormal.isNotEmpty
+                                                ? ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14),
+                                                    child: Image.network(
+                                                      imageNormal,
+                                                      errorBuilder: (context,
+                                                              error,
+                                                              stackTrace) =>
+                                                          Icon(
+                                                        Icons.photo,
+                                                        size: 80,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ))
+                                                : Stack(
+                                                    children: [
+                                                      FlipCard(
+                                                        flipOnTouch: true,
+                                                        front: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        14),
+                                                            child: Image.network(
+                                                                frontImageNormal)),
+                                                        back: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        14),
+                                                            child: Image.network(
+                                                                backImageNormal)),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 150.0),
+                                                        child: IgnorePointer(
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              IgnorePointer(
+                                                                child:
+                                                                    CircleAvatar(
+                                                                  radius: 30,
+                                                                  backgroundColor: theme
+                                                                      .primaryColor
+                                                                      .withOpacity(
+                                                                          .6),
+                                                                  child:
+                                                                      IgnorePointer(
+                                                                    child: IconButton(
+                                                                        iconSize:
+                                                                            40,
+                                                                        onPressed:
+                                                                            () {},
+                                                                        icon: Icon(
+                                                                            Icons.autorenew)),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                             Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
@@ -490,7 +562,9 @@ class SendCardView extends StatelessWidget {
                               leading: Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: imageSmall == ''
-                                    ? const Icon(Icons.photo)
+                                    ? Image.network(
+                                        frontImageSmall,
+                                      )
                                     : Image.network(
                                         imageSmall,
                                       ),

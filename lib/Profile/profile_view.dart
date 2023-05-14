@@ -98,7 +98,7 @@ class ProfileView extends StatelessWidget {
                       Divider(
                         color: theme.dividerColor,
                       ),
-                      ElevatedButton(
+                      TextButton(
                           style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.red,
                               side: const BorderSide(color: Colors.red),
@@ -111,9 +111,12 @@ class ProfileView extends StatelessWidget {
                                 Icons.no_accounts_outlined,
                                 color: Colors.red,
                               ),
-                              Text(
-                                'Delete Account',
-                                style: TextStyle(color: Colors.red),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+                                  'Delete Account',
+                                  style: TextStyle(color: Colors.red),
+                                ),
                               ),
                             ],
                           ))

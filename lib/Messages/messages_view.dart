@@ -25,33 +25,37 @@ class MessagesView extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: theme.scaffoldBackgroundColor,
           elevation: 0,
-          flexibleSpace: SafeArea(
-            child: TabBar(
-              dividerColor: theme.dividerColor,
-              tabs: const [
-                Tab(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.swap_vert),
-                      Text('Trade Offers'),
-                    ],
+          flexibleSpace: Container(
+            decoration: BoxDecoration(color: Colors.white),
+            child: SafeArea(
+              child: TabBar(
+                dividerColor: theme.dividerColor,
+                tabs: const [
+                  Tab(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.swap_vert),
+                        Text('Trade Offers'),
+                      ],
+                    ),
                   ),
-                ),
-                Tab(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(FontAwesomeIcons.message),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 4),
-                        child: Text('Messages'),
-                      ),
-                    ],
+                  Tab(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(FontAwesomeIcons.message),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 4),
+                          child: Text('Messages'),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

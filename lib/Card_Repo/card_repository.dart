@@ -8,6 +8,27 @@ import 'package:scry/card_model.dart';
 class CardRepository {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
+  Future<String> fetchCurrentPrice({required String cardID}) async {
+    final client = http.Client();
+    var uri = Uri.parse('https://api.scryfall.com/cards/${cardID}');
+    try {
+      var response = await client.get(uri);
+      if (response.statusCode == 200) {
+        debugPrint('[CardRepo: fetchCurrentPrice] - Received Card');
+        final body = json.decode(response.body);
+
+        CardModel card = CardModel.fromJson(body);
+        return card.prices?.usd ?? "N/A";
+      } else {
+        debugPrint(response.body);
+        return 'Error';
+      }
+    } catch (e) {
+      debugPrint('[CardRepo: fetchCurrentPrice] ERROR - ${e.toString()}');
+      return 'Error';
+    }
+  }
+
   Future<List<CardModel>?> searchNamed({required String name}) async {
     final client = http.Client();
     final query = name.toLowerCase().replaceAll(" ", "+");
