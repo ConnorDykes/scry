@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scry/Home/bloc/home_bloc.dart';
 import 'package:scry/Messages/messages_view.dart';
+import 'package:scry/Play/games_feed.dart';
 import 'package:scry/Profile/profile_view.dart';
 import 'package:scry/Trade/trade_view.dart';
 
@@ -16,7 +17,7 @@ class HomeView extends StatelessWidget {
     final view = {
       0: const TradeView(),
       1: const MessagesView(),
-      2: const Text('Play'),
+      2: const GamesFeed(),
       3: const ProfileView()
     };
 

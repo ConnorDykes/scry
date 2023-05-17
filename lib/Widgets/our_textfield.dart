@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class OurTextfield extends StatelessWidget {
@@ -7,7 +9,8 @@ class OurTextfield extends StatelessWidget {
       required this.onChanged,
       this.suffixIcon,
       this.hintText,
-      this.maxLines = null,
+      this.maxLines,
+      this.minLines,
       this.textCapitalization = TextCapitalization.sentences});
 
   final TextEditingController? controller;
@@ -15,6 +18,7 @@ class OurTextfield extends StatelessWidget {
   final Widget? suffixIcon;
   final String? hintText;
   final int? maxLines;
+  final int? minLines;
   final TextCapitalization textCapitalization;
 
   @override
@@ -28,12 +32,13 @@ class OurTextfield extends StatelessWidget {
       },
       textCapitalization: textCapitalization,
       maxLines: maxLines,
+      minLines: minLines,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.only(left: 8),
           fillColor: theme.cardColor,
           filled: true,
-          hintText: hintText ?? null,
-          suffixIcon: suffixIcon ?? null,
+          hintText: hintText,
+          suffixIcon: suffixIcon,
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: theme.primaryColor),
               borderRadius: BorderRadius.circular(15)),
