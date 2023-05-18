@@ -22,10 +22,9 @@ GameModel _$GameModelFromJson(Map<String, dynamic> json) {
 mixin _$GameModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  double get cost => throw _privateConstructorUsedError;
+  int get cost => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
-  DateTime? get day => throw _privateConstructorUsedError;
-  DateTime? get time => throw _privateConstructorUsedError;
+  DateTime? get dateAndTime => throw _privateConstructorUsedError;
   int get maxPlayerCount => throw _privateConstructorUsedError;
   int get minPlayerCount => throw _privateConstructorUsedError;
   List<UserModel> get players => throw _privateConstructorUsedError;
@@ -45,10 +44,9 @@ abstract class $GameModelCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      double cost,
+      int cost,
       String location,
-      DateTime? day,
-      DateTime? time,
+      DateTime? dateAndTime,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -72,8 +70,7 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
     Object? description = null,
     Object? cost = null,
     Object? location = null,
-    Object? day = freezed,
-    Object? time = freezed,
+    Object? dateAndTime = freezed,
     Object? maxPlayerCount = null,
     Object? minPlayerCount = null,
     Object? players = null,
@@ -91,18 +88,14 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
       cost: null == cost
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      day: freezed == day
-          ? _value.day
-          : day // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      time: freezed == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
+      dateAndTime: freezed == dateAndTime
+          ? _value.dateAndTime
+          : dateAndTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       maxPlayerCount: null == maxPlayerCount
           ? _value.maxPlayerCount
@@ -134,10 +127,9 @@ abstract class _$$_GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      double cost,
+      int cost,
       String location,
-      DateTime? day,
-      DateTime? time,
+      DateTime? dateAndTime,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -159,8 +151,7 @@ class __$$_GameModelCopyWithImpl<$Res>
     Object? description = null,
     Object? cost = null,
     Object? location = null,
-    Object? day = freezed,
-    Object? time = freezed,
+    Object? dateAndTime = freezed,
     Object? maxPlayerCount = null,
     Object? minPlayerCount = null,
     Object? players = null,
@@ -178,18 +169,14 @@ class __$$_GameModelCopyWithImpl<$Res>
       cost: null == cost
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      day: freezed == day
-          ? _value.day
-          : day // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      time: freezed == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
+      dateAndTime: freezed == dateAndTime
+          ? _value.dateAndTime
+          : dateAndTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       maxPlayerCount: null == maxPlayerCount
           ? _value.maxPlayerCount
@@ -217,10 +204,9 @@ class _$_GameModel extends _GameModel {
   const _$_GameModel(
       {this.title = '',
       this.description = '',
-      this.cost = 0.00,
+      this.cost = 0,
       this.location = '',
-      this.day = null,
-      this.time = null,
+      this.dateAndTime = null,
       this.maxPlayerCount = 4,
       this.minPlayerCount = 2,
       final List<UserModel> players = const [],
@@ -239,16 +225,13 @@ class _$_GameModel extends _GameModel {
   final String description;
   @override
   @JsonKey()
-  final double cost;
+  final int cost;
   @override
   @JsonKey()
   final String location;
   @override
   @JsonKey()
-  final DateTime? day;
-  @override
-  @JsonKey()
-  final DateTime? time;
+  final DateTime? dateAndTime;
   @override
   @JsonKey()
   final int maxPlayerCount;
@@ -270,7 +253,7 @@ class _$_GameModel extends _GameModel {
 
   @override
   String toString() {
-    return 'GameModel(title: $title, description: $description, cost: $cost, location: $location, day: $day, time: $time, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
+    return 'GameModel(title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
   }
 
   @override
@@ -284,8 +267,8 @@ class _$_GameModel extends _GameModel {
             (identical(other.cost, cost) || other.cost == cost) &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.day, day) || other.day == day) &&
-            (identical(other.time, time) || other.time == time) &&
+            (identical(other.dateAndTime, dateAndTime) ||
+                other.dateAndTime == dateAndTime) &&
             (identical(other.maxPlayerCount, maxPlayerCount) ||
                 other.maxPlayerCount == maxPlayerCount) &&
             (identical(other.minPlayerCount, minPlayerCount) ||
@@ -302,8 +285,7 @@ class _$_GameModel extends _GameModel {
       description,
       cost,
       location,
-      day,
-      time,
+      dateAndTime,
       maxPlayerCount,
       minPlayerCount,
       const DeepCollectionEquality().hash(_players),
@@ -327,10 +309,9 @@ abstract class _GameModel extends GameModel {
   const factory _GameModel(
       {final String title,
       final String description,
-      final double cost,
+      final int cost,
       final String location,
-      final DateTime? day,
-      final DateTime? time,
+      final DateTime? dateAndTime,
       final int maxPlayerCount,
       final int minPlayerCount,
       final List<UserModel> players,
@@ -345,13 +326,11 @@ abstract class _GameModel extends GameModel {
   @override
   String get description;
   @override
-  double get cost;
+  int get cost;
   @override
   String get location;
   @override
-  DateTime? get day;
-  @override
-  DateTime? get time;
+  DateTime? get dateAndTime;
   @override
   int get maxPlayerCount;
   @override

@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Play/Game_Model/game_types.dart';
@@ -12,43 +14,35 @@ class CreateNewGameView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    List<GameFormats> gameFormats = GameFormats.values.toList();
-
     return BlocProvider(
-      create: (context) => CreateGameBloc(),
-      child: BlocBuilder<CreateGameBloc, CreateGameState>(
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              title: Text('Create Game'),
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.close))
-              ],
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView(children: [
-                Title(),
-                Description(),
-                Location(),
-                DateAndTime(),
-                Cost(),
-                MaxPlayers(),
-                Format(),
-                CreateButton(),
-              ]),
-            ),
-          );
-        },
-      ),
-    );
+        create: (context) => CreateGameBloc(),
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            title: Text('Create Game'),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.close))
+            ],
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(children: [
+              Title(),
+              Description(),
+              Location(),
+              DateAndTime(),
+              Cost(),
+              MaxPlayers(),
+              Format(),
+              CreateButton(),
+            ]),
+          ),
+        ));
   }
 }
 
@@ -96,49 +90,61 @@ class Format extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: theme.cardColor, borderRadius: BorderRadius.circular(14)),
-        child: Row(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text('Format'),
+    final bloc = context.read<CreateGameBloc>();
+    return BlocBuilder<CreateGameBloc, CreateGameState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: BorderRadius.circular(14)),
+            child: Row(children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text('Format'),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: DropdownButton<GameFormats>(
+                          dropdownColor: theme.cardColor,
+                          value: state.format,
+                          icon: Icon(
+                            Icons.arrow_drop_down,
+                            color: theme.colorScheme.primary,
+                          ),
+                          underline: Container(
+                            height: 2,
+                            color: theme.colorScheme.primary,
+                          ),
+                          style: TextStyle(color: theme.colorScheme.primary),
+                          onChanged: (GameFormats? format) {
+                            bloc.add(
+                                CreateGameEvent.changeFormat(format: format!));
+                          },
+                          items: gameFormats
+                              .map((format) => DropdownMenuItem<GameFormats>(
+                                    value: format,
+                                    child: Text(
+                                      format.name,
+                                      style: TextStyle(
+                                          color: theme
+                                              .textTheme.bodyMedium!.color),
+                                    ),
+                                  ))
+                              .toList()),
+                    )
+                  ],
+                ),
+              ),
+            ]),
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<GameFormats>(
-                        dropdownColor: theme.cardColor,
-                        value: gameFormats.first,
-                        icon: const Icon(Icons.arrow_drop_down),
-                        style: TextStyle(color: theme.colorScheme.primary),
-                        onChanged: (GameFormats? value) {
-                          // add bloc state call here
-                        },
-                        items: gameFormats
-                            .map((format) => DropdownMenuItem<GameFormats>(
-                                  value: format,
-                                  child: Text(
-                                    format.name,
-                                    style: TextStyle(
-                                        color:
-                                            theme.textTheme.bodyMedium!.color),
-                                  ),
-                                ))
-                            .toList()),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ]),
-      ),
+        );
+      },
     );
   }
 }
@@ -151,33 +157,72 @@ class DateAndTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: theme.cardColor, borderRadius: BorderRadius.circular(14)),
-        child: Row(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text('Date & Time'),
+    final bloc = context.read<CreateGameBloc>();
+
+    return BlocBuilder<CreateGameBloc, CreateGameState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: BorderRadius.circular(14)),
+            child: Row(children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text('Date & Time'),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: TextButton(
+                          onPressed: () {
+                            //! Add function to show date time dialog
+                            showModalBottomSheet(
+                                showDragHandle: true,
+                                context: context,
+                                builder: (_) => Container(
+                                      color: theme.cardColor,
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 250,
+                                            child: CupertinoDatePicker(
+                                                initialDateTime: DateTime.now(),
+                                                onDateTimeChanged: (val) {
+                                                  bloc.add(CreateGameEvent
+                                                      .changeDateAndTime(
+                                                          dateAndTime: val));
+                                                }),
+                                          ),
+                                          OutlinedButton(
+                                              style: OutlinedButton.styleFrom(
+                                                  side: BorderSide(
+                                                      color: theme.colorScheme
+                                                          .primary)),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('Save'))
+                                        ],
+                                      ),
+                                    ));
+                          },
+                          child: Text(state.dateAndTime == null
+                              ? 'Anytime'
+                              : Jiffy.parse(state.dateAndTime.toString())
+                                  .yMMMMEEEEdjm),
+                        ))
+                  ],
+                ),
+              ),
+            ]),
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: TextButton(
-                      onPressed: () {
-                        //! Add function to show date time dialog
-                      },
-                      child: Text('Anytime'),
-                    ))
-              ],
-            ),
-          ),
-        ]),
-      ),
+        );
+      },
     );
   }
 }
@@ -190,43 +235,53 @@ class MaxPlayers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: theme.cardColor, borderRadius: BorderRadius.circular(14)),
-        child: Row(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text('Max Players'),
+    final bloc = context.read<CreateGameBloc>();
+    return BlocBuilder<CreateGameBloc, CreateGameState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: BorderRadius.circular(14)),
+            child: Row(children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text('Max Players'),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          if (state.maxPlayerCount > 2) {
+                            bloc.add(CreateGameEvent.changeMaxPlayers(
+                                maxPlayers: state.maxPlayerCount - 1));
+                          }
+                        },
+                        child: Icon(Icons.remove_circle_outline)),
+                    Container(
+                        width: 30,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(state.maxPlayerCount.toString()),
+                          ],
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          bloc.add(CreateGameEvent.changeMaxPlayers(
+                              maxPlayers: state.maxPlayerCount + 1));
+                        },
+                        child: Icon(Icons.add_circle_outline_rounded)),
+                  ],
+                ),
+              ),
+            ]),
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      //* add bloc function to decrease amount if not 0
-                    },
-                    child: Icon(Icons.remove_circle_outline)),
-                Container(
-                    width: 30,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("4"),
-                      ],
-                    )),
-                TextButton(
-                    onPressed: () {
-                      //* add bloc function to decrease amount if not 0
-                    },
-                    child: Icon(Icons.add_circle_outline_rounded)),
-              ],
-            ),
-          ),
-        ]),
-      ),
+        );
+      },
     );
   }
 }
@@ -239,43 +294,55 @@ class Cost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: theme.cardColor, borderRadius: BorderRadius.circular(14)),
-        child: Row(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text('Cost'),
+    final bloc = context.read<CreateGameBloc>();
+    return BlocBuilder<CreateGameBloc, CreateGameState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: BorderRadius.circular(14)),
+            child: Row(children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text('Cost'),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          if (state.cost > 0) {
+                            bloc.add(CreateGameEvent.changeCost(
+                                cost: state.cost - 1));
+                          }
+                        },
+                        child: Icon(Icons.remove_circle_outline)),
+                    Container(
+                        width: 30,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(state.cost == 0
+                                ? "Free"
+                                : '\$ ${state.cost.toString()}'),
+                          ],
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          bloc.add(
+                              CreateGameEvent.changeCost(cost: state.cost + 1));
+                        },
+                        child: Icon(Icons.add_circle_outline_rounded)),
+                  ],
+                ),
+              ),
+            ]),
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      //* add bloc function to decrease amount if not 0
-                    },
-                    child: Icon(Icons.remove_circle_outline)),
-                Container(
-                    width: 30,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Free"),
-                      ],
-                    )),
-                TextButton(
-                    onPressed: () {
-                      //* add bloc function to decrease amount if not 0
-                    },
-                    child: Icon(Icons.add_circle_outline_rounded)),
-              ],
-            ),
-          ),
-        ]),
-      ),
+        );
+      },
     );
   }
 }
@@ -319,6 +386,7 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<CreateGameBloc>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -328,7 +396,10 @@ class Description extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
-          child: OurTextfield(minLines: 3, onChanged: () {}),
+          child: OurTextfield(
+              minLines: 3,
+              onChanged: (value) => bloc.add(CreateGameEvent.changeDescription(
+                  description: value.toString()))),
         ),
       ],
     );
@@ -342,6 +413,8 @@ class Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<CreateGameBloc>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -351,7 +424,10 @@ class Title extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
-          child: OurTextfield(onChanged: () {}),
+          child: OurTextfield(
+              controller: TextEditingController(),
+              onChanged: (value) => bloc
+                  .add(CreateGameEvent.changeTitle(title: value.toString()))),
         ),
       ],
     );

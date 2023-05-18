@@ -23,6 +23,10 @@ class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
     on<_ChangeLocation>((event, emit) {
       emit(state.copyWith(location: event.location));
     });
+    on<_ChangeDateAndTime>((event, emit) {
+      emit(state.copyWith(dateAndTime: event.dateAndTime));
+    });
+
     on<_ChangeCost>((event, emit) {
       emit(state.copyWith(cost: event.cost));
     });
@@ -42,6 +46,7 @@ class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
           description: state.description,
           cost: state.cost,
           location: state.location,
+          dateAndTime: state.dateAndTime,
           maxPlayerCount: state.maxPlayerCount,
           minPlayerCount: state.minPlayerCount,
           players: state.players,
@@ -65,6 +70,7 @@ class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
           description: state.description,
           cost: state.cost,
           location: state.location,
+          dateAndTime: state.dateAndTime,
           maxPlayerCount: state.maxPlayerCount,
           minPlayerCount: state.minPlayerCount,
           players: state.players,

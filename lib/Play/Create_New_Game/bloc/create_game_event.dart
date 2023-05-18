@@ -8,8 +8,11 @@ class CreateGameEvent with _$CreateGameEvent {
       {required String description}) = _ChangeDescription;
   const factory CreateGameEvent.changeLocation({required String location}) =
       _ChangeLocation;
-  const factory CreateGameEvent.changeCost({required double cost}) =
-      _ChangeCost;
+  const factory CreateGameEvent.changeDateAndTime(
+      {required DateTime dateAndTime}) = _ChangeDateAndTime;
+
+  const factory CreateGameEvent.changeCost({required int cost}) = _ChangeCost;
+
   const factory CreateGameEvent.changeMaxPlayers({required int maxPlayers}) =
       _ChangeMaxPlayers;
   const factory CreateGameEvent.changeFormat({required GameFormats format}) =

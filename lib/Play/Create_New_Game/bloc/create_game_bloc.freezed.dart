@@ -21,7 +21,8 @@ mixin _$CreateGameEvent {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -33,7 +34,8 @@ mixin _$CreateGameEvent {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -45,7 +47,8 @@ mixin _$CreateGameEvent {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -58,6 +61,7 @@ mixin _$CreateGameEvent {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -70,6 +74,7 @@ mixin _$CreateGameEvent {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -82,6 +87,7 @@ mixin _$CreateGameEvent {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -177,7 +183,8 @@ class _$_ChangeTitle implements _ChangeTitle {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -192,7 +199,8 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -207,7 +215,8 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -226,6 +235,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -241,6 +251,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -256,6 +267,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -348,7 +360,8 @@ class _$_ChangeDescription implements _ChangeDescription {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -363,7 +376,8 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -378,7 +392,8 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -397,6 +412,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -412,6 +428,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -427,6 +444,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -519,7 +537,8 @@ class _$_ChangeLocation implements _ChangeLocation {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -534,7 +553,8 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -549,7 +569,8 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -568,6 +589,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -583,6 +605,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -598,6 +621,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -623,12 +647,190 @@ abstract class _ChangeLocation implements CreateGameEvent {
 }
 
 /// @nodoc
+abstract class _$$_ChangeDateAndTimeCopyWith<$Res> {
+  factory _$$_ChangeDateAndTimeCopyWith(_$_ChangeDateAndTime value,
+          $Res Function(_$_ChangeDateAndTime) then) =
+      __$$_ChangeDateAndTimeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime dateAndTime});
+}
+
+/// @nodoc
+class __$$_ChangeDateAndTimeCopyWithImpl<$Res>
+    extends _$CreateGameEventCopyWithImpl<$Res, _$_ChangeDateAndTime>
+    implements _$$_ChangeDateAndTimeCopyWith<$Res> {
+  __$$_ChangeDateAndTimeCopyWithImpl(
+      _$_ChangeDateAndTime _value, $Res Function(_$_ChangeDateAndTime) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dateAndTime = null,
+  }) {
+    return _then(_$_ChangeDateAndTime(
+      dateAndTime: null == dateAndTime
+          ? _value.dateAndTime
+          : dateAndTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeDateAndTime implements _ChangeDateAndTime {
+  const _$_ChangeDateAndTime({required this.dateAndTime});
+
+  @override
+  final DateTime dateAndTime;
+
+  @override
+  String toString() {
+    return 'CreateGameEvent.changeDateAndTime(dateAndTime: $dateAndTime)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ChangeDateAndTime &&
+            (identical(other.dateAndTime, dateAndTime) ||
+                other.dateAndTime == dateAndTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dateAndTime);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ChangeDateAndTimeCopyWith<_$_ChangeDateAndTime> get copyWith =>
+      __$$_ChangeDateAndTimeCopyWithImpl<_$_ChangeDateAndTime>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String title) changeTitle,
+    required TResult Function(String description) changeDescription,
+    required TResult Function(String location) changeLocation,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
+    required TResult Function(int maxPlayers) changeMaxPlayers,
+    required TResult Function(GameFormats format) changeFormat,
+    required TResult Function() createGame,
+    required TResult Function(String gameDocID) updateGame,
+  }) {
+    return changeDateAndTime(dateAndTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String title)? changeTitle,
+    TResult? Function(String description)? changeDescription,
+    TResult? Function(String location)? changeLocation,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
+    TResult? Function(int maxPlayers)? changeMaxPlayers,
+    TResult? Function(GameFormats format)? changeFormat,
+    TResult? Function()? createGame,
+    TResult? Function(String gameDocID)? updateGame,
+  }) {
+    return changeDateAndTime?.call(dateAndTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String title)? changeTitle,
+    TResult Function(String description)? changeDescription,
+    TResult Function(String location)? changeLocation,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
+    TResult Function(int maxPlayers)? changeMaxPlayers,
+    TResult Function(GameFormats format)? changeFormat,
+    TResult Function()? createGame,
+    TResult Function(String gameDocID)? updateGame,
+    required TResult orElse(),
+  }) {
+    if (changeDateAndTime != null) {
+      return changeDateAndTime(dateAndTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTitle value) changeTitle,
+    required TResult Function(_ChangeDescription value) changeDescription,
+    required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
+    required TResult Function(_ChangeCost value) changeCost,
+    required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
+    required TResult Function(_ChangeFormat value) changeFormat,
+    required TResult Function(_CreateGame value) createGame,
+    required TResult Function(_UpdateGame value) updateGame,
+  }) {
+    return changeDateAndTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTitle value)? changeTitle,
+    TResult? Function(_ChangeDescription value)? changeDescription,
+    TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
+    TResult? Function(_ChangeCost value)? changeCost,
+    TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
+    TResult? Function(_ChangeFormat value)? changeFormat,
+    TResult? Function(_CreateGame value)? createGame,
+    TResult? Function(_UpdateGame value)? updateGame,
+  }) {
+    return changeDateAndTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTitle value)? changeTitle,
+    TResult Function(_ChangeDescription value)? changeDescription,
+    TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
+    TResult Function(_ChangeCost value)? changeCost,
+    TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
+    TResult Function(_ChangeFormat value)? changeFormat,
+    TResult Function(_CreateGame value)? createGame,
+    TResult Function(_UpdateGame value)? updateGame,
+    required TResult orElse(),
+  }) {
+    if (changeDateAndTime != null) {
+      return changeDateAndTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeDateAndTime implements CreateGameEvent {
+  const factory _ChangeDateAndTime({required final DateTime dateAndTime}) =
+      _$_ChangeDateAndTime;
+
+  DateTime get dateAndTime;
+  @JsonKey(ignore: true)
+  _$$_ChangeDateAndTimeCopyWith<_$_ChangeDateAndTime> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$_ChangeCostCopyWith<$Res> {
   factory _$$_ChangeCostCopyWith(
           _$_ChangeCost value, $Res Function(_$_ChangeCost) then) =
       __$$_ChangeCostCopyWithImpl<$Res>;
   @useResult
-  $Res call({double cost});
+  $Res call({int cost});
 }
 
 /// @nodoc
@@ -648,7 +850,7 @@ class __$$_ChangeCostCopyWithImpl<$Res>
       cost: null == cost
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -659,7 +861,7 @@ class _$_ChangeCost implements _ChangeCost {
   const _$_ChangeCost({required this.cost});
 
   @override
-  final double cost;
+  final int cost;
 
   @override
   String toString() {
@@ -689,7 +891,8 @@ class _$_ChangeCost implements _ChangeCost {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -704,7 +907,8 @@ class _$_ChangeCost implements _ChangeCost {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -719,7 +923,8 @@ class _$_ChangeCost implements _ChangeCost {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -738,6 +943,7 @@ class _$_ChangeCost implements _ChangeCost {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -753,6 +959,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -768,6 +975,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -783,9 +991,9 @@ class _$_ChangeCost implements _ChangeCost {
 }
 
 abstract class _ChangeCost implements CreateGameEvent {
-  const factory _ChangeCost({required final double cost}) = _$_ChangeCost;
+  const factory _ChangeCost({required final int cost}) = _$_ChangeCost;
 
-  double get cost;
+  int get cost;
   @JsonKey(ignore: true)
   _$$_ChangeCostCopyWith<_$_ChangeCost> get copyWith =>
       throw _privateConstructorUsedError;
@@ -859,7 +1067,8 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -874,7 +1083,8 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -889,7 +1099,8 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -908,6 +1119,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -923,6 +1135,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -938,6 +1151,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -1029,7 +1243,8 @@ class _$_ChangeFormat implements _ChangeFormat {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -1044,7 +1259,8 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -1059,7 +1275,8 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -1078,6 +1295,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -1093,6 +1311,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -1108,6 +1327,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -1173,7 +1393,8 @@ class _$_CreateGame implements _CreateGame {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -1188,7 +1409,8 @@ class _$_CreateGame implements _CreateGame {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -1203,7 +1425,8 @@ class _$_CreateGame implements _CreateGame {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -1222,6 +1445,7 @@ class _$_CreateGame implements _CreateGame {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -1237,6 +1461,7 @@ class _$_CreateGame implements _CreateGame {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -1252,6 +1477,7 @@ class _$_CreateGame implements _CreateGame {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -1338,7 +1564,8 @@ class _$_UpdateGame implements _UpdateGame {
     required TResult Function(String title) changeTitle,
     required TResult Function(String description) changeDescription,
     required TResult Function(String location) changeLocation,
-    required TResult Function(double cost) changeCost,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
@@ -1353,7 +1580,8 @@ class _$_UpdateGame implements _UpdateGame {
     TResult? Function(String title)? changeTitle,
     TResult? Function(String description)? changeDescription,
     TResult? Function(String location)? changeLocation,
-    TResult? Function(double cost)? changeCost,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
@@ -1368,7 +1596,8 @@ class _$_UpdateGame implements _UpdateGame {
     TResult Function(String title)? changeTitle,
     TResult Function(String description)? changeDescription,
     TResult Function(String location)? changeLocation,
-    TResult Function(double cost)? changeCost,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
@@ -1387,6 +1616,7 @@ class _$_UpdateGame implements _UpdateGame {
     required TResult Function(_ChangeTitle value) changeTitle,
     required TResult Function(_ChangeDescription value) changeDescription,
     required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
     required TResult Function(_ChangeCost value) changeCost,
     required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
     required TResult Function(_ChangeFormat value) changeFormat,
@@ -1402,6 +1632,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult? Function(_ChangeTitle value)? changeTitle,
     TResult? Function(_ChangeDescription value)? changeDescription,
     TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult? Function(_ChangeCost value)? changeCost,
     TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult? Function(_ChangeFormat value)? changeFormat,
@@ -1417,6 +1648,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult Function(_ChangeTitle value)? changeTitle,
     TResult Function(_ChangeDescription value)? changeDescription,
     TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
     TResult Function(_ChangeCost value)? changeCost,
     TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
     TResult Function(_ChangeFormat value)? changeFormat,
@@ -1444,8 +1676,9 @@ abstract class _UpdateGame implements CreateGameEvent {
 mixin _$CreateGameState {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  double get cost => throw _privateConstructorUsedError;
+  int get cost => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
+  DateTime? get dateAndTime => throw _privateConstructorUsedError;
   int get maxPlayerCount => throw _privateConstructorUsedError;
   int get minPlayerCount => throw _privateConstructorUsedError;
   List<UserModel> get players => throw _privateConstructorUsedError;
@@ -1466,8 +1699,9 @@ abstract class $CreateGameStateCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      double cost,
+      int cost,
       String location,
+      DateTime? dateAndTime,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -1492,6 +1726,7 @@ class _$CreateGameStateCopyWithImpl<$Res, $Val extends CreateGameState>
     Object? description = null,
     Object? cost = null,
     Object? location = null,
+    Object? dateAndTime = freezed,
     Object? maxPlayerCount = null,
     Object? minPlayerCount = null,
     Object? players = null,
@@ -1510,11 +1745,15 @@ class _$CreateGameStateCopyWithImpl<$Res, $Val extends CreateGameState>
       cost: null == cost
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      dateAndTime: freezed == dateAndTime
+          ? _value.dateAndTime
+          : dateAndTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       maxPlayerCount: null == maxPlayerCount
           ? _value.maxPlayerCount
           : maxPlayerCount // ignore: cast_nullable_to_non_nullable
@@ -1550,8 +1789,9 @@ abstract class _$$_CreateGameStateCopyWith<$Res>
   $Res call(
       {String title,
       String description,
-      double cost,
+      int cost,
       String location,
+      DateTime? dateAndTime,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -1574,6 +1814,7 @@ class __$$_CreateGameStateCopyWithImpl<$Res>
     Object? description = null,
     Object? cost = null,
     Object? location = null,
+    Object? dateAndTime = freezed,
     Object? maxPlayerCount = null,
     Object? minPlayerCount = null,
     Object? players = null,
@@ -1592,11 +1833,15 @@ class __$$_CreateGameStateCopyWithImpl<$Res>
       cost: null == cost
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      dateAndTime: freezed == dateAndTime
+          ? _value.dateAndTime
+          : dateAndTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       maxPlayerCount: null == maxPlayerCount
           ? _value.maxPlayerCount
           : maxPlayerCount // ignore: cast_nullable_to_non_nullable
@@ -1627,8 +1872,9 @@ class _$_CreateGameState extends _CreateGameState {
   const _$_CreateGameState(
       {this.title = '',
       this.description = '',
-      this.cost = 0.00,
+      this.cost = 0,
       this.location = '',
+      this.dateAndTime = null,
       this.maxPlayerCount = 4,
       this.minPlayerCount = 2,
       final List<UserModel> players = const [],
@@ -1645,10 +1891,13 @@ class _$_CreateGameState extends _CreateGameState {
   final String description;
   @override
   @JsonKey()
-  final double cost;
+  final int cost;
   @override
   @JsonKey()
   final String location;
+  @override
+  @JsonKey()
+  final DateTime? dateAndTime;
   @override
   @JsonKey()
   final int maxPlayerCount;
@@ -1673,7 +1922,7 @@ class _$_CreateGameState extends _CreateGameState {
 
   @override
   String toString() {
-    return 'CreateGameState(title: $title, description: $description, cost: $cost, location: $location, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format, buttonState: $buttonState)';
+    return 'CreateGameState(title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format, buttonState: $buttonState)';
   }
 
   @override
@@ -1687,6 +1936,8 @@ class _$_CreateGameState extends _CreateGameState {
             (identical(other.cost, cost) || other.cost == cost) &&
             (identical(other.location, location) ||
                 other.location == location) &&
+            (identical(other.dateAndTime, dateAndTime) ||
+                other.dateAndTime == dateAndTime) &&
             (identical(other.maxPlayerCount, maxPlayerCount) ||
                 other.maxPlayerCount == maxPlayerCount) &&
             (identical(other.minPlayerCount, minPlayerCount) ||
@@ -1704,6 +1955,7 @@ class _$_CreateGameState extends _CreateGameState {
       description,
       cost,
       location,
+      dateAndTime,
       maxPlayerCount,
       minPlayerCount,
       const DeepCollectionEquality().hash(_players),
@@ -1721,8 +1973,9 @@ abstract class _CreateGameState extends CreateGameState {
   const factory _CreateGameState(
       {final String title,
       final String description,
-      final double cost,
+      final int cost,
       final String location,
+      final DateTime? dateAndTime,
       final int maxPlayerCount,
       final int minPlayerCount,
       final List<UserModel> players,
@@ -1735,9 +1988,11 @@ abstract class _CreateGameState extends CreateGameState {
   @override
   String get description;
   @override
-  double get cost;
+  int get cost;
   @override
   String get location;
+  @override
+  DateTime? get dateAndTime;
   @override
   int get maxPlayerCount;
   @override

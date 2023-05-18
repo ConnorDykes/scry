@@ -37,7 +37,11 @@ class OurTextfield extends StatelessWidget {
       maxLines: maxLines,
       minLines: minLines,
       decoration: InputDecoration(
-          contentPadding: const EdgeInsets.only(left: 8),
+          contentPadding: maxLines != null
+              ? const EdgeInsets.only(
+                  left: 8,
+                )
+              : const EdgeInsets.all(8),
           fillColor: theme.cardColor,
           filled: true,
           hintText: hintText,
