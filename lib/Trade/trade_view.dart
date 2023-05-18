@@ -117,7 +117,10 @@ class TradeCard extends StatelessWidget {
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Card(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: theme.cardColor,
+                  borderRadius: BorderRadius.circular(14)),
               child: Column(children: [
                 Row(
                   children: [

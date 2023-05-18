@@ -23,8 +23,9 @@ mixin _$GameModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   double get cost => throw _privateConstructorUsedError;
-  String get locationName => throw _privateConstructorUsedError;
-  String get locationAddress => throw _privateConstructorUsedError;
+  String get location => throw _privateConstructorUsedError;
+  DateTime? get day => throw _privateConstructorUsedError;
+  DateTime? get time => throw _privateConstructorUsedError;
   int get maxPlayerCount => throw _privateConstructorUsedError;
   int get minPlayerCount => throw _privateConstructorUsedError;
   List<UserModel> get players => throw _privateConstructorUsedError;
@@ -45,8 +46,9 @@ abstract class $GameModelCopyWith<$Res> {
       {String title,
       String description,
       double cost,
-      String locationName,
-      String locationAddress,
+      String location,
+      DateTime? day,
+      DateTime? time,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -69,8 +71,9 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
     Object? title = null,
     Object? description = null,
     Object? cost = null,
-    Object? locationName = null,
-    Object? locationAddress = null,
+    Object? location = null,
+    Object? day = freezed,
+    Object? time = freezed,
     Object? maxPlayerCount = null,
     Object? minPlayerCount = null,
     Object? players = null,
@@ -89,14 +92,18 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
               as double,
-      locationName: null == locationName
-          ? _value.locationName
-          : locationName // ignore: cast_nullable_to_non_nullable
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
               as String,
-      locationAddress: null == locationAddress
-          ? _value.locationAddress
-          : locationAddress // ignore: cast_nullable_to_non_nullable
-              as String,
+      day: freezed == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       maxPlayerCount: null == maxPlayerCount
           ? _value.maxPlayerCount
           : maxPlayerCount // ignore: cast_nullable_to_non_nullable
@@ -128,8 +135,9 @@ abstract class _$$_GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
       {String title,
       String description,
       double cost,
-      String locationName,
-      String locationAddress,
+      String location,
+      DateTime? day,
+      DateTime? time,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -150,8 +158,9 @@ class __$$_GameModelCopyWithImpl<$Res>
     Object? title = null,
     Object? description = null,
     Object? cost = null,
-    Object? locationName = null,
-    Object? locationAddress = null,
+    Object? location = null,
+    Object? day = freezed,
+    Object? time = freezed,
     Object? maxPlayerCount = null,
     Object? minPlayerCount = null,
     Object? players = null,
@@ -170,14 +179,18 @@ class __$$_GameModelCopyWithImpl<$Res>
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
               as double,
-      locationName: null == locationName
-          ? _value.locationName
-          : locationName // ignore: cast_nullable_to_non_nullable
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
               as String,
-      locationAddress: null == locationAddress
-          ? _value.locationAddress
-          : locationAddress // ignore: cast_nullable_to_non_nullable
-              as String,
+      day: freezed == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       maxPlayerCount: null == maxPlayerCount
           ? _value.maxPlayerCount
           : maxPlayerCount // ignore: cast_nullable_to_non_nullable
@@ -205,8 +218,9 @@ class _$_GameModel extends _GameModel {
       {this.title = '',
       this.description = '',
       this.cost = 0.00,
-      this.locationName = '',
-      this.locationAddress = '',
+      this.location = '',
+      this.day = null,
+      this.time = null,
       this.maxPlayerCount = 4,
       this.minPlayerCount = 2,
       final List<UserModel> players = const [],
@@ -228,10 +242,13 @@ class _$_GameModel extends _GameModel {
   final double cost;
   @override
   @JsonKey()
-  final String locationName;
+  final String location;
   @override
   @JsonKey()
-  final String locationAddress;
+  final DateTime? day;
+  @override
+  @JsonKey()
+  final DateTime? time;
   @override
   @JsonKey()
   final int maxPlayerCount;
@@ -253,7 +270,7 @@ class _$_GameModel extends _GameModel {
 
   @override
   String toString() {
-    return 'GameModel(title: $title, description: $description, cost: $cost, locationName: $locationName, locationAddress: $locationAddress, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
+    return 'GameModel(title: $title, description: $description, cost: $cost, location: $location, day: $day, time: $time, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
   }
 
   @override
@@ -265,10 +282,10 @@ class _$_GameModel extends _GameModel {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.cost, cost) || other.cost == cost) &&
-            (identical(other.locationName, locationName) ||
-                other.locationName == locationName) &&
-            (identical(other.locationAddress, locationAddress) ||
-                other.locationAddress == locationAddress) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.day, day) || other.day == day) &&
+            (identical(other.time, time) || other.time == time) &&
             (identical(other.maxPlayerCount, maxPlayerCount) ||
                 other.maxPlayerCount == maxPlayerCount) &&
             (identical(other.minPlayerCount, minPlayerCount) ||
@@ -284,8 +301,9 @@ class _$_GameModel extends _GameModel {
       title,
       description,
       cost,
-      locationName,
-      locationAddress,
+      location,
+      day,
+      time,
       maxPlayerCount,
       minPlayerCount,
       const DeepCollectionEquality().hash(_players),
@@ -310,8 +328,9 @@ abstract class _GameModel extends GameModel {
       {final String title,
       final String description,
       final double cost,
-      final String locationName,
-      final String locationAddress,
+      final String location,
+      final DateTime? day,
+      final DateTime? time,
       final int maxPlayerCount,
       final int minPlayerCount,
       final List<UserModel> players,
@@ -328,9 +347,11 @@ abstract class _GameModel extends GameModel {
   @override
   double get cost;
   @override
-  String get locationName;
+  String get location;
   @override
-  String get locationAddress;
+  DateTime? get day;
+  @override
+  DateTime? get time;
   @override
   int get maxPlayerCount;
   @override

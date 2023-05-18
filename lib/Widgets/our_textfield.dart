@@ -11,7 +11,8 @@ class OurTextfield extends StatelessWidget {
       this.hintText,
       this.maxLines,
       this.minLines,
-      this.textCapitalization = TextCapitalization.sentences});
+      this.textCapitalization = TextCapitalization.sentences,
+      this.keyboardType});
 
   final TextEditingController? controller;
   final Function onChanged;
@@ -20,6 +21,7 @@ class OurTextfield extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final TextCapitalization textCapitalization;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class OurTextfield extends StatelessWidget {
         onChanged(value);
       },
       textCapitalization: textCapitalization,
+      keyboardType: keyboardType,
       maxLines: maxLines,
       minLines: minLines,
       decoration: InputDecoration(

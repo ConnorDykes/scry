@@ -9,9 +9,11 @@ part of 'game_model.dart';
 _$_GameModel _$$_GameModelFromJson(Map<String, dynamic> json) => _$_GameModel(
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
-      cost: (json['cost'] as num?)?.toDouble() ?? 0.0,
-      locationName: json['locationName'] as String? ?? '',
-      locationAddress: json['locationAddress'] as String? ?? '',
+      cost: (json['cost'] as num?)?.toDouble() ?? 0.00,
+      location: json['location'] as String? ?? '',
+      day: json['day'] == null ? null : DateTime.parse(json['day'] as String),
+      time:
+          json['time'] == null ? null : DateTime.parse(json['time'] as String),
       maxPlayerCount: json['maxPlayerCount'] as int? ?? 4,
       minPlayerCount: json['minPlayerCount'] as int? ?? 2,
       players: (json['players'] as List<dynamic>?)
@@ -27,8 +29,9 @@ Map<String, dynamic> _$$_GameModelToJson(_$_GameModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'cost': instance.cost,
-      'locationName': instance.locationName,
-      'locationAddress': instance.locationAddress,
+      'location': instance.location,
+      'day': instance.day?.toIso8601String(),
+      'time': instance.time?.toIso8601String(),
       'maxPlayerCount': instance.maxPlayerCount,
       'minPlayerCount': instance.minPlayerCount,
       'players': instance.players,
