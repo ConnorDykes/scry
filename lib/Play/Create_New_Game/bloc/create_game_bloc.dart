@@ -1,5 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Play/Create_New_Game/create_game_repository.dart';
@@ -12,6 +15,7 @@ part 'create_game_bloc.freezed.dart';
 
 class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
   final createGameRepo = CreateGameRepo();
+  final locationController = TextEditingController();
 
   CreateGameBloc() : super(CreateGameState()) {
     on<_ChangeTitle>((event, emit) {
@@ -23,6 +27,59 @@ class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
     on<_ChangeLocation>((event, emit) {
       emit(state.copyWith(location: event.location));
     });
+
+    on<_GetCurrentLocation>((event, emit) async {
+      Future<bool> _handleLocationPermission() async {
+        bool serviceEnabled;
+        LocationPermission permission;
+
+        serviceEnabled = await Geolocator.isLocationServiceEnabled();
+        if (!serviceEnabled) {
+          ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+              content: Text(
+                  'Location services are disabled. Please enable the services')));
+          return false;
+        }
+        permission = await Geolocator.checkPermission();
+        if (permission == LocationPermission.denied) {
+          permission = await Geolocator.requestPermission();
+          if (permission == LocationPermission.denied) {
+            ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+                content: Text('Location permissions are denied')));
+            return false;
+          }
+        }
+        if (permission == LocationPermission.deniedForever) {
+          ScaffoldMessenger.of(event.context).showSnackBar(const SnackBar(
+              content: Text(
+                  'Location permissions are permanently denied, we cannot request permissions.')));
+          return false;
+        }
+        return true;
+      }
+
+      Future<void> _getAddressFromLatLng(Position position) async {
+        await placemarkFromCoordinates(position.latitude, position.longitude)
+            .then((List<Placemark> placemarks) {
+          Placemark place = placemarks[0];
+          emit(state.copyWith(
+              location:
+                  '''${place.street}, ${place.locality}, ${place.postalCode}'''));
+          locationController.text =
+              '${place.street}, ${place.locality}, ${place.postalCode}';
+          print(state.location);
+        }).catchError((e) {
+          debugPrint(e);
+        });
+      }
+
+      final hasPermission = await _handleLocationPermission();
+      if (!hasPermission) return;
+      Position? _currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      await _getAddressFromLatLng(_currentPosition);
+    });
+
     on<_ChangeDateAndTime>((event, emit) {
       emit(state.copyWith(dateAndTime: event.dateAndTime));
     });

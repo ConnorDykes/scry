@@ -355,6 +355,7 @@ class Location extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final bloc = context.read<CreateGameBloc>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -365,15 +366,20 @@ class Location extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 16.0),
           child: OurTextfield(
-            onChanged: () {},
+            controller: bloc.locationController,
+            onChanged: (value) {
+              bloc.add(CreateGameEvent.changeLocation(location: value));
+            },
             keyboardType: TextInputType.streetAddress,
             suffixIcon: IconButton(
               color: theme.colorScheme.primary,
               icon: Icon(Icons.location_on),
-              onPressed: () {},
+              onPressed: () {
+                bloc.add(CreateGameEvent.getCurrentLocation(context: context));
+              },
             ),
           ),
-        ),
+        )
       ],
     );
   }

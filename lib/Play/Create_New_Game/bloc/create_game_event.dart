@@ -20,4 +20,6 @@ class CreateGameEvent with _$CreateGameEvent {
   const factory CreateGameEvent.createGame() = _CreateGame;
   const factory CreateGameEvent.updateGame({required String gameDocID}) =
       _UpdateGame;
+  const factory CreateGameEvent.getCurrentLocation(
+      {required BuildContext context}) = _GetCurrentLocation;
 }

@@ -27,6 +27,7 @@ mixin _$CreateGameEvent {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$CreateGameEvent {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$CreateGameEvent {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +70,7 @@ mixin _$CreateGameEvent {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +84,7 @@ mixin _$CreateGameEvent {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +98,7 @@ mixin _$CreateGameEvent {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,6 +195,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return changeTitle(title);
   }
@@ -205,6 +212,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return changeTitle?.call(title);
   }
@@ -221,6 +229,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeTitle != null) {
@@ -241,6 +250,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return changeTitle(this);
   }
@@ -257,6 +267,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return changeTitle?.call(this);
   }
@@ -273,6 +284,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeTitle != null) {
@@ -366,6 +378,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return changeDescription(description);
   }
@@ -382,6 +395,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return changeDescription?.call(description);
   }
@@ -398,6 +412,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeDescription != null) {
@@ -418,6 +433,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return changeDescription(this);
   }
@@ -434,6 +450,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return changeDescription?.call(this);
   }
@@ -450,6 +467,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeDescription != null) {
@@ -543,6 +561,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return changeLocation(location);
   }
@@ -559,6 +578,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return changeLocation?.call(location);
   }
@@ -575,6 +595,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeLocation != null) {
@@ -595,6 +616,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return changeLocation(this);
   }
@@ -611,6 +633,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return changeLocation?.call(this);
   }
@@ -627,6 +650,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeLocation != null) {
@@ -721,6 +745,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return changeDateAndTime(dateAndTime);
   }
@@ -737,6 +762,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return changeDateAndTime?.call(dateAndTime);
   }
@@ -753,6 +779,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeDateAndTime != null) {
@@ -773,6 +800,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return changeDateAndTime(this);
   }
@@ -789,6 +817,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return changeDateAndTime?.call(this);
   }
@@ -805,6 +834,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeDateAndTime != null) {
@@ -897,6 +927,7 @@ class _$_ChangeCost implements _ChangeCost {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return changeCost(cost);
   }
@@ -913,6 +944,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return changeCost?.call(cost);
   }
@@ -929,6 +961,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeCost != null) {
@@ -949,6 +982,7 @@ class _$_ChangeCost implements _ChangeCost {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return changeCost(this);
   }
@@ -965,6 +999,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return changeCost?.call(this);
   }
@@ -981,6 +1016,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeCost != null) {
@@ -1073,6 +1109,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return changeMaxPlayers(maxPlayers);
   }
@@ -1089,6 +1126,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return changeMaxPlayers?.call(maxPlayers);
   }
@@ -1105,6 +1143,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeMaxPlayers != null) {
@@ -1125,6 +1164,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return changeMaxPlayers(this);
   }
@@ -1141,6 +1181,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return changeMaxPlayers?.call(this);
   }
@@ -1157,6 +1198,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeMaxPlayers != null) {
@@ -1249,6 +1291,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return changeFormat(format);
   }
@@ -1265,6 +1308,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return changeFormat?.call(format);
   }
@@ -1281,6 +1325,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeFormat != null) {
@@ -1301,6 +1346,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return changeFormat(this);
   }
@@ -1317,6 +1363,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return changeFormat?.call(this);
   }
@@ -1333,6 +1380,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (changeFormat != null) {
@@ -1399,6 +1447,7 @@ class _$_CreateGame implements _CreateGame {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return createGame();
   }
@@ -1415,6 +1464,7 @@ class _$_CreateGame implements _CreateGame {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return createGame?.call();
   }
@@ -1431,6 +1481,7 @@ class _$_CreateGame implements _CreateGame {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (createGame != null) {
@@ -1451,6 +1502,7 @@ class _$_CreateGame implements _CreateGame {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return createGame(this);
   }
@@ -1467,6 +1519,7 @@ class _$_CreateGame implements _CreateGame {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return createGame?.call(this);
   }
@@ -1483,6 +1536,7 @@ class _$_CreateGame implements _CreateGame {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (createGame != null) {
@@ -1570,6 +1624,7 @@ class _$_UpdateGame implements _UpdateGame {
     required TResult Function(GameFormats format) changeFormat,
     required TResult Function() createGame,
     required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
   }) {
     return updateGame(gameDocID);
   }
@@ -1586,6 +1641,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult? Function(GameFormats format)? changeFormat,
     TResult? Function()? createGame,
     TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
     return updateGame?.call(gameDocID);
   }
@@ -1602,6 +1658,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult Function(GameFormats format)? changeFormat,
     TResult Function()? createGame,
     TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (updateGame != null) {
@@ -1622,6 +1679,7 @@ class _$_UpdateGame implements _UpdateGame {
     required TResult Function(_ChangeFormat value) changeFormat,
     required TResult Function(_CreateGame value) createGame,
     required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
   }) {
     return updateGame(this);
   }
@@ -1638,6 +1696,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult? Function(_ChangeFormat value)? changeFormat,
     TResult? Function(_CreateGame value)? createGame,
     TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
   }) {
     return updateGame?.call(this);
   }
@@ -1654,6 +1713,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult Function(_ChangeFormat value)? changeFormat,
     TResult Function(_CreateGame value)? createGame,
     TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (updateGame != null) {
@@ -1669,6 +1729,189 @@ abstract class _UpdateGame implements CreateGameEvent {
   String get gameDocID;
   @JsonKey(ignore: true)
   _$$_UpdateGameCopyWith<_$_UpdateGame> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetCurrentLocationCopyWith<$Res> {
+  factory _$$_GetCurrentLocationCopyWith(_$_GetCurrentLocation value,
+          $Res Function(_$_GetCurrentLocation) then) =
+      __$$_GetCurrentLocationCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$_GetCurrentLocationCopyWithImpl<$Res>
+    extends _$CreateGameEventCopyWithImpl<$Res, _$_GetCurrentLocation>
+    implements _$$_GetCurrentLocationCopyWith<$Res> {
+  __$$_GetCurrentLocationCopyWithImpl(
+      _$_GetCurrentLocation _value, $Res Function(_$_GetCurrentLocation) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$_GetCurrentLocation(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetCurrentLocation implements _GetCurrentLocation {
+  const _$_GetCurrentLocation({required this.context});
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'CreateGameEvent.getCurrentLocation(context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetCurrentLocation &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GetCurrentLocationCopyWith<_$_GetCurrentLocation> get copyWith =>
+      __$$_GetCurrentLocationCopyWithImpl<_$_GetCurrentLocation>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String title) changeTitle,
+    required TResult Function(String description) changeDescription,
+    required TResult Function(String location) changeLocation,
+    required TResult Function(DateTime dateAndTime) changeDateAndTime,
+    required TResult Function(int cost) changeCost,
+    required TResult Function(int maxPlayers) changeMaxPlayers,
+    required TResult Function(GameFormats format) changeFormat,
+    required TResult Function() createGame,
+    required TResult Function(String gameDocID) updateGame,
+    required TResult Function(BuildContext context) getCurrentLocation,
+  }) {
+    return getCurrentLocation(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String title)? changeTitle,
+    TResult? Function(String description)? changeDescription,
+    TResult? Function(String location)? changeLocation,
+    TResult? Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult? Function(int cost)? changeCost,
+    TResult? Function(int maxPlayers)? changeMaxPlayers,
+    TResult? Function(GameFormats format)? changeFormat,
+    TResult? Function()? createGame,
+    TResult? Function(String gameDocID)? updateGame,
+    TResult? Function(BuildContext context)? getCurrentLocation,
+  }) {
+    return getCurrentLocation?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String title)? changeTitle,
+    TResult Function(String description)? changeDescription,
+    TResult Function(String location)? changeLocation,
+    TResult Function(DateTime dateAndTime)? changeDateAndTime,
+    TResult Function(int cost)? changeCost,
+    TResult Function(int maxPlayers)? changeMaxPlayers,
+    TResult Function(GameFormats format)? changeFormat,
+    TResult Function()? createGame,
+    TResult Function(String gameDocID)? updateGame,
+    TResult Function(BuildContext context)? getCurrentLocation,
+    required TResult orElse(),
+  }) {
+    if (getCurrentLocation != null) {
+      return getCurrentLocation(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTitle value) changeTitle,
+    required TResult Function(_ChangeDescription value) changeDescription,
+    required TResult Function(_ChangeLocation value) changeLocation,
+    required TResult Function(_ChangeDateAndTime value) changeDateAndTime,
+    required TResult Function(_ChangeCost value) changeCost,
+    required TResult Function(_ChangeMaxPlayers value) changeMaxPlayers,
+    required TResult Function(_ChangeFormat value) changeFormat,
+    required TResult Function(_CreateGame value) createGame,
+    required TResult Function(_UpdateGame value) updateGame,
+    required TResult Function(_GetCurrentLocation value) getCurrentLocation,
+  }) {
+    return getCurrentLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTitle value)? changeTitle,
+    TResult? Function(_ChangeDescription value)? changeDescription,
+    TResult? Function(_ChangeLocation value)? changeLocation,
+    TResult? Function(_ChangeDateAndTime value)? changeDateAndTime,
+    TResult? Function(_ChangeCost value)? changeCost,
+    TResult? Function(_ChangeMaxPlayers value)? changeMaxPlayers,
+    TResult? Function(_ChangeFormat value)? changeFormat,
+    TResult? Function(_CreateGame value)? createGame,
+    TResult? Function(_UpdateGame value)? updateGame,
+    TResult? Function(_GetCurrentLocation value)? getCurrentLocation,
+  }) {
+    return getCurrentLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTitle value)? changeTitle,
+    TResult Function(_ChangeDescription value)? changeDescription,
+    TResult Function(_ChangeLocation value)? changeLocation,
+    TResult Function(_ChangeDateAndTime value)? changeDateAndTime,
+    TResult Function(_ChangeCost value)? changeCost,
+    TResult Function(_ChangeMaxPlayers value)? changeMaxPlayers,
+    TResult Function(_ChangeFormat value)? changeFormat,
+    TResult Function(_CreateGame value)? createGame,
+    TResult Function(_UpdateGame value)? updateGame,
+    TResult Function(_GetCurrentLocation value)? getCurrentLocation,
+    required TResult orElse(),
+  }) {
+    if (getCurrentLocation != null) {
+      return getCurrentLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetCurrentLocation implements CreateGameEvent {
+  const factory _GetCurrentLocation({required final BuildContext context}) =
+      _$_GetCurrentLocation;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_GetCurrentLocationCopyWith<_$_GetCurrentLocation> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
