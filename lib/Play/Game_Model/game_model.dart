@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Play/Game_Model/game_types.dart';
@@ -10,6 +11,7 @@ part 'game_model.g.dart';
 class GameModel with _$GameModel {
   /// our user constructor
   const factory GameModel({
+    @Default(null) UserModel? creator,
     @Default('') String title,
     @Default('') String description,
     @Default(0) int cost,

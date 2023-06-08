@@ -11,6 +11,7 @@ import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
 import 'package:scry/Widgets/our_textfield.dart';
+import 'package:scry/Widgets/user_avatar.dart';
 
 class TradeView extends StatelessWidget {
   const TradeView({super.key});
@@ -127,48 +128,8 @@ class TradeCard extends StatelessWidget {
                     Padding(
                       padding:
                           const EdgeInsets.only(left: 8.0, right: 8, top: 8),
-                      child: CircleAvatar(
-                        radius: 27,
-                        child: FutureBuilder(
-                          //method to be waiting for in the future
-                          future: FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(trade.userID)
-                              .get(),
-                          builder: (_, snapshot) {
-                            //if done show data,
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              if (snapshot.hasData && snapshot.data != null) {
-                                final doc = snapshot.data!.data();
-                                String imageUrl = doc?['profilePicture'] ?? '';
-                                return imageUrl == ''
-                                    ? CircleAvatar(
-                                        backgroundColor: Colors.white,
-                                        radius: 25,
-                                        child: Icon(
-                                          Icons.person,
-                                          color: theme.colorScheme.primary,
-                                        ),
-                                      )
-                                    : CircleAvatar(
-                                        radius: 25,
-                                        backgroundImage: NetworkImage(
-                                            doc!['profilePicture']),
-                                      );
-                              } else {
-                                return const CircleAvatar(
-                                  radius: 25,
-                                  child: Icon(Icons.person),
-                                );
-                              }
-                            } else {
-                              //if the process is not finished then show the indicator process
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            }
-                          },
-                        ),
+                      child: UserAvatar(
+                        userID: trade.userID,
                       ),
                     ),
                     Expanded(

@@ -20,6 +20,7 @@ GameModel _$GameModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GameModel {
+  UserModel? get creator => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get cost => throw _privateConstructorUsedError;
@@ -42,7 +43,8 @@ abstract class $GameModelCopyWith<$Res> {
       _$GameModelCopyWithImpl<$Res, GameModel>;
   @useResult
   $Res call(
-      {String title,
+      {UserModel? creator,
+      String title,
       String description,
       int cost,
       String location,
@@ -51,6 +53,8 @@ abstract class $GameModelCopyWith<$Res> {
       int minPlayerCount,
       List<UserModel> players,
       GameFormats format});
+
+  $UserModelCopyWith<$Res>? get creator;
 }
 
 /// @nodoc
@@ -66,6 +70,7 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? creator = freezed,
     Object? title = null,
     Object? description = null,
     Object? cost = null,
@@ -77,6 +82,10 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
     Object? format = null,
   }) {
     return _then(_value.copyWith(
+      creator: freezed == creator
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -115,6 +124,18 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
               as GameFormats,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res>? get creator {
+    if (_value.creator == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_value.creator!, (value) {
+      return _then(_value.copyWith(creator: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -125,7 +146,8 @@ abstract class _$$_GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String title,
+      {UserModel? creator,
+      String title,
       String description,
       int cost,
       String location,
@@ -134,6 +156,9 @@ abstract class _$$_GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
       int minPlayerCount,
       List<UserModel> players,
       GameFormats format});
+
+  @override
+  $UserModelCopyWith<$Res>? get creator;
 }
 
 /// @nodoc
@@ -147,6 +172,7 @@ class __$$_GameModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? creator = freezed,
     Object? title = null,
     Object? description = null,
     Object? cost = null,
@@ -158,6 +184,10 @@ class __$$_GameModelCopyWithImpl<$Res>
     Object? format = null,
   }) {
     return _then(_$_GameModel(
+      creator: freezed == creator
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -202,7 +232,8 @@ class __$$_GameModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_GameModel extends _GameModel {
   const _$_GameModel(
-      {this.title = '',
+      {this.creator = null,
+      this.title = '',
       this.description = '',
       this.cost = 0,
       this.location = '',
@@ -217,6 +248,9 @@ class _$_GameModel extends _GameModel {
   factory _$_GameModel.fromJson(Map<String, dynamic> json) =>
       _$$_GameModelFromJson(json);
 
+  @override
+  @JsonKey()
+  final UserModel? creator;
   @override
   @JsonKey()
   final String title;
@@ -253,7 +287,7 @@ class _$_GameModel extends _GameModel {
 
   @override
   String toString() {
-    return 'GameModel(title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
+    return 'GameModel(creator: $creator, title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
   }
 
   @override
@@ -261,6 +295,7 @@ class _$_GameModel extends _GameModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GameModel &&
+            (identical(other.creator, creator) || other.creator == creator) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -281,6 +316,7 @@ class _$_GameModel extends _GameModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      creator,
       title,
       description,
       cost,
@@ -307,7 +343,8 @@ class _$_GameModel extends _GameModel {
 
 abstract class _GameModel extends GameModel {
   const factory _GameModel(
-      {final String title,
+      {final UserModel? creator,
+      final String title,
       final String description,
       final int cost,
       final String location,
@@ -321,6 +358,8 @@ abstract class _GameModel extends GameModel {
   factory _GameModel.fromJson(Map<String, dynamic> json) =
       _$_GameModel.fromJson;
 
+  @override
+  UserModel? get creator;
   @override
   String get title;
   @override

@@ -15,6 +15,7 @@ class CreateNewGameView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+        //! pass a user to this bloc state when initiated
         create: (context) => CreateGameBloc(),
         child: Scaffold(
           appBar: AppBar(
@@ -56,25 +57,33 @@ class CreateButton extends StatelessWidget {
     final theme = Theme.of(context);
     return BlocBuilder<CreateGameBloc, CreateGameState>(
       builder: (context, state) {
-        return ProgressButton.icon(iconedButtons: {
-          ButtonState.idle: IconedButton(
-              text: "Create",
-              icon: const Icon(Icons.add_circle_outlined, color: Colors.white),
-              color: theme.colorScheme.primary),
-          ButtonState.loading:
-              IconedButton(text: "Loading", color: theme.colorScheme.secondary),
-          ButtonState.fail: IconedButton(
-              text: "Failed",
-              icon: const Icon(Icons.cancel, color: Colors.white),
-              color: Colors.red.shade300),
-          ButtonState.success: IconedButton(
-              text: "Success",
-              icon: const Icon(
-                Icons.check_circle,
-                color: Colors.white,
-              ),
-              color: Colors.green.shade400)
-        }, onPressed: () {}, state: state.buttonState);
+        return ProgressButton.icon(
+            iconedButtons: {
+              ButtonState.idle: IconedButton(
+                  text: "Create",
+                  icon: const Icon(Icons.add_circle_outlined,
+                      color: Colors.white),
+                  color: theme.colorScheme.primary),
+              ButtonState.loading: IconedButton(
+                  text: "Loading", color: theme.colorScheme.secondary),
+              ButtonState.fail: IconedButton(
+                  text: "Failed",
+                  icon: const Icon(Icons.cancel, color: Colors.white),
+                  color: Colors.red.shade300),
+              ButtonState.success: IconedButton(
+                  text: "Success",
+                  icon: const Icon(
+                    Icons.check_circle,
+                    color: Colors.white,
+                  ),
+                  color: Colors.green.shade400)
+            },
+            onPressed: () {
+              context
+                  .read<CreateGameBloc>()
+                  .add(CreateGameEvent.createGame(context: context));
+            },
+            state: state.buttonState);
       },
     );
   }

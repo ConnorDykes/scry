@@ -25,7 +25,7 @@ mixin _$CreateGameEvent {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) =>
@@ -39,7 +39,7 @@ mixin _$CreateGameEvent {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) =>
@@ -53,7 +53,7 @@ mixin _$CreateGameEvent {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -193,7 +193,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -210,7 +210,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -227,7 +227,7 @@ class _$_ChangeTitle implements _ChangeTitle {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -376,7 +376,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -393,7 +393,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -410,7 +410,7 @@ class _$_ChangeDescription implements _ChangeDescription {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -559,7 +559,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -576,7 +576,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -593,7 +593,7 @@ class _$_ChangeLocation implements _ChangeLocation {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -743,7 +743,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -760,7 +760,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -777,7 +777,7 @@ class _$_ChangeDateAndTime implements _ChangeDateAndTime {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -925,7 +925,7 @@ class _$_ChangeCost implements _ChangeCost {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -942,7 +942,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -959,7 +959,7 @@ class _$_ChangeCost implements _ChangeCost {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -1107,7 +1107,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -1124,7 +1124,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -1141,7 +1141,7 @@ class _$_ChangeMaxPlayers implements _ChangeMaxPlayers {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -1289,7 +1289,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -1306,7 +1306,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -1323,7 +1323,7 @@ class _$_ChangeFormat implements _ChangeFormat {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -1405,6 +1405,8 @@ abstract class _$$_CreateGameCopyWith<$Res> {
   factory _$$_CreateGameCopyWith(
           _$_CreateGame value, $Res Function(_$_CreateGame) then) =
       __$$_CreateGameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -1414,26 +1416,50 @@ class __$$_CreateGameCopyWithImpl<$Res>
   __$$_CreateGameCopyWithImpl(
       _$_CreateGame _value, $Res Function(_$_CreateGame) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$_CreateGame(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_CreateGame implements _CreateGame {
-  const _$_CreateGame();
+  const _$_CreateGame({required this.context});
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'CreateGameEvent.createGame()';
+    return 'CreateGameEvent.createGame(context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreateGame);
+        (other.runtimeType == runtimeType &&
+            other is _$_CreateGame &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CreateGameCopyWith<_$_CreateGame> get copyWith =>
+      __$$_CreateGameCopyWithImpl<_$_CreateGame>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1445,11 +1471,11 @@ class _$_CreateGame implements _CreateGame {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
-    return createGame();
+    return createGame(context);
   }
 
   @override
@@ -1462,11 +1488,11 @@ class _$_CreateGame implements _CreateGame {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
-    return createGame?.call();
+    return createGame?.call(context);
   }
 
   @override
@@ -1479,13 +1505,13 @@ class _$_CreateGame implements _CreateGame {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
   }) {
     if (createGame != null) {
-      return createGame();
+      return createGame(context);
     }
     return orElse();
   }
@@ -1547,7 +1573,13 @@ class _$_CreateGame implements _CreateGame {
 }
 
 abstract class _CreateGame implements CreateGameEvent {
-  const factory _CreateGame() = _$_CreateGame;
+  const factory _CreateGame({required final BuildContext context}) =
+      _$_CreateGame;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_CreateGameCopyWith<_$_CreateGame> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1622,7 +1654,7 @@ class _$_UpdateGame implements _UpdateGame {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -1639,7 +1671,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -1656,7 +1688,7 @@ class _$_UpdateGame implements _UpdateGame {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -1804,7 +1836,7 @@ class _$_GetCurrentLocation implements _GetCurrentLocation {
     required TResult Function(int cost) changeCost,
     required TResult Function(int maxPlayers) changeMaxPlayers,
     required TResult Function(GameFormats format) changeFormat,
-    required TResult Function() createGame,
+    required TResult Function(BuildContext context) createGame,
     required TResult Function(String gameDocID) updateGame,
     required TResult Function(BuildContext context) getCurrentLocation,
   }) {
@@ -1821,7 +1853,7 @@ class _$_GetCurrentLocation implements _GetCurrentLocation {
     TResult? Function(int cost)? changeCost,
     TResult? Function(int maxPlayers)? changeMaxPlayers,
     TResult? Function(GameFormats format)? changeFormat,
-    TResult? Function()? createGame,
+    TResult? Function(BuildContext context)? createGame,
     TResult? Function(String gameDocID)? updateGame,
     TResult? Function(BuildContext context)? getCurrentLocation,
   }) {
@@ -1838,7 +1870,7 @@ class _$_GetCurrentLocation implements _GetCurrentLocation {
     TResult Function(int cost)? changeCost,
     TResult Function(int maxPlayers)? changeMaxPlayers,
     TResult Function(GameFormats format)? changeFormat,
-    TResult Function()? createGame,
+    TResult Function(BuildContext context)? createGame,
     TResult Function(String gameDocID)? updateGame,
     TResult Function(BuildContext context)? getCurrentLocation,
     required TResult orElse(),
@@ -1917,6 +1949,7 @@ abstract class _GetCurrentLocation implements CreateGameEvent {
 
 /// @nodoc
 mixin _$CreateGameState {
+  UserModel get user => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get cost => throw _privateConstructorUsedError;
@@ -1940,7 +1973,8 @@ abstract class $CreateGameStateCopyWith<$Res> {
       _$CreateGameStateCopyWithImpl<$Res, CreateGameState>;
   @useResult
   $Res call(
-      {String title,
+      {UserModel user,
+      String title,
       String description,
       int cost,
       String location,
@@ -1950,6 +1984,8 @@ abstract class $CreateGameStateCopyWith<$Res> {
       List<UserModel> players,
       GameFormats format,
       ButtonState buttonState});
+
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -1965,6 +2001,7 @@ class _$CreateGameStateCopyWithImpl<$Res, $Val extends CreateGameState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? user = null,
     Object? title = null,
     Object? description = null,
     Object? cost = null,
@@ -1977,6 +2014,10 @@ class _$CreateGameStateCopyWithImpl<$Res, $Val extends CreateGameState>
     Object? buttonState = null,
   }) {
     return _then(_value.copyWith(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -2019,6 +2060,14 @@ class _$CreateGameStateCopyWithImpl<$Res, $Val extends CreateGameState>
               as ButtonState,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -2030,7 +2079,8 @@ abstract class _$$_CreateGameStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {UserModel user,
+      String title,
       String description,
       int cost,
       String location,
@@ -2040,6 +2090,9 @@ abstract class _$$_CreateGameStateCopyWith<$Res>
       List<UserModel> players,
       GameFormats format,
       ButtonState buttonState});
+
+  @override
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -2053,6 +2106,7 @@ class __$$_CreateGameStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? user = null,
     Object? title = null,
     Object? description = null,
     Object? cost = null,
@@ -2065,6 +2119,10 @@ class __$$_CreateGameStateCopyWithImpl<$Res>
     Object? buttonState = null,
   }) {
     return _then(_$_CreateGameState(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -2113,7 +2171,8 @@ class __$$_CreateGameStateCopyWithImpl<$Res>
 
 class _$_CreateGameState extends _CreateGameState {
   const _$_CreateGameState(
-      {this.title = '',
+      {this.user = UserModel.empty,
+      this.title = '',
       this.description = '',
       this.cost = 0,
       this.location = '',
@@ -2126,6 +2185,9 @@ class _$_CreateGameState extends _CreateGameState {
       : _players = players,
         super._();
 
+  @override
+  @JsonKey()
+  final UserModel user;
   @override
   @JsonKey()
   final String title;
@@ -2165,7 +2227,7 @@ class _$_CreateGameState extends _CreateGameState {
 
   @override
   String toString() {
-    return 'CreateGameState(title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format, buttonState: $buttonState)';
+    return 'CreateGameState(user: $user, title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format, buttonState: $buttonState)';
   }
 
   @override
@@ -2173,6 +2235,7 @@ class _$_CreateGameState extends _CreateGameState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreateGameState &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -2194,6 +2257,7 @@ class _$_CreateGameState extends _CreateGameState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      user,
       title,
       description,
       cost,
@@ -2214,7 +2278,8 @@ class _$_CreateGameState extends _CreateGameState {
 
 abstract class _CreateGameState extends CreateGameState {
   const factory _CreateGameState(
-      {final String title,
+      {final UserModel user,
+      final String title,
       final String description,
       final int cost,
       final String location,
@@ -2226,6 +2291,8 @@ abstract class _CreateGameState extends CreateGameState {
       final ButtonState buttonState}) = _$_CreateGameState;
   const _CreateGameState._() : super._();
 
+  @override
+  UserModel get user;
   @override
   String get title;
   @override

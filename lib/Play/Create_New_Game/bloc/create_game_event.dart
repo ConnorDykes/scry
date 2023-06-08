@@ -4,6 +4,7 @@ part of 'create_game_bloc.dart';
 class CreateGameEvent with _$CreateGameEvent {
   const factory CreateGameEvent.changeTitle({required String title}) =
       _ChangeTitle;
+
   const factory CreateGameEvent.changeDescription(
       {required String description}) = _ChangeDescription;
   const factory CreateGameEvent.changeLocation({required String location}) =
@@ -17,7 +18,8 @@ class CreateGameEvent with _$CreateGameEvent {
       _ChangeMaxPlayers;
   const factory CreateGameEvent.changeFormat({required GameFormats format}) =
       _ChangeFormat;
-  const factory CreateGameEvent.createGame() = _CreateGame;
+  const factory CreateGameEvent.createGame({required BuildContext context}) =
+      _CreateGame;
   const factory CreateGameEvent.updateGame({required String gameDocID}) =
       _UpdateGame;
   const factory CreateGameEvent.getCurrentLocation(

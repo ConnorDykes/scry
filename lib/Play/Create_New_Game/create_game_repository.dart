@@ -16,12 +16,9 @@ class CreateGameRepo {
   }
 
   Future<bool> updateGame(
-      {required GameModel game, required String gameDocID}) async {
+      {required Map<String, dynamic> game, required String gameDocID}) async {
     try {
-      await _firebaseFirestore
-          .collection('games')
-          .doc(gameDocID)
-          .update(game.toJson());
+      await _firebaseFirestore.collection('games').doc(gameDocID).update(game);
       return true;
     } catch (e) {
       debugPrint(e.toString());

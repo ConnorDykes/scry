@@ -56,7 +56,7 @@ flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/Logo.png"
+  image_path: "assets/app_logo.png"
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +87,7 @@ flutter:
   assets:
     - assets/card_back.png
     - assets/magic_logo.png
+    - assets/app_logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -112,6 +112,7 @@ class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
       try {
         await createGameRepo.createGame(game: game);
         emit(state.copyWith(buttonState: ButtonState.success));
+        Navigator.pop(event.context);
       } catch (e) {
         emit(state.copyWith(buttonState: ButtonState.fail));
       }
@@ -122,16 +123,18 @@ class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
     on<_UpdateGame>((event, emit) async {
       emit(state.copyWith(buttonState: ButtonState.loading));
 
-      GameModel game = GameModel(
-          title: state.title,
-          description: state.description,
-          cost: state.cost,
-          location: state.location,
-          dateAndTime: state.dateAndTime,
-          maxPlayerCount: state.maxPlayerCount,
-          minPlayerCount: state.minPlayerCount,
-          players: state.players,
-          format: state.format);
+      final game = {
+        'creator': state.user.toJson(),
+        'title': state.title,
+        'description': state.description,
+        'cost': state.cost,
+        'location': state.location,
+        'dateAndTime': state.dateAndTime,
+        'maxPlayerCount': state.maxPlayerCount,
+        'minPlayerCount': state.minPlayerCount,
+        'players': state.players,
+        'format': state.format.name,
+      };
 
       try {
         await createGameRepo.updateGame(game: game, gameDocID: event.gameDocID);
