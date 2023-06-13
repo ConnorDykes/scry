@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scry/Authentication/user_model.dart';
@@ -16,7 +17,7 @@ class GameModel with _$GameModel {
     @Default('') String description,
     @Default(0) int cost,
     @Default('') String location,
-    @Default(null) DateTime? dateAndTime,
+    @TimestampSerializer() DateTime? dateAndTime,
     @Default(4) int maxPlayerCount,
     @Default(2) int minPlayerCount,
     @Default([]) List<UserModel> players,
@@ -31,4 +32,14 @@ class GameModel with _$GameModel {
 
   /// Empty user which represents an unauthenticated user.
   static const empty = GameModel();
+}
+
+class TimestampSerializer implements JsonConverter<DateTime, dynamic> {
+  const TimestampSerializer();
+
+  @override
+  DateTime fromJson(dynamic timestamp) => timestamp.toDate();
+
+  @override
+  Timestamp toJson(DateTime date) => Timestamp.fromDate(date);
 }

@@ -2171,7 +2171,7 @@ class __$$_CreateGameStateCopyWithImpl<$Res>
 
 class _$_CreateGameState extends _CreateGameState {
   const _$_CreateGameState(
-      {this.user = UserModel.empty,
+      {required this.user,
       this.title = '',
       this.description = '',
       this.cost = 0,
@@ -2186,7 +2186,6 @@ class _$_CreateGameState extends _CreateGameState {
         super._();
 
   @override
-  @JsonKey()
   final UserModel user;
   @override
   @JsonKey()
@@ -2278,7 +2277,7 @@ class _$_CreateGameState extends _CreateGameState {
 
 abstract class _CreateGameState extends CreateGameState {
   const factory _CreateGameState(
-      {final UserModel user,
+      {required final UserModel user,
       final String title,
       final String description,
       final int cost,

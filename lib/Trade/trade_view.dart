@@ -12,9 +12,24 @@ import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
 import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/user_avatar.dart';
+import 'package:showcaseview/showcaseview.dart';
 
-class TradeView extends StatelessWidget {
-  const TradeView({super.key});
+class TradeView extends StatefulWidget {
+  const TradeView({super.key, required this.fabKey});
+
+  final GlobalKey fabKey;
+
+  @override
+  State<TradeView> createState() => _TradeViewState();
+}
+
+class _TradeViewState extends State<TradeView> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => ShowCaseWidget.of(context).startShowCase([widget.fabKey]));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +37,36 @@ class TradeView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            if (appBloc.state.user == UserModel.empty) {
-              showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (context) => const FractionallySizedBox(
-                        heightFactor: .9,
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20)),
-                            child: SignInView()),
-                      )).then((value) {
-                if (value == true) {
-                  Navigator.pushNamed(context, '/CreateTrade');
-                }
-              });
-            } else {
-              Navigator.pushNamed(context, '/CreateTrade');
-            }
-          },
-          child: const Icon(
-            Icons.add_rounded,
-            size: 45,
+        floatingActionButton: Showcase(
+          targetBorderRadius: BorderRadius.circular(15),
+          key: widget.fabKey,
+          description: 'Tap here to create a trade',
+          child: FloatingActionButton(
+            onPressed: () {
+              if (appBloc.state.user == UserModel.empty) {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) => const FractionallySizedBox(
+                          heightFactor: .9,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20)),
+                              child: SignInView()),
+                        )).then((value) {
+                  if (value == true) {
+                    Navigator.pushNamed(context, '/CreateTrade');
+                  }
+                });
+              } else {
+                Navigator.pushNamed(context, '/CreateTrade');
+              }
+            },
+            child: const Icon(
+              Icons.add_rounded,
+              size: 45,
+            ),
           ),
         ),
         body: StreamBuilder<QuerySnapshot>(
@@ -345,7 +365,10 @@ class TradeCard extends StatelessWidget {
                         child: const Row(
                           children: [
                             Icon(Icons.swap_vert),
-                            Text('Offer A Trade'),
+                            Text(
+                              'Offer Trade',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ],
                         )),
                     ElevatedButton(
@@ -372,7 +395,10 @@ class TradeCard extends StatelessWidget {
                           children: [
                             Icon(FontAwesomeIcons.message),
                             Padding(padding: EdgeInsets.all(4)),
-                            Text('Message'),
+                            Text(
+                              'Message',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ],
                         ))
                   ],

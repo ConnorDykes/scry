@@ -5,7 +5,7 @@ class CreateGameState with _$CreateGameState {
   const CreateGameState._();
 
   const factory CreateGameState({
-    @Default(UserModel.empty) UserModel user,
+    required UserModel user,
     @Default('') String title,
     @Default('') String description,
     @Default(0) int cost,

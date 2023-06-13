@@ -14,9 +14,7 @@ _$_GameModel _$$_GameModelFromJson(Map<String, dynamic> json) => _$_GameModel(
       description: json['description'] as String? ?? '',
       cost: json['cost'] as int? ?? 0,
       location: json['location'] as String? ?? '',
-      dateAndTime: json['dateAndTime'] == null
-          ? null
-          : DateTime.parse(json['dateAndTime'] as String),
+      dateAndTime: const TimestampSerializer().fromJson(json['dateAndTime']),
       maxPlayerCount: json['maxPlayerCount'] as int? ?? 4,
       minPlayerCount: json['minPlayerCount'] as int? ?? 2,
       players: (json['players'] as List<dynamic>?)
@@ -34,7 +32,8 @@ Map<String, dynamic> _$$_GameModelToJson(_$_GameModel instance) =>
       'description': instance.description,
       'cost': instance.cost,
       'location': instance.location,
-      'dateAndTime': instance.dateAndTime?.toIso8601String(),
+      'dateAndTime': _$JsonConverterToJson<dynamic, DateTime>(
+          instance.dateAndTime, const TimestampSerializer().toJson),
       'maxPlayerCount': instance.maxPlayerCount,
       'minPlayerCount': instance.minPlayerCount,
       'players': instance.players,
@@ -55,3 +54,9 @@ const _$GameFormatsEnumMap = {
   GameFormats.Legacy: 'Legacy',
   GameFormats.Vintage: 'Vintage',
 };
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

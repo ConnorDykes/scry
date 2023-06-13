@@ -15,6 +15,7 @@ import 'package:scry/Sign_Up/bloc/sign_up_bloc.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/firebase_options.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 import 'Sign_Up/sign_up_view.dart';
 
@@ -82,7 +83,8 @@ class MyApp extends StatelessWidget {
               error: Colors.red),
           useMaterial3: true,
         ),
-        home: const HomeView(),
+        home: ShowCaseWidget(
+            builder: Builder(builder: (context) => const HomeView())),
       ),
     );
   }

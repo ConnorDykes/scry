@@ -5,9 +5,9 @@ import 'package:scry/Play/Game_Model/game_model.dart';
 class CreateGameRepo {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  Future<bool> createGame({required GameModel game}) async {
+  Future<bool> createGame({required Map<String, dynamic> game}) async {
     try {
-      await _firebaseFirestore.collection('games').add(game.toJson());
+      await _firebaseFirestore.collection('games').add(game);
       return true;
     } catch (e) {
       debugPrint(e.toString());

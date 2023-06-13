@@ -25,6 +25,7 @@ mixin _$GameModel {
   String get description => throw _privateConstructorUsedError;
   int get cost => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
+  @TimestampSerializer()
   DateTime? get dateAndTime => throw _privateConstructorUsedError;
   int get maxPlayerCount => throw _privateConstructorUsedError;
   int get minPlayerCount => throw _privateConstructorUsedError;
@@ -48,7 +49,7 @@ abstract class $GameModelCopyWith<$Res> {
       String description,
       int cost,
       String location,
-      DateTime? dateAndTime,
+      @TimestampSerializer() DateTime? dateAndTime,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -151,7 +152,7 @@ abstract class _$$_GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
       String description,
       int cost,
       String location,
-      DateTime? dateAndTime,
+      @TimestampSerializer() DateTime? dateAndTime,
       int maxPlayerCount,
       int minPlayerCount,
       List<UserModel> players,
@@ -237,7 +238,7 @@ class _$_GameModel extends _GameModel {
       this.description = '',
       this.cost = 0,
       this.location = '',
-      this.dateAndTime = null,
+      @TimestampSerializer() this.dateAndTime,
       this.maxPlayerCount = 4,
       this.minPlayerCount = 2,
       final List<UserModel> players = const [],
@@ -264,7 +265,7 @@ class _$_GameModel extends _GameModel {
   @JsonKey()
   final String location;
   @override
-  @JsonKey()
+  @TimestampSerializer()
   final DateTime? dateAndTime;
   @override
   @JsonKey()
@@ -348,7 +349,7 @@ abstract class _GameModel extends GameModel {
       final String description,
       final int cost,
       final String location,
-      final DateTime? dateAndTime,
+      @TimestampSerializer() final DateTime? dateAndTime,
       final int maxPlayerCount,
       final int minPlayerCount,
       final List<UserModel> players,
@@ -369,6 +370,7 @@ abstract class _GameModel extends GameModel {
   @override
   String get location;
   @override
+  @TimestampSerializer()
   DateTime? get dateAndTime;
   @override
   int get maxPlayerCount;

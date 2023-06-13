@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
+import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Play/Game_Model/game_types.dart';
 import 'package:scry/Widgets/our_textfield.dart';
 
@@ -14,9 +15,9 @@ class CreateNewGameView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appBloc = context.read<AppBlocBloc>().state;
     return BlocProvider(
-        //! pass a user to this bloc state when initiated
-        create: (context) => CreateGameBloc(),
+        create: (context) => CreateGameBloc(user: appBloc.user),
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.transparent,

@@ -208,46 +208,6 @@ class SignInView extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      height: 1.0,
-                      width: 40,
-                      child: Center(
-                        child: Container(
-                          margin: const EdgeInsetsDirectional.only(
-                              start: 1.0, end: 1.0),
-                          height: 5.0,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "OR",
-                    style: theme.textTheme.titleMedium,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      height: 1.0,
-                      width: 40,
-                      child: Center(
-                        child: Container(
-                          margin: const EdgeInsetsDirectional.only(
-                              start: 1.0, end: 1.0),
-                          height: 5.0,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: TextButton(
@@ -260,8 +220,9 @@ class SignInView extends StatelessWidget {
                   },
                   child: Text(
                     'Sign Up',
-                    style: theme.textTheme.titleMedium
-                        ?.copyWith(color: theme.colorScheme.primary),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scry/Play/Game_Detail/bloc/game_detail_bloc.dart';
+import 'package:scry/Play/Game_Detail/game_detail.dart';
+import 'package:scry/Play/Game_Model/game_model.dart';
 import 'package:scry/Play/Game_Model/game_types.dart';
 import 'package:scry/Widgets/user_avatar.dart';
+import 'package:intl/intl.dart';
 
 class GameTile extends StatelessWidget {
   const GameTile({
     super.key,
-    required this.title,
-    required this.format,
-    required this.userID,
+    required this.game,
   });
 
-  final GameFormats format;
-  final String title;
-  final String userID;
+  final GameModel game;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,30 @@ class GameTile extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14), color: Colors.white),
         child: ListTile(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => GameDetailView(
+                        game: game,
+                      ))),
           leading: UserAvatar(
-            userID: userID,
+            userID: game.creator?.id ?? '',
           ),
           trailing: Icon(Icons.chevron_right_rounded),
-          title: Text("Monday Night Magic"),
-          subtitle: Text("Format: Commander"),
+          title: Text(game.title),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(game.format.name),
+              Text(
+                DateFormat(DateFormat.MONTH_DAY).format(game.dateAndTime!) +
+                    " @ " +
+                    DateFormat(DateFormat.HOUR_MINUTE)
+                        .format(game.dateAndTime!),
+                style: TextStyle(color: Colors.green),
+              )
+            ],
+          ),
         ),
       ),
     );
