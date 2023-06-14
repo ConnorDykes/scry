@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/Play/Game_Detail/bloc/game_detail_bloc.dart';
-import 'package:scry/Play/Game_Detail/game_detail.dart';
+import 'package:scry/Play/Game_Detail/game_detail_view.dart';
 import 'package:scry/Play/Game_Model/game_model.dart';
 import 'package:scry/Play/Game_Model/game_types.dart';
 import 'package:scry/Widgets/user_avatar.dart';

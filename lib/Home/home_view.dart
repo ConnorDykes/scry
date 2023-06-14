@@ -9,6 +9,8 @@ import 'package:scry/Profile/profile_view.dart';
 import 'package:scry/Trade/trade_view.dart';
 import 'package:showcaseview/showcaseview.dart';
 
+import '../main.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -17,17 +19,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final iconKey = GlobalKey();
-  final messageKey = GlobalKey();
-  final playKey = GlobalKey();
-  final profileKey = GlobalKey();
-  final fabKey = GlobalKey();
   @override
   void initState() {
     //* This is for showcase widget
-    // WidgetsBinding.instance.addPostFrameCallback((_) =>
-    //     ShowCaseWidget.of(context)
-    //         .startShowCase([iconKey, messageKey, playKey, profileKey, fabKey]));
+    WidgetsBinding.instance.addPostFrameCallback((_) =>
+        ShowCaseWidget.of(context)
+            .startShowCase([iconKey, messageKey, playKey, profileKey, fabKey]));
     super.initState();
   }
 

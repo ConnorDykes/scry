@@ -25,13 +25,6 @@ class TradeView extends StatefulWidget {
 
 class _TradeViewState extends State<TradeView> {
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback(
-        (_) => ShowCaseWidget.of(context).startShowCase([widget.fabKey]));
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final appBloc = context.read<AppBlocBloc>();
     final theme = Theme.of(context);

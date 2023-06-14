@@ -19,32 +19,38 @@ mixin _$GameDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() deleteGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? deleteGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? deleteGame,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_DeleteGame value) deleteGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_DeleteGame value)? deleteGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_DeleteGame value)? deleteGame,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() deleteGame,
   }) {
     return started();
   }
@@ -114,6 +121,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? deleteGame,
   }) {
     return started?.call();
   }
@@ -122,6 +130,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? deleteGame,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -134,6 +143,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_DeleteGame value) deleteGame,
   }) {
     return started(this);
   }
@@ -142,6 +152,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_DeleteGame value)? deleteGame,
   }) {
     return started?.call(this);
   }
@@ -150,6 +161,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_DeleteGame value)? deleteGame,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -161,6 +173,108 @@ class _$_Started implements _Started {
 
 abstract class _Started implements GameDetailEvent {
   const factory _Started() = _$_Started;
+}
+
+/// @nodoc
+abstract class _$$_DeleteGameCopyWith<$Res> {
+  factory _$$_DeleteGameCopyWith(
+          _$_DeleteGame value, $Res Function(_$_DeleteGame) then) =
+      __$$_DeleteGameCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DeleteGameCopyWithImpl<$Res>
+    extends _$GameDetailEventCopyWithImpl<$Res, _$_DeleteGame>
+    implements _$$_DeleteGameCopyWith<$Res> {
+  __$$_DeleteGameCopyWithImpl(
+      _$_DeleteGame _value, $Res Function(_$_DeleteGame) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_DeleteGame implements _DeleteGame {
+  const _$_DeleteGame();
+
+  @override
+  String toString() {
+    return 'GameDetailEvent.deleteGame()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_DeleteGame);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() deleteGame,
+  }) {
+    return deleteGame();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? deleteGame,
+  }) {
+    return deleteGame?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? deleteGame,
+    required TResult orElse(),
+  }) {
+    if (deleteGame != null) {
+      return deleteGame();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_DeleteGame value) deleteGame,
+  }) {
+    return deleteGame(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_DeleteGame value)? deleteGame,
+  }) {
+    return deleteGame?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_DeleteGame value)? deleteGame,
+    required TResult orElse(),
+  }) {
+    if (deleteGame != null) {
+      return deleteGame(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteGame implements GameDetailEvent {
+  const factory _DeleteGame() = _$_DeleteGame;
 }
 
 /// @nodoc

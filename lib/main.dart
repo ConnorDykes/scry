@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
@@ -15,6 +16,7 @@ import 'package:scry/Sign_Up/bloc/sign_up_bloc.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import 'Sign_Up/sign_up_view.dart';
@@ -27,6 +29,12 @@ void main() async {
 
   runApp(const MyApp());
 }
+
+final iconKey = GlobalKey();
+final messageKey = GlobalKey();
+final playKey = GlobalKey();
+final profileKey = GlobalKey();
+final fabKey = GlobalKey();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -46,8 +54,7 @@ class MyApp extends StatelessWidget {
           create: (context) => SignInBloc(),
         ),
         BlocProvider(
-          create: (context) => AppBlocBloc(),
-        ),
+            create: (context) => AppBlocBloc()..add(AppBlocEvent.started())),
         BlocProvider(
           create: (context) => ProfileBloc(),
         ),
@@ -69,6 +76,9 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.rubikTextTheme(),
           cardTheme: const CardTheme(surfaceTintColor: Colors.transparent),
           cardColor: Colors.white,
+          appBarTheme: AppBarTheme(
+            systemOverlayStyle: SystemUiOverlayStyle.light, // 2
+          ),
           colorScheme: ColorScheme(
               surface: Colors.white,
               onSurface: Colors.black,
@@ -84,7 +94,13 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: ShowCaseWidget(
-            builder: Builder(builder: (context) => const HomeView())),
+          builder: Builder(builder: (context) => const HomeView()),
+          onComplete: (_, key) {
+            if (key == fabKey) {
+              //  await SharedPreferences.getInstance();
+            }
+          },
+        ),
       ),
     );
   }

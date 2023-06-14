@@ -31,6 +31,15 @@ class AuthRepo {
     }
   }
 
+  Future getUser({required String userID}) async {
+    try {
+      return await _firebaseFirestore.collection('users').doc(userID).get();
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+
   Future<UserCredential> signUpWithEmailandPass(
       {required String email, required String password}) async {
     try {

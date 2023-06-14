@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Authentication/auth_repo.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
@@ -40,6 +41,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             .doc(userCredential.user!.uid)
             .get();
 
+        final SharedPreferences _sharedPreferences =
+            await SharedPreferences.getInstance();
+        _sharedPreferences.setString('userID', userCredential.user!.uid);
+
         UserModel userModel =
             UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
 
@@ -63,6 +68,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             .collection('users')
             .doc(userCredential.user!.uid)
             .get();
+
+        final SharedPreferences _sharedPreferences =
+            await SharedPreferences.getInstance();
+        _sharedPreferences.setString('userID', userCredential.user!.uid);
 
         UserModel userModel =
             UserModel.fromJson(userDoc.data() as Map<String, dynamic>);

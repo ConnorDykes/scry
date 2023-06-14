@@ -6,7 +6,7 @@ class PlayRepo {
   GamesStream() {
     return _firebaseFirestore
         .collection('games')
-        .where('dateAndTime', isLessThan: DateTime.now())
+        .where('dateAndTime', isGreaterThan: DateTime.now())
         .snapshots();
   }
 }

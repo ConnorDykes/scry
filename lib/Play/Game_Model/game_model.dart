@@ -13,6 +13,7 @@ class GameModel with _$GameModel {
   /// our user constructor
   const factory GameModel({
     @Default(null) UserModel? creator,
+    @Default('') String id,
     @Default('') String title,
     @Default('') String description,
     @Default(0) int cost,

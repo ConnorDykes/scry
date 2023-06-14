@@ -21,6 +21,7 @@ GameModel _$GameModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GameModel {
   UserModel? get creator => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get cost => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $GameModelCopyWith<$Res> {
   @useResult
   $Res call(
       {UserModel? creator,
+      String id,
       String title,
       String description,
       int cost,
@@ -72,6 +74,7 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
   @override
   $Res call({
     Object? creator = freezed,
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? cost = null,
@@ -87,6 +90,10 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
               as UserModel?,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -148,6 +155,7 @@ abstract class _$$_GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
   @useResult
   $Res call(
       {UserModel? creator,
+      String id,
       String title,
       String description,
       int cost,
@@ -174,6 +182,7 @@ class __$$_GameModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? creator = freezed,
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? cost = null,
@@ -189,6 +198,10 @@ class __$$_GameModelCopyWithImpl<$Res>
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
               as UserModel?,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -234,6 +247,7 @@ class __$$_GameModelCopyWithImpl<$Res>
 class _$_GameModel extends _GameModel {
   const _$_GameModel(
       {this.creator = null,
+      this.id = '',
       this.title = '',
       this.description = '',
       this.cost = 0,
@@ -252,6 +266,9 @@ class _$_GameModel extends _GameModel {
   @override
   @JsonKey()
   final UserModel? creator;
+  @override
+  @JsonKey()
+  final String id;
   @override
   @JsonKey()
   final String title;
@@ -288,7 +305,7 @@ class _$_GameModel extends _GameModel {
 
   @override
   String toString() {
-    return 'GameModel(creator: $creator, title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
+    return 'GameModel(creator: $creator, id: $id, title: $title, description: $description, cost: $cost, location: $location, dateAndTime: $dateAndTime, maxPlayerCount: $maxPlayerCount, minPlayerCount: $minPlayerCount, players: $players, format: $format)';
   }
 
   @override
@@ -297,6 +314,7 @@ class _$_GameModel extends _GameModel {
         (other.runtimeType == runtimeType &&
             other is _$_GameModel &&
             (identical(other.creator, creator) || other.creator == creator) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -318,6 +336,7 @@ class _$_GameModel extends _GameModel {
   int get hashCode => Object.hash(
       runtimeType,
       creator,
+      id,
       title,
       description,
       cost,
@@ -345,6 +364,7 @@ class _$_GameModel extends _GameModel {
 abstract class _GameModel extends GameModel {
   const factory _GameModel(
       {final UserModel? creator,
+      final String id,
       final String title,
       final String description,
       final int cost,
@@ -361,6 +381,8 @@ abstract class _GameModel extends GameModel {
 
   @override
   UserModel? get creator;
+  @override
+  String get id;
   @override
   String get title;
   @override
