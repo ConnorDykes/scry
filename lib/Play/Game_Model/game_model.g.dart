@@ -10,6 +10,7 @@ _$_GameModel _$$_GameModelFromJson(Map<String, dynamic> json) => _$_GameModel(
       creator: json['creator'] == null
           ? null
           : UserModel.fromJson(json['creator'] as Map<String, dynamic>),
+      id: json['id'] as String? ?? '',
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       cost: json['cost'] as int? ?? 0,
@@ -28,6 +29,7 @@ _$_GameModel _$$_GameModelFromJson(Map<String, dynamic> json) => _$_GameModel(
 Map<String, dynamic> _$$_GameModelToJson(_$_GameModel instance) =>
     <String, dynamic>{
       'creator': instance.creator,
+      'id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'cost': instance.cost,

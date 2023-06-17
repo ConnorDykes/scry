@@ -372,9 +372,12 @@ class _OfferPanelState extends State<OfferPanel> {
                             builder: (context) => CardDialog(card: chat.card),
                           ),
                           child: Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4)),
                             height: 150,
-                            child:
-                                Image.network(chat.card.imageUris?.small ?? ''),
+                            child: Image.network(
+                                chat.card.imageUris?.normal ?? ''),
                           ),
                         ),
                   Padding(

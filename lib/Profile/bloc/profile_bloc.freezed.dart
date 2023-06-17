@@ -19,32 +19,38 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function(BuildContext context) editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function(BuildContext context)? editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function(BuildContext context)? editProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_EditProfile value) editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_EditProfile value)? editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_EditProfile value)? editProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,6 +111,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function(BuildContext context) editProfile,
   }) {
     return logout();
   }
@@ -113,6 +120,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function(BuildContext context)? editProfile,
   }) {
     return logout?.call();
   }
@@ -121,6 +129,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function(BuildContext context)? editProfile,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -133,6 +142,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_EditProfile value) editProfile,
   }) {
     return logout(this);
   }
@@ -141,6 +151,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_EditProfile value)? editProfile,
   }) {
     return logout?.call(this);
   }
@@ -149,6 +160,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_EditProfile value)? editProfile,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -160,6 +172,140 @@ class _$_Logout implements _Logout {
 
 abstract class _Logout implements ProfileEvent {
   const factory _Logout() = _$_Logout;
+}
+
+/// @nodoc
+abstract class _$$_EditProfileCopyWith<$Res> {
+  factory _$$_EditProfileCopyWith(
+          _$_EditProfile value, $Res Function(_$_EditProfile) then) =
+      __$$_EditProfileCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$_EditProfileCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_EditProfile>
+    implements _$$_EditProfileCopyWith<$Res> {
+  __$$_EditProfileCopyWithImpl(
+      _$_EditProfile _value, $Res Function(_$_EditProfile) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$_EditProfile(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EditProfile implements _EditProfile {
+  const _$_EditProfile({required this.context});
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.editProfile(context: $context)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_EditProfile &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EditProfileCopyWith<_$_EditProfile> get copyWith =>
+      __$$_EditProfileCopyWithImpl<_$_EditProfile>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function(BuildContext context) editProfile,
+  }) {
+    return editProfile(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function(BuildContext context)? editProfile,
+  }) {
+    return editProfile?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function(BuildContext context)? editProfile,
+    required TResult orElse(),
+  }) {
+    if (editProfile != null) {
+      return editProfile(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_EditProfile value) editProfile,
+  }) {
+    return editProfile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_EditProfile value)? editProfile,
+  }) {
+    return editProfile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_EditProfile value)? editProfile,
+    required TResult orElse(),
+  }) {
+    if (editProfile != null) {
+      return editProfile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EditProfile implements ProfileEvent {
+  const factory _EditProfile({required final BuildContext context}) =
+      _$_EditProfile;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_EditProfileCopyWith<_$_EditProfile> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -253,10 +399,9 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProfileState extends _ProfileState {
-  const _$_ProfileState({this.user = UserModel.empty}) : super._();
+  const _$_ProfileState({required this.user}) : super._();
 
   @override
-  @JsonKey()
   final UserModel user;
 
   @override
@@ -283,7 +428,8 @@ class _$_ProfileState extends _ProfileState {
 }
 
 abstract class _ProfileState extends ProfileState {
-  const factory _ProfileState({final UserModel user}) = _$_ProfileState;
+  const factory _ProfileState({required final UserModel user}) =
+      _$_ProfileState;
   const _ProfileState._() : super._();
 
   @override

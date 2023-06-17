@@ -75,7 +75,7 @@ class MessageWidget extends StatelessWidget {
                       child: Container(
                         height: 150,
                         child:
-                            Image.network(message.card.imageUris?.small ?? ''),
+                            Image.network(message.card.imageUris?.normal ?? ''),
                       ),
                     ),
                   ),

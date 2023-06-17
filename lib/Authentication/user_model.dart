@@ -16,6 +16,9 @@ class UserModel with _$UserModel {
     @Default('') String firstName,
     @Default('') String lastName,
     @Default('') String profilePicture,
+    @Default('') String city,
+    @Default('') String state,
+    @Default('') String areaCode,
   }) = _UserModel;
 
   const UserModel._();

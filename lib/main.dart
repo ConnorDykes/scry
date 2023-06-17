@@ -55,9 +55,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (context) => AppBlocBloc()..add(AppBlocEvent.started())),
-        BlocProvider(
-          create: (context) => ProfileBloc(),
-        ),
       ],
       child: MaterialApp(
         title: 'Scry',

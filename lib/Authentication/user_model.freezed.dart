@@ -27,6 +27,9 @@ mixin _$UserModel {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get profilePicture => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
+  String get areaCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +49,10 @@ abstract class $UserModelCopyWith<$Res> {
       String displayName,
       String firstName,
       String lastName,
-      String profilePicture});
+      String profilePicture,
+      String city,
+      String state,
+      String areaCode});
 }
 
 /// @nodoc
@@ -69,6 +75,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? firstName = null,
     Object? lastName = null,
     Object? profilePicture = null,
+    Object? city = null,
+    Object? state = null,
+    Object? areaCode = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -99,6 +108,18 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String,
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      areaCode: null == areaCode
+          ? _value.areaCode
+          : areaCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -117,7 +138,10 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String displayName,
       String firstName,
       String lastName,
-      String profilePicture});
+      String profilePicture,
+      String city,
+      String state,
+      String areaCode});
 }
 
 /// @nodoc
@@ -138,6 +162,9 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? profilePicture = null,
+    Object? city = null,
+    Object? state = null,
+    Object? areaCode = null,
   }) {
     return _then(_$_UserModel(
       id: null == id
@@ -168,6 +195,18 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String,
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      areaCode: null == areaCode
+          ? _value.areaCode
+          : areaCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -182,7 +221,10 @@ class _$_UserModel extends _UserModel {
       this.displayName = '',
       this.firstName = '',
       this.lastName = '',
-      this.profilePicture = ''})
+      this.profilePicture = '',
+      this.city = '',
+      this.state = '',
+      this.areaCode = ''})
       : super._();
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
@@ -209,10 +251,19 @@ class _$_UserModel extends _UserModel {
   @override
   @JsonKey()
   final String profilePicture;
+  @override
+  @JsonKey()
+  final String city;
+  @override
+  @JsonKey()
+  final String state;
+  @override
+  @JsonKey()
+  final String areaCode;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, password: $password, displayName: $displayName, firstName: $firstName, lastName: $lastName, profilePicture: $profilePicture)';
+    return 'UserModel(id: $id, email: $email, password: $password, displayName: $displayName, firstName: $firstName, lastName: $lastName, profilePicture: $profilePicture, city: $city, state: $state, areaCode: $areaCode)';
   }
 
   @override
@@ -231,13 +282,17 @@ class _$_UserModel extends _UserModel {
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.profilePicture, profilePicture) ||
-                other.profilePicture == profilePicture));
+                other.profilePicture == profilePicture) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.areaCode, areaCode) ||
+                other.areaCode == areaCode));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, email, password, displayName,
-      firstName, lastName, profilePicture);
+      firstName, lastName, profilePicture, city, state, areaCode);
 
   @JsonKey(ignore: true)
   @override
@@ -261,7 +316,10 @@ abstract class _UserModel extends UserModel {
       final String displayName,
       final String firstName,
       final String lastName,
-      final String profilePicture}) = _$_UserModel;
+      final String profilePicture,
+      final String city,
+      final String state,
+      final String areaCode}) = _$_UserModel;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -281,6 +339,12 @@ abstract class _UserModel extends UserModel {
   String get lastName;
   @override
   String get profilePicture;
+  @override
+  String get city;
+  @override
+  String get state;
+  @override
+  String get areaCode;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

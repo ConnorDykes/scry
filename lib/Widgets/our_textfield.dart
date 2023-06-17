@@ -6,7 +6,7 @@ class OurTextfield extends StatelessWidget {
   const OurTextfield(
       {super.key,
       this.controller,
-      required this.onChanged,
+      this.onChanged,
       this.suffixIcon,
       this.hintText,
       this.maxLines,
@@ -15,7 +15,7 @@ class OurTextfield extends StatelessWidget {
       this.keyboardType});
 
   final TextEditingController? controller;
-  final Function onChanged;
+  final Function? onChanged;
   final Widget? suffixIcon;
   final String? hintText;
   final int? maxLines;
@@ -29,9 +29,11 @@ class OurTextfield extends StatelessWidget {
 
     return TextField(
       controller: controller ?? TextEditingController(),
-      onChanged: (value) async {
-        onChanged(value);
-      },
+      onChanged: onChanged != null
+          ? (value) async {
+              onChanged!(value);
+            }
+          : null,
       textCapitalization: textCapitalization,
       keyboardType: keyboardType,
       maxLines: maxLines,

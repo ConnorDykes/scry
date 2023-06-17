@@ -31,6 +31,10 @@ class AuthRepo {
     }
   }
 
+  Stream<DocumentSnapshot> streamUser({required String userID}) {
+    return _firebaseFirestore.collection('users').doc(userID).snapshots();
+  }
+
   Future getUser({required String userID}) async {
     try {
       return await _firebaseFirestore.collection('users').doc(userID).get();

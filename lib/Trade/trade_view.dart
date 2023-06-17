@@ -82,8 +82,11 @@ class _TradeViewState extends State<TradeView> {
                     final trade = TradePostModel.fromJson(
                         docs[index].data() as Map<String, dynamic>);
 
-                    return TradeCard(
-                      trade: trade,
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TradeCard(
+                        trade: trade,
+                      ),
                     );
                   });
             } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {

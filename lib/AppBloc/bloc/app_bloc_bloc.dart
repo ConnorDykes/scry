@@ -25,11 +25,25 @@ class AppBlocBloc extends Bloc<AppBlocEvent, AppBlocState> {
 
     on<_Started>((event, emit) async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-
+      // initiate stream to listen to user changes.
       String? userID = prefs.getString('userID');
+
       debugPrint("userID -----> $userID");
 
       if (userID != null) {
+        await emit.forEach<DocumentSnapshot>(
+          authRepo.streamUser(userID: userID),
+          onData: (user) {
+            final currentUser =
+                UserModel.fromJson(user.data() as Map<String, dynamic>);
+
+            debugPrint('[AppBloc: New User Info');
+            return state.copyWith(
+              user: currentUser,
+            );
+          },
+        );
+
         DocumentSnapshot userDoc = await authRepo.getUser(userID: userID);
         final UserModel user =
             UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
@@ -37,7 +51,10 @@ class AppBlocBloc extends Bloc<AppBlocEvent, AppBlocState> {
       }
     });
 
-    on<_Logout>((event, emit) {
+    on<_Logout>((event, emit) async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      // initiate stream to listen to user changes.
+      prefs.setString('userID', '');
       authRepo.logout();
       emit(state.copyWith(user: UserModel.empty));
     });

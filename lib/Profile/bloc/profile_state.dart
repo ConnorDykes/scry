@@ -4,6 +4,5 @@ part of 'profile_bloc.dart';
 class ProfileState with _$ProfileState {
   const ProfileState._();
 
-  const factory ProfileState({@Default(UserModel.empty) UserModel user}) =
-      _ProfileState;
+  const factory ProfileState({required UserModel user}) = _ProfileState;
 }

@@ -22,9 +22,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     //* This is for showcase widget
-    WidgetsBinding.instance.addPostFrameCallback((_) =>
-        ShowCaseWidget.of(context)
-            .startShowCase([iconKey, messageKey, playKey, profileKey, fabKey]));
+    // WidgetsBinding.instance.addPostFrameCallback((_) =>
+    //     ShowCaseWidget.of(context)
+    //         .startShowCase([iconKey, messageKey, playKey, profileKey, fabKey]));
     super.initState();
   }
 
