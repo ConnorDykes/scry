@@ -26,6 +26,7 @@ mixin _$UserModel {
   String get displayName => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
+  List<String> get games => throw _privateConstructorUsedError;
   String get profilePicture => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $UserModelCopyWith<$Res> {
       String displayName,
       String firstName,
       String lastName,
+      List<String> games,
       String profilePicture,
       String city,
       String state,
@@ -74,6 +76,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? displayName = null,
     Object? firstName = null,
     Object? lastName = null,
+    Object? games = null,
     Object? profilePicture = null,
     Object? city = null,
     Object? state = null,
@@ -104,6 +107,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      games: null == games
+          ? _value.games
+          : games // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       profilePicture: null == profilePicture
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
@@ -138,6 +145,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String displayName,
       String firstName,
       String lastName,
+      List<String> games,
       String profilePicture,
       String city,
       String state,
@@ -161,6 +169,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? displayName = null,
     Object? firstName = null,
     Object? lastName = null,
+    Object? games = null,
     Object? profilePicture = null,
     Object? city = null,
     Object? state = null,
@@ -191,6 +200,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      games: null == games
+          ? _value._games
+          : games // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       profilePicture: null == profilePicture
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
@@ -221,11 +234,13 @@ class _$_UserModel extends _UserModel {
       this.displayName = '',
       this.firstName = '',
       this.lastName = '',
+      final List<String> games = const [],
       this.profilePicture = '',
       this.city = '',
       this.state = '',
       this.areaCode = ''})
-      : super._();
+      : _games = games,
+        super._();
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -248,6 +263,15 @@ class _$_UserModel extends _UserModel {
   @override
   @JsonKey()
   final String lastName;
+  final List<String> _games;
+  @override
+  @JsonKey()
+  List<String> get games {
+    if (_games is EqualUnmodifiableListView) return _games;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_games);
+  }
+
   @override
   @JsonKey()
   final String profilePicture;
@@ -263,7 +287,7 @@ class _$_UserModel extends _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, password: $password, displayName: $displayName, firstName: $firstName, lastName: $lastName, profilePicture: $profilePicture, city: $city, state: $state, areaCode: $areaCode)';
+    return 'UserModel(id: $id, email: $email, password: $password, displayName: $displayName, firstName: $firstName, lastName: $lastName, games: $games, profilePicture: $profilePicture, city: $city, state: $state, areaCode: $areaCode)';
   }
 
   @override
@@ -281,6 +305,7 @@ class _$_UserModel extends _UserModel {
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
+            const DeepCollectionEquality().equals(other._games, _games) &&
             (identical(other.profilePicture, profilePicture) ||
                 other.profilePicture == profilePicture) &&
             (identical(other.city, city) || other.city == city) &&
@@ -291,8 +316,19 @@ class _$_UserModel extends _UserModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, password, displayName,
-      firstName, lastName, profilePicture, city, state, areaCode);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      email,
+      password,
+      displayName,
+      firstName,
+      lastName,
+      const DeepCollectionEquality().hash(_games),
+      profilePicture,
+      city,
+      state,
+      areaCode);
 
   @JsonKey(ignore: true)
   @override
@@ -316,6 +352,7 @@ abstract class _UserModel extends UserModel {
       final String displayName,
       final String firstName,
       final String lastName,
+      final List<String> games,
       final String profilePicture,
       final String city,
       final String state,
@@ -337,6 +374,8 @@ abstract class _UserModel extends UserModel {
   String get firstName;
   @override
   String get lastName;
+  @override
+  List<String> get games;
   @override
   String get profilePicture;
   @override

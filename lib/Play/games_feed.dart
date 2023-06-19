@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
@@ -12,13 +13,37 @@ import 'package:scry/Play/play_repo.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 
-class GamesFeed extends StatelessWidget {
+class GamesFeed extends StatefulWidget {
   const GamesFeed({super.key});
+
+  @override
+  State<GamesFeed> createState() => _GamesFeedState();
+}
+
+class _GamesFeedState extends State<GamesFeed> {
+  bool showingAvailableGames = true;
 
   @override
   Widget build(BuildContext context) {
     final appBloc = context.watch<AppBloc>();
     final playRepo = PlayRepo();
+
+    final theme = Theme.of(context);
+
+    Map<int, Widget> segmentedControlChildren = <int, Widget>{
+      0: Text(
+        "Available Games",
+        style: TextStyle(
+            fontSize: 18,
+            color: showingAvailableGames ? Colors.white : Colors.black),
+      ),
+      1: Text(
+        "Joined Games",
+        style: TextStyle(
+            fontSize: 18,
+            color: showingAvailableGames ? Colors.black : Colors.white),
+      ),
+    };
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -58,27 +83,58 @@ class GamesFeed extends StatelessWidget {
           size: 35,
         ),
       ),
-      body: Center(
-        child: StreamBuilder<QuerySnapshot>(
-          stream: playRepo.GamesStream(),
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasData && snapshot.data != null) {
-              return ListView.builder(
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index) {
-                    final gameDoc = snapshot.data!.docs[index].data();
-                    final game =
-                        GameModel.fromJson(gameDoc as Map<String, dynamic>);
-
-                    return GameTile(
-                      game: game,
-                    );
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: CupertinoSlidingSegmentedControl(
+                thumbColor: theme.colorScheme.primary,
+                groupValue: showingAvailableGames == true ? 0 : 1,
+                onValueChanged: (value) {
+                  setState(() {
+                    showingAvailableGames = !showingAvailableGames;
                   });
-            } else {
-              return CircularProgressIndicator();
-            }
-          },
+                },
+                children: segmentedControlChildren,
+              ),
+            ),
+            Center(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: playRepo.AvailableGamesStream(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.hasData && snapshot.data != null) {
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (context, index) {
+                          final gameDoc = snapshot.data!.docs[index].data();
+
+                          final game = GameModel.fromJson(
+                              gameDoc as Map<String, dynamic>);
+                          final isJoinedGame =
+                              appBloc.state.user.games.contains(game.id);
+                          if (showingAvailableGames && isJoinedGame) {
+                            return SizedBox.shrink();
+                          }
+                          if (!showingAvailableGames && isJoinedGame) {
+                            return GameTile(
+                              game: game,
+                            );
+                          }
+                          //check if user games array has game ID ans render new list new or new widget if so
+                          return GameTile(
+                            game: game,
+                          );
+                        });
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

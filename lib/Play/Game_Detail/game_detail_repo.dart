@@ -15,6 +15,17 @@ class GameDetailRepo {
 
   Future<void> deleteGame() async {
     try {
+      QuerySnapshot<Map<String, dynamic>> players = await _firebaseFirestore
+          .collection('games')
+          .doc(game.id)
+          .collection('players')
+          .get();
+
+      players.docs.forEach((player) async {
+        await _firebaseFirestore.collection('user').doc(player.id).update({
+          'games': FieldValue.arrayRemove([game.id])
+        });
+      });
       await _firebaseFirestore.collection('games').doc(game.id).delete();
     } catch (e) {
       debugPrint(e.toString());
@@ -29,6 +40,10 @@ class GameDetailRepo {
           .collection('players')
           .doc()
           .set(currentUser.toJson());
+
+      await _firebaseFirestore.collection('users').doc(currentUser.id).update({
+        'games': FieldValue.arrayUnion([game.id])
+      });
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -50,6 +65,10 @@ class GameDetailRepo {
             .collection('players')
             .doc(player.id)
             .delete();
+      });
+
+      await _firebaseFirestore.collection('users').doc(currentUser.id).update({
+        'games': FieldValue.arrayRemove([game.id])
       });
     } catch (e) {
       debugPrint(e.toString());

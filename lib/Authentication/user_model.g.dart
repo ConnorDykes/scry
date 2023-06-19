@@ -13,6 +13,9 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       displayName: json['displayName'] as String? ?? '',
       firstName: json['firstName'] as String? ?? '',
       lastName: json['lastName'] as String? ?? '',
+      games:
+          (json['games'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
       profilePicture: json['profilePicture'] as String? ?? '',
       city: json['city'] as String? ?? '',
       state: json['state'] as String? ?? '',
@@ -27,6 +30,7 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'displayName': instance.displayName,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
+      'games': instance.games,
       'profilePicture': instance.profilePicture,
       'city': instance.city,
       'state': instance.state,

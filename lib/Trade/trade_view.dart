@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Messages/messages_view.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Sign_In/sign_in_view.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
@@ -24,10 +25,26 @@ class TradeView extends StatefulWidget {
 }
 
 class _TradeViewState extends State<TradeView> {
+  bool showingTradeFeed = true;
+
   @override
   Widget build(BuildContext context) {
     final appBloc = context.read<AppBloc>();
     final theme = Theme.of(context);
+    Map<int, Widget> segmentedControlChildren = <int, Widget>{
+      0: Text(
+        "Trade Feed",
+        style: TextStyle(
+            fontSize: 18,
+            color: showingTradeFeed ? Colors.white : Colors.black),
+      ),
+      1: Text(
+        "Trade Offers",
+        style: TextStyle(
+            fontSize: 18,
+            color: showingTradeFeed ? Colors.black : Colors.white),
+      ),
+    };
 
     return Scaffold(
         floatingActionButton: Showcase(
@@ -62,57 +79,88 @@ class _TradeViewState extends State<TradeView> {
             ),
           ),
         ),
-        body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('trades').snapshots(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Column(
-                children: [
-                  Center(
-                    child: CircularProgressIndicator(),
-                  )
-                ],
-              );
-            } else if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
-              final docs = snapshot.data?.docs ?? [];
+        body: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: CupertinoSlidingSegmentedControl(
+                  thumbColor: theme.colorScheme.primary,
+                  groupValue: showingTradeFeed == true ? 0 : 1,
+                  onValueChanged: (value) {
+                    setState(() {
+                      showingTradeFeed = !showingTradeFeed;
+                    });
+                  },
+                  children: segmentedControlChildren,
+                ),
+              ),
+              showingTradeFeed
+                  ? StreamBuilder<QuerySnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection('trades')
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Column(
+                            children: [
+                              Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            ],
+                          );
+                        } else if (snapshot.hasData &&
+                            snapshot.data!.docs.isNotEmpty) {
+                          final docs = snapshot.data?.docs ?? [];
 
-              return ListView.builder(
-                  itemCount: docs.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final trade = TradePostModel.fromJson(
-                        docs[index].data() as Map<String, dynamic>);
+                          return Expanded(
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                primary: true,
+                                itemCount: docs.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final trade = TradePostModel.fromJson(
+                                      docs[index].data()
+                                          as Map<String, dynamic>);
 
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TradeCard(
-                        trade: trade,
-                      ),
-                    );
-                  });
-            } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      "No Trades Available\nTap the + Button to Create One ",
-                      style: theme.textTheme.titleMedium,
-                    ),
-                  )
-                ],
-              );
-            } else {
-              return const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Text('ERROR'),
-                  )
-                ],
-              );
-            }
-          },
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TradeCard(
+                                      trade: trade,
+                                    ),
+                                  );
+                                }),
+                          );
+                        } else if (!snapshot.hasData ||
+                            snapshot.data!.docs.isEmpty) {
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  "No Trades Available\nTap the + Button to Create One ",
+                                  style: theme.textTheme.titleMedium,
+                                ),
+                              )
+                            ],
+                          );
+                        } else {
+                          return const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: Text('ERROR'),
+                              )
+                            ],
+                          );
+                        }
+                      },
+                    )
+                  : Offers()
+            ],
+          ),
         ));
   }
 }

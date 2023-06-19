@@ -1,6 +1,7 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
@@ -70,6 +71,7 @@ class CreateTradeView extends StatelessWidget {
 
           return Scaffold(
               appBar: AppBar(
+                systemOverlayStyle: SystemUiOverlayStyle.dark,
                 automaticallyImplyLeading: proposeTrade == true ? false : true,
                 surfaceTintColor: Colors.transparent,
                 backgroundColor: theme.scaffoldBackgroundColor,

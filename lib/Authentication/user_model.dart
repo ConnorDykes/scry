@@ -15,6 +15,7 @@ class UserModel with _$UserModel {
     @Default('') String displayName,
     @Default('') String firstName,
     @Default('') String lastName,
+    @Default([]) List<String> games,
     @Default('') String profilePicture,
     @Default('') String city,
     @Default('') String state,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -34,8 +35,17 @@ class UserAvatar extends StatelessWidget {
                     )
                   : CircleAvatar(
                       radius: radius,
-                      backgroundImage: NetworkImage(doc!['profilePicture']),
-                    );
+                      child: Container(
+                        width: 48.0,
+                        height: 48.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                doc!['profilePicture']),
+                          ),
+                        ),
+                      ));
             } else {
               return const CircleAvatar(
                 radius: 25,
