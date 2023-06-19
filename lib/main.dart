@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           create: (context) => SignInBloc(),
         ),
         BlocProvider(
-            create: (context) => AppBlocBloc()..add(AppBlocEvent.started())),
+            create: (context) => AppBloc()..add(AppBlocEvent.started())),
       ],
       child: MaterialApp(
         title: 'Scry',
@@ -76,6 +76,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: AppBarTheme(
             systemOverlayStyle: SystemUiOverlayStyle.light, // 2
           ),
+          snackBarTheme: SnackBarThemeData(backgroundColor: Colors.green),
           colorScheme: ColorScheme(
               surface: Colors.white,
               onSurface: Colors.black,

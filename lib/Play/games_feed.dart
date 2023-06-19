@@ -17,13 +17,13 @@ class GamesFeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appBloc = AppBlocBloc();
+    final appBloc = context.watch<AppBloc>();
     final playRepo = PlayRepo();
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if (appBloc.state.user == UserModel.empty) {
+          if (appBloc.state.user.id == UserModel.empty) {
             SignInModal()
                 .showSignInModal(context: context)
                 .then((value) => value

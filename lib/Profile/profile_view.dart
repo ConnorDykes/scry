@@ -5,6 +5,7 @@ import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Profile/bloc/profile_bloc.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -12,18 +13,18 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final appBloc = context.read<AppBlocBloc>().state;
+    final appBloc = context.watch<AppBloc>().state;
 
     return BlocProvider(
       create: (context) => ProfileBloc(user: appBloc.user),
-      child: BlocBuilder<AppBlocBloc, AppBlocState>(
+      child: BlocBuilder<AppBloc, AppBlocState>(
         builder: (context, state) {
           return BlocBuilder<ProfileBloc, ProfileState>(
             builder: (context, state) {
               final bloc = context.read<ProfileBloc>();
               debugPrint(state.user.toString());
               final user = appBloc.user;
-              return state.user == UserModel.empty
+              return user == UserModel.empty
                   ? Center(
                       child: ElevatedButton(
                         onPressed: () {
@@ -74,73 +75,270 @@ class ProfileView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        body: Column(
+                        body: ListView(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            Column(
                               children: [
-                                Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: CircleAvatar(
-                                          radius: 78,
-                                          child: CircleAvatar(
-                                            radius: 75,
-                                            backgroundImage: NetworkImage(user
-                                                .profilePicture
-                                                .replaceAll("s96-c", "s192-c")),
-                                            child: user.profilePicture == ''
-                                                ? const Icon(
-                                                    Icons.person,
-                                                    size: 100,
-                                                  )
-                                                : null,
-                                          ),
-                                        ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: CircleAvatar(
+                                      radius: 78,
+                                      child: CircleAvatar(
+                                        radius: 75,
+                                        backgroundImage: NetworkImage(user
+                                            .profilePicture
+                                            .replaceAll("s96-c", "s192-c")),
+                                        child: user.profilePicture == ''
+                                            ? const Icon(
+                                                Icons.person,
+                                                size: 100,
+                                              )
+                                            : null,
                                       ),
                                     ),
-                                    Text(
-                                      user.displayName != ''
-                                          ? user.displayName
-                                          : user.fullName,
-                                      style: theme.textTheme.titleLarge,
-                                    ),
-                                    Text(
-                                        '${user.city} ${user.state} ${user.areaCode}'),
-                                    SelectableText('User ID: ${user.id}')
-                                  ],
+                                  ),
                                 ),
+                                Text(
+                                  'Display Name',
+                                  style: theme.textTheme.titleMedium,
+                                ),
+                                user.displayName != ''
+                                    ? Text(
+                                        user.displayName,
+                                        style: theme.textTheme.titleLarge!
+                                            .copyWith(
+                                                color:
+                                                    theme.colorScheme.primary),
+                                      )
+                                    : Text(
+                                        'Tap Edit Button To Set',
+                                        textAlign: TextAlign.center,
+                                        style: theme.textTheme.titleLarge!
+                                            .copyWith(
+                                                color: theme.colorScheme.error),
+                                      ),
+                                Divider(
+                                  color: theme.dividerColor,
+                                ),
+                                SizedBox(
+                                  height: 100,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Flexible(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Name',
+                                              style:
+                                                  theme.textTheme.titleMedium,
+                                            ),
+                                            user.firstName != ''
+                                                ? Text(
+                                                    '${user.firstName} ${user.lastName}',
+                                                    style: theme
+                                                        .textTheme.titleLarge!
+                                                        .copyWith(
+                                                            color: theme
+                                                                .colorScheme
+                                                                .primary),
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: null,
+                                                  )
+                                                : ElevatedButton(
+                                                    onPressed: () {
+                                                      bloc.add(ProfileEvent
+                                                          .editProfile(
+                                                              context:
+                                                                  context));
+                                                    },
+                                                    child: Text(
+                                                      'Edit',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: theme
+                                                          .textTheme.titleLarge!
+                                                          .copyWith(
+                                                              color: theme
+                                                                  .colorScheme
+                                                                  .error),
+                                                    ),
+                                                  )
+                                          ],
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              'Location',
+                                              style:
+                                                  theme.textTheme.titleMedium,
+                                            ),
+                                            user.city != ''
+                                                ? Text(
+                                                    '${user.city}\n${user.state} ${user.areaCode}',
+                                                    style: theme
+                                                        .textTheme.titleLarge!
+                                                        .copyWith(
+                                                            color: theme
+                                                                .colorScheme
+                                                                .primary),
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: null,
+                                                  )
+                                                : ElevatedButton(
+                                                    onPressed: () {
+                                                      bloc.add(ProfileEvent
+                                                          .editProfile(
+                                                              context:
+                                                                  context));
+                                                    },
+                                                    child: Text(
+                                                      'Edit',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: theme
+                                                          .textTheme.titleLarge!
+                                                          .copyWith(
+                                                              color: theme
+                                                                  .colorScheme
+                                                                  .error),
+                                                    ),
+                                                  )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                SelectableText('User ID: ${user.id}')
                               ],
                             ),
                             Divider(
                               color: theme.dividerColor,
                             ),
-                            TextButton(
-                                style: ElevatedButton.styleFrom(
-                                    foregroundColor: Colors.red,
-                                    side: const BorderSide(color: Colors.red),
-                                    surfaceTintColor: Colors.red),
-                                onPressed: () {},
-                                child: const Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.no_accounts_outlined,
-                                      color: Colors.red,
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 8.0),
-                                      child: Text(
-                                        'Delete Account',
-                                        style: TextStyle(color: Colors.red),
-                                      ),
-                                    ),
-                                  ],
-                                ))
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                TextButton(
+                                    style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.blue,
+                                        side: const BorderSide(
+                                            color: Colors.blue),
+                                        surfaceTintColor: Colors.blue),
+                                    onPressed: () async {
+                                      final Uri emailLaunchUri = Uri(
+                                        scheme: 'mailto',
+                                        path: 'connormdykes@gmail.com',
+                                        queryParameters: {
+                                          'subject':
+                                              '[Scry] : "ADD SUBJECT HERE" ',
+                                          'body':
+                                              'ID: ${user.id} Do not remove this ID, it is used for debugging and error resolution'
+                                        },
+                                      );
+                                      await launchUrl(emailLaunchUri);
+                                    },
+                                    child: const Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          Icons.email,
+                                          color: Colors.blue,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          child: Text(
+                                            'Contact\nDeveloper',
+                                            textAlign: TextAlign.center,
+                                            style:
+                                                TextStyle(color: Colors.blue),
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                                TextButton(
+                                    style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.red,
+                                        side:
+                                            const BorderSide(color: Colors.red),
+                                        surfaceTintColor: Colors.red),
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (_) => AlertDialog(
+                                                title: Text('Delete Account'),
+                                                content: Text(
+                                                    'This is CONNOT be undone, are you sure?'),
+                                                surfaceTintColor: Colors.red,
+                                                actions: [
+                                                  OutlinedButton(
+                                                      style: OutlinedButton
+                                                          .styleFrom(
+                                                              side: BorderSide(
+                                                                  color: theme
+                                                                      .disabledColor)),
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                        'Cancel',
+                                                        style: TextStyle(
+                                                            color: theme
+                                                                .disabledColor),
+                                                      )),
+                                                  OutlinedButton(
+                                                      style: OutlinedButton
+                                                          .styleFrom(
+                                                              side: BorderSide(
+                                                                  color: Colors
+                                                                      .red)),
+                                                      onPressed: () {
+                                                        //! add logic to Delete Account
+                                                      },
+                                                      child: Text(
+                                                        'Delete',
+                                                        style: TextStyle(
+                                                            color: Colors.red),
+                                                      ))
+                                                ],
+                                              ));
+                                    },
+                                    child: const Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          Icons.delete_forever,
+                                          color: Colors.red,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          child: Text(
+                                            'Delete\nAccount',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(color: Colors.red),
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                              ],
+                            )
                           ],
                         ),
                       ),
@@ -172,9 +370,7 @@ void _showLogoutDialog({required BuildContext context}) {
               ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   onPressed: () {
-                    context
-                        .read<AppBlocBloc>()
-                        .add(const AppBlocEvent.logout());
+                    context.read<AppBloc>().add(const AppBlocEvent.logout());
                     Navigator.pop(context);
                   },
                   child: const Text(

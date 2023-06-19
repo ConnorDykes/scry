@@ -15,7 +15,7 @@ class CreateNewGameView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appBloc = context.read<AppBlocBloc>().state;
+    final appBloc = context.read<AppBloc>().state;
     return BlocProvider(
         create: (context) => CreateGameBloc(user: appBloc.user),
         child: Scaffold(

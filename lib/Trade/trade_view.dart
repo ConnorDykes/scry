@@ -26,7 +26,7 @@ class TradeView extends StatefulWidget {
 class _TradeViewState extends State<TradeView> {
   @override
   Widget build(BuildContext context) {
-    final appBloc = context.read<AppBlocBloc>();
+    final appBloc = context.read<AppBloc>();
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -125,7 +125,7 @@ class TradeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final appbloc = context.read<AppBlocBloc>();
+    final appbloc = context.read<AppBloc>();
 
     return BlocProvider(
       create: (context) =>

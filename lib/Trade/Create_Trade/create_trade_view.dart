@@ -23,7 +23,7 @@ class CreateTradeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final bloc = context.read<CreateTradeBloc>();
-    final appBloc = context.read<AppBlocBloc>();
+    final appBloc = context.read<AppBloc>();
     final GlobalKey<TooltipState> tooltipkey = GlobalKey<TooltipState>();
 
     return BlocListener<CreateTradeBloc, CreateTradeState>(

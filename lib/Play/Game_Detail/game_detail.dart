@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Play/Game_Detail/bloc/game_detail_bloc.dart';
 import 'package:scry/Play/Game_Model/game_model.dart';
 import 'package:scry/Widgets/user_tile.dart';
@@ -14,8 +15,9 @@ class GameDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = context.watch<AppBloc>().state.user;
     return BlocProvider(
-      create: (context) => GameDetailBloc(game: game),
+      create: (context) => GameDetailBloc(game: game, currentUser: currentUser),
       child: BlocBuilder<GameDetailBloc, GameDetailState>(
         builder: (context, state) {
           final game = state.game;

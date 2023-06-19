@@ -27,7 +27,7 @@ class ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final appBloc = context.read<AppBlocBloc>();
+    final appBloc = context.read<AppBloc>();
     final currentUser = appBloc.state.user;
     final ScrollController scrollController = ScrollController();
 
@@ -297,7 +297,7 @@ class _OfferPanelState extends State<OfferPanel> {
     final chat = widget.chat;
     final theme = Theme.of(context);
     bool isOffer = chat.offer != OfferModel.empty;
-    final appBloc = context.read<AppBlocBloc>().state;
+    final appBloc = context.read<AppBloc>().state;
     final otherUserID = chat.users
         .where(
           (element) => element != appBloc.user.id,

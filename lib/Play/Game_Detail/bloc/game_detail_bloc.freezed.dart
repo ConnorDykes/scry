@@ -20,18 +20,24 @@ mixin _$GameDetailEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() deleteGame,
+    required TResult Function() joinGame,
+    required TResult Function() leaveGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? deleteGame,
+    TResult? Function()? joinGame,
+    TResult? Function()? leaveGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? deleteGame,
+    TResult Function()? joinGame,
+    TResult Function()? leaveGame,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$GameDetailEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_DeleteGame value) deleteGame,
+    required TResult Function(_JoinGame value) joinGame,
+    required TResult Function(_LeaveGame value) leaveGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_DeleteGame value)? deleteGame,
+    TResult? Function(_JoinGame value)? joinGame,
+    TResult? Function(_LeaveGame value)? leaveGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_DeleteGame value)? deleteGame,
+    TResult Function(_JoinGame value)? joinGame,
+    TResult Function(_LeaveGame value)? leaveGame,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +125,8 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() deleteGame,
+    required TResult Function() joinGame,
+    required TResult Function() leaveGame,
   }) {
     return started();
   }
@@ -122,6 +136,8 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? deleteGame,
+    TResult? Function()? joinGame,
+    TResult? Function()? leaveGame,
   }) {
     return started?.call();
   }
@@ -131,6 +147,8 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? deleteGame,
+    TResult Function()? joinGame,
+    TResult Function()? leaveGame,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,6 +162,8 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_DeleteGame value) deleteGame,
+    required TResult Function(_JoinGame value) joinGame,
+    required TResult Function(_LeaveGame value) leaveGame,
   }) {
     return started(this);
   }
@@ -153,6 +173,8 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_DeleteGame value)? deleteGame,
+    TResult? Function(_JoinGame value)? joinGame,
+    TResult? Function(_LeaveGame value)? leaveGame,
   }) {
     return started?.call(this);
   }
@@ -162,6 +184,8 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_DeleteGame value)? deleteGame,
+    TResult Function(_JoinGame value)? joinGame,
+    TResult Function(_LeaveGame value)? leaveGame,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -215,6 +239,8 @@ class _$_DeleteGame implements _DeleteGame {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() deleteGame,
+    required TResult Function() joinGame,
+    required TResult Function() leaveGame,
   }) {
     return deleteGame();
   }
@@ -224,6 +250,8 @@ class _$_DeleteGame implements _DeleteGame {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? deleteGame,
+    TResult? Function()? joinGame,
+    TResult? Function()? leaveGame,
   }) {
     return deleteGame?.call();
   }
@@ -233,6 +261,8 @@ class _$_DeleteGame implements _DeleteGame {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? deleteGame,
+    TResult Function()? joinGame,
+    TResult Function()? leaveGame,
     required TResult orElse(),
   }) {
     if (deleteGame != null) {
@@ -246,6 +276,8 @@ class _$_DeleteGame implements _DeleteGame {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_DeleteGame value) deleteGame,
+    required TResult Function(_JoinGame value) joinGame,
+    required TResult Function(_LeaveGame value) leaveGame,
   }) {
     return deleteGame(this);
   }
@@ -255,6 +287,8 @@ class _$_DeleteGame implements _DeleteGame {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_DeleteGame value)? deleteGame,
+    TResult? Function(_JoinGame value)? joinGame,
+    TResult? Function(_LeaveGame value)? leaveGame,
   }) {
     return deleteGame?.call(this);
   }
@@ -264,6 +298,8 @@ class _$_DeleteGame implements _DeleteGame {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_DeleteGame value)? deleteGame,
+    TResult Function(_JoinGame value)? joinGame,
+    TResult Function(_LeaveGame value)? leaveGame,
     required TResult orElse(),
   }) {
     if (deleteGame != null) {
@@ -275,6 +311,234 @@ class _$_DeleteGame implements _DeleteGame {
 
 abstract class _DeleteGame implements GameDetailEvent {
   const factory _DeleteGame() = _$_DeleteGame;
+}
+
+/// @nodoc
+abstract class _$$_JoinGameCopyWith<$Res> {
+  factory _$$_JoinGameCopyWith(
+          _$_JoinGame value, $Res Function(_$_JoinGame) then) =
+      __$$_JoinGameCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_JoinGameCopyWithImpl<$Res>
+    extends _$GameDetailEventCopyWithImpl<$Res, _$_JoinGame>
+    implements _$$_JoinGameCopyWith<$Res> {
+  __$$_JoinGameCopyWithImpl(
+      _$_JoinGame _value, $Res Function(_$_JoinGame) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_JoinGame implements _JoinGame {
+  const _$_JoinGame();
+
+  @override
+  String toString() {
+    return 'GameDetailEvent.joinGame()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_JoinGame);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() deleteGame,
+    required TResult Function() joinGame,
+    required TResult Function() leaveGame,
+  }) {
+    return joinGame();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? deleteGame,
+    TResult? Function()? joinGame,
+    TResult? Function()? leaveGame,
+  }) {
+    return joinGame?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? deleteGame,
+    TResult Function()? joinGame,
+    TResult Function()? leaveGame,
+    required TResult orElse(),
+  }) {
+    if (joinGame != null) {
+      return joinGame();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_DeleteGame value) deleteGame,
+    required TResult Function(_JoinGame value) joinGame,
+    required TResult Function(_LeaveGame value) leaveGame,
+  }) {
+    return joinGame(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_DeleteGame value)? deleteGame,
+    TResult? Function(_JoinGame value)? joinGame,
+    TResult? Function(_LeaveGame value)? leaveGame,
+  }) {
+    return joinGame?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_DeleteGame value)? deleteGame,
+    TResult Function(_JoinGame value)? joinGame,
+    TResult Function(_LeaveGame value)? leaveGame,
+    required TResult orElse(),
+  }) {
+    if (joinGame != null) {
+      return joinGame(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _JoinGame implements GameDetailEvent {
+  const factory _JoinGame() = _$_JoinGame;
+}
+
+/// @nodoc
+abstract class _$$_LeaveGameCopyWith<$Res> {
+  factory _$$_LeaveGameCopyWith(
+          _$_LeaveGame value, $Res Function(_$_LeaveGame) then) =
+      __$$_LeaveGameCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LeaveGameCopyWithImpl<$Res>
+    extends _$GameDetailEventCopyWithImpl<$Res, _$_LeaveGame>
+    implements _$$_LeaveGameCopyWith<$Res> {
+  __$$_LeaveGameCopyWithImpl(
+      _$_LeaveGame _value, $Res Function(_$_LeaveGame) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LeaveGame implements _LeaveGame {
+  const _$_LeaveGame();
+
+  @override
+  String toString() {
+    return 'GameDetailEvent.leaveGame()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LeaveGame);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() deleteGame,
+    required TResult Function() joinGame,
+    required TResult Function() leaveGame,
+  }) {
+    return leaveGame();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? deleteGame,
+    TResult? Function()? joinGame,
+    TResult? Function()? leaveGame,
+  }) {
+    return leaveGame?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? deleteGame,
+    TResult Function()? joinGame,
+    TResult Function()? leaveGame,
+    required TResult orElse(),
+  }) {
+    if (leaveGame != null) {
+      return leaveGame();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_DeleteGame value) deleteGame,
+    required TResult Function(_JoinGame value) joinGame,
+    required TResult Function(_LeaveGame value) leaveGame,
+  }) {
+    return leaveGame(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_DeleteGame value)? deleteGame,
+    TResult? Function(_JoinGame value)? joinGame,
+    TResult? Function(_LeaveGame value)? leaveGame,
+  }) {
+    return leaveGame?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_DeleteGame value)? deleteGame,
+    TResult Function(_JoinGame value)? joinGame,
+    TResult Function(_LeaveGame value)? leaveGame,
+    required TResult orElse(),
+  }) {
+    if (leaveGame != null) {
+      return leaveGame(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LeaveGame implements GameDetailEvent {
+  const factory _LeaveGame() = _$_LeaveGame;
 }
 
 /// @nodoc

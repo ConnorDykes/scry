@@ -20,14 +20,16 @@ class GameDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserModel currentUser = context.watch<AppBloc>().state.user;
     return BlocProvider(
-      create: (context) => GameDetailBloc(game: game),
+      create: (context) => GameDetailBloc(game: game, currentUser: currentUser),
       child: BlocBuilder<GameDetailBloc, GameDetailState>(
         builder: (context, state) {
-          final currentUser = context.read<AppBlocBloc>().state.user;
+          final currentUser = context.watch<AppBloc>().state.user;
           final game = state.game;
           final theme = Theme.of(context);
           final cost = game.cost > 0 ? game.cost : 'Free';
+          final bloc = context.read<GameDetailBloc>();
 
           return Scaffold(
             appBar: AppBar(
@@ -87,8 +89,7 @@ class GameDetailView extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextButton(
                                   style: TextButton.styleFrom(
-                                      backgroundColor:
-                                          theme.scaffoldBackgroundColor),
+                                      backgroundColor: theme.hoverColor),
                                   onPressed: () {
                                     MapsLauncher.launchQuery(game.location);
                                   },
@@ -148,7 +149,9 @@ class GameDetailView extends StatelessWidget {
                           ),
                           Divider(color: theme.disabledColor),
                           StreamBuilder(
-                              stream: GameDetailRepo(game: state.game)
+                              stream: GameDetailRepo(
+                                      game: state.game,
+                                      currentUser: currentUser)
                                   .playersStream(),
                               builder: (context,
                                   AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -200,7 +203,10 @@ class GameDetailView extends StatelessWidget {
                                                               color: theme
                                                                   .colorScheme
                                                                   .primary)),
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    bloc.add(GameDetailEvent
+                                                        .joinGame());
+                                                  },
                                                   child: Text('Join'))
                                             } else ...{
                                               if (game.creator!.id !=
@@ -217,7 +223,10 @@ class GameDetailView extends StatelessWidget {
                                                                 color: theme
                                                                     .colorScheme
                                                                     .error)),
-                                                    onPressed: () {},
+                                                    onPressed: () {
+                                                      bloc.add(GameDetailEvent
+                                                          .leaveGame());
+                                                    },
                                                     child: Text(
                                                       'Leave',
                                                       style: TextStyle(

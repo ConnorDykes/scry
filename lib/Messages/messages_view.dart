@@ -73,9 +73,9 @@ class Offers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final appBloc = context.read<AppBlocBloc>();
+    final appBloc = context.read<AppBloc>();
 
-    return BlocBuilder<AppBlocBloc, AppBlocState>(
+    return BlocBuilder<AppBloc, AppBlocState>(
       builder: (context, state) {
         return state.user == UserModel.empty
             ? Center(
@@ -524,7 +524,7 @@ class Messages extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return BlocBuilder<AppBlocBloc, AppBlocState>(
+    return BlocBuilder<AppBloc, AppBlocState>(
       builder: (context, state) {
         final currentUserID = state.user.id;
 

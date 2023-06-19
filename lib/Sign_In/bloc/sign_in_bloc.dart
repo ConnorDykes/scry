@@ -69,15 +69,35 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             .doc(userCredential.user!.uid)
             .get();
 
-        final SharedPreferences _sharedPreferences =
-            await SharedPreferences.getInstance();
-        _sharedPreferences.setString('userID', userCredential.user!.uid);
+        if (userDoc.exists) {
+          final SharedPreferences _sharedPreferences =
+              await SharedPreferences.getInstance();
+          _sharedPreferences.setString('userID', userCredential.user!.uid);
 
-        UserModel userModel =
-            UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
+          UserModel userModel =
+              UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
 
-        emit(state.copyWith(
-            user: userModel, error: '', buttonState: ButtonState.success));
+          emit(state.copyWith(
+              user: userModel, error: '', buttonState: ButtonState.success));
+        } else {
+          final UserModel userModel = UserModel(
+              id: userCredential.user!.uid,
+              displayName: userCredential.user!.displayName!,
+              email: userCredential.user!.email!,
+              profilePicture: userCredential.user!.photoURL!);
+
+          await _firebaseFirestore
+              .collection('users')
+              .doc(userCredential.user!.uid)
+              .set(userModel.toJson());
+
+          final SharedPreferences _sharedPreferences =
+              await SharedPreferences.getInstance();
+          _sharedPreferences.setString('userID', userCredential.user!.uid);
+
+          emit(state.copyWith(
+              user: userModel, error: '', buttonState: ButtonState.success));
+        }
       } catch (e) {
         emit(
             state.copyWith(buttonState: ButtonState.fail, error: e.toString()));

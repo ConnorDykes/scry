@@ -16,7 +16,7 @@ class SignInView extends StatelessWidget {
     final emailKey = GlobalKey<FormState>();
     final passwordKey = GlobalKey<FormState>();
     final signInBloc = context.read<SignInBloc>();
-    final appBloc = context.read<AppBlocBloc>();
+    final appBloc = context.read<AppBloc>();
 
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {

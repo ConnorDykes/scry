@@ -10,12 +10,25 @@ part 'game_detail_bloc.freezed.dart';
 
 class GameDetailBloc extends Bloc<GameDetailEvent, GameDetailState> {
   final GameModel game;
+  final UserModel currentUser;
 
-  GameDetailBloc({required this.game}) : super(GameDetailState(game: game)) {
-    final _gameDetailRepo = GameDetailRepo(game: game);
+  GameDetailBloc({
+    required this.game,
+    required this.currentUser,
+  }) : super(GameDetailState(game: game)) {
+    final _gameDetailRepo =
+        GameDetailRepo(game: game, currentUser: currentUser);
 
     on<_DeleteGame>((event, emit) {
-      _gameDetailRepo.deleteGame(gameDocID: game.id);
+      _gameDetailRepo.deleteGame();
+    });
+
+    on<_JoinGame>((event, emit) async {
+      await _gameDetailRepo.joinGame();
+    });
+
+    on<_LeaveGame>((event, emit) async {
+      await _gameDetailRepo.leaveGame();
     });
   }
 }

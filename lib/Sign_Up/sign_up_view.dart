@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,7 +13,7 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final appBloc = context.read<AppBlocBloc>();
+    final appBloc = context.read<AppBloc>();
     final signUpBloc = context.read<SignUpBloc>();
     final emailKey = GlobalKey<FormState>();
     final passwordKey = GlobalKey<FormState>();
@@ -124,9 +123,12 @@ class SignUpView extends StatelessWidget {
                                   },
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
-                                  autofillHints: const [AutofillHints.newPassword],
+                                  autofillHints: const [
+                                    AutofillHints.newPassword
+                                  ],
                                   decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.only(left: 8),
+                                    contentPadding:
+                                        const EdgeInsets.only(left: 8),
                                     fillColor: theme.cardColor,
                                     filled: true,
                                     hintText: 'Password',
@@ -177,9 +179,12 @@ class SignUpView extends StatelessWidget {
                                   },
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
-                                  autofillHints: const [AutofillHints.newPassword],
+                                  autofillHints: const [
+                                    AutofillHints.newPassword
+                                  ],
                                   decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.only(left: 8),
+                                    contentPadding:
+                                        const EdgeInsets.only(left: 8),
                                     fillColor: theme.cardColor,
                                     filled: true,
                                     hintText: 'Confirm Password',
@@ -341,7 +346,8 @@ class SignUpView extends StatelessWidget {
                               color: theme.colorScheme.secondary),
                           ButtonState.fail: IconedButton(
                               text: "Failed",
-                              icon: const Icon(Icons.cancel, color: Colors.white),
+                              icon:
+                                  const Icon(Icons.cancel, color: Colors.white),
                               color: Colors.red.shade300),
                           ButtonState.success: IconedButton(
                               text: "Success",
