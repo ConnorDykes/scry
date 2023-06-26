@@ -48,7 +48,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                   Divider(
                     color: theme.disabledColor,
                   ),
-                  Text('First Name'),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'First Name',
+                      style: TextStyle(color: theme.hintColor),
+                    ),
+                  ),
                   OurTextfield(
                     controller: firstNameCont,
                     hintText: 'First Name',
@@ -68,7 +74,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                   SizedBox(
                     height: 16,
                   ),
-                  Text('Last Name'),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'Last Name',
+                      style: TextStyle(color: theme.hintColor),
+                    ),
+                  ),
                   OurTextfield(
                     controller: lastNameCont,
                     hintText: 'Last Name',
@@ -88,7 +100,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                   SizedBox(
                     height: 16,
                   ),
-                  Text('Display Name'),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'Display Name',
+                      style: TextStyle(color: theme.hintColor),
+                    ),
+                  ),
                   OurTextfield(
                     controller: displayNameCont,
                     hintText: 'Display Name',
@@ -108,7 +126,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                   SizedBox(
                     height: 16,
                   ),
-                  Text('City'),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'City',
+                      style: TextStyle(color: theme.hintColor),
+                    ),
+                  ),
                   OurTextfield(
                     controller: cityCont,
                     hintText: 'City',
@@ -127,58 +151,103 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                   SizedBox(
                     height: 16,
                   ),
-                  Text('State'),
-                  DropdownButton<String>(
-                    value: currentUser.state,
-                    icon: Icon(
-                      Icons.arrow_drop_down_outlined,
-                      color: theme.colorScheme.primary,
-                    ),
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.green),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.green,
-                    ),
-                    onChanged: (String? value) async {
-                      await profileRepo
-                          .updateUser(currentUser.copyWith(state: value!))
-                          .then((_) => emit(state.copyWith(
-                              user: state.user.copyWith(state: value!))));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Updated City')));
-                    },
-                    items: states.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                'Zip Code',
+                                style: TextStyle(color: theme.hintColor),
+                              ),
+                            ),
+                            OurTextfield(
+                              controller: zipCont,
+                              hintText: 'Zip Code',
+                              suffixIcon: TextButton(
+                                child: Text('Save'),
+                                onPressed: () async {
+                                  emit(state.copyWith(
+                                      user: state.user
+                                          .copyWith(areaCode: zipCont.text)));
+                                  await profileRepo.updateUser(currentUser
+                                      .copyWith(areaCode: zipCont.text));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text('Updated Zip Code')));
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            'State',
+                            style: TextStyle(color: theme.hintColor),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DropdownButton<String>(
+                                value: currentUser.state,
+                                icon: Icon(
+                                  Icons.arrow_drop_down_outlined,
+                                  color: theme.colorScheme.primary,
+                                ),
+                                iconSize: 40,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.green),
+                                underline: Container(
+                                  height: 2,
+                                  color: Colors.green,
+                                ),
+                                onChanged: (String? value) async {
+                                  await profileRepo
+                                      .updateUser(
+                                          currentUser.copyWith(state: value!))
+                                      .then((_) => emit(state.copyWith(
+                                          user: state.user
+                                              .copyWith(state: value!))));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Updated City')));
+                                },
+                                items: states.map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 16,
-                  ),
-                  Text('Zip Code'),
-                  OurTextfield(
-                    controller: zipCont,
-                    hintText: 'Zip Code',
-                    suffixIcon: TextButton(
-                      child: Text('Save'),
-                      onPressed: () async {
-                        emit(state.copyWith(
-                            user: state.user.copyWith(areaCode: zipCont.text)));
-                        await profileRepo.updateUser(
-                            currentUser.copyWith(areaCode: zipCont.text));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Updated Zip Code')));
-                      },
-                    ),
                   ),
                 ]),
               ),
             );
           });
     });
-    // on<_Logout>((event, emit) {});
+    on<_Logout>((event, emit) {});
+    on<_DeleteAccount>((event, emit) async {
+      await profileRepo.deleteFirebaseAuthUser();
+      await profileRepo.deleteFirestoreUser();
+      await profileRepo.logout();
+    });
   }
 }

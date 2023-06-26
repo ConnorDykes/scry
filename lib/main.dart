@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme(
               surface: Colors.white,
               onSurface: Colors.black,
-              background: CupertinoColors.lightBackgroundGray,
+              background: CupertinoColors.extraLightBackgroundGray,
               onBackground: Colors.black,
               onPrimary: Colors.white,
               onSecondary: Colors.white,

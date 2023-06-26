@@ -66,10 +66,16 @@ class ProfileView extends StatelessWidget {
                                             const EdgeInsets.only(right: 4.0),
                                         child: Text(
                                           'Logout',
-                                          style: TextStyle(fontSize: 15),
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.red,
+                                          ),
                                         ),
                                       ),
-                                      Icon(Icons.logout_rounded),
+                                      Icon(
+                                        Icons.logout_rounded,
+                                        color: Colors.red,
+                                      ),
                                     ],
                                   )),
                             ),
@@ -231,114 +237,112 @@ class ProfileView extends StatelessWidget {
                             SizedBox(
                               height: 16,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                TextButton(
-                                    style: ElevatedButton.styleFrom(
-                                        foregroundColor: Colors.blue,
-                                        side: const BorderSide(
-                                            color: Colors.blue),
-                                        surfaceTintColor: Colors.blue),
-                                    onPressed: () async {
-                                      final Uri emailLaunchUri = Uri(
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextButton(
+                                  style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.blue,
+                                      side:
+                                          const BorderSide(color: Colors.blue),
+                                      surfaceTintColor: Colors.blue),
+                                  onPressed: () async {
+                                    String subject =
+                                        '[Scry] : *ADD SUBJECT HERE*';
+                                    String body =
+                                        '[ID: ${user.id}] \n *Do not remove this ID*';
+
+                                    final Uri emailLaunchUri = Uri(
                                         scheme: 'mailto',
                                         path: 'connormdykes@gmail.com',
-                                        queryParameters: {
-                                          'subject':
-                                              '[Scry] : "ADD SUBJECT HERE" ',
-                                          'body':
-                                              'ID: ${user.id} Do not remove this ID, it is used for debugging and error resolution'
-                                        },
-                                      );
-                                      await launchUrl(emailLaunchUri);
-                                    },
-                                    child: const Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.email,
-                                          color: Colors.blue,
+                                        query: 'subject=$subject&body=$body');
+                                    await launchUrl(emailLaunchUri);
+                                  },
+                                  child: const Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.email,
+                                        color: Colors.blue,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Text(
+                                          'Contact Developer',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(color: Colors.blue),
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 8.0),
-                                          child: Text(
-                                            'Contact\nDeveloper',
-                                            textAlign: TextAlign.center,
-                                            style:
-                                                TextStyle(color: Colors.blue),
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                                TextButton(
-                                    style: ElevatedButton.styleFrom(
-                                        foregroundColor: Colors.red,
-                                        side:
-                                            const BorderSide(color: Colors.red),
-                                        surfaceTintColor: Colors.red),
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) => AlertDialog(
-                                                title: Text('Delete Account'),
-                                                content: Text(
-                                                    'This is CONNOT be undone, are you sure?'),
-                                                surfaceTintColor: Colors.red,
-                                                actions: [
-                                                  OutlinedButton(
-                                                      style: OutlinedButton
-                                                          .styleFrom(
-                                                              side: BorderSide(
-                                                                  color: theme
-                                                                      .disabledColor)),
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                        'Cancel',
-                                                        style: TextStyle(
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextButton(
+                                  style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.red,
+                                      side: const BorderSide(color: Colors.red),
+                                      surfaceTintColor: Colors.red),
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) => AlertDialog(
+                                              title: Text('Delete Account'),
+                                              content: Text(
+                                                  'This is CONNOT be undone, are you sure?'),
+                                              surfaceTintColor: Colors.red,
+                                              actions: [
+                                                OutlinedButton(
+                                                    style: OutlinedButton.styleFrom(
+                                                        side: BorderSide(
                                                             color: theme
-                                                                .disabledColor),
-                                                      )),
-                                                  OutlinedButton(
-                                                      style: OutlinedButton
-                                                          .styleFrom(
-                                                              side: BorderSide(
-                                                                  color: Colors
-                                                                      .red)),
-                                                      onPressed: () {
-                                                        //! add logic to Delete Account
-                                                      },
-                                                      child: Text(
-                                                        'Delete',
-                                                        style: TextStyle(
-                                                            color: Colors.red),
-                                                      ))
-                                                ],
-                                              ));
-                                    },
-                                    child: const Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.delete_forever,
-                                          color: Colors.red,
+                                                                .disabledColor)),
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      'Cancel',
+                                                      style: TextStyle(
+                                                          color: theme
+                                                              .disabledColor),
+                                                    )),
+                                                OutlinedButton(
+                                                    style: OutlinedButton
+                                                        .styleFrom(
+                                                            side: BorderSide(
+                                                                color: Colors
+                                                                    .red)),
+                                                    onPressed: () {
+                                                      bloc.add(ProfileEvent
+                                                          .deleteAccount());
+                                                    },
+                                                    child: Text(
+                                                      'Delete',
+                                                      style: TextStyle(
+                                                          color: Colors.red),
+                                                    ))
+                                              ],
+                                            ));
+                                  },
+                                  child: const Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.delete_forever,
+                                        color: Colors.red,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Text(
+                                          'Delete Account',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(color: Colors.red),
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 8.0),
-                                          child: Text(
-                                            'Delete\nAccount',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                              ],
-                            )
+                                      ),
+                                    ],
+                                  )),
+                            ),
                           ],
                         ),
                       ),

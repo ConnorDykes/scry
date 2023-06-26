@@ -19,18 +19,21 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function() deleteAccount,
     required TResult Function(BuildContext context) editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
     TResult? Function(BuildContext context)? editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function()? deleteAccount,
     TResult Function(BuildContext context)? editProfile,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_EditProfile value) editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_EditProfile value)? editProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_EditProfile value)? editProfile,
     required TResult orElse(),
   }) =>
@@ -111,6 +117,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function() deleteAccount,
     required TResult Function(BuildContext context) editProfile,
   }) {
     return logout();
@@ -120,6 +127,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
     TResult? Function(BuildContext context)? editProfile,
   }) {
     return logout?.call();
@@ -129,6 +137,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function()? deleteAccount,
     TResult Function(BuildContext context)? editProfile,
     required TResult orElse(),
   }) {
@@ -142,6 +151,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_EditProfile value) editProfile,
   }) {
     return logout(this);
@@ -151,6 +161,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_EditProfile value)? editProfile,
   }) {
     return logout?.call(this);
@@ -160,6 +171,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_EditProfile value)? editProfile,
     required TResult orElse(),
   }) {
@@ -172,6 +184,114 @@ class _$_Logout implements _Logout {
 
 abstract class _Logout implements ProfileEvent {
   const factory _Logout() = _$_Logout;
+}
+
+/// @nodoc
+abstract class _$$_DeleteAccountCopyWith<$Res> {
+  factory _$$_DeleteAccountCopyWith(
+          _$_DeleteAccount value, $Res Function(_$_DeleteAccount) then) =
+      __$$_DeleteAccountCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DeleteAccountCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_DeleteAccount>
+    implements _$$_DeleteAccountCopyWith<$Res> {
+  __$$_DeleteAccountCopyWithImpl(
+      _$_DeleteAccount _value, $Res Function(_$_DeleteAccount) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_DeleteAccount implements _DeleteAccount {
+  const _$_DeleteAccount();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.deleteAccount()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_DeleteAccount);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(BuildContext context) editProfile,
+  }) {
+    return deleteAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(BuildContext context)? editProfile,
+  }) {
+    return deleteAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(BuildContext context)? editProfile,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_EditProfile value) editProfile,
+  }) {
+    return deleteAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_EditProfile value)? editProfile,
+  }) {
+    return deleteAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_EditProfile value)? editProfile,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAccount implements ProfileEvent {
+  const factory _DeleteAccount() = _$_DeleteAccount;
 }
 
 /// @nodoc
@@ -239,6 +359,7 @@ class _$_EditProfile implements _EditProfile {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() logout,
+    required TResult Function() deleteAccount,
     required TResult Function(BuildContext context) editProfile,
   }) {
     return editProfile(context);
@@ -248,6 +369,7 @@ class _$_EditProfile implements _EditProfile {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
     TResult? Function(BuildContext context)? editProfile,
   }) {
     return editProfile?.call(context);
@@ -257,6 +379,7 @@ class _$_EditProfile implements _EditProfile {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? logout,
+    TResult Function()? deleteAccount,
     TResult Function(BuildContext context)? editProfile,
     required TResult orElse(),
   }) {
@@ -270,6 +393,7 @@ class _$_EditProfile implements _EditProfile {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_EditProfile value) editProfile,
   }) {
     return editProfile(this);
@@ -279,6 +403,7 @@ class _$_EditProfile implements _EditProfile {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_EditProfile value)? editProfile,
   }) {
     return editProfile?.call(this);
@@ -288,6 +413,7 @@ class _$_EditProfile implements _EditProfile {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_EditProfile value)? editProfile,
     required TResult orElse(),
   }) {

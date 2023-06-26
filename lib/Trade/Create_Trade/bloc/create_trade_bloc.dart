@@ -12,6 +12,7 @@ import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/snackbar.dart';
 import 'package:scry/card_model.dart';
 import 'package:scry/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'create_trade_event.dart';
 part 'create_trade_state.dart';
@@ -313,6 +314,24 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
 
     on<_DeleteTrade>((event, emit) async {
       _createTradeRepo.deleteTrade();
+    });
+
+    on<_ReportTrade>((event, emit) async {
+      String subject = '[Scry] : *ADD SUBJECT HERE*';
+      String body = '[ID: ${event.trade.id}]\n*Do not remove this ID*';
+      final Uri emailLaunchUri = Uri(
+          scheme: 'mailto',
+          path: 'connormdykes@gmail.com',
+          query: 'subject=$subject&body=$body');
+      await launchUrl(emailLaunchUri);
+
+      ScaffoldMessenger.of(event.context).showSnackBar(SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(
+            'Content Reported',
+            style: TextStyle(color: Colors.white),
+          )));
+      Navigator.pop(event.context);
     });
   }
 }

@@ -180,6 +180,7 @@ class TradeCard extends StatelessWidget {
           CreateTradeBloc(trade: trade, currentUser: appbloc.state.user),
       child: BlocBuilder<CreateTradeBloc, CreateTradeState>(
         builder: (context, state) {
+          final bloc = context.read<CreateTradeBloc>();
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Container(
@@ -298,7 +299,10 @@ class TradeCard extends StatelessWidget {
                                     ],
                                   ))
                               : TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    bloc.add(CreateTradeEvent.reportTrade(
+                                        trade: trade, context: context));
+                                  },
                                   child: const Row(
                                     children: [
                                       Icon(

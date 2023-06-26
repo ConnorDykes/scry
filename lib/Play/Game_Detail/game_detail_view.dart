@@ -10,6 +10,7 @@ import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Play/Game_Detail/bloc/game_detail_bloc.dart';
 import 'package:scry/Play/Game_Detail/game_detail_repo.dart';
 import 'package:scry/Play/Game_Model/game_model.dart';
+import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/user_tile.dart';
 import 'package:intl/intl.dart';
 
@@ -40,10 +41,14 @@ class GameDetailView extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListView(
                 children: [
-                  Text(
-                    'Creator',
-                    style: TextStyle(
-                        color: theme.primaryColor, fontWeight: FontWeight.bold),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'Creator',
+                      style: TextStyle(
+                          color: theme.primaryColor,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   Card(
                     child: Padding(
@@ -163,102 +168,116 @@ class GameDetailView extends StatelessWidget {
 
                                   return Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  right: 8.0),
-                                              child: Text(
-                                                'Players :',
-                                                style:
-                                                    theme.textTheme.titleMedium,
+                                      ExpansionTile(
+                                        shape: Border(),
+                                        initiallyExpanded: true,
+                                        title: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 8.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 8.0),
+                                                child: Text(
+                                                  'Players :',
+                                                  style: theme
+                                                      .textTheme.titleMedium,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              '${players.length} / ${game.maxPlayerCount}',
-                                              style: theme
-                                                  .textTheme.titleMedium!
-                                                  .copyWith(
-                                                      color: theme
-                                                          .colorScheme.primary,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            ),
-                                            Spacer(),
-                                            if (players
-                                                    .where((user) =>
-                                                        user.id ==
-                                                        currentUser.id)
-                                                    .length ==
-                                                0) ...{
-                                              ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          side: BorderSide(
-                                                              width: 1,
-                                                              color: theme
-                                                                  .colorScheme
-                                                                  .primary)),
-                                                  onPressed: () {
-                                                    bloc.add(GameDetailEvent
-                                                        .joinGame());
-                                                  },
-                                                  child: Text('Join'))
-                                            } else ...{
-                                              if (game.creator!.id !=
-                                                  currentUser.id)
+                                              Text(
+                                                '${players.length} / ${game.maxPlayerCount}',
+                                                style: theme
+                                                    .textTheme.titleMedium!
+                                                    .copyWith(
+                                                        color: theme.colorScheme
+                                                            .primary,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                              ),
+                                              Spacer(),
+                                              if (players
+                                                      .where((user) =>
+                                                          user.id ==
+                                                          currentUser.id)
+                                                      .length ==
+                                                  0) ...{
                                                 ElevatedButton(
                                                     style: ElevatedButton
                                                         .styleFrom(
-                                                            surfaceTintColor:
-                                                                theme
-                                                                    .colorScheme
-                                                                    .error,
                                                             side: BorderSide(
                                                                 width: 1,
                                                                 color: theme
                                                                     .colorScheme
-                                                                    .error)),
+                                                                    .primary)),
                                                     onPressed: () {
                                                       bloc.add(GameDetailEvent
-                                                          .leaveGame());
+                                                          .joinGame());
                                                     },
-                                                    child: Text(
-                                                      'Leave',
-                                                      style: TextStyle(
-                                                          color: theme
-                                                              .colorScheme
-                                                              .error),
-                                                    )),
-                                            }
-                                          ],
+                                                    child: Text('Join'))
+                                              } else ...{
+                                                if (game.creator!.id !=
+                                                    currentUser.id)
+                                                  ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                              surfaceTintColor:
+                                                                  theme
+                                                                      .colorScheme
+                                                                      .error,
+                                                              side: BorderSide(
+                                                                  width: 1,
+                                                                  color: theme
+                                                                      .colorScheme
+                                                                      .error)),
+                                                      onPressed: () {
+                                                        bloc.add(GameDetailEvent
+                                                            .leaveGame());
+                                                      },
+                                                      child: Text(
+                                                        'Leave',
+                                                        style: TextStyle(
+                                                            color: theme
+                                                                .colorScheme
+                                                                .error),
+                                                      )),
+                                              }
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      ListView.builder(
-                                          shrinkWrap: true,
-                                          itemCount: snapshot.data!.docs.length,
-                                          itemBuilder: ((context, index) {
-                                            final data = snapshot
-                                                .data!.docs[index]
-                                                .data();
-                                            UserModel user = UserModel.fromJson(
-                                                data as Map<String, dynamic>);
-                                            return UserTile(
-                                              userID: user.id,
-                                              userName: user.displayName ??
-                                                  user.fullName,
-                                            );
-                                          }))
+                                        children: [
+                                          ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount:
+                                                  snapshot.data!.docs.length,
+                                              itemBuilder: ((context, index) {
+                                                final data = snapshot
+                                                    .data!.docs[index]
+                                                    .data();
+                                                UserModel user =
+                                                    UserModel.fromJson(data
+                                                        as Map<String,
+                                                            dynamic>);
+                                                return UserTile(
+                                                  userID: user.id,
+                                                  userName: user.displayName ??
+                                                      user.fullName,
+                                                );
+                                              }))
+                                        ],
+                                      )
                                     ],
                                   );
                                 } else {
                                   return CircularProgressIndicator();
                                 }
                               }),
+                          Divider(color: theme.disabledColor),
+                          OurTextfield(
+                            hintText: 'Add Message',
+                          )
                         ],
                       ),
                     ),

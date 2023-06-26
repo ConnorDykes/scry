@@ -23,4 +23,7 @@ class CreateTradeEvent with _$CreateTradeEvent {
   const factory CreateTradeEvent.clearSearch() = _ClearSearch;
   const factory CreateTradeEvent.resetState() = _ResetState;
   const factory CreateTradeEvent.deleteTrade() = _DeleteTrade;
+  const factory CreateTradeEvent.reportTrade(
+      {required TradePostModel trade,
+      required BuildContext context}) = _ReportTrade;
 }
