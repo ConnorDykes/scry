@@ -73,6 +73,7 @@ class GameDetailView extends StatelessWidget {
                             showDialog(
                                 context: context,
                                 builder: (dialogContext) => AlertDialog(
+                                      surfaceTintColor: Colors.red,
                                       title: Text('Delete Game ?'),
                                       content: Text(
                                           'This cannot be undone. Are you sure?'),
@@ -200,7 +201,7 @@ class GameDetailView extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 8.0),
                                   child: Text(
-                                    'Fromat :',
+                                    'Format :',
                                     style: theme.textTheme.titleMedium,
                                   ),
                                 ),
