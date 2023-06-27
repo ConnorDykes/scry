@@ -19,25 +19,28 @@ mixin _$GameDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() deleteGame,
+    required TResult Function(BuildContext context) deleteGame,
     required TResult Function() joinGame,
     required TResult Function() leaveGame,
+    required TResult Function(GameChatMessageModel message) sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? deleteGame,
+    TResult? Function(BuildContext context)? deleteGame,
     TResult? Function()? joinGame,
     TResult? Function()? leaveGame,
+    TResult? Function(GameChatMessageModel message)? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? deleteGame,
+    TResult Function(BuildContext context)? deleteGame,
     TResult Function()? joinGame,
     TResult Function()? leaveGame,
+    TResult Function(GameChatMessageModel message)? sendMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$GameDetailEvent {
     required TResult Function(_DeleteGame value) deleteGame,
     required TResult Function(_JoinGame value) joinGame,
     required TResult Function(_LeaveGame value) leaveGame,
+    required TResult Function(_SendMessage value) sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$GameDetailEvent {
     TResult? Function(_DeleteGame value)? deleteGame,
     TResult? Function(_JoinGame value)? joinGame,
     TResult? Function(_LeaveGame value)? leaveGame,
+    TResult? Function(_SendMessage value)? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$GameDetailEvent {
     TResult Function(_DeleteGame value)? deleteGame,
     TResult Function(_JoinGame value)? joinGame,
     TResult Function(_LeaveGame value)? leaveGame,
+    TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,9 +130,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() deleteGame,
+    required TResult Function(BuildContext context) deleteGame,
     required TResult Function() joinGame,
     required TResult Function() leaveGame,
+    required TResult Function(GameChatMessageModel message) sendMessage,
   }) {
     return started();
   }
@@ -135,9 +142,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? deleteGame,
+    TResult? Function(BuildContext context)? deleteGame,
     TResult? Function()? joinGame,
     TResult? Function()? leaveGame,
+    TResult? Function(GameChatMessageModel message)? sendMessage,
   }) {
     return started?.call();
   }
@@ -146,9 +154,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? deleteGame,
+    TResult Function(BuildContext context)? deleteGame,
     TResult Function()? joinGame,
     TResult Function()? leaveGame,
+    TResult Function(GameChatMessageModel message)? sendMessage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -164,6 +173,7 @@ class _$_Started implements _Started {
     required TResult Function(_DeleteGame value) deleteGame,
     required TResult Function(_JoinGame value) joinGame,
     required TResult Function(_LeaveGame value) leaveGame,
+    required TResult Function(_SendMessage value) sendMessage,
   }) {
     return started(this);
   }
@@ -175,6 +185,7 @@ class _$_Started implements _Started {
     TResult? Function(_DeleteGame value)? deleteGame,
     TResult? Function(_JoinGame value)? joinGame,
     TResult? Function(_LeaveGame value)? leaveGame,
+    TResult? Function(_SendMessage value)? sendMessage,
   }) {
     return started?.call(this);
   }
@@ -186,6 +197,7 @@ class _$_Started implements _Started {
     TResult Function(_DeleteGame value)? deleteGame,
     TResult Function(_JoinGame value)? joinGame,
     TResult Function(_LeaveGame value)? leaveGame,
+    TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -204,6 +216,8 @@ abstract class _$$_DeleteGameCopyWith<$Res> {
   factory _$$_DeleteGameCopyWith(
           _$_DeleteGame value, $Res Function(_$_DeleteGame) then) =
       __$$_DeleteGameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -213,60 +227,87 @@ class __$$_DeleteGameCopyWithImpl<$Res>
   __$$_DeleteGameCopyWithImpl(
       _$_DeleteGame _value, $Res Function(_$_DeleteGame) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$_DeleteGame(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_DeleteGame implements _DeleteGame {
-  const _$_DeleteGame();
+  const _$_DeleteGame({required this.context});
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'GameDetailEvent.deleteGame()';
+    return 'GameDetailEvent.deleteGame(context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DeleteGame);
+        (other.runtimeType == runtimeType &&
+            other is _$_DeleteGame &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeleteGameCopyWith<_$_DeleteGame> get copyWith =>
+      __$$_DeleteGameCopyWithImpl<_$_DeleteGame>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() deleteGame,
+    required TResult Function(BuildContext context) deleteGame,
     required TResult Function() joinGame,
     required TResult Function() leaveGame,
+    required TResult Function(GameChatMessageModel message) sendMessage,
   }) {
-    return deleteGame();
+    return deleteGame(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? deleteGame,
+    TResult? Function(BuildContext context)? deleteGame,
     TResult? Function()? joinGame,
     TResult? Function()? leaveGame,
+    TResult? Function(GameChatMessageModel message)? sendMessage,
   }) {
-    return deleteGame?.call();
+    return deleteGame?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? deleteGame,
+    TResult Function(BuildContext context)? deleteGame,
     TResult Function()? joinGame,
     TResult Function()? leaveGame,
+    TResult Function(GameChatMessageModel message)? sendMessage,
     required TResult orElse(),
   }) {
     if (deleteGame != null) {
-      return deleteGame();
+      return deleteGame(context);
     }
     return orElse();
   }
@@ -278,6 +319,7 @@ class _$_DeleteGame implements _DeleteGame {
     required TResult Function(_DeleteGame value) deleteGame,
     required TResult Function(_JoinGame value) joinGame,
     required TResult Function(_LeaveGame value) leaveGame,
+    required TResult Function(_SendMessage value) sendMessage,
   }) {
     return deleteGame(this);
   }
@@ -289,6 +331,7 @@ class _$_DeleteGame implements _DeleteGame {
     TResult? Function(_DeleteGame value)? deleteGame,
     TResult? Function(_JoinGame value)? joinGame,
     TResult? Function(_LeaveGame value)? leaveGame,
+    TResult? Function(_SendMessage value)? sendMessage,
   }) {
     return deleteGame?.call(this);
   }
@@ -300,6 +343,7 @@ class _$_DeleteGame implements _DeleteGame {
     TResult Function(_DeleteGame value)? deleteGame,
     TResult Function(_JoinGame value)? joinGame,
     TResult Function(_LeaveGame value)? leaveGame,
+    TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (deleteGame != null) {
@@ -310,7 +354,13 @@ class _$_DeleteGame implements _DeleteGame {
 }
 
 abstract class _DeleteGame implements GameDetailEvent {
-  const factory _DeleteGame() = _$_DeleteGame;
+  const factory _DeleteGame({required final BuildContext context}) =
+      _$_DeleteGame;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$_DeleteGameCopyWith<_$_DeleteGame> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -352,9 +402,10 @@ class _$_JoinGame implements _JoinGame {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() deleteGame,
+    required TResult Function(BuildContext context) deleteGame,
     required TResult Function() joinGame,
     required TResult Function() leaveGame,
+    required TResult Function(GameChatMessageModel message) sendMessage,
   }) {
     return joinGame();
   }
@@ -363,9 +414,10 @@ class _$_JoinGame implements _JoinGame {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? deleteGame,
+    TResult? Function(BuildContext context)? deleteGame,
     TResult? Function()? joinGame,
     TResult? Function()? leaveGame,
+    TResult? Function(GameChatMessageModel message)? sendMessage,
   }) {
     return joinGame?.call();
   }
@@ -374,9 +426,10 @@ class _$_JoinGame implements _JoinGame {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? deleteGame,
+    TResult Function(BuildContext context)? deleteGame,
     TResult Function()? joinGame,
     TResult Function()? leaveGame,
+    TResult Function(GameChatMessageModel message)? sendMessage,
     required TResult orElse(),
   }) {
     if (joinGame != null) {
@@ -392,6 +445,7 @@ class _$_JoinGame implements _JoinGame {
     required TResult Function(_DeleteGame value) deleteGame,
     required TResult Function(_JoinGame value) joinGame,
     required TResult Function(_LeaveGame value) leaveGame,
+    required TResult Function(_SendMessage value) sendMessage,
   }) {
     return joinGame(this);
   }
@@ -403,6 +457,7 @@ class _$_JoinGame implements _JoinGame {
     TResult? Function(_DeleteGame value)? deleteGame,
     TResult? Function(_JoinGame value)? joinGame,
     TResult? Function(_LeaveGame value)? leaveGame,
+    TResult? Function(_SendMessage value)? sendMessage,
   }) {
     return joinGame?.call(this);
   }
@@ -414,6 +469,7 @@ class _$_JoinGame implements _JoinGame {
     TResult Function(_DeleteGame value)? deleteGame,
     TResult Function(_JoinGame value)? joinGame,
     TResult Function(_LeaveGame value)? leaveGame,
+    TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (joinGame != null) {
@@ -466,9 +522,10 @@ class _$_LeaveGame implements _LeaveGame {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() deleteGame,
+    required TResult Function(BuildContext context) deleteGame,
     required TResult Function() joinGame,
     required TResult Function() leaveGame,
+    required TResult Function(GameChatMessageModel message) sendMessage,
   }) {
     return leaveGame();
   }
@@ -477,9 +534,10 @@ class _$_LeaveGame implements _LeaveGame {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? deleteGame,
+    TResult? Function(BuildContext context)? deleteGame,
     TResult? Function()? joinGame,
     TResult? Function()? leaveGame,
+    TResult? Function(GameChatMessageModel message)? sendMessage,
   }) {
     return leaveGame?.call();
   }
@@ -488,9 +546,10 @@ class _$_LeaveGame implements _LeaveGame {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? deleteGame,
+    TResult Function(BuildContext context)? deleteGame,
     TResult Function()? joinGame,
     TResult Function()? leaveGame,
+    TResult Function(GameChatMessageModel message)? sendMessage,
     required TResult orElse(),
   }) {
     if (leaveGame != null) {
@@ -506,6 +565,7 @@ class _$_LeaveGame implements _LeaveGame {
     required TResult Function(_DeleteGame value) deleteGame,
     required TResult Function(_JoinGame value) joinGame,
     required TResult Function(_LeaveGame value) leaveGame,
+    required TResult Function(_SendMessage value) sendMessage,
   }) {
     return leaveGame(this);
   }
@@ -517,6 +577,7 @@ class _$_LeaveGame implements _LeaveGame {
     TResult? Function(_DeleteGame value)? deleteGame,
     TResult? Function(_JoinGame value)? joinGame,
     TResult? Function(_LeaveGame value)? leaveGame,
+    TResult? Function(_SendMessage value)? sendMessage,
   }) {
     return leaveGame?.call(this);
   }
@@ -528,6 +589,7 @@ class _$_LeaveGame implements _LeaveGame {
     TResult Function(_DeleteGame value)? deleteGame,
     TResult Function(_JoinGame value)? joinGame,
     TResult Function(_LeaveGame value)? leaveGame,
+    TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (leaveGame != null) {
@@ -539,6 +601,168 @@ class _$_LeaveGame implements _LeaveGame {
 
 abstract class _LeaveGame implements GameDetailEvent {
   const factory _LeaveGame() = _$_LeaveGame;
+}
+
+/// @nodoc
+abstract class _$$_SendMessageCopyWith<$Res> {
+  factory _$$_SendMessageCopyWith(
+          _$_SendMessage value, $Res Function(_$_SendMessage) then) =
+      __$$_SendMessageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({GameChatMessageModel message});
+
+  $GameChatMessageModelCopyWith<$Res> get message;
+}
+
+/// @nodoc
+class __$$_SendMessageCopyWithImpl<$Res>
+    extends _$GameDetailEventCopyWithImpl<$Res, _$_SendMessage>
+    implements _$$_SendMessageCopyWith<$Res> {
+  __$$_SendMessageCopyWithImpl(
+      _$_SendMessage _value, $Res Function(_$_SendMessage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_SendMessage(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as GameChatMessageModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $GameChatMessageModelCopyWith<$Res> get message {
+    return $GameChatMessageModelCopyWith<$Res>(_value.message, (value) {
+      return _then(_value.copyWith(message: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SendMessage implements _SendMessage {
+  const _$_SendMessage({required this.message});
+
+  @override
+  final GameChatMessageModel message;
+
+  @override
+  String toString() {
+    return 'GameDetailEvent.sendMessage(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SendMessage &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>
+      __$$_SendMessageCopyWithImpl<_$_SendMessage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(BuildContext context) deleteGame,
+    required TResult Function() joinGame,
+    required TResult Function() leaveGame,
+    required TResult Function(GameChatMessageModel message) sendMessage,
+  }) {
+    return sendMessage(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(BuildContext context)? deleteGame,
+    TResult? Function()? joinGame,
+    TResult? Function()? leaveGame,
+    TResult? Function(GameChatMessageModel message)? sendMessage,
+  }) {
+    return sendMessage?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(BuildContext context)? deleteGame,
+    TResult Function()? joinGame,
+    TResult Function()? leaveGame,
+    TResult Function(GameChatMessageModel message)? sendMessage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_DeleteGame value) deleteGame,
+    required TResult Function(_JoinGame value) joinGame,
+    required TResult Function(_LeaveGame value) leaveGame,
+    required TResult Function(_SendMessage value) sendMessage,
+  }) {
+    return sendMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_DeleteGame value)? deleteGame,
+    TResult? Function(_JoinGame value)? joinGame,
+    TResult? Function(_LeaveGame value)? leaveGame,
+    TResult? Function(_SendMessage value)? sendMessage,
+  }) {
+    return sendMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_DeleteGame value)? deleteGame,
+    TResult Function(_JoinGame value)? joinGame,
+    TResult Function(_LeaveGame value)? leaveGame,
+    TResult Function(_SendMessage value)? sendMessage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendMessage implements GameDetailEvent {
+  const factory _SendMessage({required final GameChatMessageModel message}) =
+      _$_SendMessage;
+
+  GameChatMessageModel get message;
+  @JsonKey(ignore: true)
+  _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

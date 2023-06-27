@@ -7,9 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Play/Game_Detail/GameChatMessageModel/game_chat_message_model.dart';
 import 'package:scry/Play/Game_Detail/bloc/game_detail_bloc.dart';
 import 'package:scry/Play/Game_Detail/game_detail_repo.dart';
 import 'package:scry/Play/Game_Model/game_model.dart';
+import 'package:scry/Widgets/game_chat_message_tile.dart';
 import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/user_tile.dart';
 import 'package:intl/intl.dart';
@@ -31,6 +33,8 @@ class GameDetailView extends StatelessWidget {
           final theme = Theme.of(context);
           final cost = game.cost > 0 ? game.cost : 'Free';
           final bloc = context.read<GameDetailBloc>();
+          final repo =
+              GameDetailRepo(game: state.game, currentUser: currentUser);
 
           return Scaffold(
             appBar: AppBar(
@@ -58,6 +62,52 @@ class GameDetailView extends StatelessWidget {
                           userName: game.creator?.fullName ?? ''),
                     ),
                   ),
+                  if (game.creator!.id == currentUser.id)
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                              // backgroundColor: Colors.white,
+                              side: BorderSide(color: Colors.red)),
+                          onPressed: () async {
+                            showDialog(
+                                context: context,
+                                builder: (dialogContext) => AlertDialog(
+                                      title: Text('Delete Game ?'),
+                                      content: Text(
+                                          'This cannot be undone. Are you sure?'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(dialogContext);
+                                            },
+                                            child: Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  color: theme.disabledColor),
+                                            )),
+                                        TextButton(
+                                            onPressed: () async {
+                                              Navigator.pop(dialogContext);
+
+                                              bloc.add(
+                                                  GameDetailEvent.deleteGame(
+                                                      context: context));
+                                            },
+                                            child: Text(
+                                              'Delete',
+                                              style: TextStyle(
+                                                  color:
+                                                      theme.colorScheme.error),
+                                            ))
+                                      ],
+                                    ));
+                          },
+                          child: Text(
+                            'Delete Game',
+                            style: TextStyle(color: Colors.red),
+                          )),
+                    ),
                   Divider(color: theme.disabledColor),
                   Card(
                     child: Padding(
@@ -65,11 +115,18 @@ class GameDetailView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            game.description,
-                            style: theme.textTheme.titleMedium,
+                          Visibility(
+                            visible: game.description != '',
+                            child: Column(
+                              children: [
+                                Text(
+                                  game.description,
+                                  style: theme.textTheme.titleMedium,
+                                ),
+                                Divider(color: theme.disabledColor),
+                              ],
+                            ),
                           ),
-                          Divider(color: theme.disabledColor),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -96,10 +153,14 @@ class GameDetailView extends StatelessWidget {
                                   style: TextButton.styleFrom(
                                       backgroundColor: theme.hoverColor),
                                   onPressed: () {
-                                    MapsLauncher.launchQuery(game.location);
+                                    if (game.location != '') {
+                                      MapsLauncher.launchQuery(game.location);
+                                    }
                                   },
                                   child: Text(
-                                    game.location,
+                                    game.location != ''
+                                        ? game.location
+                                        : "No Location Specified ",
                                     textAlign: TextAlign.center,
                                     style: theme.textTheme.titleMedium!
                                         .copyWith(
@@ -154,10 +215,7 @@ class GameDetailView extends StatelessWidget {
                           ),
                           Divider(color: theme.disabledColor),
                           StreamBuilder(
-                              stream: GameDetailRepo(
-                                      game: state.game,
-                                      currentUser: currentUser)
-                                  .playersStream(),
+                              stream: repo.playersStream(),
                               builder: (context,
                                   AsyncSnapshot<QuerySnapshot> snapshot) {
                                 if (snapshot.hasData) {
@@ -276,25 +334,54 @@ class GameDetailView extends StatelessWidget {
                               }),
                           Divider(color: theme.disabledColor),
                           OurTextfield(
+                            controller: bloc.messageCont,
                             hintText: 'Add Message',
-                          )
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                Icons.send,
+                                color: theme.colorScheme.primary,
+                              ),
+                              onPressed: () {
+                                final GameChatMessageModel message =
+                                    GameChatMessageModel(
+                                        message: bloc.messageCont.text,
+                                        senderID: currentUser.id,
+                                        senderName: currentUser.fullName ??
+                                            currentUser.displayName,
+                                        dateAndTime: DateTime.now());
+
+                                bloc.add(GameDetailEvent.sendMessage(
+                                    message: message));
+                              },
+                            ),
+                          ),
+                          StreamBuilder(
+                            stream: repo.messagesStream(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (snapshot.hasData && snapshot.data != null) {
+                                final docs = snapshot.data!.docs;
+                                return ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: docs.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    final GameChatMessageModel message =
+                                        GameChatMessageModel.fromJson(
+                                            docs[index].data()
+                                                as Map<String, dynamic>);
+                                    return GameChatMesageTile(model: message);
+                                  },
+                                );
+                              } else {
+                                return CircularProgressIndicator();
+                              }
+                            },
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  if (game.creator!.id == currentUser.id)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              // backgroundColor: Colors.white,
-                              side: BorderSide(color: Colors.red)),
-                          onPressed: () {},
-                          child: Text(
-                            'Delete',
-                            style: TextStyle(color: Colors.red),
-                          )),
-                    )
                 ],
               ),
             ),

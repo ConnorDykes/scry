@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:scry/Play/Game_Detail/GameChatMessageModel/game_chat_message_model.dart';
 import 'package:scry/Play/Game_Model/game_model.dart';
+import 'package:scry/main.dart';
 
 class GameDetailRepo {
   GameDetailRepo({
@@ -13,6 +15,18 @@ class GameDetailRepo {
 
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
+  Future<void> sendMessage({required GameChatMessageModel message}) async {
+    try {
+      await _firebaseFirestore
+          .collection('games')
+          .doc(game.id)
+          .collection('messages')
+          .add(message.toJson());
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   Future<void> deleteGame() async {
     try {
       QuerySnapshot<Map<String, dynamic>> players = await _firebaseFirestore
@@ -22,10 +36,20 @@ class GameDetailRepo {
           .get();
 
       players.docs.forEach((player) async {
-        await _firebaseFirestore.collection('user').doc(player.id).update({
+        await _firebaseFirestore
+            .collection('users')
+            .doc(player.data()['id'])
+            .update({
           'games': FieldValue.arrayRemove([game.id])
         });
+        await _firebaseFirestore
+            .collection('games')
+            .doc(game.id)
+            .collection('players')
+            .doc(player.id)
+            .delete();
       });
+
       await _firebaseFirestore.collection('games').doc(game.id).delete();
     } catch (e) {
       debugPrint(e.toString());
@@ -80,6 +104,14 @@ class GameDetailRepo {
         .collection('games')
         .doc(game.id)
         .collection('players')
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> messagesStream() {
+    return _firebaseFirestore
+        .collection('games')
+        .doc(game.id)
+        .collection('messages')
         .snapshots();
   }
 }

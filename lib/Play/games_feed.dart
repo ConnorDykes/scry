@@ -115,6 +115,7 @@ class _GamesFeedState extends State<GamesFeed> {
                               gameDoc as Map<String, dynamic>);
                           final isJoinedGame =
                               appBloc.state.user.games.contains(game.id);
+
                           if (showingAvailableGames && isJoinedGame) {
                             return SizedBox.shrink();
                           }

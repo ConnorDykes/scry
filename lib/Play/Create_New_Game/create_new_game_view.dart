@@ -175,7 +175,9 @@ class DateAndTime extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 16.0),
           child: Container(
             decoration: BoxDecoration(
-                color: theme.cardColor,
+                color: state.dateAndTime == null
+                    ? Colors.red[100]
+                    : theme.cardColor,
                 borderRadius: BorderRadius.circular(14)),
             child: Row(children: [
               Padding(
@@ -221,10 +223,16 @@ class DateAndTime extends StatelessWidget {
                                       ),
                                     ));
                           },
-                          child: Text(state.dateAndTime == null
-                              ? 'Anytime'
-                              : Jiffy.parse(state.dateAndTime.toString())
-                                  .yMMMMEEEEdjm),
+                          child: Text(
+                            state.dateAndTime == null
+                                ? 'Tap To Select Time'
+                                : Jiffy.parse(state.dateAndTime.toString())
+                                    .yMMMMEEEEdjm,
+                            style: TextStyle(
+                                color: state.dateAndTime == null
+                                    ? Colors.red
+                                    : Colors.green),
+                          ),
                         ))
                   ],
                 ),

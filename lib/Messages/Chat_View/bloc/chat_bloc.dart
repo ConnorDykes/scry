@@ -32,6 +32,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       final Map<String, dynamic> message = {
         'message': state.newMessage,
         'sendingUserID': currentUser.id,
+        'isRead': false,
         'sendingUsername': currentUser.displayName != ''
             ? currentUser.displayName
             : currentUser.fullName,
@@ -43,13 +44,16 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
       await ChatRepo(
         chat: chat,
-      ).sendMessage(message: message).then((value) => value
+      ).sendMessage(message: message).then((value) async => value
           ? {
               newMessageController.clear(),
               emit(state.copyWith(
-                  newMessage: '', loadStatus: LoadStatus.success))
+                  newMessage: '', loadStatus: LoadStatus.success)),
             }
           : emit(state.copyWith(loadStatus: LoadStatus.failure)));
+      await Future.delayed(const Duration(milliseconds: 2000), () {
+        emit(state.copyWith(newMessage: '', loadStatus: LoadStatus.initial));
+      });
     });
   }
 }

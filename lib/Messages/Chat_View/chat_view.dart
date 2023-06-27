@@ -224,9 +224,7 @@ class ChatView extends StatelessWidget {
                                       ChatEvent.updateMessage(value: value));
                                 },
                                 hintText: 'Message',
-                                suffixIcon: state.newMessage == ''
-                                    ? null
-                                    : sendIcon(state.loadStatus),
+                                suffixIcon: sendIcon(state.loadStatus),
                               ),
                             ),
                           ),

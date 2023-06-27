@@ -37,6 +37,12 @@ class CreateGameRepo {
             .add(player.toJson());
       });
 
+      game.players.forEach((player) async {
+        await _firebaseFirestore.collection('users').doc(player.id).update({
+          'games': FieldValue.arrayUnion([gameDoc.id])
+        });
+      });
+
       return true;
     } catch (e) {
       debugPrint(e.toString());
