@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scry/Authentication/auth_repo.dart';
 import 'package:scry/Authentication/user_model.dart';
-import 'package:scry/Services/push_notification_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'app_bloc_event.dart';
@@ -31,12 +30,7 @@ class AppBloc extends Bloc<AppBlocEvent, AppBlocState> {
 
       debugPrint("userID -----> $userID");
 
-      await PushNotificationService().initialize();
-
       if (userID != '' && userID != null) {
-        await PushNotificationService().getToken().then(
-            (token) => authRepo.updateFCMToken(userID: userID, token: token!));
-
         // initiate stream to listen to user changes.
         await emit.forEach<DocumentSnapshot>(
           authRepo.streamUser(userID: userID),
@@ -44,20 +38,17 @@ class AppBloc extends Bloc<AppBlocEvent, AppBlocState> {
             final currentUser =
                 UserModel.fromJson(user.data() as Map<String, dynamic>);
 
-            debugPrint('[AppBloc]: New User Info');
+            debugPrint('[AppBloc: New User Info');
             return state.copyWith(
               user: currentUser,
             );
           },
         );
 
-        //? Maybe I don't need this anymore because i am listen to stream of user changes
-      } else {
-        // DocumentSnapshot userDoc = await authRepo.getUser(userID: userID);
-        // final UserModel user =
-        //     UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
-
-        // emit(state.copyWith(user: user));
+        DocumentSnapshot userDoc = await authRepo.getUser(userID: userID);
+        final UserModel user =
+            UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
+        emit(state.copyWith(user: user));
       }
     });
 

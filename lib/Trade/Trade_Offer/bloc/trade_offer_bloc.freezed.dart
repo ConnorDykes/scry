@@ -20,7 +20,6 @@ mixin _$TradeOfferEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context) reject,
     required TResult Function(BuildContext context) accept,
-    required TResult Function(BuildContext context) removeOffer,
     required TResult Function(String value) updateAcceptMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +27,6 @@ mixin _$TradeOfferEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? reject,
     TResult? Function(BuildContext context)? accept,
-    TResult? Function(BuildContext context)? removeOffer,
     TResult? Function(String value)? updateAcceptMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ mixin _$TradeOfferEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? reject,
     TResult Function(BuildContext context)? accept,
-    TResult Function(BuildContext context)? removeOffer,
     TResult Function(String value)? updateAcceptMessage,
     required TResult orElse(),
   }) =>
@@ -45,7 +42,6 @@ mixin _$TradeOfferEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Reject value) reject,
     required TResult Function(_Accept value) accept,
-    required TResult Function(_RemoveOffer value) removeOffer,
     required TResult Function(_UpdateAcceptMessage value) updateAcceptMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +49,6 @@ mixin _$TradeOfferEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Reject value)? reject,
     TResult? Function(_Accept value)? accept,
-    TResult? Function(_RemoveOffer value)? removeOffer,
     TResult? Function(_UpdateAcceptMessage value)? updateAcceptMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +56,6 @@ mixin _$TradeOfferEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Reject value)? reject,
     TResult Function(_Accept value)? accept,
-    TResult Function(_RemoveOffer value)? removeOffer,
     TResult Function(_UpdateAcceptMessage value)? updateAcceptMessage,
     required TResult orElse(),
   }) =>
@@ -150,7 +144,6 @@ class _$_Reject implements _Reject {
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context) reject,
     required TResult Function(BuildContext context) accept,
-    required TResult Function(BuildContext context) removeOffer,
     required TResult Function(String value) updateAcceptMessage,
   }) {
     return reject(context);
@@ -161,7 +154,6 @@ class _$_Reject implements _Reject {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? reject,
     TResult? Function(BuildContext context)? accept,
-    TResult? Function(BuildContext context)? removeOffer,
     TResult? Function(String value)? updateAcceptMessage,
   }) {
     return reject?.call(context);
@@ -172,7 +164,6 @@ class _$_Reject implements _Reject {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? reject,
     TResult Function(BuildContext context)? accept,
-    TResult Function(BuildContext context)? removeOffer,
     TResult Function(String value)? updateAcceptMessage,
     required TResult orElse(),
   }) {
@@ -187,7 +178,6 @@ class _$_Reject implements _Reject {
   TResult map<TResult extends Object?>({
     required TResult Function(_Reject value) reject,
     required TResult Function(_Accept value) accept,
-    required TResult Function(_RemoveOffer value) removeOffer,
     required TResult Function(_UpdateAcceptMessage value) updateAcceptMessage,
   }) {
     return reject(this);
@@ -198,7 +188,6 @@ class _$_Reject implements _Reject {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Reject value)? reject,
     TResult? Function(_Accept value)? accept,
-    TResult? Function(_RemoveOffer value)? removeOffer,
     TResult? Function(_UpdateAcceptMessage value)? updateAcceptMessage,
   }) {
     return reject?.call(this);
@@ -209,7 +198,6 @@ class _$_Reject implements _Reject {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Reject value)? reject,
     TResult Function(_Accept value)? accept,
-    TResult Function(_RemoveOffer value)? removeOffer,
     TResult Function(_UpdateAcceptMessage value)? updateAcceptMessage,
     required TResult orElse(),
   }) {
@@ -293,7 +281,6 @@ class _$_Accept implements _Accept {
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context) reject,
     required TResult Function(BuildContext context) accept,
-    required TResult Function(BuildContext context) removeOffer,
     required TResult Function(String value) updateAcceptMessage,
   }) {
     return accept(context);
@@ -304,7 +291,6 @@ class _$_Accept implements _Accept {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? reject,
     TResult? Function(BuildContext context)? accept,
-    TResult? Function(BuildContext context)? removeOffer,
     TResult? Function(String value)? updateAcceptMessage,
   }) {
     return accept?.call(context);
@@ -315,7 +301,6 @@ class _$_Accept implements _Accept {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? reject,
     TResult Function(BuildContext context)? accept,
-    TResult Function(BuildContext context)? removeOffer,
     TResult Function(String value)? updateAcceptMessage,
     required TResult orElse(),
   }) {
@@ -330,7 +315,6 @@ class _$_Accept implements _Accept {
   TResult map<TResult extends Object?>({
     required TResult Function(_Reject value) reject,
     required TResult Function(_Accept value) accept,
-    required TResult Function(_RemoveOffer value) removeOffer,
     required TResult Function(_UpdateAcceptMessage value) updateAcceptMessage,
   }) {
     return accept(this);
@@ -341,7 +325,6 @@ class _$_Accept implements _Accept {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Reject value)? reject,
     TResult? Function(_Accept value)? accept,
-    TResult? Function(_RemoveOffer value)? removeOffer,
     TResult? Function(_UpdateAcceptMessage value)? updateAcceptMessage,
   }) {
     return accept?.call(this);
@@ -352,7 +335,6 @@ class _$_Accept implements _Accept {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Reject value)? reject,
     TResult Function(_Accept value)? accept,
-    TResult Function(_RemoveOffer value)? removeOffer,
     TResult Function(_UpdateAcceptMessage value)? updateAcceptMessage,
     required TResult orElse(),
   }) {
@@ -369,152 +351,6 @@ abstract class _Accept implements TradeOfferEvent {
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$_AcceptCopyWith<_$_Accept> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_RemoveOfferCopyWith<$Res> {
-  factory _$$_RemoveOfferCopyWith(
-          _$_RemoveOffer value, $Res Function(_$_RemoveOffer) then) =
-      __$$_RemoveOfferCopyWithImpl<$Res>;
-  @useResult
-  $Res call({BuildContext context});
-}
-
-/// @nodoc
-class __$$_RemoveOfferCopyWithImpl<$Res>
-    extends _$TradeOfferEventCopyWithImpl<$Res, _$_RemoveOffer>
-    implements _$$_RemoveOfferCopyWith<$Res> {
-  __$$_RemoveOfferCopyWithImpl(
-      _$_RemoveOffer _value, $Res Function(_$_RemoveOffer) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? context = null,
-  }) {
-    return _then(_$_RemoveOffer(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_RemoveOffer implements _RemoveOffer {
-  const _$_RemoveOffer({required this.context});
-
-  @override
-  final BuildContext context;
-
-  @override
-  String toString() {
-    return 'TradeOfferEvent.removeOffer(context: $context)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RemoveOffer &&
-            (identical(other.context, context) || other.context == context));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, context);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_RemoveOfferCopyWith<_$_RemoveOffer> get copyWith =>
-      __$$_RemoveOfferCopyWithImpl<_$_RemoveOffer>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(BuildContext context) reject,
-    required TResult Function(BuildContext context) accept,
-    required TResult Function(BuildContext context) removeOffer,
-    required TResult Function(String value) updateAcceptMessage,
-  }) {
-    return removeOffer(context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildContext context)? reject,
-    TResult? Function(BuildContext context)? accept,
-    TResult? Function(BuildContext context)? removeOffer,
-    TResult? Function(String value)? updateAcceptMessage,
-  }) {
-    return removeOffer?.call(context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildContext context)? reject,
-    TResult Function(BuildContext context)? accept,
-    TResult Function(BuildContext context)? removeOffer,
-    TResult Function(String value)? updateAcceptMessage,
-    required TResult orElse(),
-  }) {
-    if (removeOffer != null) {
-      return removeOffer(context);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Reject value) reject,
-    required TResult Function(_Accept value) accept,
-    required TResult Function(_RemoveOffer value) removeOffer,
-    required TResult Function(_UpdateAcceptMessage value) updateAcceptMessage,
-  }) {
-    return removeOffer(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Reject value)? reject,
-    TResult? Function(_Accept value)? accept,
-    TResult? Function(_RemoveOffer value)? removeOffer,
-    TResult? Function(_UpdateAcceptMessage value)? updateAcceptMessage,
-  }) {
-    return removeOffer?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Reject value)? reject,
-    TResult Function(_Accept value)? accept,
-    TResult Function(_RemoveOffer value)? removeOffer,
-    TResult Function(_UpdateAcceptMessage value)? updateAcceptMessage,
-    required TResult orElse(),
-  }) {
-    if (removeOffer != null) {
-      return removeOffer(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RemoveOffer implements TradeOfferEvent {
-  const factory _RemoveOffer({required final BuildContext context}) =
-      _$_RemoveOffer;
-
-  BuildContext get context;
-  @JsonKey(ignore: true)
-  _$$_RemoveOfferCopyWith<_$_RemoveOffer> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -585,7 +421,6 @@ class _$_UpdateAcceptMessage implements _UpdateAcceptMessage {
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context) reject,
     required TResult Function(BuildContext context) accept,
-    required TResult Function(BuildContext context) removeOffer,
     required TResult Function(String value) updateAcceptMessage,
   }) {
     return updateAcceptMessage(value);
@@ -596,7 +431,6 @@ class _$_UpdateAcceptMessage implements _UpdateAcceptMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? reject,
     TResult? Function(BuildContext context)? accept,
-    TResult? Function(BuildContext context)? removeOffer,
     TResult? Function(String value)? updateAcceptMessage,
   }) {
     return updateAcceptMessage?.call(value);
@@ -607,7 +441,6 @@ class _$_UpdateAcceptMessage implements _UpdateAcceptMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? reject,
     TResult Function(BuildContext context)? accept,
-    TResult Function(BuildContext context)? removeOffer,
     TResult Function(String value)? updateAcceptMessage,
     required TResult orElse(),
   }) {
@@ -622,7 +455,6 @@ class _$_UpdateAcceptMessage implements _UpdateAcceptMessage {
   TResult map<TResult extends Object?>({
     required TResult Function(_Reject value) reject,
     required TResult Function(_Accept value) accept,
-    required TResult Function(_RemoveOffer value) removeOffer,
     required TResult Function(_UpdateAcceptMessage value) updateAcceptMessage,
   }) {
     return updateAcceptMessage(this);
@@ -633,7 +465,6 @@ class _$_UpdateAcceptMessage implements _UpdateAcceptMessage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Reject value)? reject,
     TResult? Function(_Accept value)? accept,
-    TResult? Function(_RemoveOffer value)? removeOffer,
     TResult? Function(_UpdateAcceptMessage value)? updateAcceptMessage,
   }) {
     return updateAcceptMessage?.call(this);
@@ -644,7 +475,6 @@ class _$_UpdateAcceptMessage implements _UpdateAcceptMessage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Reject value)? reject,
     TResult Function(_Accept value)? accept,
-    TResult Function(_RemoveOffer value)? removeOffer,
     TResult Function(_UpdateAcceptMessage value)? updateAcceptMessage,
     required TResult orElse(),
   }) {

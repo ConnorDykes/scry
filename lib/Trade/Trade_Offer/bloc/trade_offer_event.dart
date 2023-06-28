@@ -6,8 +6,6 @@ class TradeOfferEvent with _$TradeOfferEvent {
       _Reject;
   const factory TradeOfferEvent.accept({required BuildContext context}) =
       _Accept;
-  const factory TradeOfferEvent.removeOffer({required BuildContext context}) =
-      _RemoveOffer;
   const factory TradeOfferEvent.updateAcceptMessage({required String value}) =
       _UpdateAcceptMessage;
 }

@@ -95,32 +95,4 @@ class TradeOfferRepo {
       return false;
     }
   }
-
-  Future<bool> removeOffer({required OfferModel offer}) async {
-    final jsonOffer = offer.toJson();
-    jsonOffer['offeredCards'] = [offer.offeredCards.first.toJson()];
-    jsonOffer['availableCards'] = [offer.availableCards.first.toJson()];
-
-    try {
-      //then remove the offer from the data base because it was moved to chats
-      await _firebaseFirestore
-          .collection('users')
-          .doc(offer.offeringUserID)
-          .collection('offers')
-          .doc(offer.id)
-          .delete();
-
-      await _firebaseFirestore
-          .collection('users')
-          .doc(offer.recipientUserID)
-          .collection('offers')
-          .doc(offer.id)
-          .delete();
-
-      return true;
-    } catch (e) {
-      debugPrint(e.toString());
-      return false;
-    }
-  }
 }

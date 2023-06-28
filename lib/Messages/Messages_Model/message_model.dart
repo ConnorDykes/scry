@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:scry/Messages/Chat_Model/chat_model.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
 import 'package:scry/card_model.dart';
 
@@ -17,7 +16,7 @@ class MessageModel with _$MessageModel {
     @Default('') String sendingUsername,
     @Default('') String receivingUsername,
     @Default(0) int createDateInMillisecondsSinceEpoch,
-    @CardModelSerializer() CardModel? card,
+    @Default(CardModel.empty()) CardModel card,
   }) = _MessageModel;
 
   const MessageModel._();

@@ -389,7 +389,7 @@ class Offers extends StatelessWidget {
                                           )
                                         ]),
                                         if (offer.offeringUserID !=
-                                            appBloc.state.user.id) ...{
+                                            appBloc.state.user.id)
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
@@ -481,48 +481,6 @@ class Offers extends StatelessWidget {
                                               ],
                                             ),
                                           )
-                                        } else ...{
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 8.0),
-                                                  child: OutlinedButton(
-                                                      style: OutlinedButton
-                                                          .styleFrom(
-                                                              foregroundColor:
-                                                                  Colors.red,
-                                                              backgroundColor:
-                                                                  Colors.red
-                                                                      .withOpacity(
-                                                                          .1),
-                                                              side: BorderSide(
-                                                                  color: Colors
-                                                                      .red)),
-                                                      onPressed: () {
-                                                        context
-                                                            .read<
-                                                                TradeOfferBloc>()
-                                                            .add(TradeOfferEvent
-                                                                .removeOffer(
-                                                                    context:
-                                                                        context));
-                                                      },
-                                                      child: Text(
-                                                        'Remove Offer',
-                                                        style: TextStyle(
-                                                            color: Colors.red),
-                                                      )),
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        }
                                       ],
                                     ),
                                   );
@@ -566,12 +524,12 @@ class Messages extends StatelessWidget {
                   child: const Text('Sign in'),
                 ),
               )
-            : StreamBuilder(
+            : StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('chats')
                     .where('users', arrayContains: currentUserID)
                     .snapshots(),
-                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
                       child: CircularProgressIndicator(),

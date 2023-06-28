@@ -54,8 +54,6 @@ dependencies:
   shared_preferences: ^2.1.2
   maps_launcher: ^2.2.0
   cached_network_image: ^3.2.3
-  firebase_messaging: ^14.6.4
-  cloud_functions: ^4.3.3
   
   
 
