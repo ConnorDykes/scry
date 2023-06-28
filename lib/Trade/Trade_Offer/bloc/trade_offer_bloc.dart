@@ -38,19 +38,92 @@ class TradeOfferBloc extends Bloc<TradeOfferEvent, TradeOfferState> {
                             foregroundColor: Colors.red),
                         onPressed: () async {
                           try {
-                            await _offerRepo.reject(offer: offer).then(
-                                (value) => value
-                                    ? Navigator.pop(event.context)
-                                    : ScaffoldMessenger.of(event.context)
-                                        .showSnackBar(SnackBar(
-                                            content: Text(
-                                                'Error Rejecting Offer, Try Again Later'))));
+                            await _offerRepo.reject(offer: offer).then((value) {
+                              if (value) {
+                                Navigator.pop(event.context);
+                                ScaffoldMessenger.of(event.context)
+                                    .showSnackBar(SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text(
+                                          'Rejected Offer',
+                                          style: TextStyle(color: Colors.white),
+                                        )));
+                              } else {
+                                ScaffoldMessenger.of(event.context)
+                                    .showSnackBar(SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text(
+                                          'Error Rejecting Offer',
+                                          style: TextStyle(color: Colors.white),
+                                        )));
+                              }
+                            });
                           } catch (e) {
                             debugPrint(e.toString());
                           }
                         },
                         child: Text(
                           'Reject',
+                          style: TextStyle(color: Colors.white),
+                        ))
+                  ],
+                ),
+              ));
+    });
+
+    on<_RemoveOffer>((event, emit) async {
+      await showDialog(
+          context: event.context,
+          builder: (_) => BlocProvider<TradeOfferBloc>.value(
+                value: event.context.read<TradeOfferBloc>(),
+                child: AlertDialog(
+                  surfaceTintColor: Colors.red,
+                  title: Text('Remve Offer?'),
+                  content: Text('This cannot be undone, are you sure?'),
+                  actions: [
+                    TextButton(
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(event.context);
+                      },
+                    ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.red),
+                        onPressed: () async {
+                          try {
+                            await _offerRepo
+                                .removeOffer(offer: offer)
+                                .then((value) {
+                              if (value) {
+                                Navigator.pop(event.context);
+                                ScaffoldMessenger.of(event.context)
+                                    .showSnackBar(SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text(
+                                          'Removed Offer',
+                                          style: TextStyle(color: Colors.white),
+                                        )));
+                              } else {
+                                ScaffoldMessenger.of(event.context)
+                                    .showSnackBar(SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text(
+                                          'Error Removing Offer',
+                                          style: TextStyle(color: Colors.white),
+                                        )));
+                              }
+                            });
+                          } catch (e) {
+                            debugPrint(e.toString());
+                          }
+                        },
+                        child: Text(
+                          'Remove',
                           style: TextStyle(color: Colors.white),
                         ))
                   ],
@@ -80,7 +153,6 @@ class TradeOfferBloc extends Bloc<TradeOfferEvent, TradeOfferState> {
                               controller: TextEditingController(
                                   text: state.acceptMessage),
                               onChanged: (value) async {
-                                
                                 _UpdateAcceptMessage(value: value);
                               },
                               maxLines: null,
@@ -123,21 +195,21 @@ class TradeOfferBloc extends Bloc<TradeOfferEvent, TradeOfferState> {
                                     .then((value) => value
                                         ? {
                                             Navigator.pop(event.context),
-                                            // ScaffoldMessenger.of(event.context)
-                                            //     .showSnackBar(SnackBar(
-                                            //         content: Row(
-                                            //   children: [
-                                            //     Icon(
-                                            //       Icons
-                                            //           .check_circle_outline_rounded,
-                                            //       color: Colors.white,
-                                            //     ),
-                                            //     Expanded(
-                                            //       child: Text(
-                                            //           'Offer Accepted, Message Sent'),
-                                            //     ),
-                                            //   ],
-                                            // )))
+                                            ScaffoldMessenger.of(event.context)
+                                                .showSnackBar(SnackBar(
+                                                    content: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons
+                                                      .check_circle_outline_rounded,
+                                                  color: Colors.white,
+                                                ),
+                                                Expanded(
+                                                  child: Text(
+                                                      'Offer Accepted, Message Sent'),
+                                                ),
+                                              ],
+                                            )))
                                           }
                                         : ScaffoldMessenger.of(event.context)
                                             .showSnackBar(SnackBar(

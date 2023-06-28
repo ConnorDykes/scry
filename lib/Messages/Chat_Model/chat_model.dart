@@ -10,7 +10,7 @@ class ChatModel with _$ChatModel {
   const factory ChatModel({
     @Default('') String id,
     @Default(OfferModel.empty) OfferModel offer,
-    @Default(CardModel.empty()) CardModel card,
+    @CardModelSerializer() CardModel? card,
     @Default([]) List<String> users,
   }) = _ChatModel;
 
@@ -22,4 +22,15 @@ class ChatModel with _$ChatModel {
 
   /// Empty user which represents an unauthenticated user.
   static const empty = ChatModel();
+}
+
+class CardModelSerializer implements JsonConverter<CardModel, dynamic> {
+  const CardModelSerializer();
+
+  @override
+  CardModel fromJson(dynamic json) =>
+      CardModel.fromJson(json ?? CardModel.empty().toJson());
+
+  @override
+  Map<String, dynamic> toJson(CardModel card) => card.toJson();
 }

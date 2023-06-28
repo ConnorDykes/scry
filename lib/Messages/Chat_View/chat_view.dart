@@ -326,9 +326,12 @@ class _OfferPanelState extends State<OfferPanel> {
                       children: [
                         Flexible(
                           flex: 1,
-                          child: UserTile(
-                              userID: otherUserID,
-                              userName: chat.offer.offeringUserName ?? ''),
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: UserTile(
+                                userID: otherUserID,
+                                userName: chat.offer.offeringUserName ?? ''),
+                          ),
                         ),
                       ],
                     ),
@@ -367,7 +370,7 @@ class _OfferPanelState extends State<OfferPanel> {
                       : GestureDetector(
                           onTap: () => showDialog(
                             context: context,
-                            builder: (context) => CardDialog(card: chat.card),
+                            builder: (context) => CardDialog(card: chat.card!),
                           ),
                           child: Container(
                             clipBehavior: Clip.hardEdge,
@@ -375,7 +378,7 @@ class _OfferPanelState extends State<OfferPanel> {
                                 borderRadius: BorderRadius.circular(4)),
                             height: 150,
                             child: Image.network(
-                                chat.card.imageUris?.normal ?? ''),
+                                chat.card!.imageUris?.normal ?? ''),
                           ),
                         ),
                   Padding(

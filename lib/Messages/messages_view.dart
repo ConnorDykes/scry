@@ -12,6 +12,7 @@ import 'package:scry/Messages/message_widget.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Offer_Model/offer_model.dart';
 import 'package:scry/Trade/Trade_Offer/bloc/trade_offer_bloc.dart';
+import 'package:scry/Widgets/user_tile.dart';
 import 'package:scry/card_dialog.dart';
 
 class MessagesView extends StatelessWidget {
@@ -99,160 +100,12 @@ class Offers extends StatelessWidget {
                                       children: [
                                         Row(
                                           children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8.0, right: 8, top: 8),
-                                              child: CircleAvatar(
-                                                radius: 27,
-                                                child: FutureBuilder(
-                                                  //method to be waiting for in the future
-                                                  future: FirebaseFirestore
-                                                      .instance
-                                                      .collection('users')
-                                                      .doc(offer.offeringUserID)
-                                                      .get(),
-                                                  builder: (_, snapshot) {
-                                                    //if done show data,
-                                                    if (snapshot
-                                                            .connectionState ==
-                                                        ConnectionState.done) {
-                                                      if (snapshot.hasData &&
-                                                          snapshot.data !=
-                                                              null) {
-                                                        final doc = snapshot
-                                                            .data!
-                                                            .data();
-                                                        String imageUrl = doc?[
-                                                                'profilePicture'] ??
-                                                            '';
-                                                        return imageUrl == ''
-                                                            ? const CircleAvatar(
-                                                                radius: 25,
-                                                                child: Icon(Icons
-                                                                    .person),
-                                                              )
-                                                            : CircleAvatar(
-                                                                radius: 25,
-                                                                backgroundImage:
-                                                                    NetworkImage(
-                                                                        doc![
-                                                                            'profilePicture']),
-                                                              );
-                                                      } else {
-                                                        return const CircleAvatar(
-                                                          radius: 25,
-                                                          child: Icon(
-                                                              Icons.person),
-                                                        );
-                                                      }
-                                                    } else {
-                                                      //if the process is not finished then show the indicator process
-                                                      return const Center(
-                                                          child:
-                                                              CircularProgressIndicator());
-                                                    }
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  offer.offeringUserName,
-                                                  style: theme
-                                                      .textTheme.titleMedium!
-                                                      .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                ),
-                                                Text(
-                                                  'City, State',
-                                                  style: theme
-                                                      .textTheme.titleSmall,
-                                                ),
-                                              ],
-                                            ),
                                             Expanded(
-                                                child: Icon(Icons
-                                                    .arrow_forward_rounded)),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  offer.recipientName,
-                                                  style: theme
-                                                      .textTheme.titleMedium!
-                                                      .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                ),
-                                                Text(
-                                                  'City, State',
-                                                  style: theme
-                                                      .textTheme.titleSmall,
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8.0, right: 8, top: 8),
-                                              child: CircleAvatar(
-                                                radius: 27,
-                                                child: FutureBuilder(
-                                                  //method to be waiting for in the future
-                                                  future: FirebaseFirestore
-                                                      .instance
-                                                      .collection('users')
-                                                      .doc(
-                                                          offer.recipientUserID)
-                                                      .get(),
-                                                  builder: (_, snapshot) {
-                                                    //if done show data,
-                                                    if (snapshot
-                                                            .connectionState ==
-                                                        ConnectionState.done) {
-                                                      if (snapshot.hasData &&
-                                                          snapshot.data !=
-                                                              null) {
-                                                        final doc = snapshot
-                                                            .data!
-                                                            .data();
-                                                        String imageUrl = doc?[
-                                                                'profilePicture'] ??
-                                                            '';
-                                                        return imageUrl == ''
-                                                            ? const CircleAvatar(
-                                                                radius: 25,
-                                                                child: Icon(Icons
-                                                                    .person),
-                                                              )
-                                                            : CircleAvatar(
-                                                                radius: 25,
-                                                                backgroundImage:
-                                                                    NetworkImage(
-                                                                        doc![
-                                                                            'profilePicture']),
-                                                              );
-                                                      } else {
-                                                        return const CircleAvatar(
-                                                          radius: 25,
-                                                          child: Icon(
-                                                              Icons.person),
-                                                        );
-                                                      }
-                                                    } else {
-                                                      //if the process is not finished then show the indicator process
-                                                      return const Center(
-                                                          child:
-                                                              CircularProgressIndicator());
-                                                    }
-                                                  },
-                                                ),
-                                              ),
-                                            ),
+                                              child: UserTile(
+                                                  userID: offer.offeringUserID,
+                                                  userName:
+                                                      offer.offeringUserName),
+                                            )
                                           ],
                                         ),
                                         Row(
@@ -389,7 +242,7 @@ class Offers extends StatelessWidget {
                                           )
                                         ]),
                                         if (offer.offeringUserID !=
-                                            appBloc.state.user.id)
+                                            appBloc.state.user.id) ...{
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
@@ -481,6 +334,48 @@ class Offers extends StatelessWidget {
                                               ],
                                             ),
                                           )
+                                        } else ...{
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 8.0),
+                                                  child: OutlinedButton(
+                                                      style: OutlinedButton
+                                                          .styleFrom(
+                                                              foregroundColor:
+                                                                  Colors.red,
+                                                              backgroundColor:
+                                                                  Colors.red
+                                                                      .withOpacity(
+                                                                          .1),
+                                                              side: BorderSide(
+                                                                  color: Colors
+                                                                      .red)),
+                                                      onPressed: () {
+                                                        context
+                                                            .read<
+                                                                TradeOfferBloc>()
+                                                            .add(TradeOfferEvent
+                                                                .removeOffer(
+                                                                    context:
+                                                                        context));
+                                                      },
+                                                      child: Text(
+                                                        'Remove Offer',
+                                                        style: TextStyle(
+                                                            color: Colors.red),
+                                                      )),
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        }
                                       ],
                                     ),
                                   );
@@ -524,12 +419,12 @@ class Messages extends StatelessWidget {
                   child: const Text('Sign in'),
                 ),
               )
-            : StreamBuilder<QuerySnapshot>(
+            : StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('chats')
                     .where('users', arrayContains: currentUserID)
                     .snapshots(),
-                builder: (context, snapshot) {
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
                       child: CircularProgressIndicator(),

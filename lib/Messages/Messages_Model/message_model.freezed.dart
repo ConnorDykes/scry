@@ -29,7 +29,8 @@ mixin _$MessageModel {
   String get receivingUsername => throw _privateConstructorUsedError;
   int get createDateInMillisecondsSinceEpoch =>
       throw _privateConstructorUsedError;
-  CardModel get card => throw _privateConstructorUsedError;
+  @CardModelSerializer()
+  CardModel? get card => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +53,7 @@ abstract class $MessageModelCopyWith<$Res> {
       String sendingUsername,
       String receivingUsername,
       int createDateInMillisecondsSinceEpoch,
-      CardModel card});
+      @CardModelSerializer() CardModel? card});
 }
 
 /// @nodoc
@@ -76,7 +77,7 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
     Object? sendingUsername = null,
     Object? receivingUsername = null,
     Object? createDateInMillisecondsSinceEpoch = null,
-    Object? card = null,
+    Object? card = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -112,10 +113,10 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
           ? _value.createDateInMillisecondsSinceEpoch
           : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
               as int,
-      card: null == card
+      card: freezed == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
-              as CardModel,
+              as CardModel?,
     ) as $Val);
   }
 }
@@ -137,7 +138,7 @@ abstract class _$$_MessageModelCopyWith<$Res>
       String sendingUsername,
       String receivingUsername,
       int createDateInMillisecondsSinceEpoch,
-      CardModel card});
+      @CardModelSerializer() CardModel? card});
 }
 
 /// @nodoc
@@ -159,7 +160,7 @@ class __$$_MessageModelCopyWithImpl<$Res>
     Object? sendingUsername = null,
     Object? receivingUsername = null,
     Object? createDateInMillisecondsSinceEpoch = null,
-    Object? card = null,
+    Object? card = freezed,
   }) {
     return _then(_$_MessageModel(
       id: null == id
@@ -195,10 +196,10 @@ class __$$_MessageModelCopyWithImpl<$Res>
           ? _value.createDateInMillisecondsSinceEpoch
           : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
               as int,
-      card: null == card
+      card: freezed == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
-              as CardModel,
+              as CardModel?,
     ));
   }
 }
@@ -215,7 +216,7 @@ class _$_MessageModel extends _MessageModel {
       this.sendingUsername = '',
       this.receivingUsername = '',
       this.createDateInMillisecondsSinceEpoch = 0,
-      this.card = const CardModel.empty()})
+      @CardModelSerializer() this.card})
       : super._();
 
   factory _$_MessageModel.fromJson(Map<String, dynamic> json) =>
@@ -246,8 +247,8 @@ class _$_MessageModel extends _MessageModel {
   @JsonKey()
   final int createDateInMillisecondsSinceEpoch;
   @override
-  @JsonKey()
-  final CardModel card;
+  @CardModelSerializer()
+  final CardModel? card;
 
   @override
   String toString() {
@@ -315,7 +316,7 @@ abstract class _MessageModel extends MessageModel {
       final String sendingUsername,
       final String receivingUsername,
       final int createDateInMillisecondsSinceEpoch,
-      final CardModel card}) = _$_MessageModel;
+      @CardModelSerializer() final CardModel? card}) = _$_MessageModel;
   const _MessageModel._() : super._();
 
   factory _MessageModel.fromJson(Map<String, dynamic> json) =
@@ -338,7 +339,8 @@ abstract class _MessageModel extends MessageModel {
   @override
   int get createDateInMillisecondsSinceEpoch;
   @override
-  CardModel get card;
+  @CardModelSerializer()
+  CardModel? get card;
   @override
   @JsonKey(ignore: true)
   _$$_MessageModelCopyWith<_$_MessageModel> get copyWith =>

@@ -17,9 +17,7 @@ _$_MessageModel _$$_MessageModelFromJson(Map<String, dynamic> json) =>
       receivingUsername: json['receivingUsername'] as String? ?? '',
       createDateInMillisecondsSinceEpoch:
           json['createDateInMillisecondsSinceEpoch'] as int? ?? 0,
-      card: json['card'] == null
-          ? const CardModel.empty()
-          : CardModel.fromJson(json['card'] as Map<String, dynamic>),
+      card: const CardModelSerializer().fromJson(json['card']),
     );
 
 Map<String, dynamic> _$$_MessageModelToJson(_$_MessageModel instance) =>
@@ -33,5 +31,12 @@ Map<String, dynamic> _$$_MessageModelToJson(_$_MessageModel instance) =>
       'receivingUsername': instance.receivingUsername,
       'createDateInMillisecondsSinceEpoch':
           instance.createDateInMillisecondsSinceEpoch,
-      'card': instance.card,
+      'card': _$JsonConverterToJson<dynamic, CardModel>(
+          instance.card, const CardModelSerializer().toJson),
     };
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
