@@ -431,8 +431,9 @@ class CardModel {
         "cardmarket_id": cardmarketId,
         "name": name,
         "lang": lang,
-        "released_at":
-            "${releasedAt!.year.toString().padLeft(4, '0')}-${releasedAt!.month.toString().padLeft(2, '0')}-${releasedAt!.day.toString().padLeft(2, '0')}",
+        "released_at": releasedAt == null
+            ? null
+            : "${releasedAt!.year.toString().padLeft(4, '0')}-${releasedAt!.month.toString().padLeft(2, '0')}-${releasedAt!.day.toString().padLeft(2, '0')}",
         "uri": uri,
         "scryfall_uri": scryfallUri,
         "layout": layout,

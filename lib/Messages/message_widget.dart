@@ -19,7 +19,6 @@ class MessageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    debugPrint(message.card.id);
 
     return Row(
       mainAxisAlignment:
@@ -33,7 +32,7 @@ class MessageWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               userName != null ? Text(userName!) : SizedBox.shrink(),
-              if (message.card.id == null) ...{
+              if (message.card?.id == null) ...{
                 Card(
                   shape: isCurrentUser
                       ? const RoundedRectangleBorder(
@@ -66,7 +65,7 @@ class MessageWidget extends StatelessWidget {
                 GestureDetector(
                   onTap: () => showDialog(
                     context: context,
-                    builder: (context) => CardDialog(card: message.card),
+                    builder: (context) => CardDialog(card: message.card!),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
@@ -74,8 +73,8 @@ class MessageWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4),
                       child: Container(
                         height: 150,
-                        child:
-                            Image.network(message.card.imageUris?.normal ?? ''),
+                        child: Image.network(
+                            message.card!.imageUris?.normal ?? ''),
                       ),
                     ),
                   ),

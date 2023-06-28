@@ -80,7 +80,6 @@ class TradeOfferBloc extends Bloc<TradeOfferEvent, TradeOfferState> {
                               controller: TextEditingController(
                                   text: state.acceptMessage),
                               onChanged: (value) async {
-                                
                                 _UpdateAcceptMessage(value: value);
                               },
                               maxLines: null,
@@ -123,21 +122,21 @@ class TradeOfferBloc extends Bloc<TradeOfferEvent, TradeOfferState> {
                                     .then((value) => value
                                         ? {
                                             Navigator.pop(event.context),
-                                            // ScaffoldMessenger.of(event.context)
-                                            //     .showSnackBar(SnackBar(
-                                            //         content: Row(
-                                            //   children: [
-                                            //     Icon(
-                                            //       Icons
-                                            //           .check_circle_outline_rounded,
-                                            //       color: Colors.white,
-                                            //     ),
-                                            //     Expanded(
-                                            //       child: Text(
-                                            //           'Offer Accepted, Message Sent'),
-                                            //     ),
-                                            //   ],
-                                            // )))
+                                            ScaffoldMessenger.of(event.context)
+                                                .showSnackBar(SnackBar(
+                                                    content: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons
+                                                      .check_circle_outline_rounded,
+                                                  color: Colors.white,
+                                                ),
+                                                Expanded(
+                                                  child: Text(
+                                                      'Offer Accepted, Message Sent'),
+                                                ),
+                                              ],
+                                            )))
                                           }
                                         : ScaffoldMessenger.of(event.context)
                                             .showSnackBar(SnackBar(

@@ -524,12 +524,12 @@ class Messages extends StatelessWidget {
                   child: const Text('Sign in'),
                 ),
               )
-            : StreamBuilder<QuerySnapshot>(
+            : StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('chats')
                     .where('users', arrayContains: currentUserID)
                     .snapshots(),
-                builder: (context, snapshot) {
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
                       child: CircularProgressIndicator(),
