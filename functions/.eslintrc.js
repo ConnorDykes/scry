@@ -18,7 +18,9 @@ module.exports = {
     "comma-dangle": 'off',
     'no-multi-spaces' : 'off',
     'key-spacing' : 'off',
-    'no-trailing-spaces': 'off'
+    'no-trailing-spaces': 'off',
+    'spaced-comment' : 'off',
+    'max-len' : 'off',
   },
   overrides: [
     {
