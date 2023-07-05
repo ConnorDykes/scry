@@ -36,9 +36,13 @@ class UserTile extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 27,
                           child: imageUrl == ''
-                              ? const CircleAvatar(
+                              ? CircleAvatar(
                                   radius: 25,
-                                  child: Icon(Icons.person),
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.person,
+                                    color: theme.colorScheme.primary,
+                                  ),
                                 )
                               : CircleAvatar(
                                   radius: 25,

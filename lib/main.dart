@@ -38,10 +38,33 @@ final playKey = GlobalKey();
 final profileKey = GlobalKey();
 final fabKey = GlobalKey();
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   // This widget is the root of your application.
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    //! Listen to lifecycle methods here set app badger
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

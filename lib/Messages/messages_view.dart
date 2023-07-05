@@ -467,172 +467,183 @@ class Messages extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         ChatView(chat: chat))),
-                            child: Card(
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        FutureBuilder(
-                                            future: FirebaseFirestore.instance
-                                                .collection('users')
-                                                .doc(otherUserID)
-                                                .get(),
-                                            builder: (_, snapshot) {
-                                              //if done show data,
-                                              if (snapshot.connectionState ==
-                                                  ConnectionState.done) {
-                                                if (snapshot.hasData &&
-                                                    snapshot.data != null) {
-                                                  final doc =
-                                                      snapshot.data!.data();
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(14),
+                                    color: Colors.white),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          FutureBuilder(
+                                              future: FirebaseFirestore.instance
+                                                  .collection('users')
+                                                  .doc(otherUserID)
+                                                  .get(),
+                                              builder: (_, snapshot) {
+                                                //if done show data,
+                                                if (snapshot.connectionState ==
+                                                    ConnectionState.done) {
+                                                  if (snapshot.hasData &&
+                                                      snapshot.data != null) {
+                                                    final doc =
+                                                        snapshot.data!.data();
 
-                                                  final user =
-                                                      UserModel.fromJson(doc
-                                                          as Map<String,
-                                                              dynamic>);
+                                                    final user =
+                                                        UserModel.fromJson(doc
+                                                            as Map<String,
+                                                                dynamic>);
 
-                                                  return Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                right: 8,
-                                                                top: 8),
-                                                        child: CircleAvatar(
-                                                            radius: 27,
-                                                            child: user.profilePicture ==
-                                                                    ''
-                                                                ? CircleAvatar(
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .white,
-                                                                    radius: 25,
-                                                                    child: Icon(
-                                                                      Icons
-                                                                          .person,
-                                                                      color: theme
-                                                                          .colorScheme
-                                                                          .primary,
-                                                                    ),
-                                                                  )
-                                                                : CircleAvatar(
-                                                                    radius: 25,
-                                                                    backgroundImage:
-                                                                        NetworkImage(
-                                                                            user.profilePicture),
-                                                                  )),
-                                                      ),
-                                                      Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            user.fullName,
-                                                            style: theme
-                                                                .textTheme
-                                                                .titleMedium!
-                                                                .copyWith(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
-                                                          ),
-                                                          Text(
-                                                            'City, State',
-                                                            style: theme
-                                                                .textTheme
-                                                                .titleSmall,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
+                                                    return Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  right: 8,
+                                                                  top: 8),
+                                                          child: CircleAvatar(
+                                                              radius: 27,
+                                                              child: user.profilePicture ==
+                                                                      ''
+                                                                  ? CircleAvatar(
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .white,
+                                                                      radius:
+                                                                          25,
+                                                                      child:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .person,
+                                                                        color: theme
+                                                                            .colorScheme
+                                                                            .primary,
+                                                                      ),
+                                                                    )
+                                                                  : CircleAvatar(
+                                                                      radius:
+                                                                          25,
+                                                                      backgroundImage:
+                                                                          NetworkImage(
+                                                                              user.profilePicture),
+                                                                    )),
+                                                        ),
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              user.fullName,
+                                                              style: theme
+                                                                  .textTheme
+                                                                  .titleMedium!
+                                                                  .copyWith(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                            ),
+                                                            Text(
+                                                              'City, State',
+                                                              style: theme
+                                                                  .textTheme
+                                                                  .titleSmall,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    );
+                                                  } else {
+                                                    return const CircleAvatar(
+                                                      radius: 25,
+                                                      child: Icon(Icons.person),
+                                                    );
+                                                  }
+                                                } else {
+                                                  //if the process is not finished then show the indicator process
+                                                  return const Center(
+                                                      child:
+                                                          CircularProgressIndicator());
+                                                }
+                                              }),
+                                          StreamBuilder<QuerySnapshot>(
+                                              stream: FirebaseFirestore.instance
+                                                  .collection('chats')
+                                                  .doc(chat.id)
+                                                  .collection('messages')
+                                                  .orderBy(
+                                                      'createDateInMillisecondsSinceEpoch')
+                                                  .snapshots(),
+                                              builder: (context, snapshot) {
+                                                if (snapshot.connectionState ==
+                                                    ConnectionState.waiting) {
+                                                  return const Center(
+                                                    child:
+                                                        CircularProgressIndicator(),
+                                                  );
+                                                } else if (!snapshot.hasData ||
+                                                    snapshot
+                                                        .data!.docs.isEmpty) {
+                                                  return Center(
+                                                    child: Text(
+                                                      'No Messages',
+                                                      style: theme.textTheme
+                                                          .titleMedium,
+                                                    ),
+                                                  );
+                                                } else if (snapshot.hasData &&
+                                                    snapshot.data!.docs
+                                                        .isNotEmpty) {
+                                                  final docs =
+                                                      snapshot.data!.docs;
+
+                                                  List<MessageModel> messages = docs
+                                                      .map((doc) =>
+                                                          MessageModel.fromJson(
+                                                              doc.data() as Map<
+                                                                  String,
+                                                                  dynamic>))
+                                                      .toList();
+
+                                                  return Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 16.0),
+                                                    child: MessageWidget(
+                                                        userName: null,
+                                                        isCurrentUser: messages
+                                                                .last
+                                                                .sendingUserID ==
+                                                            currentUserID,
+                                                        message: messages.last),
                                                   );
                                                 } else {
-                                                  return const CircleAvatar(
-                                                    radius: 25,
-                                                    child: Icon(Icons.person),
+                                                  return Center(
+                                                    child: Text(
+                                                      'No Message',
+                                                      style: theme
+                                                          .textTheme.titleLarge!
+                                                          .copyWith(
+                                                              color:
+                                                                  Colors.red),
+                                                    ),
                                                   );
                                                 }
-                                              } else {
-                                                //if the process is not finished then show the indicator process
-                                                return const Center(
-                                                    child:
-                                                        CircularProgressIndicator());
-                                              }
-                                            }),
-                                        StreamBuilder<QuerySnapshot>(
-                                            stream: FirebaseFirestore.instance
-                                                .collection('chats')
-                                                .doc(chat.id)
-                                                .collection('messages')
-                                                .orderBy(
-                                                    'createDateInMillisecondsSinceEpoch')
-                                                .snapshots(),
-                                            builder: (context, snapshot) {
-                                              if (snapshot.connectionState ==
-                                                  ConnectionState.waiting) {
-                                                return const Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                );
-                                              } else if (!snapshot.hasData ||
-                                                  snapshot.data!.docs.isEmpty) {
-                                                return Center(
-                                                  child: Text(
-                                                    'No Messages',
-                                                    style: theme
-                                                        .textTheme.titleMedium,
-                                                  ),
-                                                );
-                                              } else if (snapshot.hasData &&
-                                                  snapshot
-                                                      .data!.docs.isNotEmpty) {
-                                                final docs =
-                                                    snapshot.data!.docs;
-
-                                                List<MessageModel> messages = docs
-                                                    .map((doc) =>
-                                                        MessageModel.fromJson(
-                                                            doc.data() as Map<
-                                                                String,
-                                                                dynamic>))
-                                                    .toList();
-
-                                                return Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 16.0),
-                                                  child: MessageWidget(
-                                                      userName: null,
-                                                      isCurrentUser: messages
-                                                              .last
-                                                              .sendingUserID ==
-                                                          currentUserID,
-                                                      message: messages.last),
-                                                );
-                                              } else {
-                                                return Center(
-                                                  child: Text(
-                                                    'No Message',
-                                                    style: theme
-                                                        .textTheme.titleLarge!
-                                                        .copyWith(
-                                                            color: Colors.red),
-                                                  ),
-                                                );
-                                              }
-                                            }),
-                                      ],
+                                              }),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Icon(Icons.chevron_right_rounded)
-                                ],
+                                    Icon(Icons.chevron_right_rounded)
+                                  ],
+                                ),
                               ),
                             ),
                           );

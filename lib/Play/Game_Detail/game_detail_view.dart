@@ -44,6 +44,7 @@ class GameDetailView extends StatelessWidget {
             body: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView(
+                shrinkWrap: true,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
@@ -130,42 +131,76 @@ class GameDetailView extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                DateFormat(DateFormat.ABBR_MONTH_WEEKDAY_DAY)
-                                    .format(game.dateAndTime!),
-                                style: theme.textTheme.titleMedium!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Icon(Icons.calendar_month_rounded,
+                                        color: theme.colorScheme.primary),
+                                  ),
+                                  Text(
+                                    DateFormat(
+                                            DateFormat.ABBR_MONTH_WEEKDAY_DAY)
+                                        .format(game.dateAndTime!),
+                                    style: theme.textTheme.titleMedium!
+                                        .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: theme.colorScheme.primary),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                DateFormat(DateFormat.HOUR_MINUTE)
-                                    .format(game.dateAndTime!),
-                                style: theme.textTheme.titleMedium!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Icon(Icons.access_time_rounded,
+                                        color: theme.colorScheme.primary),
+                                  ),
+                                  Text(
+                                    DateFormat(DateFormat.HOUR_MINUTE)
+                                        .format(game.dateAndTime!),
+                                    style: theme.textTheme.titleMedium!
+                                        .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: theme.colorScheme.primary),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: TextButton(
-                                  style: TextButton.styleFrom(
-                                      backgroundColor: theme.hoverColor),
-                                  onPressed: () {
-                                    if (game.location != '') {
-                                      MapsLauncher.launchQuery(game.location);
-                                    }
-                                  },
-                                  child: Text(
-                                    game.location != ''
-                                        ? game.location
-                                        : "No Location Specified ",
-                                    textAlign: TextAlign.center,
-                                    style: theme.textTheme.titleMedium!
-                                        .copyWith(
-                                            color: theme.colorScheme.primary,
-                                            fontWeight: FontWeight.bold),
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(
+                                        backgroundColor: theme.hoverColor),
+                                    onPressed: () {
+                                      if (game.location != '') {
+                                        MapsLauncher.launchQuery(game.location);
+                                      }
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.location_on_outlined),
+                                        Flexible(
+                                          child: Text(
+                                            game.location != ''
+                                                ? game.location
+                                                : "No Location Specified ",
+                                            textAlign: TextAlign.center,
+                                            style: theme.textTheme.titleMedium!
+                                                .copyWith(
+                                                    color: theme
+                                                        .colorScheme.primary,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
