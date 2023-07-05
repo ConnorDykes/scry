@@ -35,17 +35,30 @@ class UserAvatar extends StatelessWidget {
                     )
                   : CircleAvatar(
                       radius: radius,
-                      child: Container(
-                        width: 48.0,
-                        height: 48.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(
-                                doc!['profilePicture']),
+                      child: CircleAvatar(
+                        radius: radius - .5,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
                           ),
+                          clipBehavior: Clip.hardEdge,
+                          child: CachedNetworkImage(
+                              imageUrl: doc!['profilePicture']),
                         ),
-                      ));
+                      ),
+
+                      // Container(
+                      //   width: 48.0,
+                      //   height: 48.0,
+                      //   decoration: BoxDecoration(
+                      //     shape: BoxShape.circle,
+                      //     image: DecorationImage(
+                      //       image: CachedNetworkImageProvider(
+                      //           doc!['profilePicture']),
+                      //     ),
+                      //   ),
+                      // )
+                    );
             } else {
               return const CircleAvatar(
                 radius: 25,

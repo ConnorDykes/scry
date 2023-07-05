@@ -21,6 +21,8 @@ module.exports = {
     'no-trailing-spaces': 'off',
     'spaced-comment' : 'off',
     'max-len' : 'off',
+    'padded-blocks' : 'off',
+    'operator-linebreak': 'off'
   },
   overrides: [
     {

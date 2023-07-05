@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:scry/Authentication/user_model.dart';
@@ -26,7 +27,7 @@ class UserTile extends StatelessWidget {
               if (snapshot.hasData && snapshot.data != null) {
                 final doc = snapshot.data!.data();
                 UserModel user = UserModel.fromJson(doc!);
-                String imageUrl = doc?['profilePicture'] ?? '';
+                String imageUrl = doc['profilePicture'];
                 return Row(
                   children: [
                     Padding(
@@ -41,8 +42,9 @@ class UserTile extends StatelessWidget {
                                 )
                               : CircleAvatar(
                                   radius: 25,
-                                  backgroundImage:
-                                      NetworkImage(doc!['profilePicture']),
+                                  backgroundImage: CachedNetworkImageProvider(
+                                    imageUrl,
+                                  ),
                                 ),
                         )),
                     Column(
@@ -55,7 +57,8 @@ class UserTile extends StatelessWidget {
                         ),
                         Text(
                           '${user.city} ${user.state}',
-                          style: theme.textTheme.titleSmall,
+                          style: theme.textTheme.titleSmall!
+                              .copyWith(color: theme.disabledColor),
                         ),
                       ],
                     ),

@@ -26,22 +26,42 @@ class _GamesFeedState extends State<GamesFeed> {
   @override
   Widget build(BuildContext context) {
     final appBloc = context.watch<AppBloc>();
+    final currentUser = appBloc.state.user;
     final playRepo = PlayRepo();
 
     final theme = Theme.of(context);
 
     Map<int, Widget> segmentedControlChildren = <int, Widget>{
       0: Text(
-        "Available Games",
+        "Available Games ",
         style: TextStyle(
             fontSize: 18,
             color: showingAvailableGames ? Colors.white : Colors.black),
       ),
-      1: Text(
-        "Joined Games",
-        style: TextStyle(
-            fontSize: 18,
-            color: showingAvailableGames ? Colors.black : Colors.white),
+      1: StreamBuilder(
+        stream: playRepo.AvailableGamesStream(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.data != null) {
+            final gamesCount = snapshot.data!.docs
+                .where((game) => currentUser.games.contains(game.id))
+                .length;
+
+            return Container(
+              child: Text(
+                "Joined Games (${gamesCount})",
+                style: TextStyle(
+                    fontSize: 18,
+                    color: showingAvailableGames ? Colors.black : Colors.white),
+              ),
+            );
+          }
+          return Text(
+            "Joined Games",
+            style: TextStyle(
+                fontSize: 18,
+                color: showingAvailableGames ? Colors.black : Colors.white),
+          );
+        },
       ),
     };
 
@@ -124,10 +144,14 @@ class _GamesFeedState extends State<GamesFeed> {
                               game: game,
                             );
                           }
+                          if (showingAvailableGames && !isJoinedGame) {
+                            return GameTile(
+                              game: game,
+                            );
+                          }
+
                           //check if user games array has game ID ans render new list new or new widget if so
-                          return GameTile(
-                            game: game,
-                          );
+                          return SizedBox.shrink();
                         });
                   } else {
                     return CircularProgressIndicator();

@@ -2,11 +2,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class PushNotificationService {
-  FirebaseMessaging _fcm = FirebaseMessaging.instance;
+  FirebaseMessaging fcm = FirebaseMessaging.instance;
 
   Future initialize() async {
     //Check weather the user has accepted or not, then ask if they have not yet been asked
-    NotificationSettings settings = await _fcm.getNotificationSettings();
+    NotificationSettings settings = await fcm.getNotificationSettings();
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       print('User granted permission');
@@ -15,7 +15,7 @@ class PushNotificationService {
       print('User granted provisional permission');
     } else if (settings.authorizationStatus ==
         AuthorizationStatus.notDetermined) {
-      await _fcm.requestPermission(
+      await fcm.requestPermission(
         alert: true,
         announcement: false,
         badge: true,
@@ -39,7 +39,7 @@ class PushNotificationService {
 
     FirebaseMessaging.onBackgroundMessage(backgroundHandler);
 
-    _fcm.setForegroundNotificationPresentationOptions(
+    fcm.setForegroundNotificationPresentationOptions(
       alert: true, // Required to display a heads up notification
       badge: true,
       sound: true,
@@ -77,7 +77,7 @@ class PushNotificationService {
   }
 
   Future<String?> getToken() async {
-    String? token = await _fcm.getToken();
+    String? token = await fcm.getToken();
     print('FCMToken: $token');
     return token;
   }

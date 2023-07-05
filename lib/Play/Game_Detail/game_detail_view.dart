@@ -109,7 +109,6 @@ class GameDetailView extends StatelessWidget {
                             style: TextStyle(color: Colors.red),
                           )),
                     ),
-                  Divider(color: theme.disabledColor),
                   Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -225,160 +224,193 @@ class GameDetailView extends StatelessWidget {
                                           user.data() as Map<String, dynamic>))
                                       .toList();
 
+                                  // used for checking a rendering
+                                  List<String> playersIDS = players
+                                      .map(
+                                        (player) => player.id,
+                                      )
+                                      .toList();
+
                                   return Column(
                                     children: [
-                                      ExpansionTile(
-                                        shape: Border(),
-                                        initiallyExpanded: true,
-                                        title: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 8.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 8.0),
-                                                child: Text(
-                                                  'Players :',
-                                                  style: theme
-                                                      .textTheme.titleMedium,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: theme.hoverColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: ExpansionTile(
+                                          shape: Border(),
+                                          initiallyExpanded: false,
+                                          title: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 8.0),
+                                                  child: Text(
+                                                    'Players :',
+                                                    style: theme
+                                                        .textTheme.titleMedium,
+                                                  ),
                                                 ),
-                                              ),
-                                              Text(
-                                                '${players.length} / ${game.maxPlayerCount}',
-                                                style: theme
-                                                    .textTheme.titleMedium!
-                                                    .copyWith(
-                                                        color: theme.colorScheme
-                                                            .primary,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                              ),
-                                              Spacer(),
-                                              if (players
-                                                      .where((user) =>
-                                                          user.id ==
-                                                          currentUser.id)
-                                                      .length ==
-                                                  0) ...{
-                                                ElevatedButton(
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                            side: BorderSide(
-                                                                width: 1,
-                                                                color: theme
-                                                                    .colorScheme
-                                                                    .primary)),
-                                                    onPressed: () {
-                                                      bloc.add(GameDetailEvent
-                                                          .joinGame());
-                                                    },
-                                                    child: Text('Join'))
-                                              } else ...{
-                                                if (game.creator!.id !=
-                                                    currentUser.id)
+                                                Text(
+                                                  '${players.length} / ${game.maxPlayerCount}',
+                                                  style: theme
+                                                      .textTheme.titleMedium!
+                                                      .copyWith(
+                                                          color: theme
+                                                              .colorScheme
+                                                              .primary,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                ),
+                                                Spacer(),
+                                                if (players
+                                                        .where((user) =>
+                                                            user.id ==
+                                                            currentUser.id)
+                                                        .length ==
+                                                    0) ...{
                                                   ElevatedButton(
                                                       style: ElevatedButton
                                                           .styleFrom(
-                                                              surfaceTintColor:
-                                                                  theme
-                                                                      .colorScheme
-                                                                      .error,
                                                               side: BorderSide(
                                                                   width: 1,
                                                                   color: theme
                                                                       .colorScheme
-                                                                      .error)),
+                                                                      .primary)),
                                                       onPressed: () {
                                                         bloc.add(GameDetailEvent
-                                                            .leaveGame());
+                                                            .joinGame());
                                                       },
-                                                      child: Text(
-                                                        'Leave',
-                                                        style: TextStyle(
-                                                            color: theme
-                                                                .colorScheme
-                                                                .error),
-                                                      )),
-                                              }
-                                            ],
+                                                      child: Text('Join'))
+                                                } else ...{
+                                                  if (game.creator!.id !=
+                                                      currentUser.id)
+                                                    ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+                                                            surfaceTintColor:
+                                                                theme
+                                                                    .colorScheme
+                                                                    .error,
+                                                            side: BorderSide(
+                                                                width: 1,
+                                                                color: theme
+                                                                    .colorScheme
+                                                                    .error)),
+                                                        onPressed: () {
+                                                          bloc.add(
+                                                              GameDetailEvent
+                                                                  .leaveGame());
+                                                        },
+                                                        child: Text(
+                                                          'Leave',
+                                                          style: TextStyle(
+                                                              color: theme
+                                                                  .colorScheme
+                                                                  .error),
+                                                        )),
+                                                }
+                                              ],
+                                            ),
+                                          ),
+                                          children: [
+                                            ListView.builder(
+                                                shrinkWrap: true,
+                                                itemCount:
+                                                    snapshot.data!.docs.length,
+                                                itemBuilder: ((context, index) {
+                                                  final data = snapshot
+                                                      .data!.docs[index]
+                                                      .data();
+                                                  UserModel user =
+                                                      UserModel.fromJson(data
+                                                          as Map<String,
+                                                              dynamic>);
+                                                  return UserTile(
+                                                    userID: user.id,
+                                                    userName:
+                                                        user.displayName == ''
+                                                            ? user.fullName
+                                                            : user.displayName,
+                                                  );
+                                                }))
+                                          ],
+                                        ),
+                                      ),
+                                      if (playersIDS
+                                          .contains(currentUser.id)) ...{
+                                        Divider(color: theme.disabledColor),
+                                        OurTextfield(
+                                          controller: bloc.messageCont,
+                                          hintText: 'Add Message',
+                                          suffixIcon: IconButton(
+                                            icon: Icon(
+                                              Icons.send,
+                                              color: theme.colorScheme.primary,
+                                            ),
+                                            onPressed: () {
+                                              final GameChatMessageModel
+                                                  message =
+                                                  GameChatMessageModel(
+                                                      message:
+                                                          bloc.messageCont.text,
+                                                      senderID: currentUser.id,
+                                                      senderName: currentUser
+                                                              .fullName ??
+                                                          currentUser
+                                                              .displayName,
+                                                      dateAndTime:
+                                                          DateTime.now());
+
+                                              bloc.add(
+                                                  GameDetailEvent.sendMessage(
+                                                      message: message));
+                                            },
                                           ),
                                         ),
-                                        children: [
-                                          ListView.builder(
-                                              shrinkWrap: true,
-                                              itemCount:
-                                                  snapshot.data!.docs.length,
-                                              itemBuilder: ((context, index) {
-                                                final data = snapshot
-                                                    .data!.docs[index]
-                                                    .data();
-                                                UserModel user =
-                                                    UserModel.fromJson(data
-                                                        as Map<String,
-                                                            dynamic>);
-                                                return UserTile(
-                                                  userID: user.id,
-                                                  userName: user.displayName ??
-                                                      user.fullName,
-                                                );
-                                              }))
-                                        ],
-                                      )
+                                        StreamBuilder(
+                                          stream: repo.messagesStream(),
+                                          builder: (BuildContext context,
+                                              AsyncSnapshot<QuerySnapshot>
+                                                  snapshot) {
+                                            if (snapshot.hasData &&
+                                                snapshot.data != null) {
+                                              final docs = snapshot.data!.docs;
+                                              return ListView.builder(
+                                                shrinkWrap: true,
+                                                itemCount: docs.length,
+                                                itemBuilder:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  final GameChatMessageModel
+                                                      message =
+                                                      GameChatMessageModel
+                                                          .fromJson(docs[index]
+                                                                  .data()
+                                                              as Map<String,
+                                                                  dynamic>);
+                                                  return GameChatMesageTile(
+                                                      model: message);
+                                                },
+                                              );
+                                            } else {
+                                              return CircularProgressIndicator();
+                                            }
+                                          },
+                                        ),
+                                      }
                                     ],
                                   );
                                 } else {
                                   return CircularProgressIndicator();
                                 }
                               }),
-                          Divider(color: theme.disabledColor),
-                          OurTextfield(
-                            controller: bloc.messageCont,
-                            hintText: 'Add Message',
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                Icons.send,
-                                color: theme.colorScheme.primary,
-                              ),
-                              onPressed: () {
-                                final GameChatMessageModel message =
-                                    GameChatMessageModel(
-                                        message: bloc.messageCont.text,
-                                        senderID: currentUser.id,
-                                        senderName: currentUser.fullName ??
-                                            currentUser.displayName,
-                                        dateAndTime: DateTime.now());
-
-                                bloc.add(GameDetailEvent.sendMessage(
-                                    message: message));
-                              },
-                            ),
-                          ),
-                          StreamBuilder(
-                            stream: repo.messagesStream(),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<QuerySnapshot> snapshot) {
-                              if (snapshot.hasData && snapshot.data != null) {
-                                final docs = snapshot.data!.docs;
-                                return ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: docs.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    final GameChatMessageModel message =
-                                        GameChatMessageModel.fromJson(
-                                            docs[index].data()
-                                                as Map<String, dynamic>);
-                                    return GameChatMesageTile(model: message);
-                                  },
-                                );
-                              } else {
-                                return CircularProgressIndicator();
-                              }
-                            },
-                          ),
                         ],
                       ),
                     ),

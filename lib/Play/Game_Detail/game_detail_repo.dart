@@ -36,10 +36,7 @@ class GameDetailRepo {
           .get();
 
       players.docs.forEach((player) async {
-        await _firebaseFirestore
-            .collection('users')
-            .doc(player.data()['id'])
-            .update({
+        await _firebaseFirestore.collection('users').doc(player.id).update({
           'games': FieldValue.arrayRemove([game.id])
         });
         await _firebaseFirestore
@@ -62,7 +59,7 @@ class GameDetailRepo {
           .collection('games')
           .doc(game.id)
           .collection('players')
-          .doc()
+          .doc(currentUser.id)
           .set(currentUser.toJson());
 
       await _firebaseFirestore.collection('users').doc(currentUser.id).update({

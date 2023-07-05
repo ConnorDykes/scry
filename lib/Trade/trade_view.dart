@@ -273,7 +273,6 @@ class TradeCard extends StatelessWidget {
                                                                     .primary,
                                                             content: const Text(
                                                                 'Trade deleted')));
-                                                    //! call bloc delete function
                                                   },
                                                   child: Text("Delete",
                                                       style: TextStyle(

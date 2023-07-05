@@ -69,9 +69,13 @@ class Offers extends StatelessWidget {
                     );
                   } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return Center(
-                      child: Text(
-                        'No Trade Offers',
-                        style: theme.textTheme.titleMedium,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 48.0),
+                        child: Text(
+                          'No Trade Offers',
+                          style: theme.textTheme.titleLarge!
+                              .copyWith(color: theme.disabledColor),
+                        ),
                       ),
                     );
                   } else if (snapshot.hasData &&
@@ -433,7 +437,8 @@ class Messages extends StatelessWidget {
                     return Center(
                       child: Text(
                         'No Messages',
-                        style: theme.textTheme.titleMedium,
+                        style: theme.textTheme.titleLarge!
+                            .copyWith(color: theme.disabledColor),
                       ),
                     );
                   } else if (snapshot.hasData &&
