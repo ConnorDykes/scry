@@ -343,6 +343,49 @@ class ProfileView extends StatelessWidget {
                                     ],
                                   )),
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextButton(
+                                      onPressed: () async {
+                                        Uri terms = Uri.parse(
+                                            'https://www.termsandconditionsgenerator.com/live.php?token=mTzfezy0QYom35rLmpAXlz2ipHnPYPjL');
+
+                                        await launchUrl(terms);
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.info_outline_rounded),
+                                          Text('Terms & Conditions'),
+                                        ],
+                                      )),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextButton(
+                                      onPressed: () async {
+                                        Uri privacyPolicy = Uri.parse(
+                                            'https://www.termsfeed.com/live/46dda6d7-89e6-4cee-95a2-7cd579161c5e');
+
+                                        await launchUrl(privacyPolicy);
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.privacy_tip_outlined),
+                                          Text('Privacy Policy'),
+                                        ],
+                                      )),
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       ),

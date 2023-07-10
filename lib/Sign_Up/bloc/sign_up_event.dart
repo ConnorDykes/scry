@@ -3,6 +3,7 @@ part of 'sign_up_bloc.dart';
 @freezed
 class SignUpEvent with _$SignUpEvent {
   const factory SignUpEvent.changeEmail({required String email}) = _ChangeEmail;
+  const factory SignUpEvent.acceptTerms({required bool value}) = _AcceptTerms;
   const factory SignUpEvent.changePassword({required String password}) =
       _ChangePassword;
   const factory SignUpEvent.changeConfirmPassword(

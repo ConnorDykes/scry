@@ -20,6 +20,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final authRepo = AuthRepo();
 
   SignUpBloc() : super(const SignUpState()) {
+    on<_AcceptTerms>((event, emit) {
+      emit(state.copyWith(termsAccepted: event.value));
+    });
+
     on<_ChangeEmail>((event, emit) {
       emit(state.copyWith(email: event.email));
     });

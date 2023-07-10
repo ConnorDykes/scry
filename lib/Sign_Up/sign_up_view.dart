@@ -6,6 +6,7 @@ import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Sign_Up/bloc/sign_up_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -35,7 +36,7 @@ class SignUpView extends StatelessWidget {
             ),
             body: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
+              child: ListView(
                 children: [
                   Card(
                     shape: RoundedRectangleBorder(
@@ -331,41 +332,45 @@ class SignUpView extends StatelessWidget {
                     ),
                   ),
                   const Padding(padding: EdgeInsets.all(8)),
-                  AnimatedOpacity(
-                    duration: const Duration(seconds: 1),
-                    opacity: state.isFromValid ? 1.0 : 0.0,
-                    child: ProgressButton.icon(
-                        iconedButtons: {
-                          ButtonState.idle: IconedButton(
-                              text: "Create Account",
-                              icon: const Icon(Icons.person_add_alt_rounded,
-                                  color: Colors.white),
-                              color: theme.colorScheme.primary),
-                          ButtonState.loading: IconedButton(
-                              text: "Loading",
-                              color: theme.colorScheme.secondary),
-                          ButtonState.fail: IconedButton(
-                              text: "Failed",
-                              icon:
-                                  const Icon(Icons.cancel, color: Colors.white),
-                              color: Colors.red.shade300),
-                          ButtonState.success: IconedButton(
-                              text: "Success",
-                              icon: const Icon(
-                                Icons.check_circle,
-                                color: Colors.white,
-                              ),
-                              color: Colors.green.shade400)
-                        },
-                        onPressed: () {
-                          signUpBloc.add(SignUpEvent.signUpWithEmailAndPassword(
-                              context: context,
-                              email: state.email,
-                              password: state.password,
-                              firstName: state.firstName,
-                              lastName: state.lastName));
-                        },
-                        state: state.buttonState),
+                  Visibility(
+                    visible: state.isFromValid,
+                    child: AnimatedOpacity(
+                      duration: const Duration(seconds: 1),
+                      opacity: state.isFromValid ? 1.0 : 0.0,
+                      child: ProgressButton.icon(
+                          iconedButtons: {
+                            ButtonState.idle: IconedButton(
+                                text: "Create Account",
+                                icon: const Icon(Icons.person_add_alt_rounded,
+                                    color: Colors.white),
+                                color: theme.colorScheme.primary),
+                            ButtonState.loading: IconedButton(
+                                text: "Loading",
+                                color: theme.colorScheme.secondary),
+                            ButtonState.fail: IconedButton(
+                                text: "Failed",
+                                icon: const Icon(Icons.cancel,
+                                    color: Colors.white),
+                                color: Colors.red.shade300),
+                            ButtonState.success: IconedButton(
+                                text: "Success",
+                                icon: const Icon(
+                                  Icons.check_circle,
+                                  color: Colors.white,
+                                ),
+                                color: Colors.green.shade400)
+                          },
+                          onPressed: () {
+                            signUpBloc.add(
+                                SignUpEvent.signUpWithEmailAndPassword(
+                                    context: context,
+                                    email: state.email,
+                                    password: state.password,
+                                    firstName: state.firstName,
+                                    lastName: state.lastName));
+                          },
+                          state: state.buttonState),
+                    ),
                   ),
                   Visibility(
                     visible: state.emailError != '',
@@ -374,46 +379,45 @@ class SignUpView extends StatelessWidget {
                       child: Text(state.emailError),
                     ),
                   ),
+                  CheckboxListTile(
+                      tileColor: state.termsAccepted
+                          ? Colors.green[50]
+                          : Colors.red[100],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      title: Text('Agree to:'),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TextButton(
+                              onPressed: () async {
+                                Uri terms = Uri.parse(
+                                    'https://www.termsandconditionsgenerator.com/live.php?token=mTzfezy0QYom35rLmpAXlz2ipHnPYPjL');
+
+                                await launchUrl(terms);
+                              },
+                              child: Text('Terms & Conditions')),
+                          TextButton(
+                              onPressed: () async {
+                                Uri privacyPolicy = Uri.parse(
+                                    'https://www.termsfeed.com/live/46dda6d7-89e6-4cee-95a2-7cd579161c5e');
+
+                                await launchUrl(privacyPolicy);
+                              },
+                              child: Text('Privacy Policy'))
+                        ],
+                      ),
+                      value: state.termsAccepted,
+                      onChanged: (value) {
+                        signUpBloc.add(SignUpEvent.acceptTerms(value: value!));
+                      }),
                   const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          height: 1.0,
-                          width: 40,
-                          child: Center(
-                            child: Container(
-                              margin: const EdgeInsetsDirectional.only(
-                                  start: 1.0, end: 1.0),
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "OR",
-                        style: theme.textTheme.titleLarge,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          height: 1.0,
-                          width: 40,
-                          child: Center(
-                            child: Container(
-                              margin: const EdgeInsetsDirectional.only(
-                                  start: 1.0, end: 1.0),
-                              height: 5.0,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  if (state.termsAccepted == false)
+                    Text(
+                      textAlign: TextAlign.center,
+                      'Accept Terms to sign up with Apple or Google',
+                      style: TextStyle(color: Colors.red),
+                    ),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: ElevatedButton(
@@ -421,9 +425,11 @@ class SignUpView extends StatelessWidget {
                           side: BorderSide(
                         color: theme.colorScheme.primary,
                       )),
-                      onPressed: () {
-                        // Apple sign in
-                      },
+                      onPressed: state.termsAccepted
+                          ? () {
+                              // Apple sign in
+                            }
+                          : null,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -447,10 +453,12 @@ class SignUpView extends StatelessWidget {
                           side: BorderSide(
                         color: theme.colorScheme.primary,
                       )),
-                      onPressed: () {
-                        signUpBloc.add(
-                            SignUpEvent.signUpWithGoogle(context: context));
-                      },
+                      onPressed: state.termsAccepted
+                          ? () {
+                              signUpBloc.add(SignUpEvent.signUpWithGoogle(
+                                  context: context));
+                            }
+                          : null,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -468,7 +476,6 @@ class SignUpView extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  const Spacer()
                 ],
               ),
             ),
