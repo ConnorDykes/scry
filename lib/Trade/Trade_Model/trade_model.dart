@@ -14,14 +14,14 @@ class TradePostModel with _$TradePostModel {
     @Default([]) List<CardModel> cards,
     @Default(true) lookingFor,
     @Default(false) willingToTrade,
+    @Default(0) int createDateInMillisecondsSinceEpoch,
   }) = _TradeModel;
 
   const TradePostModel._();
 
-  /// our user type getter
   factory TradePostModel.fromJson(Map<String, Object?> json) =>
       _$TradePostModelFromJson(json);
 
-  /// Empty user which represents an unauthenticated user.
+  /// Empty trade
   static const empty = TradePostModel();
 }

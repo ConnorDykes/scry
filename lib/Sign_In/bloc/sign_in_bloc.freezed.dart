@@ -22,6 +22,7 @@ mixin _$SignInEvent {
     required TResult Function(String email) changeEmail,
     required TResult Function(String password) changePassword,
     required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
     required TResult Function(
             BuildContext context, String email, String password)
         signinWithEmailAndPassword,
@@ -33,6 +34,7 @@ mixin _$SignInEvent {
     TResult? Function(String email)? changeEmail,
     TResult? Function(String password)? changePassword,
     TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
     TResult? Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
   }) =>
@@ -43,6 +45,7 @@ mixin _$SignInEvent {
     TResult Function(String email)? changeEmail,
     TResult Function(String password)? changePassword,
     TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
     TResult Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -54,6 +57,7 @@ mixin _$SignInEvent {
     required TResult Function(_ChangeEmail value) changeEmail,
     required TResult Function(_ChangePassword value) changePassword,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
     required TResult Function(_SignInWithEmailAndPassword value)
         signinWithEmailAndPassword,
   }) =>
@@ -64,6 +68,7 @@ mixin _$SignInEvent {
     TResult? Function(_ChangeEmail value)? changeEmail,
     TResult? Function(_ChangePassword value)? changePassword,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
     TResult? Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
   }) =>
@@ -74,6 +79,7 @@ mixin _$SignInEvent {
     TResult Function(_ChangeEmail value)? changeEmail,
     TResult Function(_ChangePassword value)? changePassword,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
     TResult Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -141,6 +147,7 @@ class _$_ResetState implements _ResetState {
     required TResult Function(String email) changeEmail,
     required TResult Function(String password) changePassword,
     required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
     required TResult Function(
             BuildContext context, String email, String password)
         signinWithEmailAndPassword,
@@ -155,6 +162,7 @@ class _$_ResetState implements _ResetState {
     TResult? Function(String email)? changeEmail,
     TResult? Function(String password)? changePassword,
     TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
     TResult? Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
   }) {
@@ -168,6 +176,7 @@ class _$_ResetState implements _ResetState {
     TResult Function(String email)? changeEmail,
     TResult Function(String password)? changePassword,
     TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
     TResult Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -185,6 +194,7 @@ class _$_ResetState implements _ResetState {
     required TResult Function(_ChangeEmail value) changeEmail,
     required TResult Function(_ChangePassword value) changePassword,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
     required TResult Function(_SignInWithEmailAndPassword value)
         signinWithEmailAndPassword,
   }) {
@@ -198,6 +208,7 @@ class _$_ResetState implements _ResetState {
     TResult? Function(_ChangeEmail value)? changeEmail,
     TResult? Function(_ChangePassword value)? changePassword,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
     TResult? Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
   }) {
@@ -211,6 +222,7 @@ class _$_ResetState implements _ResetState {
     TResult Function(_ChangeEmail value)? changeEmail,
     TResult Function(_ChangePassword value)? changePassword,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
     TResult Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -294,6 +306,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     required TResult Function(String email) changeEmail,
     required TResult Function(String password) changePassword,
     required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
     required TResult Function(
             BuildContext context, String email, String password)
         signinWithEmailAndPassword,
@@ -308,6 +321,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult? Function(String email)? changeEmail,
     TResult? Function(String password)? changePassword,
     TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
     TResult? Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
   }) {
@@ -321,6 +335,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult Function(String email)? changeEmail,
     TResult Function(String password)? changePassword,
     TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
     TResult Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -338,6 +353,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     required TResult Function(_ChangeEmail value) changeEmail,
     required TResult Function(_ChangePassword value) changePassword,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
     required TResult Function(_SignInWithEmailAndPassword value)
         signinWithEmailAndPassword,
   }) {
@@ -351,6 +367,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult? Function(_ChangeEmail value)? changeEmail,
     TResult? Function(_ChangePassword value)? changePassword,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
     TResult? Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
   }) {
@@ -364,6 +381,7 @@ class _$_ChangeEmail implements _ChangeEmail {
     TResult Function(_ChangeEmail value)? changeEmail,
     TResult Function(_ChangePassword value)? changePassword,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
     TResult Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -453,6 +471,7 @@ class _$_ChangePassword implements _ChangePassword {
     required TResult Function(String email) changeEmail,
     required TResult Function(String password) changePassword,
     required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
     required TResult Function(
             BuildContext context, String email, String password)
         signinWithEmailAndPassword,
@@ -467,6 +486,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult? Function(String email)? changeEmail,
     TResult? Function(String password)? changePassword,
     TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
     TResult? Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
   }) {
@@ -480,6 +500,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult Function(String email)? changeEmail,
     TResult Function(String password)? changePassword,
     TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
     TResult Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -497,6 +518,7 @@ class _$_ChangePassword implements _ChangePassword {
     required TResult Function(_ChangeEmail value) changeEmail,
     required TResult Function(_ChangePassword value) changePassword,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
     required TResult Function(_SignInWithEmailAndPassword value)
         signinWithEmailAndPassword,
   }) {
@@ -510,6 +532,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult? Function(_ChangeEmail value)? changeEmail,
     TResult? Function(_ChangePassword value)? changePassword,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
     TResult? Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
   }) {
@@ -523,6 +546,7 @@ class _$_ChangePassword implements _ChangePassword {
     TResult Function(_ChangeEmail value)? changeEmail,
     TResult Function(_ChangePassword value)? changePassword,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
     TResult Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -586,6 +610,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     required TResult Function(String email) changeEmail,
     required TResult Function(String password) changePassword,
     required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
     required TResult Function(
             BuildContext context, String email, String password)
         signinWithEmailAndPassword,
@@ -600,6 +625,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     TResult? Function(String email)? changeEmail,
     TResult? Function(String password)? changePassword,
     TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
     TResult? Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
   }) {
@@ -613,6 +639,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     TResult Function(String email)? changeEmail,
     TResult Function(String password)? changePassword,
     TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
     TResult Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -630,6 +657,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     required TResult Function(_ChangeEmail value) changeEmail,
     required TResult Function(_ChangePassword value) changePassword,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
     required TResult Function(_SignInWithEmailAndPassword value)
         signinWithEmailAndPassword,
   }) {
@@ -643,6 +671,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     TResult? Function(_ChangeEmail value)? changeEmail,
     TResult? Function(_ChangePassword value)? changePassword,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
     TResult? Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
   }) {
@@ -656,6 +685,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     TResult Function(_ChangeEmail value)? changeEmail,
     TResult Function(_ChangePassword value)? changePassword,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
     TResult Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -669,6 +699,139 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
 
 abstract class _SignInWithGoogle implements SignInEvent {
   const factory _SignInWithGoogle() = _$_SignInWithGoogle;
+}
+
+/// @nodoc
+abstract class _$$_SignInWithAppleCopyWith<$Res> {
+  factory _$$_SignInWithAppleCopyWith(
+          _$_SignInWithApple value, $Res Function(_$_SignInWithApple) then) =
+      __$$_SignInWithAppleCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SignInWithAppleCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$_SignInWithApple>
+    implements _$$_SignInWithAppleCopyWith<$Res> {
+  __$$_SignInWithAppleCopyWithImpl(
+      _$_SignInWithApple _value, $Res Function(_$_SignInWithApple) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SignInWithApple implements _SignInWithApple {
+  const _$_SignInWithApple();
+
+  @override
+  String toString() {
+    return 'SignInEvent.signInWithApple()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SignInWithApple);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() resetState,
+    required TResult Function(String email) changeEmail,
+    required TResult Function(String password) changePassword,
+    required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
+    required TResult Function(
+            BuildContext context, String email, String password)
+        signinWithEmailAndPassword,
+  }) {
+    return signInWithApple();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? resetState,
+    TResult? Function(String email)? changeEmail,
+    TResult? Function(String password)? changePassword,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
+    TResult? Function(BuildContext context, String email, String password)?
+        signinWithEmailAndPassword,
+  }) {
+    return signInWithApple?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? resetState,
+    TResult Function(String email)? changeEmail,
+    TResult Function(String password)? changePassword,
+    TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
+    TResult Function(BuildContext context, String email, String password)?
+        signinWithEmailAndPassword,
+    required TResult orElse(),
+  }) {
+    if (signInWithApple != null) {
+      return signInWithApple();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_ChangeEmail value) changeEmail,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
+    required TResult Function(_SignInWithEmailAndPassword value)
+        signinWithEmailAndPassword,
+  }) {
+    return signInWithApple(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_ChangeEmail value)? changeEmail,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
+    TResult? Function(_SignInWithEmailAndPassword value)?
+        signinWithEmailAndPassword,
+  }) {
+    return signInWithApple?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_ChangeEmail value)? changeEmail,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
+    TResult Function(_SignInWithEmailAndPassword value)?
+        signinWithEmailAndPassword,
+    required TResult orElse(),
+  }) {
+    if (signInWithApple != null) {
+      return signInWithApple(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignInWithApple implements SignInEvent {
+  const factory _SignInWithApple() = _$_SignInWithApple;
 }
 
 /// @nodoc
@@ -760,6 +923,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     required TResult Function(String email) changeEmail,
     required TResult Function(String password) changePassword,
     required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
     required TResult Function(
             BuildContext context, String email, String password)
         signinWithEmailAndPassword,
@@ -774,6 +938,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     TResult? Function(String email)? changeEmail,
     TResult? Function(String password)? changePassword,
     TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
     TResult? Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
   }) {
@@ -787,6 +952,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     TResult Function(String email)? changeEmail,
     TResult Function(String password)? changePassword,
     TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
     TResult Function(BuildContext context, String email, String password)?
         signinWithEmailAndPassword,
     required TResult orElse(),
@@ -804,6 +970,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     required TResult Function(_ChangeEmail value) changeEmail,
     required TResult Function(_ChangePassword value) changePassword,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
     required TResult Function(_SignInWithEmailAndPassword value)
         signinWithEmailAndPassword,
   }) {
@@ -817,6 +984,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     TResult? Function(_ChangeEmail value)? changeEmail,
     TResult? Function(_ChangePassword value)? changePassword,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
     TResult? Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
   }) {
@@ -830,6 +998,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     TResult Function(_ChangeEmail value)? changeEmail,
     TResult Function(_ChangePassword value)? changePassword,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
     TResult Function(_SignInWithEmailAndPassword value)?
         signinWithEmailAndPassword,
     required TResult orElse(),

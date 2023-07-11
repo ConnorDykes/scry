@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
@@ -61,8 +62,16 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    //! Listen to lifecycle methods here set app badger
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state == AppLifecycleState.resumed) {
+      final shared = await SharedPreferences.getInstance();
+      final userID = shared.getString('userID');
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userID)
+          .update({'notifications': 0});
+      FlutterAppBadger.removeBadge();
+    }
   }
 
   @override

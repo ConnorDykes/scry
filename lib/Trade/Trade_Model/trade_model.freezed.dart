@@ -27,6 +27,8 @@ mixin _$TradePostModel {
   List<CardModel> get cards => throw _privateConstructorUsedError;
   dynamic get lookingFor => throw _privateConstructorUsedError;
   dynamic get willingToTrade => throw _privateConstructorUsedError;
+  int get createDateInMillisecondsSinceEpoch =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +49,8 @@ abstract class $TradePostModelCopyWith<$Res> {
       String userName,
       List<CardModel> cards,
       dynamic lookingFor,
-      dynamic willingToTrade});
+      dynamic willingToTrade,
+      int createDateInMillisecondsSinceEpoch});
 }
 
 /// @nodoc
@@ -70,6 +73,7 @@ class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
     Object? cards = null,
     Object? lookingFor = freezed,
     Object? willingToTrade = freezed,
+    Object? createDateInMillisecondsSinceEpoch = null,
   }) {
     return _then(_value.copyWith(
       details: null == details
@@ -100,6 +104,11 @@ class _$TradePostModelCopyWithImpl<$Res, $Val extends TradePostModel>
           ? _value.willingToTrade
           : willingToTrade // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      createDateInMillisecondsSinceEpoch: null ==
+              createDateInMillisecondsSinceEpoch
+          ? _value.createDateInMillisecondsSinceEpoch
+          : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -119,7 +128,8 @@ abstract class _$$_TradeModelCopyWith<$Res>
       String userName,
       List<CardModel> cards,
       dynamic lookingFor,
-      dynamic willingToTrade});
+      dynamic willingToTrade,
+      int createDateInMillisecondsSinceEpoch});
 }
 
 /// @nodoc
@@ -140,6 +150,7 @@ class __$$_TradeModelCopyWithImpl<$Res>
     Object? cards = null,
     Object? lookingFor = freezed,
     Object? willingToTrade = freezed,
+    Object? createDateInMillisecondsSinceEpoch = null,
   }) {
     return _then(_$_TradeModel(
       details: null == details
@@ -165,6 +176,11 @@ class __$$_TradeModelCopyWithImpl<$Res>
       lookingFor: freezed == lookingFor ? _value.lookingFor! : lookingFor,
       willingToTrade:
           freezed == willingToTrade ? _value.willingToTrade! : willingToTrade,
+      createDateInMillisecondsSinceEpoch: null ==
+              createDateInMillisecondsSinceEpoch
+          ? _value.createDateInMillisecondsSinceEpoch
+          : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -179,7 +195,8 @@ class _$_TradeModel extends _TradeModel {
       this.userName = '',
       final List<CardModel> cards = const [],
       this.lookingFor = true,
-      this.willingToTrade = false})
+      this.willingToTrade = false,
+      this.createDateInMillisecondsSinceEpoch = 0})
       : _cards = cards,
         super._();
 
@@ -213,10 +230,13 @@ class _$_TradeModel extends _TradeModel {
   @override
   @JsonKey()
   final dynamic willingToTrade;
+  @override
+  @JsonKey()
+  final int createDateInMillisecondsSinceEpoch;
 
   @override
   String toString() {
-    return 'TradePostModel(details: $details, id: $id, userID: $userID, userName: $userName, cards: $cards, lookingFor: $lookingFor, willingToTrade: $willingToTrade)';
+    return 'TradePostModel(details: $details, id: $id, userID: $userID, userName: $userName, cards: $cards, lookingFor: $lookingFor, willingToTrade: $willingToTrade, createDateInMillisecondsSinceEpoch: $createDateInMillisecondsSinceEpoch)';
   }
 
   @override
@@ -233,7 +253,11 @@ class _$_TradeModel extends _TradeModel {
             const DeepCollectionEquality()
                 .equals(other.lookingFor, lookingFor) &&
             const DeepCollectionEquality()
-                .equals(other.willingToTrade, willingToTrade));
+                .equals(other.willingToTrade, willingToTrade) &&
+            (identical(other.createDateInMillisecondsSinceEpoch,
+                    createDateInMillisecondsSinceEpoch) ||
+                other.createDateInMillisecondsSinceEpoch ==
+                    createDateInMillisecondsSinceEpoch));
   }
 
   @JsonKey(ignore: true)
@@ -246,7 +270,8 @@ class _$_TradeModel extends _TradeModel {
       userName,
       const DeepCollectionEquality().hash(_cards),
       const DeepCollectionEquality().hash(lookingFor),
-      const DeepCollectionEquality().hash(willingToTrade));
+      const DeepCollectionEquality().hash(willingToTrade),
+      createDateInMillisecondsSinceEpoch);
 
   @JsonKey(ignore: true)
   @override
@@ -270,7 +295,8 @@ abstract class _TradeModel extends TradePostModel {
       final String userName,
       final List<CardModel> cards,
       final dynamic lookingFor,
-      final dynamic willingToTrade}) = _$_TradeModel;
+      final dynamic willingToTrade,
+      final int createDateInMillisecondsSinceEpoch}) = _$_TradeModel;
   const _TradeModel._() : super._();
 
   factory _TradeModel.fromJson(Map<String, dynamic> json) =
@@ -290,6 +316,8 @@ abstract class _TradeModel extends TradePostModel {
   dynamic get lookingFor;
   @override
   dynamic get willingToTrade;
+  @override
+  int get createDateInMillisecondsSinceEpoch;
   @override
   @JsonKey(ignore: true)
   _$$_TradeModelCopyWith<_$_TradeModel> get copyWith =>

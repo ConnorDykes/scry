@@ -20,6 +20,7 @@ class UserModel with _$UserModel {
     @Default('') String city,
     @Default('') String state,
     @Default('') String areaCode,
+    @Default('') String fcmToken,
   }) = _UserModel;
 
   const UserModel._();

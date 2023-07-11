@@ -18,6 +18,8 @@ _$_TradeModel _$$_TradeModelFromJson(Map<String, dynamic> json) =>
           const [],
       lookingFor: json['lookingFor'] ?? true,
       willingToTrade: json['willingToTrade'] ?? false,
+      createDateInMillisecondsSinceEpoch:
+          json['createDateInMillisecondsSinceEpoch'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_TradeModelToJson(_$_TradeModel instance) =>
@@ -29,4 +31,6 @@ Map<String, dynamic> _$$_TradeModelToJson(_$_TradeModel instance) =>
       'cards': instance.cards,
       'lookingFor': instance.lookingFor,
       'willingToTrade': instance.willingToTrade,
+      'createDateInMillisecondsSinceEpoch':
+          instance.createDateInMillisecondsSinceEpoch,
     };

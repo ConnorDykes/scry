@@ -106,5 +106,53 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         _ResetState;
       });
     });
+
+    on<_SignInWithApple>((event, emit) async {
+      emit(state.copyWith(buttonState: ButtonState.loading));
+      try {
+        UserCredential userCredential = await _authRepo.signUpWithAppleID();
+
+        DocumentSnapshot userDoc = await _firebaseFirestore
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .get();
+
+        if (userDoc.exists) {
+          final SharedPreferences _sharedPreferences =
+              await SharedPreferences.getInstance();
+          _sharedPreferences.setString('userID', userCredential.user!.uid);
+
+          UserModel userModel =
+              UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
+
+          emit(state.copyWith(
+              user: userModel, error: '', buttonState: ButtonState.success));
+        } else {
+          final UserModel userModel = UserModel(
+              id: userCredential.user!.uid,
+              displayName: userCredential.user!.displayName!,
+              email: userCredential.user!.email!,
+              profilePicture: userCredential.user!.photoURL!);
+
+          await _firebaseFirestore
+              .collection('users')
+              .doc(userCredential.user!.uid)
+              .set(userModel.toJson());
+
+          final SharedPreferences _sharedPreferences =
+              await SharedPreferences.getInstance();
+          _sharedPreferences.setString('userID', userCredential.user!.uid);
+
+          emit(state.copyWith(
+              user: userModel, error: '', buttonState: ButtonState.success));
+        }
+      } catch (e) {
+        emit(
+            state.copyWith(buttonState: ButtonState.fail, error: e.toString()));
+      }
+      Future.delayed(const Duration(seconds: 1), () {
+        _ResetState;
+      });
+    });
   }
 }

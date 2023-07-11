@@ -256,7 +256,8 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
           'offeringUserName': name,
           'recipientUserID': trade.userID,
           'recipientName': trade.userName,
-          'availableCards': [...trade.cards.map((card) => card.toJson())]
+          'availableCards': [...trade.cards.map((card) => card.toJson())],
+          'createdAt': DateTime.now().millisecondsSinceEpoch
         };
 
         try {
@@ -293,6 +294,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
         'userName': name,
         'willingToTrade': state.willingToTrade,
         'lookingFor': state.lookingFor,
+        'createdAt': DateTime.now().millisecondsSinceEpoch
       };
 
       try {

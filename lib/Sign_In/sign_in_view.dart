@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -158,31 +160,32 @@ class SignInView extends StatelessWidget {
                   child: Text(state.error),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      side: BorderSide(
-                    color: theme.colorScheme.primary,
-                  )),
-                  onPressed: () {
-                    // Apple sign in
-                  },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const FaIcon(FontAwesomeIcons.apple),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          'Sign In with Apple',
-                          style: theme.textTheme.titleMedium,
+              if (Platform.isIOS)
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        side: BorderSide(
+                      color: theme.colorScheme.primary,
+                    )),
+                    onPressed: () {
+                      signInBloc.add(SignInEvent.signInWithApple());
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const FaIcon(FontAwesomeIcons.apple),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            'Sign In with Apple',
+                            style: theme.textTheme.titleMedium,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: ElevatedButton(

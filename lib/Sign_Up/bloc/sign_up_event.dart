@@ -22,4 +22,7 @@ class SignUpEvent with _$SignUpEvent {
   const factory SignUpEvent.signUpWithGoogle({
     required BuildContext context,
   }) = _SignUpWithGoogle;
+  const factory SignUpEvent.signUpWithApple({
+    required BuildContext context,
+  }) = _SignUpWithApple;
 }

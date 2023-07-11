@@ -56,6 +56,8 @@ dependencies:
   cached_network_image: ^3.2.3
   firebase_messaging: ^14.6.4
   cloud_functions: ^4.3.3
+  flutter_app_badger: ^1.5.0
+  sign_in_with_apple: ^5.0.0
   
   
 

@@ -31,6 +31,7 @@ mixin _$UserModel {
   String get city => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
   String get areaCode => throw _privateConstructorUsedError;
+  String get fcmToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +55,8 @@ abstract class $UserModelCopyWith<$Res> {
       String profilePicture,
       String city,
       String state,
-      String areaCode});
+      String areaCode,
+      String fcmToken});
 }
 
 /// @nodoc
@@ -81,6 +83,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? city = null,
     Object? state = null,
     Object? areaCode = null,
+    Object? fcmToken = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -127,6 +130,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.areaCode
           : areaCode // ignore: cast_nullable_to_non_nullable
               as String,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -149,7 +156,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String profilePicture,
       String city,
       String state,
-      String areaCode});
+      String areaCode,
+      String fcmToken});
 }
 
 /// @nodoc
@@ -174,6 +182,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? city = null,
     Object? state = null,
     Object? areaCode = null,
+    Object? fcmToken = null,
   }) {
     return _then(_$_UserModel(
       id: null == id
@@ -220,6 +229,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.areaCode
           : areaCode // ignore: cast_nullable_to_non_nullable
               as String,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -238,7 +251,8 @@ class _$_UserModel extends _UserModel {
       this.profilePicture = '',
       this.city = '',
       this.state = '',
-      this.areaCode = ''})
+      this.areaCode = '',
+      this.fcmToken = ''})
       : _games = games,
         super._();
 
@@ -284,10 +298,13 @@ class _$_UserModel extends _UserModel {
   @override
   @JsonKey()
   final String areaCode;
+  @override
+  @JsonKey()
+  final String fcmToken;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, password: $password, displayName: $displayName, firstName: $firstName, lastName: $lastName, games: $games, profilePicture: $profilePicture, city: $city, state: $state, areaCode: $areaCode)';
+    return 'UserModel(id: $id, email: $email, password: $password, displayName: $displayName, firstName: $firstName, lastName: $lastName, games: $games, profilePicture: $profilePicture, city: $city, state: $state, areaCode: $areaCode, fcmToken: $fcmToken)';
   }
 
   @override
@@ -311,7 +328,9 @@ class _$_UserModel extends _UserModel {
             (identical(other.city, city) || other.city == city) &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.areaCode, areaCode) ||
-                other.areaCode == areaCode));
+                other.areaCode == areaCode) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
   }
 
   @JsonKey(ignore: true)
@@ -328,7 +347,8 @@ class _$_UserModel extends _UserModel {
       profilePicture,
       city,
       state,
-      areaCode);
+      areaCode,
+      fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -356,7 +376,8 @@ abstract class _UserModel extends UserModel {
       final String profilePicture,
       final String city,
       final String state,
-      final String areaCode}) = _$_UserModel;
+      final String areaCode,
+      final String fcmToken}) = _$_UserModel;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -384,6 +405,8 @@ abstract class _UserModel extends UserModel {
   String get state;
   @override
   String get areaCode;
+  @override
+  String get fcmToken;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

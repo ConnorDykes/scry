@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:scry/Authentication/user_model.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:http/http.dart' as http;
 
 import '../Services/push_notification_service.dart';
 
@@ -50,6 +55,18 @@ class AuthRepo {
     } on FirebaseAuthException catch (e) {
       debugPrint(e.code);
       throw signUpWithEmailAndPasswordFailureFromCode(e.code);
+    }
+  }
+
+  Future<UserCredential> signUpWithAppleID() async {
+    try {
+      final appleProvider = AppleAuthProvider();
+      final userCredential =
+          await _firebaseAuth.signInWithProvider(appleProvider);
+
+      return userCredential;
+    } catch (e) {
+      throw (e.toString());
     }
   }
 

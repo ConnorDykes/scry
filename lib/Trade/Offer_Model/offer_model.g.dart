@@ -22,6 +22,8 @@ _$_OfferModel _$$_OfferModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => CardModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      createDateInMillisecondsSinceEpoch:
+          json['createDateInMillisecondsSinceEpoch'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_OfferModelToJson(_$_OfferModel instance) =>
@@ -34,4 +36,6 @@ Map<String, dynamic> _$$_OfferModelToJson(_$_OfferModel instance) =>
       'recipientName': instance.recipientName,
       'offeredCards': instance.offeredCards,
       'availableCards': instance.availableCards,
+      'createDateInMillisecondsSinceEpoch':
+          instance.createDateInMillisecondsSinceEpoch,
     };

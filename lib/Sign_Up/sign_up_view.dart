@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -415,37 +417,39 @@ class SignUpView extends StatelessWidget {
                   if (state.termsAccepted == false)
                     Text(
                       textAlign: TextAlign.center,
-                      'Accept Terms to sign up with Apple or Google',
+                      'Accept Terms to sign up',
                       style: TextStyle(color: Colors.red),
                     ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          side: BorderSide(
-                        color: theme.colorScheme.primary,
-                      )),
-                      onPressed: state.termsAccepted
-                          ? () {
-                              // Apple sign in
-                            }
-                          : null,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const FaIcon(FontAwesomeIcons.apple),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              'Sign Up with Apple',
-                              style: theme.textTheme.titleMedium,
+                  if (Platform.isIOS)
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            side: BorderSide(
+                          color: theme.colorScheme.primary,
+                        )),
+                        onPressed: state.termsAccepted
+                            ? () {
+                                signUpBloc.add(SignUpEvent.signUpWithApple(
+                                    context: context));
+                              }
+                            : null,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const FaIcon(FontAwesomeIcons.apple),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                'Sign Up with Apple',
+                                style: theme.textTheme.titleMedium,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: ElevatedButton(

@@ -15,6 +15,7 @@ class OfferModel with _$OfferModel {
     @Default('') String recipientName,
     @Default([]) List<CardModel> offeredCards,
     @Default([]) List<CardModel> availableCards,
+    @Default(0) int createDateInMillisecondsSinceEpoch,
   }) = _OfferModel;
 
   const OfferModel._();

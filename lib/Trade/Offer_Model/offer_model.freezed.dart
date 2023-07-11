@@ -28,6 +28,8 @@ mixin _$OfferModel {
   String get recipientName => throw _privateConstructorUsedError;
   List<CardModel> get offeredCards => throw _privateConstructorUsedError;
   List<CardModel> get availableCards => throw _privateConstructorUsedError;
+  int get createDateInMillisecondsSinceEpoch =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,8 @@ abstract class $OfferModelCopyWith<$Res> {
       String recipientUserID,
       String recipientName,
       List<CardModel> offeredCards,
-      List<CardModel> availableCards});
+      List<CardModel> availableCards,
+      int createDateInMillisecondsSinceEpoch});
 }
 
 /// @nodoc
@@ -73,6 +76,7 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
     Object? recipientName = null,
     Object? offeredCards = null,
     Object? availableCards = null,
+    Object? createDateInMillisecondsSinceEpoch = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -107,6 +111,11 @@ class _$OfferModelCopyWithImpl<$Res, $Val extends OfferModel>
           ? _value.availableCards
           : availableCards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
+      createDateInMillisecondsSinceEpoch: null ==
+              createDateInMillisecondsSinceEpoch
+          ? _value.createDateInMillisecondsSinceEpoch
+          : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -127,7 +136,8 @@ abstract class _$$_OfferModelCopyWith<$Res>
       String recipientUserID,
       String recipientName,
       List<CardModel> offeredCards,
-      List<CardModel> availableCards});
+      List<CardModel> availableCards,
+      int createDateInMillisecondsSinceEpoch});
 }
 
 /// @nodoc
@@ -149,6 +159,7 @@ class __$$_OfferModelCopyWithImpl<$Res>
     Object? recipientName = null,
     Object? offeredCards = null,
     Object? availableCards = null,
+    Object? createDateInMillisecondsSinceEpoch = null,
   }) {
     return _then(_$_OfferModel(
       id: null == id
@@ -183,6 +194,11 @@ class __$$_OfferModelCopyWithImpl<$Res>
           ? _value._availableCards
           : availableCards // ignore: cast_nullable_to_non_nullable
               as List<CardModel>,
+      createDateInMillisecondsSinceEpoch: null ==
+              createDateInMillisecondsSinceEpoch
+          ? _value.createDateInMillisecondsSinceEpoch
+          : createDateInMillisecondsSinceEpoch // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -198,7 +214,8 @@ class _$_OfferModel extends _OfferModel {
       this.recipientUserID = '',
       this.recipientName = '',
       final List<CardModel> offeredCards = const [],
-      final List<CardModel> availableCards = const []})
+      final List<CardModel> availableCards = const [],
+      this.createDateInMillisecondsSinceEpoch = 0})
       : _offeredCards = offeredCards,
         _availableCards = availableCards,
         super._();
@@ -243,8 +260,12 @@ class _$_OfferModel extends _OfferModel {
   }
 
   @override
+  @JsonKey()
+  final int createDateInMillisecondsSinceEpoch;
+
+  @override
   String toString() {
-    return 'OfferModel(id: $id, details: $details, offeringUserID: $offeringUserID, offeringUserName: $offeringUserName, recipientUserID: $recipientUserID, recipientName: $recipientName, offeredCards: $offeredCards, availableCards: $availableCards)';
+    return 'OfferModel(id: $id, details: $details, offeringUserID: $offeringUserID, offeringUserName: $offeringUserName, recipientUserID: $recipientUserID, recipientName: $recipientName, offeredCards: $offeredCards, availableCards: $availableCards, createDateInMillisecondsSinceEpoch: $createDateInMillisecondsSinceEpoch)';
   }
 
   @override
@@ -265,7 +286,11 @@ class _$_OfferModel extends _OfferModel {
             const DeepCollectionEquality()
                 .equals(other._offeredCards, _offeredCards) &&
             const DeepCollectionEquality()
-                .equals(other._availableCards, _availableCards));
+                .equals(other._availableCards, _availableCards) &&
+            (identical(other.createDateInMillisecondsSinceEpoch,
+                    createDateInMillisecondsSinceEpoch) ||
+                other.createDateInMillisecondsSinceEpoch ==
+                    createDateInMillisecondsSinceEpoch));
   }
 
   @JsonKey(ignore: true)
@@ -279,7 +304,8 @@ class _$_OfferModel extends _OfferModel {
       recipientUserID,
       recipientName,
       const DeepCollectionEquality().hash(_offeredCards),
-      const DeepCollectionEquality().hash(_availableCards));
+      const DeepCollectionEquality().hash(_availableCards),
+      createDateInMillisecondsSinceEpoch);
 
   @JsonKey(ignore: true)
   @override
@@ -304,7 +330,8 @@ abstract class _OfferModel extends OfferModel {
       final String recipientUserID,
       final String recipientName,
       final List<CardModel> offeredCards,
-      final List<CardModel> availableCards}) = _$_OfferModel;
+      final List<CardModel> availableCards,
+      final int createDateInMillisecondsSinceEpoch}) = _$_OfferModel;
   const _OfferModel._() : super._();
 
   factory _OfferModel.fromJson(Map<String, dynamic> json) =
@@ -326,6 +353,8 @@ abstract class _OfferModel extends OfferModel {
   List<CardModel> get offeredCards;
   @override
   List<CardModel> get availableCards;
+  @override
+  int get createDateInMillisecondsSinceEpoch;
   @override
   @JsonKey(ignore: true)
   _$$_OfferModelCopyWith<_$_OfferModel> get copyWith =>

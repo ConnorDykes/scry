@@ -7,6 +7,7 @@ class SignInEvent with _$SignInEvent {
   const factory SignInEvent.changePassword({required String password}) =
       _ChangePassword;
   const factory SignInEvent.signInWithGoogle() = _SignInWithGoogle;
+  const factory SignInEvent.signInWithApple() = _SignInWithApple;
   const factory SignInEvent.signinWithEmailAndPassword(
       {required BuildContext context,
       required String email,
