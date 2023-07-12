@@ -101,6 +101,7 @@ class _TradeViewState extends State<TradeView> {
                   ? StreamBuilder<QuerySnapshot>(
                       stream: FirebaseFirestore.instance
                           .collection('trades')
+                          .orderBy('createdAt', descending: true)
                           .snapshots(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==

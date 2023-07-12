@@ -79,11 +79,13 @@ class CreateButton extends StatelessWidget {
                   ),
                   color: Colors.green.shade400)
             },
-            onPressed: () {
-              context
-                  .read<CreateGameBloc>()
-                  .add(CreateGameEvent.createGame(context: context));
-            },
+            onPressed: state.dateAndTime == null
+                ? null
+                : () {
+                    context
+                        .read<CreateGameBloc>()
+                        .add(CreateGameEvent.createGame(context: context));
+                  },
             state: state.buttonState);
       },
     );
