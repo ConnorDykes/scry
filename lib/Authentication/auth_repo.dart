@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -7,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:http/http.dart' as http;
 
 import '../Services/push_notification_service.dart';
 
@@ -60,11 +57,46 @@ class AuthRepo {
 
   Future<UserCredential> signUpWithAppleID() async {
     try {
-      final appleProvider = AppleAuthProvider();
-      final userCredential =
-          await _firebaseAuth.signInWithProvider(appleProvider);
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
 
+// Create an `OAuthCredential` from the credential returned by Apple.
+      final oauthCredential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+      );
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+
+      if (userCredential.user?.displayName == null ||
+          (userCredential.user?.displayName != null &&
+              userCredential.user!.displayName!.isEmpty)) {
+        final fixDisplayNameFromApple = [
+          appleCredential.givenName ?? '',
+          appleCredential.familyName ?? '',
+        ].join(' ').trim();
+        await userCredential.user?.updateDisplayName(fixDisplayNameFromApple);
+      }
+      if (userCredential.user?.email == null ||
+          (userCredential.user?.email != null &&
+              userCredential.user!.email!.isEmpty)) {
+        await userCredential.user?.updateEmail(appleCredential.email ?? '');
+      }
+      await userCredential.user?.reload();
       return userCredential;
+// Now, FirebaseAuth.instance.currentUser contains the user with all the name and email updated.
+
+      // final appleProvider = AppleAuthProvider();
+      // appleProvider.addScope('email');
+      // appleProvider.addScope('fullName');
+
+      // final userCredential =
+      //     await _firebaseAuth.signInWithProvider(appleProvider);
+
+      // return userCredential;
     } catch (e) {
       throw (e.toString());
     }
@@ -146,11 +178,12 @@ class AuthRepo {
     await _firebaseAuth.signOut();
   }
 
-  Future<void> createUser({required UserModel user}) async {
-    await _firebaseFirestore
-        .collection('users')
-        .doc(user.id)
-        .set(user.toJson());
+  Future<String> createUser({required UserModel user}) async {
+    final userDoc = _firebaseFirestore.collection('users').doc(user.id);
+
+    await userDoc.set(user.toJson());
+
+    return userDoc.id;
   }
 
   String logInWithEmailAndPasswordFailureFromCode(String code) {

@@ -66,11 +66,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     if (state == AppLifecycleState.resumed) {
       final shared = await SharedPreferences.getInstance();
       final userID = shared.getString('userID');
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userID)
-          .update({'notifications': 0});
-      FlutterAppBadger.removeBadge();
+      if (userID != '' && userID != null) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userID)
+            .update({'notifications': 0});
+        FlutterAppBadger.removeBadge();
+      }
     }
   }
 

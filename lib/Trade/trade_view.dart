@@ -13,6 +13,7 @@ import 'package:scry/Trade/Create_Trade/create_trade_view.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
 import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/user_avatar.dart';
+import 'package:scry/Widgets/user_tile.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class TradeView extends StatefulWidget {
@@ -188,138 +189,125 @@ class TradeCard extends StatelessWidget {
                   color: theme.cardColor,
                   borderRadius: BorderRadius.circular(14)),
               child: Column(children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 8.0, right: 8, top: 8),
-                      child: UserAvatar(
-                        userID: trade.userID,
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            trade.userName,
-                            style: theme.textTheme.titleMedium!
-                                .copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            'City, State',
-                            style: theme.textTheme.titleSmall,
-                          ),
-                        ],
-                      ),
-                    ),
-                    PopupMenuButton(
-                      // Callback that sets the selected popup menu item.
-                      surfaceTintColor: Colors.red,
-                      itemBuilder: (BuildContext context) => [
-                        PopupMenuItem(
-                          child: trade.userID == appbloc.state.user.id
-                              ? TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    showDialog(
-                                        context: context,
-                                        builder: (_) => AlertDialog(
-                                              surfaceTintColor:
-                                                  theme.colorScheme.error,
-                                              title: const Text(
-                                                  'Delete This Trade?'),
-                                              content: const Text(
-                                                  'This cannot be undone'),
-                                              actions: [
-                                                ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    elevation: 1,
-                                                    side: BorderSide(
-                                                        color:
-                                                            theme.dividerColor),
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text("Cancel",
-                                                      style: TextStyle(
-                                                          color: Colors.grey)),
-                                                ),
-                                                ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    surfaceTintColor:
-                                                        theme.colorScheme.error,
-                                                    elevation: 1,
-                                                    side: BorderSide(
-                                                        color: theme
-                                                            .colorScheme.error),
-                                                  ),
-                                                  onPressed: () {
-                                                    context
-                                                        .read<CreateTradeBloc>()
-                                                        .add(
-                                                            const CreateTradeEvent
+                UserTile(
+                  userID: trade.userID,
+                  userName: trade.userName,
+                  trailing: Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        PopupMenuButton(
+                          // Callback that sets the selected popup menu item.
+                          surfaceTintColor: Colors.red,
+                          itemBuilder: (BuildContext context) => [
+                            PopupMenuItem(
+                              child: trade.userID == appbloc.state.user.id
+                                  ? TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        showDialog(
+                                            context: context,
+                                            builder: (_) => AlertDialog(
+                                                  surfaceTintColor:
+                                                      theme.colorScheme.error,
+                                                  title: const Text(
+                                                      'Delete This Trade?'),
+                                                  content: const Text(
+                                                      'This cannot be undone'),
+                                                  actions: [
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        elevation: 1,
+                                                        side: BorderSide(
+                                                            color: theme
+                                                                .dividerColor),
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: const Text(
+                                                          "Cancel",
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.grey)),
+                                                    ),
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        surfaceTintColor: theme
+                                                            .colorScheme.error,
+                                                        elevation: 1,
+                                                        side: BorderSide(
+                                                            color: theme
+                                                                .colorScheme
+                                                                .error),
+                                                      ),
+                                                      onPressed: () {
+                                                        context
+                                                            .read<
+                                                                CreateTradeBloc>()
+                                                            .add(const CreateTradeEvent
                                                                 .deleteTrade());
-                                                    Navigator.pop(context);
-                                                    ScaffoldMessenger
-                                                            .of(context)
-                                                        .showSnackBar(SnackBar(
-                                                            backgroundColor:
-                                                                theme
-                                                                    .colorScheme
-                                                                    .primary,
-                                                            content: const Text(
-                                                                'Trade deleted')));
-                                                  },
-                                                  child: Text("Delete",
-                                                      style: TextStyle(
-                                                          color: theme
-                                                              .colorScheme
-                                                              .error)),
-                                                ),
-                                              ],
-                                            ));
-                                  },
-                                  child: const Row(
-                                    children: [
-                                      Icon(
-                                        Icons.delete_forever,
-                                        color: Colors.red,
-                                      ),
-                                      Text(
-                                        'Delete',
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                              : TextButton(
-                                  onPressed: () {
-                                    bloc.add(CreateTradeEvent.reportTrade(
-                                        trade: trade, context: context));
-                                  },
-                                  child: const Row(
-                                    children: [
-                                      Icon(
-                                        Icons.report,
-                                        color: Colors.red,
-                                      ),
-                                      Text(
-                                        'Report Trade',
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  )),
-                        )
+                                                        Navigator.pop(context);
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(SnackBar(
+                                                                backgroundColor:
+                                                                    theme
+                                                                        .colorScheme
+                                                                        .primary,
+                                                                content: const Text(
+                                                                    'Trade deleted')));
+                                                      },
+                                                      child: Text("Delete",
+                                                          style: TextStyle(
+                                                              color: theme
+                                                                  .colorScheme
+                                                                  .error)),
+                                                    ),
+                                                  ],
+                                                ));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.delete_forever,
+                                            color: Colors.red,
+                                          ),
+                                          Text(
+                                            'Delete',
+                                            style: TextStyle(
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ],
+                                      ))
+                                  : TextButton(
+                                      onPressed: () {
+                                        bloc.add(CreateTradeEvent.reportTrade(
+                                            trade: trade, context: context));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.report,
+                                            color: Colors.red,
+                                          ),
+                                          Text(
+                                            'Report Trade',
+                                            style: TextStyle(
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                            )
+                          ],
+                        ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
                 if (trade.details != '')
                   Padding(

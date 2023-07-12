@@ -59,11 +59,17 @@ class UserTile extends StatelessWidget {
                           style: theme.textTheme.titleMedium!
                               .copyWith(fontWeight: FontWeight.w600),
                         ),
-                        Text(
-                          '${user.city} ${user.state}',
-                          style: theme.textTheme.titleSmall!
-                              .copyWith(color: theme.disabledColor),
-                        ),
+                        user.city != '' && user.state != ''
+                            ? Text(
+                                '${user.city} ${user.state}',
+                                style: theme.textTheme.titleSmall!
+                                    .copyWith(color: theme.disabledColor),
+                              )
+                            : Text(
+                                'Location Not Given',
+                                style: theme.textTheme.titleSmall!
+                                    .copyWith(color: theme.disabledColor),
+                              ),
                       ],
                     ),
                   ],

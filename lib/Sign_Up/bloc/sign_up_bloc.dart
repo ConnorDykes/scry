@@ -6,6 +6,7 @@ import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Authentication/auth_repo.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Services/push_notification_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';
@@ -90,7 +91,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             displayName: userCredential.user?.displayName ?? '',
             profilePicture: userCredential.user?.photoURL ?? '');
 
-        await authRepo.createUser(user: user);
+        final userID = await authRepo.createUser(user: user);
+        final shared = await SharedPreferences.getInstance();
+        await shared.setString('userID', userID);
 
         emit(state.copyWith(
             buttonState: ButtonState.success, user: user, emailError: ''));
@@ -107,12 +110,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       try {
         UserCredential userCredential = await authRepo.signUpWithAppleID();
 
+        print('Credentials ${userCredential.toString()}');
         //Update Firestore user doc with FCM Token
         final fcmToken = await PushNotificationService().getToken();
+        print('displayName ${userCredential.user?.displayName ?? 'None'}');
+        print('profilePicture ${userCredential.user?.photoURL ?? 'None'}');
 
         UserModel user = UserModel(
             id: userCredential.user!.uid,
-            email: '',
+            email: userCredential.user?.email ?? '',
             password: '',
             firstName: '',
             lastName: '',
@@ -125,6 +131,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         emit(state.copyWith(
             buttonState: ButtonState.success, user: user, emailError: ''));
 
+        Navigator.pop(event.context);
         Navigator.pop(event.context);
       } catch (e) {
         emit(state.copyWith(

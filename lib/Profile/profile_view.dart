@@ -40,10 +40,11 @@ class ProfileView extends StatelessWidget {
                           systemOverlayStyle: SystemUiOverlayStyle.dark,
                           backgroundColor: theme.scaffoldBackgroundColor,
                           title: const Text('Profile'),
-                          leading: IconButton(
-                            icon: Icon(
-                              Icons.edit,
-                              color: theme.colorScheme.primary,
+                          leading: TextButton(
+                            child: Text(
+                              'Edit',
+                              style: theme.textTheme.titleMedium!
+                                  .copyWith(color: theme.colorScheme.primary),
                             ),
                             onPressed: () {
                               bloc.add(
@@ -86,10 +87,11 @@ class ProfileView extends StatelessWidget {
                             Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: CircleAvatar(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 16.0),
+                                  child:
+                                      Stack(clipBehavior: Clip.none, children: [
+                                    CircleAvatar(
                                       radius: 78,
                                       child: CircleAvatar(
                                         radius: 75,
@@ -104,7 +106,18 @@ class ProfileView extends StatelessWidget {
                                             : null,
                                       ),
                                     ),
-                                  ),
+                                    Positioned(
+                                        right: 0,
+                                        child: IconButton.filledTonal(
+                                            color: Colors.white,
+                                            onPressed: () {
+                                              //Dialog to select card or add google sign in
+                                            },
+                                            icon: Icon(
+                                              Icons.edit,
+                                              color: Colors.white,
+                                            ))),
+                                  ]),
                                 ),
                                 Text(
                                   'Display Name',
@@ -118,12 +131,18 @@ class ProfileView extends StatelessWidget {
                                                 color:
                                                     theme.colorScheme.primary),
                                       )
-                                    : Text(
-                                        'Tap Edit Button To Set',
-                                        textAlign: TextAlign.center,
-                                        style: theme.textTheme.titleLarge!
-                                            .copyWith(
-                                                color: theme.colorScheme.error),
+                                    : TextButton(
+                                        onPressed: () {
+                                          bloc.add(ProfileEvent.editProfile(
+                                              context: context));
+                                        },
+                                        child: Text(
+                                          'Edit',
+                                          style: theme.textTheme.titleMedium!
+                                              .copyWith(
+                                                  color: theme
+                                                      .colorScheme.primary),
+                                        ),
                                       ),
                                 Divider(
                                   color: theme.dividerColor,
@@ -158,7 +177,7 @@ class ProfileView extends StatelessWidget {
                                                     textAlign: TextAlign.center,
                                                     maxLines: null,
                                                   )
-                                                : ElevatedButton(
+                                                : TextButton(
                                                     onPressed: () {
                                                       bloc.add(ProfileEvent
                                                           .editProfile(
@@ -167,14 +186,12 @@ class ProfileView extends StatelessWidget {
                                                     },
                                                     child: Text(
                                                       'Edit',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: theme
-                                                          .textTheme.titleLarge!
+                                                      style: theme.textTheme
+                                                          .titleMedium!
                                                           .copyWith(
                                                               color: theme
                                                                   .colorScheme
-                                                                  .error),
+                                                                  .primary),
                                                     ),
                                                   )
                                           ],
@@ -200,7 +217,7 @@ class ProfileView extends StatelessWidget {
                                                     textAlign: TextAlign.center,
                                                     maxLines: null,
                                                   )
-                                                : ElevatedButton(
+                                                : TextButton(
                                                     onPressed: () {
                                                       bloc.add(ProfileEvent
                                                           .editProfile(
@@ -209,14 +226,12 @@ class ProfileView extends StatelessWidget {
                                                     },
                                                     child: Text(
                                                       'Edit',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: theme
-                                                          .textTheme.titleLarge!
+                                                      style: theme.textTheme
+                                                          .titleMedium!
                                                           .copyWith(
                                                               color: theme
                                                                   .colorScheme
-                                                                  .error),
+                                                                  .primary),
                                                     ),
                                                   )
                                           ],
