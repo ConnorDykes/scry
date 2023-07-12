@@ -23,6 +23,19 @@ class ProfileRepo {
     }
   }
 
+  Future<bool> updateProfilePhotoUrl(String url) async {
+    try {
+      await _firebaseFirestore
+          .collection('users')
+          .doc(user.id)
+          .update({'profilePicture': url});
+      return true;
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
+    }
+  }
+
   Future<bool> deleteFirestoreUser() async {
     try {
       await _firebaseFirestore.collection('users').doc(user.id).delete();

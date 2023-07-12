@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Card_Repo/card_repository.dart';
+import 'package:scry/Profile/profile_repo.dart';
 import 'package:scry/Trade/Create_Trade/create_trade_repo.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
 import 'package:scry/Widgets/our_textfield.dart';
@@ -229,7 +230,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
 
       searchController.clear();
       emit(state.copyWith(
-          selectedCards: [...state.selectedCards, event.card],
+          selectedCards: [event.card],
           cards: [],
           cardLoadStatus: LoadStatus.initial,
           queryString: '',
@@ -334,6 +335,25 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
             style: TextStyle(color: Colors.white),
           )));
       Navigator.pop(event.context);
+    });
+
+    on<_UpdateProfilePhotoUrl>((event, emit) async {
+      try {
+        bool upload = await ProfileRepo(user: currentUser)
+            .updateProfilePhotoUrl(event.url);
+        if (upload) {
+          emit(state.copyWith(
+            buttonState: ButtonState.success,
+          ));
+        } else {
+          emit(state.copyWith(
+              buttonState: ButtonState.fail,
+              uploadError: 'Error Uploading url'));
+        }
+      } catch (e) {
+        emit(state.copyWith(
+            buttonState: ButtonState.fail, uploadError: e.toString()));
+      }
     });
   }
 }

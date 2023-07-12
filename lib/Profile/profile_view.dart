@@ -1,10 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Profile/bloc/profile_bloc.dart';
+import 'package:scry/Profile/select_profile_photo.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
+import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
+import 'package:scry/Trade/Trade_Model/trade_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfileView extends StatelessWidget {
@@ -92,12 +96,13 @@ class ProfileView extends StatelessWidget {
                                   child:
                                       Stack(clipBehavior: Clip.none, children: [
                                     CircleAvatar(
-                                      radius: 78,
+                                      radius: 100,
                                       child: CircleAvatar(
-                                        radius: 75,
-                                        backgroundImage: NetworkImage(user
-                                            .profilePicture
-                                            .replaceAll("s96-c", "s192-c")),
+                                        radius: 98,
+                                        backgroundImage:
+                                            CachedNetworkImageProvider(user
+                                                .profilePicture
+                                                .replaceAll("s96-c", "s192-c")),
                                         child: user.profilePicture == ''
                                             ? const Icon(
                                                 Icons.person,
@@ -111,7 +116,8 @@ class ProfileView extends StatelessWidget {
                                         child: IconButton.filledTonal(
                                             color: Colors.white,
                                             onPressed: () {
-                                              //Dialog to select card or add google sign in
+                                              _showProfilePhotoPicker(
+                                                  context: context);
                                             },
                                             icon: Icon(
                                               Icons.edit,
@@ -411,6 +417,25 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showProfilePhotoPicker({required BuildContext context}) {
+  showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => BlocProvider(
+            create: (context) => CreateTradeBloc(
+                trade: TradePostModel.empty,
+                currentUser: context.read<AppBloc>().state.user),
+            child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20))),
+                height: MediaQuery.of(context).size.height * 0.85,
+                child: const SelectProfilePhoto()),
+          ));
 }
 
 void _showLogoutDialog({required BuildContext context}) {

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -452,17 +453,22 @@ class TradeCard extends StatelessWidget {
                                 ? theme.colorScheme.primary
                                 : Colors.blue),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: trade.cards.first.imageUris?.normal != null
-                                ? Image.network(
-                                    trade.cards.first.imageUris?.normal ?? '',
-                                    height: 400,
-                                  )
-                                : const Icon(Icons.photo)),
-                      ),
+                      trade.cards.first.imageUris?.normal == null
+                          ? CircularProgressIndicator()
+                          : Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: trade.cards.first.imageUris?.normal !=
+                                          null
+                                      ? CachedNetworkImage(
+                                          imageUrl: trade.cards.first.imageUris
+                                                  ?.normal ??
+                                              '',
+                                          height: 400,
+                                        )
+                                      : const Icon(Icons.photo)),
+                            ),
                     ],
                   ),
                 ),

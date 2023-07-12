@@ -19,6 +19,8 @@ class CreateTradeEvent with _$CreateTradeEvent {
   const factory CreateTradeEvent.createTrade({required UserModel user}) =
       _CreateTrade;
   const factory CreateTradeEvent.clearSelectedCard() = _ClearSelectedCard;
+  const factory CreateTradeEvent.updateProfilePhotoUrl({required String url}) =
+      _UpdateProfilePhotoUrl;
   const factory CreateTradeEvent.createTradeProposal() = _CreateTradeProposal;
   const factory CreateTradeEvent.clearSearch() = _ClearSearch;
   const factory CreateTradeEvent.resetState() = _ResetState;
