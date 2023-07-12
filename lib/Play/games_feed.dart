@@ -99,8 +99,8 @@ class _GamesFeedState extends State<GamesFeed> {
           }
         },
         child: const Icon(
-          Icons.group_add_rounded,
-          size: 35,
+          Icons.add_rounded,
+          size: 45,
         ),
       ),
       body: SafeArea(
