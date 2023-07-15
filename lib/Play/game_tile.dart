@@ -30,6 +30,7 @@ class GameTile extends StatelessWidget {
                         game: game,
                       ))),
           leading: UserAvatar(
+            radius: 25,
             userID: game.creator?.id ?? '',
           ),
           trailing: Icon(Icons.chevron_right_rounded),

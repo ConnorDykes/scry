@@ -27,7 +27,20 @@ class ProfileView extends StatelessWidget {
             builder: (context, state) {
               final bloc = context.read<ProfileBloc>();
               debugPrint(state.user.toString());
+
               final user = appBloc.user;
+
+              String profilePicture() {
+                if (user.profilePicture == '') {
+                  return 'https://www.vhv.rs/dpng/d/312-3120300_default-profile-hd-png-download.png';
+                }
+                if (user.profilePicture.contains('s96-c')) {
+                  return user.profilePicture.replaceAll("s96-c", "s192-c");
+                } else {
+                  return user.profilePicture;
+                }
+              }
+
               return user == UserModel.empty
                   ? Center(
                       child: ElevatedButton(
@@ -100,13 +113,14 @@ class ProfileView extends StatelessWidget {
                                       child: CircleAvatar(
                                         radius: 98,
                                         backgroundImage:
-                                            CachedNetworkImageProvider(user
-                                                .profilePicture
-                                                .replaceAll("s96-c", "s192-c")),
+                                            user.profilePicture == ''
+                                                ? null
+                                                : CachedNetworkImageProvider(
+                                                    profilePicture()),
                                         child: user.profilePicture == ''
                                             ? const Icon(
                                                 Icons.person,
-                                                size: 100,
+                                                size: 150,
                                               )
                                             : null,
                                       ),

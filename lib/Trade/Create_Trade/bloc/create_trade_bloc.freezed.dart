@@ -28,7 +28,8 @@ mixin _$CreateTradeEvent {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -49,7 +50,7 @@ mixin _$CreateTradeEvent {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -69,7 +70,7 @@ mixin _$CreateTradeEvent {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -204,7 +205,8 @@ class _$_Started implements _Started {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -228,7 +230,7 @@ class _$_Started implements _Started {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -251,7 +253,7 @@ class _$_Started implements _Started {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -413,7 +415,8 @@ class _$_Search implements _Search {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -437,7 +440,7 @@ class _$_Search implements _Search {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -460,7 +463,7 @@ class _$_Search implements _Search {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -629,7 +632,8 @@ class _$_UpdateDetails implements _UpdateDetails {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -653,7 +657,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -676,7 +680,7 @@ class _$_UpdateDetails implements _UpdateDetails {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -865,7 +869,8 @@ class _$_MessageTapped implements _MessageTapped {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -889,7 +894,7 @@ class _$_MessageTapped implements _MessageTapped {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -912,7 +917,7 @@ class _$_MessageTapped implements _MessageTapped {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -1084,7 +1089,8 @@ class _$_SendMessage implements _SendMessage {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -1108,7 +1114,7 @@ class _$_SendMessage implements _SendMessage {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -1131,7 +1137,7 @@ class _$_SendMessage implements _SendMessage {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -1275,7 +1281,8 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -1299,7 +1306,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -1322,7 +1329,7 @@ class _$_UpdateTradeType implements _UpdateTradeType {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -1486,7 +1493,8 @@ class _$_SelectCard implements _SelectCard {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -1510,7 +1518,7 @@ class _$_SelectCard implements _SelectCard {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -1533,7 +1541,7 @@ class _$_SelectCard implements _SelectCard {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -1712,7 +1720,8 @@ class _$_CreateTrade implements _CreateTrade {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -1736,7 +1745,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -1759,7 +1768,7 @@ class _$_CreateTrade implements _CreateTrade {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -1902,7 +1911,8 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -1926,7 +1936,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -1949,7 +1959,7 @@ class _$_ClearSelectedCard implements _ClearSelectedCard {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -2045,7 +2055,7 @@ abstract class _$$_UpdateProfilePhotoUrlCopyWith<$Res> {
           $Res Function(_$_UpdateProfilePhotoUrl) then) =
       __$$_UpdateProfilePhotoUrlCopyWithImpl<$Res>;
   @useResult
-  $Res call({String url});
+  $Res call({String url, BuildContext context});
 }
 
 /// @nodoc
@@ -2060,12 +2070,17 @@ class __$$_UpdateProfilePhotoUrlCopyWithImpl<$Res>
   @override
   $Res call({
     Object? url = null,
+    Object? context = null,
   }) {
     return _then(_$_UpdateProfilePhotoUrl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ));
   }
 }
@@ -2073,14 +2088,16 @@ class __$$_UpdateProfilePhotoUrlCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
-  const _$_UpdateProfilePhotoUrl({required this.url});
+  const _$_UpdateProfilePhotoUrl({required this.url, required this.context});
 
   @override
   final String url;
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'CreateTradeEvent.updateProfilePhotoUrl(url: $url)';
+    return 'CreateTradeEvent.updateProfilePhotoUrl(url: $url, context: $context)';
   }
 
   @override
@@ -2088,11 +2105,12 @@ class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateProfilePhotoUrl &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, url);
+  int get hashCode => Object.hash(runtimeType, url, context);
 
   @JsonKey(ignore: true)
   @override
@@ -2114,7 +2132,8 @@ class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -2122,7 +2141,7 @@ class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
     required TResult Function(TradePostModel trade, BuildContext context)
         reportTrade,
   }) {
-    return updateProfilePhotoUrl(url);
+    return updateProfilePhotoUrl(url, context);
   }
 
   @override
@@ -2138,14 +2157,14 @@ class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
     TResult? Function()? deleteTrade,
     TResult? Function(TradePostModel trade, BuildContext context)? reportTrade,
   }) {
-    return updateProfilePhotoUrl?.call(url);
+    return updateProfilePhotoUrl?.call(url, context);
   }
 
   @override
@@ -2161,7 +2180,7 @@ class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -2170,7 +2189,7 @@ class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
     required TResult orElse(),
   }) {
     if (updateProfilePhotoUrl != null) {
-      return updateProfilePhotoUrl(url);
+      return updateProfilePhotoUrl(url, context);
     }
     return orElse();
   }
@@ -2248,10 +2267,12 @@ class _$_UpdateProfilePhotoUrl implements _UpdateProfilePhotoUrl {
 }
 
 abstract class _UpdateProfilePhotoUrl implements CreateTradeEvent {
-  const factory _UpdateProfilePhotoUrl({required final String url}) =
-      _$_UpdateProfilePhotoUrl;
+  const factory _UpdateProfilePhotoUrl(
+      {required final String url,
+      required final BuildContext context}) = _$_UpdateProfilePhotoUrl;
 
   String get url;
+  BuildContext get context;
   @JsonKey(ignore: true)
   _$$_UpdateProfilePhotoUrlCopyWith<_$_UpdateProfilePhotoUrl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2305,7 +2326,8 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -2329,7 +2351,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -2352,7 +2374,7 @@ class _$_CreateTradeProposal implements _CreateTradeProposal {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -2490,7 +2512,8 @@ class _$_ClearSearch implements _ClearSearch {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -2514,7 +2537,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -2537,7 +2560,7 @@ class _$_ClearSearch implements _ClearSearch {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -2675,7 +2698,8 @@ class _$_ResetState implements _ResetState {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -2699,7 +2723,7 @@ class _$_ResetState implements _ResetState {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -2722,7 +2746,7 @@ class _$_ResetState implements _ResetState {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -2860,7 +2884,8 @@ class _$_DeleteTrade implements _DeleteTrade {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -2884,7 +2909,7 @@ class _$_DeleteTrade implements _DeleteTrade {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -2907,7 +2932,7 @@ class _$_DeleteTrade implements _DeleteTrade {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,
@@ -3089,7 +3114,8 @@ class _$_ReportTrade implements _ReportTrade {
     required TResult Function(CardModel card) selectCard,
     required TResult Function(UserModel user) createTrade,
     required TResult Function() clearSelectedCard,
-    required TResult Function(String url) updateProfilePhotoUrl,
+    required TResult Function(String url, BuildContext context)
+        updateProfilePhotoUrl,
     required TResult Function() createTradeProposal,
     required TResult Function() clearSearch,
     required TResult Function() resetState,
@@ -3113,7 +3139,7 @@ class _$_ReportTrade implements _ReportTrade {
     TResult? Function(CardModel card)? selectCard,
     TResult? Function(UserModel user)? createTrade,
     TResult? Function()? clearSelectedCard,
-    TResult? Function(String url)? updateProfilePhotoUrl,
+    TResult? Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult? Function()? createTradeProposal,
     TResult? Function()? clearSearch,
     TResult? Function()? resetState,
@@ -3136,7 +3162,7 @@ class _$_ReportTrade implements _ReportTrade {
     TResult Function(CardModel card)? selectCard,
     TResult Function(UserModel user)? createTrade,
     TResult Function()? clearSelectedCard,
-    TResult Function(String url)? updateProfilePhotoUrl,
+    TResult Function(String url, BuildContext context)? updateProfilePhotoUrl,
     TResult Function()? createTradeProposal,
     TResult Function()? clearSearch,
     TResult Function()? resetState,

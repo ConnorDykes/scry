@@ -15,11 +15,9 @@ class UserAvatar extends StatelessWidget {
     return CircleAvatar(
       radius: radius + 2,
       child: FutureBuilder(
-        //method to be waiting for in the future
         future:
             FirebaseFirestore.instance.collection('users').doc(userID).get(),
         builder: (_, snapshot) {
-          //if done show data,
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData && snapshot.data != null) {
               final doc = snapshot.data!.data();
@@ -35,33 +33,12 @@ class UserAvatar extends StatelessWidget {
                     )
                   : CircleAvatar(
                       radius: radius,
-                      child: CircleAvatar(
-                        radius: radius - .5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          clipBehavior: Clip.hardEdge,
-                          child: CachedNetworkImage(
-                              imageUrl: doc!['profilePicture']),
-                        ),
-                      ),
-
-                      // Container(
-                      //   width: 48.0,
-                      //   height: 48.0,
-                      //   decoration: BoxDecoration(
-                      //     shape: BoxShape.circle,
-                      //     image: DecorationImage(
-                      //       image: CachedNetworkImageProvider(
-                      //           doc!['profilePicture']),
-                      //     ),
-                      //   ),
-                      // )
+                      backgroundImage:
+                          CachedNetworkImageProvider(doc!['profilePicture']),
                     );
             } else {
-              return const CircleAvatar(
-                radius: 25,
+              return CircleAvatar(
+                radius: radius,
                 child: Icon(Icons.person),
               );
             }

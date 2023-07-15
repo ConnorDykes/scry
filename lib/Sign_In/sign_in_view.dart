@@ -160,26 +160,30 @@ class SignInView extends StatelessWidget {
                   child: Text(state.error),
                 ),
               ),
+              Spacer(),
               if (Platform.isIOS)
                 Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        side: BorderSide(
-                      color: theme.colorScheme.primary,
-                    )),
+                      backgroundColor: Colors.black87,
+                    ),
                     onPressed: () {
                       signInBloc.add(SignInEvent.signInWithApple());
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const FaIcon(FontAwesomeIcons.apple),
+                        const FaIcon(
+                          FontAwesomeIcons.apple,
+                          color: Colors.white,
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text(
                             'Sign In with Apple',
-                            style: theme.textTheme.titleMedium,
+                            style: theme.textTheme.titleMedium!
+                                .copyWith(color: Colors.white),
                           ),
                         ),
                       ],

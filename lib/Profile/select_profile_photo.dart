@@ -208,6 +208,7 @@ class _SelectProfilePhotoState extends State<SelectProfilePhoto> {
                   },
                   onPressed: () {
                     bloc.add(CreateTradeEvent.updateProfilePhotoUrl(
+                        context: context,
                         url: state.selectedCards.first.imageUris!.artCrop ??
                             ''));
                   },

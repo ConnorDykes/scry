@@ -127,29 +127,6 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
           },
         ));
 
-    // on<_SendMessage>(
-    //   (event, emit) async {
-    //     debugPrint('_SendMessage');
-    //     try {
-    //       final messageStatus =
-    //           await _createTradeRepo.sendMessage(message: state.message);
-    //       if (messageStatus) {
-    //         if (Navigator.canPop(event.context)) {
-    //           Navigator.pop(event.context);
-    //         }
-
-    //         OurSnackbar.success(message: 'Message Sent')
-    //             .show(context: event.context);
-    //       } else {
-    //         emit(state.copyWith(messageError: 'Error Sending Message'));
-    //       }
-    //     } catch (e) {
-    //       debugPrint(e.toString());
-    //       emit(state.copyWith(messageError: e.toString()));
-    //     }
-    //   },
-    // );
-
     on<_UpdateTradeType>(
       (event, emit) {
         if (state.selectedCards.isEmpty) {
@@ -345,6 +322,9 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
           emit(state.copyWith(
             buttonState: ButtonState.success,
           ));
+          Future.delayed(const Duration(seconds: 1), () {
+            Navigator.pop(event.context); // Prints after 1 second.
+          });
         } else {
           emit(state.copyWith(
               buttonState: ButtonState.fail,
