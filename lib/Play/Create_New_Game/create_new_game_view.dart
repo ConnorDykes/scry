@@ -390,6 +390,7 @@ class Location extends StatelessWidget {
             onChanged: (value) {
               bloc.add(CreateGameEvent.changeLocation(location: value));
             },
+            textCapitalization: TextCapitalization.words,
             keyboardType: TextInputType.streetAddress,
             suffixIcon: IconButton(
               color: theme.colorScheme.primary,
@@ -423,6 +424,7 @@ class Description extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
           child: OurTextfield(
+              textCapitalization: TextCapitalization.sentences,
               minLines: 3,
               onChanged: (value) => bloc.add(CreateGameEvent.changeDescription(
                   description: value.toString()))),
@@ -451,6 +453,7 @@ class Title extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
           child: OurTextfield(
+              textCapitalization: TextCapitalization.words,
               controller: TextEditingController(),
               onChanged: (value) => bloc
                   .add(CreateGameEvent.changeTitle(title: value.toString()))),

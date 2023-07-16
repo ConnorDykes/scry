@@ -39,8 +39,8 @@ class GameDetailView extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: UserTile(
-                          userID: game.creator?.id ?? '',
-                          userName: game.creator?.fullName ?? ''),
+                        userID: game.creator?.id ?? '',
+                      ),
                     ),
                   ),
                   Divider(color: theme.disabledColor),

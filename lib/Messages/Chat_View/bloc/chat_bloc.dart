@@ -35,7 +35,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         'isRead': false,
         'sendingUsername': currentUser.displayName != ''
             ? currentUser.displayName
-            : currentUser.fullName,
+            : currentUser.name,
         'receivingUserID': chat.offer.offeringUserID,
         'receivingUsername': chat.offer.offeringUserName,
         'createDateInMillisecondsSinceEpoch': time,

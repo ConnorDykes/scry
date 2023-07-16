@@ -329,8 +329,8 @@ class _OfferPanelState extends State<OfferPanel> {
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: UserTile(
-                                userID: otherUserID,
-                                userName: chat.offer.offeringUserName ?? ''),
+                              userID: otherUserID,
+                            ),
                           ),
                         ),
                       ],

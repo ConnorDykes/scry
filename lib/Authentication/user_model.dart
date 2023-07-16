@@ -39,6 +39,5 @@ class UserModel with _$UserModel {
   bool get isNotEmpty => this != UserModel.empty;
 
   /// checks if display name is set other wise uses first and last
-  String get fullName =>
-      displayName == '' ? '$firstName $lastName' : displayName;
+  String get name => displayName == '' ? '$firstName $lastName' : displayName;
 }

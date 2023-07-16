@@ -93,6 +93,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             create: (context) => AppBloc()..add(AppBlocEvent.started())),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Scry',
         initialRoute: '/',
         routes: {

@@ -26,13 +26,12 @@ class MessagesView extends StatelessWidget {
       initialIndex: 1,
       length: 2,
       child: Scaffold(
-          appBar: AppBar(
-            systemOverlayStyle: SystemUiOverlayStyle.dark,
-            backgroundColor: theme.scaffoldBackgroundColor,
-            elevation: 0,
-            title: Text('Messages'),
-          ),
-          body: Messages()),
+          // appBar: AppBar(
+          //   systemOverlayStyle: SystemUiOverlayStyle.dark,
+          //   backgroundColor: theme.scaffoldBackgroundColor,
+          //   elevation: 0,
+          // ),
+          body: SafeArea(child: Messages())),
     );
   }
 }
@@ -106,9 +105,8 @@ class Offers extends StatelessWidget {
                                           children: [
                                             Expanded(
                                               child: UserTile(
-                                                  userID: offer.offeringUserID,
-                                                  userName:
-                                                      offer.offeringUserName),
+                                                userID: offer.offeringUserID,
+                                              ),
                                             )
                                           ],
                                         ),
@@ -542,7 +540,7 @@ class Messages extends StatelessWidget {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              user.fullName,
+                                                              user.name,
                                                               style: theme
                                                                   .textTheme
                                                                   .titleMedium!

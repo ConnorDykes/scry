@@ -193,7 +193,6 @@ class TradeCard extends StatelessWidget {
               child: Column(children: [
                 UserTile(
                   userID: trade.userID,
-                  userName: trade.userName,
                   trailing: Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,

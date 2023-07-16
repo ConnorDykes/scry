@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:scry/Authentication/user_model.dart';
 
 class UserTile extends StatelessWidget {
-  const UserTile(
-      {super.key, required this.userID, required this.userName, this.trailing});
+  const UserTile({super.key, required this.userID, this.trailing});
 
   final String userID;
-  final String userName;
+
   final Widget? trailing;
 
   @override
@@ -55,7 +54,7 @@ class UserTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          userName,
+                          user.name,
                           style: theme.textTheme.titleMedium!
                               .copyWith(fontWeight: FontWeight.w600),
                         ),

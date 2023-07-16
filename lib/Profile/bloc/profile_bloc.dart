@@ -197,7 +197,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               DropdownButton<String>(
-                                value: currentUser.state,
+                                value: state.user.state,
                                 icon: Icon(
                                   Icons.arrow_drop_down_outlined,
                                   color: theme.colorScheme.primary,
@@ -217,9 +217,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                                           currentUser.copyWith(state: value!))
                                       .then((_) => emit(state.copyWith(
                                           user: state.user
-                                              .copyWith(state: value!))));
+                                              .copyWith(state: value))));
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text('Updated City')));
+                                      SnackBar(content: Text('Updated State')));
                                 },
                                 items: states.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -241,6 +241,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                 ]),
               ),
             );
+            ;
           });
     });
     on<_Logout>((event, emit) {});

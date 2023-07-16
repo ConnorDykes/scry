@@ -59,8 +59,8 @@ class GameDetailView extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: UserTile(
-                          userID: game.creator?.id ?? '',
-                          userName: game.creator?.fullName ?? ''),
+                        userID: game.creator?.id ?? '',
+                      ),
                     ),
                   ),
                   if (game.creator!.id == currentUser.id)
@@ -369,10 +369,6 @@ class GameDetailView extends StatelessWidget {
                                                               dynamic>);
                                                   return UserTile(
                                                     userID: user.id,
-                                                    userName:
-                                                        user.displayName == ''
-                                                            ? user.fullName
-                                                            : user.displayName,
                                                   );
                                                 }))
                                           ],
@@ -396,10 +392,8 @@ class GameDetailView extends StatelessWidget {
                                                       message:
                                                           bloc.messageCont.text,
                                                       senderID: currentUser.id,
-                                                      senderName: currentUser
-                                                              .fullName ??
-                                                          currentUser
-                                                              .displayName,
+                                                      senderName:
+                                                          currentUser.name,
                                                       dateAndTime:
                                                           DateTime.now());
 

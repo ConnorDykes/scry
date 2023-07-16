@@ -225,7 +225,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       (event, emit) async {
         String name = currentUser.displayName != ''
             ? currentUser.displayName
-            : currentUser.fullName;
+            : currentUser.name;
 
         Map<String, dynamic> offer = {
           'details': state.details,
@@ -263,7 +263,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
 
       String name = event.user.displayName != ''
           ? event.user.displayName
-          : event.user.fullName;
+          : event.user.name;
 
       Map<String, dynamic> trade = {
         'details': state.details,

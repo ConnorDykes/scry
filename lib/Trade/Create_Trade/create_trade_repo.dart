@@ -41,7 +41,7 @@ class CreateTradeRepo {
             id: messageDocRef.id,
             message: message,
             sendingUserID: currentUser.id,
-            sendingUsername: currentUser.fullName,
+            sendingUsername: currentUser.name,
             receivingUserID: tradePost.userID,
             receivingUsername: tradePost.userName,
             createDateInMillisecondsSinceEpoch: time);
