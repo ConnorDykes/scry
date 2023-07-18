@@ -11,6 +11,7 @@ import 'package:scry/Play/Game_Detail/GameChatMessageModel/game_chat_message_mod
 import 'package:scry/Play/Game_Detail/bloc/game_detail_bloc.dart';
 import 'package:scry/Play/Game_Detail/game_detail_repo.dart';
 import 'package:scry/Play/Game_Model/game_model.dart';
+import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Widgets/game_chat_message_tile.dart';
 import 'package:scry/Widgets/our_textfield.dart';
 import 'package:scry/Widgets/user_tile.dart';
@@ -35,6 +36,8 @@ class GameDetailView extends StatelessWidget {
           final bloc = context.read<GameDetailBloc>();
           final repo =
               GameDetailRepo(game: state.game, currentUser: currentUser);
+
+          bool isLoggedIn = (currentUser.id == '');
 
           return Scaffold(
             appBar: AppBar(
@@ -219,7 +222,7 @@ class GameDetailView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  cost.toString(),
+                                  "\$ ${cost.toString()}",
                                   style: theme.textTheme.titleMedium!.copyWith(
                                       color: theme.colorScheme.primary,
                                       fontWeight: FontWeight.bold),
@@ -320,10 +323,39 @@ class GameDetailView extends StatelessWidget {
                                                                       .colorScheme
                                                                       .primary)),
                                                       onPressed: () {
-                                                        bloc.add(GameDetailEvent
-                                                            .joinGame());
+                                                        if (isLoggedIn) {
+                                                          SignInModal()
+                                                              .showSignInModal(
+                                                                  context:
+                                                                      context)
+                                                              .then(
+                                                                  (successfulLogin) {
+                                                            if (successfulLogin) {
+                                                              bloc.add(
+                                                                  GameDetailEvent
+                                                                      .joinGame());
+                                                            } else {
+                                                              showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          "You must be logged in the to join a game"),
+                                                                    );
+                                                                  });
+                                                            }
+                                                          });
+                                                        } else {
+                                                          bloc.add(
+                                                              GameDetailEvent
+                                                                  .joinGame());
+                                                        }
                                                       },
-                                                      child: Text('Join'))
+                                                      child: Text(isLoggedIn
+                                                          ? 'Login to Join'
+                                                          : 'Join'))
                                                 } else ...{
                                                   if (game.creator!.id !=
                                                       currentUser.id)

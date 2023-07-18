@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -110,14 +112,17 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     on<_SignInWithApple>((event, emit) async {
       emit(state.copyWith(buttonState: ButtonState.loading));
       try {
+        print('Getting UserCredential from Apple');
         UserCredential userCredential = await _authRepo.signUpWithAppleID();
+        print("${userCredential.user!.uid}");
 
-        DocumentSnapshot userDoc = await _firebaseFirestore
+        DocumentReference userDocRef = _firebaseFirestore
             .collection('users')
-            .doc(userCredential.user!.uid)
-            .get();
+            .doc(userCredential.user!.uid);
 
-        if (userDoc.exists) {
+        // if there is user already created,then set the id in local storage and update state
+        if (!userDocRef.isNull) {
+          DocumentSnapshot userDoc = await userDocRef.get();
           final SharedPreferences _sharedPreferences =
               await SharedPreferences.getInstance();
           _sharedPreferences.setString('userID', userCredential.user!.uid);
@@ -127,7 +132,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
           emit(state.copyWith(
               user: userModel, error: '', buttonState: ButtonState.success));
-        } else {
+        }
+        // Otherwise create the user doc in firebase then set local storage and state
+        else {
           final UserModel userModel = UserModel(
               id: userCredential.user!.uid,
               displayName: userCredential.user!.displayName!,

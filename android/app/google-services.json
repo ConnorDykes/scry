@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:199740691166:android:b3d3dd079005d9257f284f",
+        "mobilesdk_app_id": "1:199740691166:android:b8657e84a18d54b87f284f",
         "android_client_info": {
-          "package_name": "com.example.scry"
+          "package_name": "com.connordykes.scry"
         }
       },
       "oauth_client": [
         {
-          "client_id": "199740691166-04sml6cqa0u8e2cr8phtkkho32p715g4.apps.googleusercontent.com",
+          "client_id": "199740691166-d3bt6ep01fgcjg9kle1glpqir3l1sfgs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -29,6 +29,49 @@
             {
               "client_id": "199740691166-04sml6cqa0u8e2cr8phtkkho32p715g4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "199740691166-4ekh7ijbgani81mu8um807lgueu2mjel.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.scry"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199740691166:android:b3d3dd079005d9257f284f",
+        "android_client_info": {
+          "package_name": "com.example.scry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199740691166-d3bt6ep01fgcjg9kle1glpqir3l1sfgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMtTq-NTfTF5cLBJQIzNicXfOloqPTWoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199740691166-04sml6cqa0u8e2cr8phtkkho32p715g4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199740691166-4ekh7ijbgani81mu8um807lgueu2mjel.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.scry"
+              }
             }
           ]
         }
