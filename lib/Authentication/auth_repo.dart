@@ -87,16 +87,6 @@ class AuthRepo {
       }
       await userCredential.user?.reload();
       return userCredential;
-// Now, FirebaseAuth.instance.currentUser contains the user with all the name and email updated.
-
-      // final appleProvider = AppleAuthProvider();
-      // appleProvider.addScope('email');
-      // appleProvider.addScope('fullName');
-
-      // final userCredential =
-      //     await _firebaseAuth.signInWithProvider(appleProvider);
-
-      // return userCredential;
     } catch (e) {
       throw (e.toString());
     }
