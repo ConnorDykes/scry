@@ -1,15 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:elliptic_text/elliptic_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scry/AppBloc/bloc/app_bloc_bloc.dart';
 import 'package:scry/Authentication/user_model.dart';
 import 'package:scry/Profile/bloc/profile_bloc.dart';
+import 'package:scry/Profile/profile_repo.dart';
 import 'package:scry/Profile/select_profile_photo.dart';
 import 'package:scry/Sign_In/sign_in_modal.dart';
 import 'package:scry/Trade/Create_Trade/bloc/create_trade_bloc.dart';
 import 'package:scry/Trade/Trade_Model/trade_model.dart';
+import 'package:scry/Widgets/our_textfield.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../constants.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -64,8 +70,7 @@ class ProfileView extends StatelessWidget {
                                   .copyWith(color: theme.colorScheme.primary),
                             ),
                             onPressed: () {
-                              bloc.add(
-                                  ProfileEvent.editProfile(context: context));
+                              _showEditProfileDialog(context: context);
                             },
                           ),
                           actions: [
@@ -133,8 +138,8 @@ class ProfileView extends StatelessWidget {
                                               _showProfilePhotoPicker(
                                                   context: context);
                                             },
-                                            icon: Icon(
-                                              Icons.edit,
+                                            icon: FaIcon(
+                                              FontAwesomeIcons.image,
                                               color: Colors.white,
                                             ))),
                                   ]),
@@ -450,6 +455,236 @@ void _showProfilePhotoPicker({required BuildContext context}) {
                 height: MediaQuery.of(context).size.height * 0.85,
                 child: const SelectProfilePhoto()),
           ));
+}
+
+void _showEditProfileDialog({required BuildContext context}) {
+  showDialog(
+      context: context,
+      builder: (_) {
+        final theme = Theme.of(context);
+        final currentUser = context.read<AppBloc>().state.user;
+        final user = context.read<ProfileBloc>().state.user;
+        final ProfileRepo profileRepo = ProfileRepo(user: user);
+        final firstNameCont = TextEditingController(text: user.firstName);
+        final lastNameCont = TextEditingController(text: user.lastName);
+        final displayNameCont = TextEditingController(text: user.displayName);
+        final cityCont = TextEditingController(text: user.city);
+
+        final zipCont = TextEditingController(text: user.areaCode);
+        return BlocProvider.value(
+          value: context.read<ProfileBloc>(),
+          child: BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (context, state) {
+              final bloc = context.read<ProfileBloc>();
+              return Dialog(
+                surfaceTintColor: theme.scaffoldBackgroundColor,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+                  child: ListView(primary: true, shrinkWrap: true, children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Edit User Details',
+                        style: theme.textTheme.titleLarge,
+                      ),
+                    ),
+                    Divider(
+                      color: theme.disabledColor,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'First Name',
+                        style: TextStyle(color: theme.hintColor),
+                      ),
+                    ),
+                    OurTextfield(
+                      controller: firstNameCont,
+                      hintText: 'First Name',
+                      suffixIcon: TextButton(
+                        child: Text('Save'),
+                        onPressed: () async {
+                          bloc.add(ProfileEvent.updateFirstName(
+                              fistName: firstNameCont.text));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Updated First Name')));
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Last Name',
+                        style: TextStyle(color: theme.hintColor),
+                      ),
+                    ),
+                    OurTextfield(
+                      controller: lastNameCont,
+                      hintText: 'Last Name',
+                      suffixIcon: TextButton(
+                        child: Text('Save'),
+                        onPressed: () async {
+                          bloc.add(ProfileEvent.updateLastName(
+                              lastName: lastNameCont.text));
+                          await profileRepo.updateUser(currentUser.copyWith(
+                              lastName: lastNameCont.text));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Updated Last Name')));
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Display Name',
+                        style: TextStyle(color: theme.hintColor),
+                      ),
+                    ),
+                    OurTextfield(
+                      controller: displayNameCont,
+                      hintText: 'Display Name',
+                      suffixIcon: TextButton(
+                        child: Text('Save'),
+                        onPressed: () async {
+                          bloc.add(ProfileEvent.updateDisplayName(
+                              displayName: displayNameCont.text));
+                          await profileRepo.updateUser(currentUser.copyWith(
+                              displayName: displayNameCont.text));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Updated Display Name')));
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'City',
+                        style: TextStyle(color: theme.hintColor),
+                      ),
+                    ),
+                    OurTextfield(
+                      controller: cityCont,
+                      hintText: 'City',
+                      suffixIcon: TextButton(
+                        child: Text('Save'),
+                        onPressed: () async {
+                          await profileRepo.updateUser(
+                              currentUser.copyWith(city: cityCont.text));
+                          bloc.add(
+                              ProfileEvent.updateCity(city: cityCont.text));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Updated City')));
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                  'Zip Code',
+                                  style: TextStyle(color: theme.hintColor),
+                                ),
+                              ),
+                              OurTextfield(
+                                controller: zipCont,
+                                hintText: 'Zip Code',
+                                suffixIcon: TextButton(
+                                  child: Text('Save'),
+                                  onPressed: () async {
+                                    bloc.add(ProfileEvent.updateZipCode(
+                                        zipCode: zipCont.text));
+                                    await profileRepo.updateUser(currentUser
+                                        .copyWith(areaCode: zipCont.text));
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text('Updated Zip Code')));
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              'State',
+                              style: TextStyle(color: theme.hintColor),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                DropdownButton<String>(
+                                  value: state.user.state,
+                                  icon: Icon(
+                                    Icons.arrow_drop_down_outlined,
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                  iconSize: 40,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      color: Colors.green),
+                                  underline: Container(
+                                    height: 2,
+                                    color: Colors.green,
+                                  ),
+                                  onChanged: (String? value) async {
+                                    await profileRepo
+                                        .updateUser(
+                                            currentUser.copyWith(state: value!))
+                                        .then((_) => bloc.add(
+                                            ProfileEvent.updateState(
+                                                state: value)));
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text('Updated State')));
+                                  },
+                                  items: states.map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                  ]),
+                ),
+              );
+            },
+          ),
+        );
+        ;
+      });
 }
 
 void _showLogoutDialog({required BuildContext context}) {

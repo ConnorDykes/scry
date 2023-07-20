@@ -79,7 +79,7 @@ class CreateTradeView extends StatelessWidget {
                   proposeTrade == true ? 'Offer A Trade' : 'Create Trade',
                 ),
               ),
-              body: Column(
+              body: ListView(
                 children: [
                   const SearchCardTextField(),
                   if (state.cardLoadStatus == LoadStatus.loading &&
@@ -92,8 +92,10 @@ class CreateTradeView extends StatelessWidget {
                     if (state.cards.isEmpty) ...{
                       const Text('No Cards Found')
                     } else ...{
-                      Expanded(
+                      Flexible(
+                        // height: 500,
                         child: ListView.builder(
+                          shrinkWrap: true,
                           padding: EdgeInsets.zero,
                           itemCount: state.cards.length,
                           itemBuilder: (context, index) {
@@ -220,7 +222,14 @@ class CreateTradeView extends StatelessWidget {
                                           ],
                                         ),
                                       );
-                                    });
+                                    }).then((value) {
+                                  FocusScopeNode currentFocus =
+                                      FocusScope.of(context);
+
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                });
                               },
                               shape: const RoundedRectangleBorder(),
                               leading: Padding(
@@ -345,7 +354,7 @@ class PlaceholderCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             image: const DecorationImage(
-                fit: BoxFit.cover,
+                // fit: BoxFit.cover,
                 opacity: .25,
                 image: AssetImage('assets/card_back.png')),
             borderRadius: BorderRadius.circular(15)),
@@ -378,6 +387,8 @@ class DetailsTextField extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: TextField(
             controller: TextEditingController(text: state.details),
+            textInputAction: TextInputAction.done,
+            onSubmitted: (value) {},
             textCapitalization: TextCapitalization.sentences,
             maxLines: null,
             minLines: 2,
@@ -415,6 +426,7 @@ class SearchCardTextField extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: TextField(
         controller: bloc.searchController,
+        textInputAction: TextInputAction.search,
         onChanged: (value) async {
           bloc.add(CreateTradeEvent.search(query: value));
         },

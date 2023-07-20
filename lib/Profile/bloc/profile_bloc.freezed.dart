@@ -21,6 +21,12 @@ mixin _$ProfileEvent {
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +34,12 @@ mixin _$ProfileEvent {
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +47,12 @@ mixin _$ProfileEvent {
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +61,12 @@ mixin _$ProfileEvent {
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +74,12 @@ mixin _$ProfileEvent {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +87,12 @@ mixin _$ProfileEvent {
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +155,12 @@ class _$_Logout implements _Logout {
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
   }) {
     return logout();
   }
@@ -129,6 +171,12 @@ class _$_Logout implements _Logout {
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
   }) {
     return logout?.call();
   }
@@ -139,6 +187,12 @@ class _$_Logout implements _Logout {
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -153,6 +207,12 @@ class _$_Logout implements _Logout {
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
   }) {
     return logout(this);
   }
@@ -163,6 +223,12 @@ class _$_Logout implements _Logout {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
   }) {
     return logout?.call(this);
   }
@@ -173,6 +239,12 @@ class _$_Logout implements _Logout {
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -227,6 +299,12 @@ class _$_DeleteAccount implements _DeleteAccount {
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
   }) {
     return deleteAccount();
   }
@@ -237,6 +315,12 @@ class _$_DeleteAccount implements _DeleteAccount {
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
   }) {
     return deleteAccount?.call();
   }
@@ -247,6 +331,12 @@ class _$_DeleteAccount implements _DeleteAccount {
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -261,6 +351,12 @@ class _$_DeleteAccount implements _DeleteAccount {
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
   }) {
     return deleteAccount(this);
   }
@@ -271,6 +367,12 @@ class _$_DeleteAccount implements _DeleteAccount {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
   }) {
     return deleteAccount?.call(this);
   }
@@ -281,6 +383,12 @@ class _$_DeleteAccount implements _DeleteAccount {
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -361,6 +469,12 @@ class _$_EditProfile implements _EditProfile {
     required TResult Function() logout,
     required TResult Function() deleteAccount,
     required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
   }) {
     return editProfile(context);
   }
@@ -371,6 +485,12 @@ class _$_EditProfile implements _EditProfile {
     TResult? Function()? logout,
     TResult? Function()? deleteAccount,
     TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
   }) {
     return editProfile?.call(context);
   }
@@ -381,6 +501,12 @@ class _$_EditProfile implements _EditProfile {
     TResult Function()? logout,
     TResult Function()? deleteAccount,
     TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
     required TResult orElse(),
   }) {
     if (editProfile != null) {
@@ -395,6 +521,12 @@ class _$_EditProfile implements _EditProfile {
     required TResult Function(_Logout value) logout,
     required TResult Function(_DeleteAccount value) deleteAccount,
     required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
   }) {
     return editProfile(this);
   }
@@ -405,6 +537,12 @@ class _$_EditProfile implements _EditProfile {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_DeleteAccount value)? deleteAccount,
     TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
   }) {
     return editProfile?.call(this);
   }
@@ -415,6 +553,12 @@ class _$_EditProfile implements _EditProfile {
     TResult Function(_Logout value)? logout,
     TResult Function(_DeleteAccount value)? deleteAccount,
     TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
     required TResult orElse(),
   }) {
     if (editProfile != null) {
@@ -431,6 +575,1064 @@ abstract class _EditProfile implements ProfileEvent {
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$_EditProfileCopyWith<_$_EditProfile> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateFirstNameCopyWith<$Res> {
+  factory _$$_UpdateFirstNameCopyWith(
+          _$_UpdateFirstName value, $Res Function(_$_UpdateFirstName) then) =
+      __$$_UpdateFirstNameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String fistName});
+}
+
+/// @nodoc
+class __$$_UpdateFirstNameCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateFirstName>
+    implements _$$_UpdateFirstNameCopyWith<$Res> {
+  __$$_UpdateFirstNameCopyWithImpl(
+      _$_UpdateFirstName _value, $Res Function(_$_UpdateFirstName) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fistName = null,
+  }) {
+    return _then(_$_UpdateFirstName(
+      fistName: null == fistName
+          ? _value.fistName
+          : fistName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateFirstName implements _UpdateFirstName {
+  const _$_UpdateFirstName({required this.fistName});
+
+  @override
+  final String fistName;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateFirstName(fistName: $fistName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateFirstName &&
+            (identical(other.fistName, fistName) ||
+                other.fistName == fistName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, fistName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateFirstNameCopyWith<_$_UpdateFirstName> get copyWith =>
+      __$$_UpdateFirstNameCopyWithImpl<_$_UpdateFirstName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
+  }) {
+    return updateFirstName(fistName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
+  }) {
+    return updateFirstName?.call(fistName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateFirstName != null) {
+      return updateFirstName(fistName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
+  }) {
+    return updateFirstName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
+  }) {
+    return updateFirstName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateFirstName != null) {
+      return updateFirstName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateFirstName implements ProfileEvent {
+  const factory _UpdateFirstName({required final String fistName}) =
+      _$_UpdateFirstName;
+
+  String get fistName;
+  @JsonKey(ignore: true)
+  _$$_UpdateFirstNameCopyWith<_$_UpdateFirstName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateLastNameCopyWith<$Res> {
+  factory _$$_UpdateLastNameCopyWith(
+          _$_UpdateLastName value, $Res Function(_$_UpdateLastName) then) =
+      __$$_UpdateLastNameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String lastName});
+}
+
+/// @nodoc
+class __$$_UpdateLastNameCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateLastName>
+    implements _$$_UpdateLastNameCopyWith<$Res> {
+  __$$_UpdateLastNameCopyWithImpl(
+      _$_UpdateLastName _value, $Res Function(_$_UpdateLastName) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lastName = null,
+  }) {
+    return _then(_$_UpdateLastName(
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateLastName implements _UpdateLastName {
+  const _$_UpdateLastName({required this.lastName});
+
+  @override
+  final String lastName;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateLastName(lastName: $lastName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateLastName &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, lastName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateLastNameCopyWith<_$_UpdateLastName> get copyWith =>
+      __$$_UpdateLastNameCopyWithImpl<_$_UpdateLastName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
+  }) {
+    return updateLastName(lastName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
+  }) {
+    return updateLastName?.call(lastName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateLastName != null) {
+      return updateLastName(lastName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
+  }) {
+    return updateLastName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
+  }) {
+    return updateLastName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateLastName != null) {
+      return updateLastName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateLastName implements ProfileEvent {
+  const factory _UpdateLastName({required final String lastName}) =
+      _$_UpdateLastName;
+
+  String get lastName;
+  @JsonKey(ignore: true)
+  _$$_UpdateLastNameCopyWith<_$_UpdateLastName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateDisplayNameCopyWith<$Res> {
+  factory _$$_UpdateDisplayNameCopyWith(_$_UpdateDisplayName value,
+          $Res Function(_$_UpdateDisplayName) then) =
+      __$$_UpdateDisplayNameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String displayName});
+}
+
+/// @nodoc
+class __$$_UpdateDisplayNameCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateDisplayName>
+    implements _$$_UpdateDisplayNameCopyWith<$Res> {
+  __$$_UpdateDisplayNameCopyWithImpl(
+      _$_UpdateDisplayName _value, $Res Function(_$_UpdateDisplayName) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? displayName = null,
+  }) {
+    return _then(_$_UpdateDisplayName(
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateDisplayName implements _UpdateDisplayName {
+  const _$_UpdateDisplayName({required this.displayName});
+
+  @override
+  final String displayName;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateDisplayName(displayName: $displayName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateDisplayName &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, displayName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateDisplayNameCopyWith<_$_UpdateDisplayName> get copyWith =>
+      __$$_UpdateDisplayNameCopyWithImpl<_$_UpdateDisplayName>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
+  }) {
+    return updateDisplayName(displayName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
+  }) {
+    return updateDisplayName?.call(displayName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateDisplayName != null) {
+      return updateDisplayName(displayName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
+  }) {
+    return updateDisplayName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
+  }) {
+    return updateDisplayName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateDisplayName != null) {
+      return updateDisplayName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateDisplayName implements ProfileEvent {
+  const factory _UpdateDisplayName({required final String displayName}) =
+      _$_UpdateDisplayName;
+
+  String get displayName;
+  @JsonKey(ignore: true)
+  _$$_UpdateDisplayNameCopyWith<_$_UpdateDisplayName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateCityCopyWith<$Res> {
+  factory _$$_UpdateCityCopyWith(
+          _$_UpdateCity value, $Res Function(_$_UpdateCity) then) =
+      __$$_UpdateCityCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String city});
+}
+
+/// @nodoc
+class __$$_UpdateCityCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateCity>
+    implements _$$_UpdateCityCopyWith<$Res> {
+  __$$_UpdateCityCopyWithImpl(
+      _$_UpdateCity _value, $Res Function(_$_UpdateCity) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? city = null,
+  }) {
+    return _then(_$_UpdateCity(
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateCity implements _UpdateCity {
+  const _$_UpdateCity({required this.city});
+
+  @override
+  final String city;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateCity(city: $city)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateCity &&
+            (identical(other.city, city) || other.city == city));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, city);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateCityCopyWith<_$_UpdateCity> get copyWith =>
+      __$$_UpdateCityCopyWithImpl<_$_UpdateCity>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
+  }) {
+    return updateCity(city);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
+  }) {
+    return updateCity?.call(city);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateCity != null) {
+      return updateCity(city);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
+  }) {
+    return updateCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
+  }) {
+    return updateCity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateCity != null) {
+      return updateCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCity implements ProfileEvent {
+  const factory _UpdateCity({required final String city}) = _$_UpdateCity;
+
+  String get city;
+  @JsonKey(ignore: true)
+  _$$_UpdateCityCopyWith<_$_UpdateCity> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateZipCodeCopyWith<$Res> {
+  factory _$$_UpdateZipCodeCopyWith(
+          _$_UpdateZipCode value, $Res Function(_$_UpdateZipCode) then) =
+      __$$_UpdateZipCodeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String zipCode});
+}
+
+/// @nodoc
+class __$$_UpdateZipCodeCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateZipCode>
+    implements _$$_UpdateZipCodeCopyWith<$Res> {
+  __$$_UpdateZipCodeCopyWithImpl(
+      _$_UpdateZipCode _value, $Res Function(_$_UpdateZipCode) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? zipCode = null,
+  }) {
+    return _then(_$_UpdateZipCode(
+      zipCode: null == zipCode
+          ? _value.zipCode
+          : zipCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateZipCode implements _UpdateZipCode {
+  const _$_UpdateZipCode({required this.zipCode});
+
+  @override
+  final String zipCode;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateZipCode(zipCode: $zipCode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateZipCode &&
+            (identical(other.zipCode, zipCode) || other.zipCode == zipCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, zipCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateZipCodeCopyWith<_$_UpdateZipCode> get copyWith =>
+      __$$_UpdateZipCodeCopyWithImpl<_$_UpdateZipCode>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
+  }) {
+    return updateZipCode(zipCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
+  }) {
+    return updateZipCode?.call(zipCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateZipCode != null) {
+      return updateZipCode(zipCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
+  }) {
+    return updateZipCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
+  }) {
+    return updateZipCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateZipCode != null) {
+      return updateZipCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateZipCode implements ProfileEvent {
+  const factory _UpdateZipCode({required final String zipCode}) =
+      _$_UpdateZipCode;
+
+  String get zipCode;
+  @JsonKey(ignore: true)
+  _$$_UpdateZipCodeCopyWith<_$_UpdateZipCode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateStateCopyWith<$Res> {
+  factory _$$_UpdateStateCopyWith(
+          _$_UpdateState value, $Res Function(_$_UpdateState) then) =
+      __$$_UpdateStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String state});
+}
+
+/// @nodoc
+class __$$_UpdateStateCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UpdateState>
+    implements _$$_UpdateStateCopyWith<$Res> {
+  __$$_UpdateStateCopyWithImpl(
+      _$_UpdateState _value, $Res Function(_$_UpdateState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? state = null,
+  }) {
+    return _then(_$_UpdateState(
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateState implements _UpdateState {
+  const _$_UpdateState({required this.state});
+
+  @override
+  final String state;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateState(state: $state)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateState &&
+            (identical(other.state, state) || other.state == state));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, state);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateStateCopyWith<_$_UpdateState> get copyWith =>
+      __$$_UpdateStateCopyWithImpl<_$_UpdateState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+    required TResult Function() deleteAccount,
+    required TResult Function(BuildContext context) editProfile,
+    required TResult Function(String fistName) updateFirstName,
+    required TResult Function(String lastName) updateLastName,
+    required TResult Function(String displayName) updateDisplayName,
+    required TResult Function(String city) updateCity,
+    required TResult Function(String zipCode) updateZipCode,
+    required TResult Function(String state) updateState,
+  }) {
+    return updateState(state);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+    TResult? Function()? deleteAccount,
+    TResult? Function(BuildContext context)? editProfile,
+    TResult? Function(String fistName)? updateFirstName,
+    TResult? Function(String lastName)? updateLastName,
+    TResult? Function(String displayName)? updateDisplayName,
+    TResult? Function(String city)? updateCity,
+    TResult? Function(String zipCode)? updateZipCode,
+    TResult? Function(String state)? updateState,
+  }) {
+    return updateState?.call(state);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    TResult Function()? deleteAccount,
+    TResult Function(BuildContext context)? editProfile,
+    TResult Function(String fistName)? updateFirstName,
+    TResult Function(String lastName)? updateLastName,
+    TResult Function(String displayName)? updateDisplayName,
+    TResult Function(String city)? updateCity,
+    TResult Function(String zipCode)? updateZipCode,
+    TResult Function(String state)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateState != null) {
+      return updateState(state);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_EditProfile value) editProfile,
+    required TResult Function(_UpdateFirstName value) updateFirstName,
+    required TResult Function(_UpdateLastName value) updateLastName,
+    required TResult Function(_UpdateDisplayName value) updateDisplayName,
+    required TResult Function(_UpdateCity value) updateCity,
+    required TResult Function(_UpdateZipCode value) updateZipCode,
+    required TResult Function(_UpdateState value) updateState,
+  }) {
+    return updateState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_EditProfile value)? editProfile,
+    TResult? Function(_UpdateFirstName value)? updateFirstName,
+    TResult? Function(_UpdateLastName value)? updateLastName,
+    TResult? Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult? Function(_UpdateCity value)? updateCity,
+    TResult? Function(_UpdateZipCode value)? updateZipCode,
+    TResult? Function(_UpdateState value)? updateState,
+  }) {
+    return updateState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Logout value)? logout,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_EditProfile value)? editProfile,
+    TResult Function(_UpdateFirstName value)? updateFirstName,
+    TResult Function(_UpdateLastName value)? updateLastName,
+    TResult Function(_UpdateDisplayName value)? updateDisplayName,
+    TResult Function(_UpdateCity value)? updateCity,
+    TResult Function(_UpdateZipCode value)? updateZipCode,
+    TResult Function(_UpdateState value)? updateState,
+    required TResult orElse(),
+  }) {
+    if (updateState != null) {
+      return updateState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateState implements ProfileEvent {
+  const factory _UpdateState({required final String state}) = _$_UpdateState;
+
+  String get state;
+  @JsonKey(ignore: true)
+  _$$_UpdateStateCopyWith<_$_UpdateState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

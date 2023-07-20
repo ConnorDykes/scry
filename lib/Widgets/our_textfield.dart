@@ -38,6 +38,7 @@ class OurTextfield extends StatelessWidget {
       keyboardType: keyboardType,
       maxLines: maxLines,
       minLines: minLines,
+      textInputAction: TextInputAction.done,
       decoration: InputDecoration(
           contentPadding: maxLines != null
               ? const EdgeInsets.only(

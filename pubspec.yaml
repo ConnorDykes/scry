@@ -1,5 +1,5 @@
 name: scry
-description: A new Flutter project.
+description: Trade & Play Paper Magic The Gathering.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.1
+version: 1.0.2
 
 environment:
   sdk: '>=3.0.0-322.0.dev <4.0.0'
@@ -59,6 +59,7 @@ dependencies:
   flutter_app_badger: ^1.5.0
   sign_in_with_apple: ^5.0.0
   flutter_local_notifications: ^15.1.0+1
+  elliptic_text: ^1.0.1+9
   
   
 

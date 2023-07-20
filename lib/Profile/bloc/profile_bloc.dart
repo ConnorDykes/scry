@@ -25,12 +25,30 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     final zipCont = TextEditingController(text: user.areaCode);
 
+    on<_UpdateFirstName>((event, emit) {
+      emit(state.copyWith(user: state.user.copyWith(state: event.fistName)));
+    });
+    on<_UpdateLastName>((event, emit) {
+      emit(state.copyWith(user: state.user.copyWith(state: event.lastName)));
+    });
+    on<_UpdateDisplayName>((event, emit) {
+      emit(state.copyWith(user: state.user.copyWith(state: event.displayName)));
+    });
+    on<_UpdateCity>((event, emit) {
+      emit(state.copyWith(user: state.user.copyWith(state: event.city)));
+    });
+    on<_UpdateZipCode>((event, emit) {
+      emit(state.copyWith(user: state.user.copyWith(state: event.zipCode)));
+    });
+    on<_UpdateState>((event, emit) {
+      emit(state.copyWith(user: state.user.copyWith(state: event.state)));
+    });
     on<_EditProfile>((event, emit) async {
       await showDialog(
           context: event.context,
-          builder: (context) {
-            final theme = Theme.of(context);
-            final currentUser = context.read<AppBloc>().state.user;
+          builder: (_) {
+            final theme = Theme.of(event.context);
+            final currentUser = event.context.read<AppBloc>().state.user;
 
             return Dialog(
               surfaceTintColor: theme.scaffoldBackgroundColor,
@@ -66,7 +84,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                         emit(state.copyWith(
                             user: state.user
                                 .copyWith(state: firstNameCont.text)));
-                        ScaffoldMessenger.of(context).showSnackBar(
+                        ScaffoldMessenger.of(event.context).showSnackBar(
                             SnackBar(content: Text('Updated First Name')));
                       },
                     ),
@@ -92,7 +110,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                                 state.user.copyWith(state: lastNameCont.text)));
                         await profileRepo.updateUser(
                             currentUser.copyWith(lastName: lastNameCont.text));
-                        ScaffoldMessenger.of(context).showSnackBar(
+                        ScaffoldMessenger.of(event.context).showSnackBar(
                             SnackBar(content: Text('Updated Last Name')));
                       },
                     ),
@@ -118,7 +136,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                                 .copyWith(state: displayNameCont.text)));
                         await profileRepo.updateUser(currentUser.copyWith(
                             displayName: displayNameCont.text));
-                        ScaffoldMessenger.of(context).showSnackBar(
+                        ScaffoldMessenger.of(event.context).showSnackBar(
                             SnackBar(content: Text('Updated Display Name')));
                       },
                     ),
@@ -143,7 +161,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                             currentUser.copyWith(city: cityCont.text));
                         emit(state.copyWith(
                             user: state.user.copyWith(state: cityCont.text)));
-                        ScaffoldMessenger.of(context).showSnackBar(
+                        ScaffoldMessenger.of(event.context).showSnackBar(
                             SnackBar(content: Text('Updated City')));
                       },
                     ),
@@ -175,8 +193,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                                           .copyWith(areaCode: zipCont.text)));
                                   await profileRepo.updateUser(currentUser
                                       .copyWith(areaCode: zipCont.text));
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
+                                  ScaffoldMessenger.of(event.context)
+                                      .showSnackBar(SnackBar(
                                           content: Text('Updated Zip Code')));
                                 },
                               ),
@@ -218,8 +236,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                                       .then((_) => emit(state.copyWith(
                                           user: state.user
                                               .copyWith(state: value))));
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text('Updated State')));
+                                  ScaffoldMessenger.of(event.context)
+                                      .showSnackBar(SnackBar(
+                                          content: Text('Updated State')));
                                 },
                                 items: states.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -241,6 +260,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                 ]),
               ),
             );
+
             ;
           });
     });
