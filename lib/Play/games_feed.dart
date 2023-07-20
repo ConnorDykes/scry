@@ -68,7 +68,7 @@ class _GamesFeedState extends State<GamesFeed> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if (appBloc.state.user.id == UserModel.empty) {
+          if (appBloc.state.user == UserModel.empty) {
             SignInModal()
                 .showSignInModal(context: context)
                 .then((value) => value
