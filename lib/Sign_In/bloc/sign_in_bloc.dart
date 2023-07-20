@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -114,15 +112,22 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       try {
         print('Getting UserCredential from Apple');
         UserCredential userCredential = await _authRepo.signUpWithAppleID();
-        print("${userCredential.user!.uid}");
-
-        DocumentReference userDocRef = _firebaseFirestore
-            .collection('users')
-            .doc(userCredential.user!.uid);
+        print("userCredential.user!.uid ${userCredential.user!.uid}");
+        DocumentSnapshot? userDoc;
+        try {
+          userDoc = await _firebaseFirestore
+              .collection('users')
+              .doc(userCredential.user?.uid)
+              .get();
+        } catch (e) {
+          print('Doc get failed');
+          userDoc == null;
+        }
 
         // if there is user already created,then set the id in local storage and update state
-        if (!userDocRef.isNull) {
-          DocumentSnapshot userDoc = await userDocRef.get();
+
+        if (userDoc!.exists) {
+          print('documetn does exist ');
           final SharedPreferences _sharedPreferences =
               await SharedPreferences.getInstance();
           _sharedPreferences.setString('userID', userCredential.user!.uid);
@@ -137,9 +142,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         else {
           final UserModel userModel = UserModel(
               id: userCredential.user!.uid,
-              displayName: userCredential.user!.displayName!,
+              displayName: '',
               email: userCredential.user!.email!,
-              profilePicture: userCredential.user!.photoURL!);
+              profilePicture: '');
 
           await _firebaseFirestore
               .collection('users')
