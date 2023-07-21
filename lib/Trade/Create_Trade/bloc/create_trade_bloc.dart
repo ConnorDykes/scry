@@ -206,6 +206,7 @@ class CreateTradeBloc extends Bloc<CreateTradeEvent, CreateTradeState> {
       }
 
       searchController.clear();
+
       emit(state.copyWith(
           selectedCards: [event.card],
           cards: [],

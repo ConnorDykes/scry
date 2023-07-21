@@ -78,10 +78,20 @@ class CreateTradeView extends StatelessWidget {
                 title: Text(
                   proposeTrade == true ? 'Offer A Trade' : 'Create Trade',
                 ),
+                actions: proposeTrade
+                    ? [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.close))
+                      ]
+                    : null,
               ),
               body: ListView(
+                shrinkWrap: true,
                 children: [
-                  const SearchCardTextField(),
+                  SearchCardTextField(),
                   if (state.cardLoadStatus == LoadStatus.loading &&
                       bloc.state.queryString.isNotEmpty) ...{
                     const Center(
@@ -92,161 +102,149 @@ class CreateTradeView extends StatelessWidget {
                     if (state.cards.isEmpty) ...{
                       const Text('No Cards Found')
                     } else ...{
-                      Flexible(
-                        // height: 500,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          itemCount: state.cards.length,
-                          itemBuilder: (context, index) {
-                            CardModel card = state.cards[index];
-                            final imageSmall = card.imageUris?.small ?? '';
-                            final imageNormal = card.imageUris?.normal ?? '';
-                            final frontImageSmall =
-                                card.cardFaces?.first.imageUris?['small'] ?? '';
+                      ListView.builder(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        itemCount: state.cards.length,
+                        itemBuilder: (context, index) {
+                          CardModel card = state.cards[index];
+                          final imageSmall = card.imageUris?.small ?? '';
+                          final imageNormal = card.imageUris?.normal ?? '';
+                          final frontImageSmall =
+                              card.cardFaces?.first.imageUris?['small'] ?? '';
 
-                            final frontImageNormal =
-                                card.cardFaces?.first.imageUris?['normal'] ??
-                                    '';
-                            final backImageNormal =
-                                card.cardFaces?[1].imageUris?['normal'] ?? '';
+                          final frontImageNormal =
+                              card.cardFaces?.first.imageUris?['normal'] ?? '';
+                          final backImageNormal =
+                              card.cardFaces?[1].imageUris?['normal'] ?? '';
 
-                            return ListTile(
-                              onTap: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return Dialog(
-                                        backgroundColor: Colors.transparent,
-                                        elevation: 0,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                Text('Tap Card to Flip'),
-                                                IconButton.filled(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    icon:
-                                                        const Icon(Icons.close))
-                                              ],
-                                            ),
-                                            imageNormal.isNotEmpty
-                                                ? ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            14),
-                                                    child: Image.network(
-                                                      imageNormal,
-                                                      errorBuilder: (context,
-                                                              error,
-                                                              stackTrace) =>
-                                                          Icon(
-                                                        Icons.photo,
-                                                        size: 80,
-                                                        color: Colors.white,
-                                                      ),
-                                                    ))
-                                                : Stack(
-                                                    children: [
-                                                      FlipCard(
-                                                        flipOnTouch: true,
-                                                        front: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        14),
-                                                            child: Image.network(
-                                                                frontImageNormal)),
-                                                        back: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        14),
-                                                            child: Image.network(
-                                                                backImageNormal)),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                top: 150.0),
-                                                        child: IgnorePointer(
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              IgnorePointer(
+                          return ListTile(
+                            onTap: () {
+                              FocusScope.of(context).unfocus();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      backgroundColor: Colors.transparent,
+                                      elevation: 0,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Text('Tap Card to Flip'),
+                                              IconButton.filled(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    FocusScope.of(context)
+                                                        .unfocus();
+                                                  },
+                                                  icon: const Icon(Icons.close))
+                                            ],
+                                          ),
+                                          imageNormal.isNotEmpty
+                                              ? ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(14),
+                                                  child: Image.network(
+                                                    imageNormal,
+                                                    errorBuilder: (context,
+                                                            error,
+                                                            stackTrace) =>
+                                                        Icon(
+                                                      Icons.photo,
+                                                      size: 80,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ))
+                                              : Stack(
+                                                  children: [
+                                                    FlipCard(
+                                                      flipOnTouch: true,
+                                                      front: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(14),
+                                                          child: Image.network(
+                                                              frontImageNormal)),
+                                                      back: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(14),
+                                                          child: Image.network(
+                                                              backImageNormal)),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 150.0),
+                                                      child: IgnorePointer(
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            IgnorePointer(
+                                                              child:
+                                                                  CircleAvatar(
+                                                                radius: 30,
+                                                                backgroundColor: theme
+                                                                    .primaryColor
+                                                                    .withOpacity(
+                                                                        .6),
                                                                 child:
-                                                                    CircleAvatar(
-                                                                  radius: 30,
-                                                                  backgroundColor: theme
-                                                                      .primaryColor
-                                                                      .withOpacity(
-                                                                          .6),
-                                                                  child:
-                                                                      IgnorePointer(
-                                                                    child: IconButton(
-                                                                        iconSize:
-                                                                            40,
-                                                                        onPressed:
-                                                                            () {},
-                                                                        icon: Icon(
-                                                                            Icons.autorenew)),
-                                                                  ),
+                                                                    IgnorePointer(
+                                                                  child: IconButton(
+                                                                      iconSize:
+                                                                          40,
+                                                                      onPressed:
+                                                                          () {},
+                                                                      icon: Icon(
+                                                                          Icons
+                                                                              .autorenew)),
                                                                 ),
                                                               ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: FilledButton(
-                                                  onPressed: () {
-                                                    bloc.add(CreateTradeEvent
-                                                        .selectCard(
-                                                            card: card));
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text('Select')),
-                                            )
-                                          ],
-                                        ),
-                                      );
-                                    }).then((value) {
-                                  FocusScopeNode currentFocus =
-                                      FocusScope.of(context);
-
-                                  if (!currentFocus.hasPrimaryFocus) {
-                                    currentFocus.unfocus();
-                                  }
-                                });
-                              },
-                              shape: const RoundedRectangleBorder(),
-                              leading: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: imageSmall == ''
-                                    ? Image.network(
-                                        frontImageSmall,
-                                      )
-                                    : Image.network(
-                                        imageSmall,
+                                                    ),
+                                                  ],
+                                                ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: FilledButton(
+                                                onPressed: () {
+                                                  bloc.add(CreateTradeEvent
+                                                      .selectCard(card: card));
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select')),
+                                          )
+                                        ],
                                       ),
-                              ),
-                              title: Text(card.name ?? ''),
-                              trailing: const Icon(Icons.chevron_right_rounded),
-                            );
-                          },
-                        ),
+                                    );
+                                  }).then((value) {
+                                FocusScope.of(context).unfocus();
+                              });
+                            },
+                            shape: const RoundedRectangleBorder(),
+                            leading: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: imageSmall == ''
+                                  ? Image.network(
+                                      frontImageSmall,
+                                    )
+                                  : Image.network(
+                                      imageSmall,
+                                    ),
+                            ),
+                            title: Text(card.name ?? ''),
+                            trailing: const Icon(Icons.chevron_right_rounded),
+                          );
+                        },
                       ),
                     }
                   } else if (state.cardLoadStatus == LoadStatus.initial ||
@@ -289,40 +287,44 @@ class CreateTradeView extends StatelessWidget {
                       ),
                     const DetailsTextField(),
                     if (state.selectedCards.isNotEmpty) ...{
-                      ProgressButton.icon(
-                          iconedButtons: {
-                            ButtonState.idle: IconedButton(
-                                text: proposeTrade == true ? "Offer" : "Create",
-                                icon: proposeTrade == true
-                                    ? const Icon(Icons.swap_vert_outlined,
-                                        color: Colors.white)
-                                    : const Icon(Icons.add_circle_outlined,
-                                        color: Colors.white),
-                                color: theme.colorScheme.primary),
-                            ButtonState.loading: IconedButton(
-                                text: "Loading",
-                                color: theme.colorScheme.secondary),
-                            ButtonState.fail: IconedButton(
-                                text: "Failed",
-                                icon: const Icon(Icons.cancel,
-                                    color: Colors.white),
-                                color: Colors.red.shade300),
-                            ButtonState.success: IconedButton(
-                                text: "Success",
-                                icon: const Icon(
-                                  Icons.check_circle,
-                                  color: Colors.white,
-                                ),
-                                color: Colors.green.shade400)
-                          },
-                          onPressed: () {
-                            proposeTrade
-                                ? bloc.add(const CreateTradeEvent
-                                    .createTradeProposal())
-                                : bloc.add(CreateTradeEvent.createTrade(
-                                    user: appBloc.state.user));
-                          },
-                          state: state.buttonState),
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: ProgressButton.icon(
+                            iconedButtons: {
+                              ButtonState.idle: IconedButton(
+                                  text:
+                                      proposeTrade == true ? "Offer" : "Create",
+                                  icon: proposeTrade == true
+                                      ? const Icon(Icons.swap_vert_outlined,
+                                          color: Colors.white)
+                                      : const Icon(Icons.add_circle_outlined,
+                                          color: Colors.white),
+                                  color: theme.colorScheme.primary),
+                              ButtonState.loading: IconedButton(
+                                  text: "Loading",
+                                  color: theme.colorScheme.secondary),
+                              ButtonState.fail: IconedButton(
+                                  text: "Failed",
+                                  icon: const Icon(Icons.cancel,
+                                      color: Colors.white),
+                                  color: Colors.red.shade300),
+                              ButtonState.success: IconedButton(
+                                  text: "Success",
+                                  icon: const Icon(
+                                    Icons.check_circle,
+                                    color: Colors.white,
+                                  ),
+                                  color: Colors.green.shade400)
+                            },
+                            onPressed: () {
+                              proposeTrade
+                                  ? bloc.add(const CreateTradeEvent
+                                      .createTradeProposal())
+                                  : bloc.add(CreateTradeEvent.createTrade(
+                                      user: appBloc.state.user));
+                            },
+                            state: state.buttonState),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8),
                         child: Text(
@@ -363,7 +365,7 @@ class PlaceholderCard extends StatelessWidget {
         child: Center(
           child: Text(
             textAlign: TextAlign.center,
-            'No Card Selected,\nSearch a Card To Select It',
+            'No Card Selected,\nSearch A Card To Select It',
             style: theme.textTheme.titleLarge,
           ),
         ),
@@ -413,7 +415,7 @@ class DetailsTextField extends StatelessWidget {
 }
 
 class SearchCardTextField extends StatelessWidget {
-  const SearchCardTextField({
+  SearchCardTextField({
     super.key,
   });
 

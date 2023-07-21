@@ -29,7 +29,7 @@ class _SelectProfilePhotoState extends State<SelectProfilePhoto> {
         builder: (context, state) {
       return Scaffold(
         body: Column(children: [
-          const SearchCardTextField(),
+          SearchCardTextField(),
           if (state.cardLoadStatus == LoadStatus.loading &&
               bloc.state.queryString.isNotEmpty) ...{
             const Center(

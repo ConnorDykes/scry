@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:progress_state_button/iconed_button.dart';
@@ -33,12 +34,14 @@ class SignUpView extends StatelessWidget {
           },
           child: Scaffold(
             appBar: AppBar(
+              systemOverlayStyle: SystemUiOverlayStyle.dark,
               backgroundColor: theme.scaffoldBackgroundColor,
               title: const Text('Create New Account'),
             ),
             body: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView(
+                shrinkWrap: true,
                 children: [
                   Card(
                     shape: RoundedRectangleBorder(
@@ -413,11 +416,10 @@ class SignUpView extends StatelessWidget {
                       onChanged: (value) {
                         signUpBloc.add(SignUpEvent.acceptTerms(value: value!));
                       }),
-                  const Spacer(),
                   if (state.termsAccepted == false)
                     Text(
                       textAlign: TextAlign.center,
-                      'Accept Terms to sign up',
+                      'Accept terms to sign up',
                       style: TextStyle(color: Colors.red),
                     ),
                   if (Platform.isIOS)
@@ -479,7 +481,6 @@ class SignUpView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Spacer(),
                 ],
               ),
             ),

@@ -423,7 +423,7 @@ class SendCardView extends StatelessWidget {
               ),
               body: Column(
                 children: [
-                  const SearchCardTextField(),
+                  SearchCardTextField(),
                   if (state.cardLoadStatus == LoadStatus.loading &&
                       bloc.state.queryString.isNotEmpty) ...{
                     const Center(

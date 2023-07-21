@@ -35,7 +35,7 @@ class SignInView extends StatelessWidget {
               backgroundColor: theme.scaffoldBackgroundColor,
               title: const Text('Sign In'),
             ),
-            body: Column(children: [
+            body: ListView(children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
@@ -160,7 +160,6 @@ class SignInView extends StatelessWidget {
                   child: Text(state.error),
                 ),
               ),
-              Spacer(),
               if (Platform.isIOS)
                 Padding(
                   padding: const EdgeInsets.all(8),
@@ -233,7 +232,6 @@ class SignInView extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer()
             ]),
           );
         },
