@@ -422,65 +422,66 @@ class SignUpView extends StatelessWidget {
                       'Accept terms to sign up',
                       style: TextStyle(color: Colors.red),
                     ),
-                  if (Platform.isIOS)
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            side: BorderSide(
-                          color: theme.colorScheme.primary,
-                        )),
-                        onPressed: state.termsAccepted
-                            ? () {
-                                signUpBloc.add(SignUpEvent.signUpWithApple(
-                                    context: context));
-                              }
-                            : null,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const FaIcon(FontAwesomeIcons.apple),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                'Sign Up with Apple',
-                                style: theme.textTheme.titleMedium,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          side: BorderSide(
-                        color: theme.colorScheme.primary,
-                      )),
-                      onPressed: state.termsAccepted
-                          ? () {
-                              signUpBloc.add(SignUpEvent.signUpWithGoogle(
-                                  context: context));
-                            }
-                          : null,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const FaIcon(FontAwesomeIcons.google),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              'Sign Up with Google',
-                              style: theme.textTheme.titleMedium,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // if (Platform.isIOS)
+                  //   Padding(
+                  //     padding: const EdgeInsets.all(8),
+                  //     child: ElevatedButton(
+                  //       style: ElevatedButton.styleFrom(
+                  //           side: BorderSide(
+                  //         color: theme.colorScheme.primary,
+                  //       )),
+                  //       onPressed: state.termsAccepted
+                  //           ? () {
+                  //               signUpBloc.add(SignUpEvent.signUpWithApple(
+                  //                   context: context));
+                  //             }
+                  //           : null,
+                  //       child: Row(
+                  //         mainAxisSize: MainAxisSize.min,
+                  //         children: [
+                  //           const FaIcon(FontAwesomeIcons.apple),
+                  //           Padding(
+                  //             padding:
+                  //                 const EdgeInsets.symmetric(horizontal: 8.0),
+                  //             child: Text(
+                  //               'Sign Up with Apple',
+                  //               style: theme.textTheme.titleMedium,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8),
+                  //   child: ElevatedButton(
+                  //     style: ElevatedButton.styleFrom(
+                  //         side: BorderSide(
+                  //       color: theme.colorScheme.primary,
+                  //     )),
+                  //     onPressed: state.termsAccepted
+                  //         ? () {
+                  //             signUpBloc.add(SignUpEvent.signUpWithGoogle(
+                  //                 context: context));
+                  //           }
+                  //         : null,
+                  //     child: Row(
+                  //       mainAxisSize: MainAxisSize.min,
+                  //       children: [
+                  //         const FaIcon(FontAwesomeIcons.google),
+                  //         Padding(
+                  //           padding:
+                  //               const EdgeInsets.symmetric(horizontal: 8.0),
+                  //           child: Text(
+                  //             'Sign Up with Google',
+                  //             style: theme.textTheme.titleMedium,
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                
                 ],
               ),
             ),

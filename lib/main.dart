@@ -93,7 +93,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           create: (context) => SignInBloc(),
         ),
         BlocProvider(
-            create: (context) => AppBloc()..add(AppBlocEvent.started())),
+            create: (context) => AppBloc()..add(const AppBlocEvent.started())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -113,15 +113,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           textTheme: GoogleFonts.rubikTextTheme(),
           cardTheme: const CardTheme(surfaceTintColor: Colors.transparent),
           cardColor: Colors.white,
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             systemOverlayStyle: SystemUiOverlayStyle.light, // 2
           ),
-          snackBarTheme: SnackBarThemeData(backgroundColor: Colors.green),
+          snackBarTheme: const SnackBarThemeData(backgroundColor: Colors.green),
           colorScheme: ColorScheme(
               surface: Colors.white,
               onSurface: Colors.black,
-              background: CupertinoColors.extraLightBackgroundGray,
-              onBackground: Colors.black,
               onPrimary: Colors.white,
               onSecondary: Colors.white,
               onError: Colors.white,
@@ -132,7 +130,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           useMaterial3: true,
         ),
         home: ShowCaseWidget(
-          builder: Builder(builder: (context) => const HomeView()),
+          builder: (context) => const HomeView(),
           onComplete: (_, key) {
             if (key == fabKey) {
               //  await SharedPreferences.getInstance();

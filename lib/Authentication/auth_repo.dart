@@ -13,6 +13,8 @@ class AuthRepo {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
+  AuthRepo();
+
   Future<void> updateFCMToken(
       {required String userID, required String token}) async {
     try {

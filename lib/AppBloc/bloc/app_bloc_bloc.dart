@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scry/Authentication/auth_repo.dart';
@@ -18,6 +19,8 @@ class AppBloc extends Bloc<AppBlocEvent, AppBlocState> {
   final playKey = GlobalKey();
   final profileKey = GlobalKey();
   final fabKey = GlobalKey();
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   AppBloc() : super(const AppBlocState()) {
     on<_UpdateUser>((event, emit) {
@@ -25,15 +28,13 @@ class AppBloc extends Bloc<AppBlocEvent, AppBlocState> {
     });
 
     on<_Started>((event, emit) async {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      String? userID = prefs.getString('userID');
+      String? userID = _firebaseAuth.currentUser?.uid;
 
       debugPrint("userID -----> $userID");
 
       await PushNotificationService().initialize();
 
-      if (userID != '' && userID != null) {
+      if (userID != null) {
         await PushNotificationService().getToken().then(
             (token) => authRepo.updateFCMToken(userID: userID, token: token!));
 
@@ -53,11 +54,7 @@ class AppBloc extends Bloc<AppBlocEvent, AppBlocState> {
 
         //? Maybe I don't need this anymore because i am listen to stream of user changes
       } else {
-        // DocumentSnapshot userDoc = await authRepo.getUser(userID: userID);
-        // final UserModel user =
-        //     UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
-
-        // emit(state.copyWith(user: user));
+        
       }
     });
 
